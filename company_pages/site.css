@@ -33,6 +33,15 @@ header h1 {
   padding: 0 0 115px 0;
 }
 
+header h1 a {
+  display: inline-block;
+  width: 298px;
+  height: 243px;
+  text-indent: -9999px;
+  overflow: hidden;
+  background: transparent url("images/logo.png") 0 0 no-repeat;
+}
+
 nav {
   padding: 0 0 45px 0;
   font-size: 26px;
@@ -130,6 +139,7 @@ footer li a.instagram {background-position: 0 100%}
 
 #projects figure img {
   display: block;
+  width: 100%;
 }
 
 #team p {
@@ -148,7 +158,6 @@ footer li a.instagram {background-position: 0 100%}
 
 #team li img {
   display: block;
-  width: 100%;
   margin: 0 0 25px 0;
 }
 
@@ -156,4 +165,112 @@ footer li a.instagram {background-position: 0 100%}
   text-decoration: none;
   color: #3e59b2;
 }
+
+@media (max-width: 875px) {
+  #team li {
+    width: 48%;
+    padding: 0 0 30px 0;
+  }
+
+  #team li img {
+    margin: 0 auto 25px auto;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 65px;
+  }
+
+  header h1 a {
+    width: 223px;
+    height: 182px;
+    background-size: cover;
+  }
+
+  nav {
+    padding-bottom: 20px;
+  }
+
+  main {
+    padding-top: 70px;
+  }
+
+  article {
+    padding-bottom: 50px;
+  }
+
+  article p {
+    text-align: justify;
+    padding: 0 40px;
+  }
+
+  footer {
+    padding: 35px 0;
+  }
+
+  footer li {
+    padding: 0 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-top: 0;
+    font-size: 16px;
+  }
+
+  header {
+    padding: 20px 15px;
+  }
+
+  header h1 {
+    float: left;
+    margin: 20px 0 0 0;
+    font-size: 20px;
+  }
+
+  header h1 a {
+    width: auto;
+    height: 40px;
+    padding: 10px 0 0 55px;
+    text-indent: 0;
+    color: #ffffff;
+    text-decoration: none;
+    background-position: -20px 0;
+    background-size: 90px auto;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  h2:before,
+  h2:after {
+    vertical-align: 0;
+  }
+
+  nav {
+    text-align: right;
+    padding-bottom: 0;
+  }
+
+  nav li {
+    display: block;
+    padding: 5px 0;
+    font-size: 16px;
+  }
+
+  #team p {
+    padding: 0 30px 40px 30px;
+  }
+
+  footer li {
+    padding: 0 18px;
+  }
+}
+
+
+
+
 
