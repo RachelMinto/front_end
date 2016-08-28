@@ -1,0 +1,159 @@
+/*
+----------------------------------------
+Tantek Celik's Whitepsace Reset
+     Author:    Tantek Celik, Shane Riley
+    Version:    (CC) 2010 Some Rights Reserved - http://creativecommons.org/licenses/by/2.0
+Description:  Resets default styling of common browsers to a common base
+----------------------------------------
+*/
+
+ul,ol { list-style: none; }
+h1,h2,h3,h4,h5,h6,pre,code { font-size: 1em; }
+ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset,input,dl,dt,dd, figure, figcaption {
+  margin: 0;
+  padding: 0; }
+a img,:link img,:visited img, fieldset { border: none; }
+address { font-style: normal; }
+header, section, article, nav, footer, hgroup, details, summary, figure, main { display: block; }
+mark {
+  color: inherit;
+  background: transparent; }
+abbr { border: none; }
+summary::-webkit-details-marker { display: none; }
+
+body {
+  padding: 135px 0 0 0;
+  font: normal 20px "Avenir", Helvetica, Arial, sans-serif;
+  text-align: center;
+  color: #45494d;
+  background: #2f2840 url("images/bg_body.gif") 50% 0 repeat;
+}
+
+header h1 {
+  padding: 0 0 115px 0;
+}
+
+nav {
+  padding: 0 0 45px 0;
+  font-size: 26px;
+  text-transform: uppercase;
+}
+
+nav li {
+  display: inline;
+  padding: 0 42px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #cacaca;
+}
+
+nav a.active {
+  font-weight: bold;
+  color: #6db9ff;
+}
+
+main {
+  padding: 100px 0 0 0;
+  background: #ffffff;
+}
+
+h2 {
+  padding: 0 0 40px 0;
+  font-size: 36px;
+  font-weight: 600;
+}
+
+h2:before,
+h2:after {
+  display: inline-block;
+  padding: 0 24px;
+  font-size: 22px;
+  vertical-align: 5px;
+  content: "\2022";
+}
+
+h3 {
+  padding: 0 0 20px 0;
+  font-size: 24px;
+  color: #3e59b2;
+}
+
+article {
+  padding: 0 0 100px 0;
+}
+
+article p {
+  padding: 0 110px;
+  text-align: left;
+}
+
+.column {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+footer {
+  padding: 80px 0;
+  color: #b2b2b2;
+  background: #e7e7e7;
+}
+
+footer p {
+  padding: 0 0 35px 0;
+}
+
+footer li {
+  display: inline-block;
+  padding: 0 62px 0 0;
+}
+
+footer li a {
+  display: block;
+  width: 46px;
+  height: 46px;
+  text-indent: -9999px;
+  overflow: hidden;
+  background: transparent url("images/icons_social-media.png") 0 0 no-repeat;
+}
+
+footer li a.facebook {background-position: 0 -46px;}
+
+footer li a.email {background-position: 0 -92px;}
+
+footer li a.instagram {background-position: 0 100%}
+
+#projects figure {
+  padding: 0 0 55px 0;
+}
+
+#projects figure img {
+  display: block;
+}
+
+#team p {
+  padding: 0 120px 120px 120px;
+}
+
+#team li {
+  display: inline-block;
+  padding: 0 30px;
+  font-size: 24px;
+}
+
+#team ul {
+  padding: 0 0 225px 0;
+}
+
+#team li img {
+  display: block;
+  width: 100%;
+  margin: 0 0 25px 0;
+}
+
+#team li a {
+  text-decoration: none;
+  color: #3e59b2;
+}
+
