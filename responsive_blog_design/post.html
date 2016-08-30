@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Responsive Blog Design</title>
+    <meta charset="UTF-8" />
+    <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+  </head>
+
+  <body>
+    <header>
+      <h1><a href="index.html">Blog Title</a></h1>
+      <img src="title_picture.png" alt="design"/>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="index.html">HTML</a></li>
+          <li><a href="index.html">CSS</a></li>
+          <li><a href="index.html">Javascript</a></li>
+        </ul>
+      </nav>
+     </header>
+
+      <main>
+        <div id="content">
+        <article>
+          <h2><a href="post.html">Post Headline</a></h2>
+          <h3>Written by <a href="">Shane Riley</a> on Feb. 15, 2014</h3>
+          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut alquip ex ea commodo consequat. Duis aute irure dolor in rprehenderit in voluptate velit esse culpa qui officia deserunt mollit.</p>
+        </article>
+        <section class="comments">
+          <h2>Comments</h2>
+          <article>
+            <header>
+              <h3>
+                <a href="">Kevin</a>
+                on 
+                <time datetime="2014-02-15">Feb. 15, 2014</time>
+              </h3>
+            </header>
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+          </article>
+          <article>
+            <header>
+              <h3>
+                <a href="">Chris</a>
+                on 
+                <time datetime="2014-02-15">Feb. 15, 2014</time>
+              </h3>
+            </header>
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+          </article>   
+        </section>
+        <label>
+          <input type="checkbox" name="checkbox"/>
+          Post a comment
+          <form method="post" action="">
+            <h2>Post Comment</h2>
+              <fieldset>
+                <dl>
+                  <dt><label for="name">Your Name</label></dt>
+                  <dd>
+                    <input type="text" name="name" id="name"/>
+                  </dd>
+                  <dt><label for="email" value="name@website.com">Email Address</label></dt>
+                  <dd>
+                    <input type="email" name="email" id="email"/>
+                  </dd>
+                  <dt><label for="comment">Comment</label></dt>
+                  <dd>
+                    <textarea rows="6" cols="80" name="comment" id="comment"></textarea>
+                  </dd>                
+                </dl>
+              </fieldset>
+            <button type="submit" class="green">Submit</button>
+          </form>
+        </label>
+        </div>
+     <div class="side-bar">
+        <div id="categories">
+          <h2>Categories</h2>
+          <ul>
+            <li><a href="">HTML</a></li>
+            <li><a href="">CSS</a></li>
+            <li><a href="">Javascript</a></li>
+            <li><a href="">Other</a></li>
+          </ul>
+        </div>
+        <div id="about">
+            <h2>About</h2>
+            <p>Lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quisq.</p>
+        </div>
+      </div>
+      </main>
+     
+     </div>
+
+    <footer>
+      <p>&copy; 2014 Blog Title</p>
+    </footer>
+      </body>
+</html> 

@@ -1,0 +1,274 @@
+/*
+----------------------------------------
+Tantek Celik's Whitepsace Reset
+     Author:    Tantek Celik, Shane Riley
+    Version:    (CC) 2010 Some Rights Reserved - http://creativecommons.org/licenses/by/2.0
+Description:  Resets default styling of common browsers to a common base
+----------------------------------------
+*/
+
+ul,ol { list-style: none; }
+h1,h2,h3,h4,h5,h6,pre,code { font-size: 1em; }
+ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset,input,dl,dt,dd, figure, figcaption {
+  margin: 0;
+  padding: 0; }
+a img,:link img,:visited img, fieldset { border: none; }
+address { font-style: normal; }
+header, section, article, nav, footer, hgroup, details, summary, figure, main { display: block; }
+mark {
+  color: inherit;
+  background: transparent; }
+abbr { border: none; }
+summary::-webkit-details-marker { display: none; }
+
+header {
+  background: #3d3d3d;
+  color: #ffffff;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+body {
+  font: 20px normal Helvetica, Arial, sans-serif;
+  line-height: 150%;
+}
+
+h1 {
+  padding-top: 156px;
+  padding-bottom: 20px;
+  font-size: 70px;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 5px;
+}
+
+header img {
+  padding: 10px 0 20px 0;
+  display: block;
+  width: auto;
+  height: 162px;
+  margin: 0 auto;
+}
+
+header ul {
+  display: block;
+  width: 500px;
+  margin: 0 auto;
+  padding: 50px 0;
+  text-align: center;
+}
+
+header li {
+  display: inline;
+  padding: 0 25px;
+  font-size: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+form h2,
+h2 a {
+  color: #3d3d3d;
+}
+
+a.active {
+  color: #50c3af;
+}
+
+header li a:hover {
+  color: #f5dc39;
+}
+
+::selection {
+  background: #50c3af; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #50c3af; /* Gecko Browsers */
+}
+
+main {
+  margin: 80px auto;
+  max-width: 1000px;
+  overflow: hidden;
+}
+
+#content {
+  float: left;
+  width: 65%;
+  padding-bottom: 30px;
+  padding-right: 11.5%;
+  overflow: hidden;
+}
+
+h2 {
+  font-size: 38px;
+}
+
+h3 {
+  padding: 20px 0;
+  font-weight: normal;
+}
+
+h3 a {
+  color: #50c3af;
+}
+
+.side-bar {
+  background: #ededed;
+  padding: 35px;
+  overflow: hidden;
+}
+
+.side-bar h2 {
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.side-bar li {
+  line-height: 100%
+}
+
+.side-bar p {
+  line-height: 125%
+}
+
+.side-bar a, 
+.side-bar p {
+  font-size: 14px;
+  color: #787b80;
+}
+
+.side-bar a:hover,
+h2 a:hover {
+  color: #50c3af;
+}
+
+.side-bar ul {
+  padding-bottom: 85px;
+}
+
+footer {
+  border-top: 1px solid #ededed;
+  font-size: 14px;
+  clear: both;
+  padding: 20px 0;
+  display: block;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+article {
+  padding-bottom: 70px;
+}
+
+form {
+  display: inline;
+}
+
+button {
+  background: #ededed;
+  color: #ffffff;
+  border: none;
+  font-size: 14px;
+  padding: 3px 20px;
+  border-radius: 10px;
+  margin-right: 30px;
+}
+
+button.green {
+  background: #50c3af;
+  margin-bottom: 30px;
+}
+
+.comments h2, h3 {
+  color: #3d3d3d;
+}
+
+.comments h3 {
+  background-color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+form dt {
+  padding: 0 0 5px 0;
+  font-weight: bold;
+}
+
+form dd {
+  padding: 0 0 15px 0;
+}
+
+input[type="email"],
+input[type="text"],
+textarea {
+  width: 450px;
+  height: 38px;
+  padding: 5px 10px;
+  font: normal 15px Helvetica, Arial, sans-serif;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+textarea {
+  width: 100%;
+  height: 140px;
+  resize: none;
+}
+
+@media (max-width: 768px) {
+  body > header h1 {
+    padding: 50px 0 30px 0;
+    font-size: 50px;
+  }
+
+  body > header img {
+    padding: 0 0 40px 0;
+  }
+
+  body > header ul {
+    padding: 20px 0;
+  }
+
+@media (max-width: 600px) {
+  #content {
+    width: 100%;
+  }
+
+  #categories {
+    width: 40%;
+    float: left;
+  }
+
+  #about {
+    float: right;
+    width: 40%;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .side-bar {
+    background: #ffffff;
+  }
+
+  #categories, #about {
+    float: none;
+    width: 90%;
+    background: #ededed;
+    padding: 10px;
+    margin: 10px 20px;
+  }
+
+  .side-bar ul {
+    padding-bottom: 0px;
+  }
+
+}
+}
