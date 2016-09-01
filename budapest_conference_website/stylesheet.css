@@ -9,6 +9,7 @@ body {
   font: 26px normal Helvetica, Arial, sans-serif;
   background: #ffffff;
   font-weight: 100;
+  line-height: 125%;
 }
 
 a {
@@ -18,6 +19,10 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+img {
+  padding-right: 20px;
 }
 
 header a {
@@ -50,11 +55,11 @@ h2, h3 {
 }
 
 h2 {
-  text-align: center;  
+  background: yellow;
   text-transform: uppercase;
 }
 
-.speakers, .mc, .workshops, .sponsors, .news {
+.speakers, .mc, .workshops, .sponsors, .news, #venue-description {
   max-width: 1000px;
   margin: 0 auto 80px auto;
 }
@@ -63,7 +68,7 @@ h2 {
   margin: 0 auto 80px auto;
 }
 
-.speakers li {
+.speakers li figure {
   float: left;
   width: 50%;
   box-sizing: border-box;
@@ -137,4 +142,77 @@ footer li {
 
 footer li + li:before {
   content: "| ";
+}
+
+/*Triangles with headers */
+
+.left-arrow, .up-arrow, .down-arrow, .right-arrow {
+  width: 0;
+  height: 0;
+  border: 50px solid transparent;
+  position: relative;
+}
+
+.right-arrow {
+  border-right: none;
+  border-left: 50px solid red;
+  top: 25px;
+}
+
+.left-arrow {
+  border-left: none;
+  border-right: 50px solid red;
+  bottom: 25px;
+  left: 50px;  
+}
+
+.down-arrow {
+  border-bottom: none;
+  border-top: 50px solid blue;
+  top: 25px;
+}
+
+.up-arrow {
+  border-top: none;
+  border-bottom: 50px solid blue;
+  bottom: 25px;
+}
+
+.section-header {
+  background: maroon;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.venue .section-header {
+  max-width: 1000px;
+  margin: 0 auto 80px auto;
+}
+
+.section-header li {
+  display: inline-block;
+}
+
+.square {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.center-wrapper {
+  margin: 0 auto;
+  display: block;
+  width: 800px;
+  text-align: center;
+  height: 100%;
+}
+
+
+
+figcaption p a {
+  color: red;
+}
+
+span.twitter a {
+  color: #ededed;
+  font-weight: 100;
 }
