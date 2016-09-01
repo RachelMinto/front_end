@@ -6,16 +6,20 @@ header {
 }
 
 body {
-  font: 26px normal Helvetica, Arial, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 26px;
   background: #ffffff;
   font-weight: 100;
-  line-height: 125%;
+  line-height: 120%;
+  color: #06141D;
 }
 
 a {
-  color: #0B63BC;
+  color: #2887C6;
   text-decoration: none;
 }
+
+/*old: 0B63BC*/
 
 a:hover {
   text-decoration: underline;
@@ -61,26 +65,40 @@ h1 img {
 }
 
 h2, h3 {
-  color: #0B63BC;
-}
-
-h2 {
+  color: #2887C6;
   text-transform: uppercase;
 }
 
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 24px;
+}
+
 .speakers, .mc, .workshops, .sponsors, .news, #venue-description {
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto 80px auto;
 }
 
 .venue {
   margin: 0 auto 80px auto;
 }
-
+/*
 .speakers li figure {
   float: left;
   width: 50%;
   box-sizing: border-box;
+}*/
+
+figure img {
+  float: left;
+}
+
+figcaption {
+  float: right;
 }
 
 .speakers li img,
@@ -115,6 +133,23 @@ h2 {
   margin: 40px auto;
 }
 
+.workshops ul li {
+  margin-bottom: 50px;
+}
+
+.workshops h3 {
+  text-transform: none;
+  font-size: 30px;
+}
+
+.workshops h4 {
+  font-weight: 400;
+}
+
+.workshops p {
+  margin-top: 25px;
+}
+
 .sponsors table {
   width: 800px;
   margin: 0 auto;
@@ -139,6 +174,7 @@ h2 {
   width: 100%;
 }
 
+
 footer {
   font-size: 12px;
   text-align: center;
@@ -153,77 +189,58 @@ footer li + li:before {
   content: "| ";
 }
 
-/*Triangles with headers */
+/* Headers with triangles */
 
-.left-arrow, .up-arrow, .down-arrow, .right-arrow {
+.left-triangles,
+.right-triangles {
   width: 0;
   height: 0;
-  border: 50px solid transparent;
-  position: relative;
+  border-top: 50px solid rgba(172, 206, 240, 0.17);  
+  border-right: 50px solid rgba(172, 206, 240, 0.37);
+  border-bottom: 50px solid rgba(172, 206, 240, 0.17);
+  border-left: 50px solid rgba(172, 206, 240, 0.77);     
 }
 
-.right-arrow {
-  border-right: none;
-  border-left: 50px solid red;
-  top: 25px;
+.left-triangles {
+  border-top: 50px solid transparent;  
+  border-right: 50px solid transparent;
 }
 
-.left-arrow {
-  border-left: none;
-  border-right: 50px solid red;
-  bottom: 25px;
-  left: 50px;  
+.right-triangles {  
+  border-bottom: 50px solid transparent;
+  border-left: 50px solid transparent;     
 }
 
-.down-arrow {
-  border-bottom: none;
-  border-top: 50px solid blue;
-  top: 25px;
-}
-
-.up-arrow {
-  border-top: none;
-  border-bottom: 50px solid blue;
-  bottom: 25px;
-}
-
-.section-header {
-  width: 100%;
-  margin: 0 auto;
-}
-
-.venue .section-header {
-  max-width: 1000px;
-  margin: 0 auto 80px auto;
-}
-
-.section-header li {
-  display: inline-block;
-}
-
-.square {
+.center-wrapper div {
   display: inline-block;
   vertical-align: middle;
 }
 
-.center-wrapper {
+.section-header .center-wrapper {
+  width: 100%;
   margin: 0 auto;
-  display: block;
-  width: 800px;
   text-align: center;
-  height: 100%;
 }
 
-/* Ends triangle and h2 in section-header formatting */
+.section-header {
+  margin-bottom: 40px;
+}
+/* End of Headers with triangles */
 
+.mc figure {
+  padding-left: 182px;
+}
 
 figcaption p a {
   color: red;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 span.twitter a {
-  color: #ededed;
+  color: #ACB5BD;
   font-weight: 100;
+  text-transform: lowercase;
 }
 
 header nav ul li:first-child {
