@@ -45,9 +45,19 @@ header ul {
   right: 20px;
 }
 
+#social-media img {
+  height: 25px;
+  width: auto;
+}
+
 h1 {
   padding: 150px 0;
   text-align: center;
+}
+
+h1 img {
+  height: 70px;
+  width: auto;
 }
 
 h2, h3 {
@@ -55,7 +65,6 @@ h2, h3 {
 }
 
 h2 {
-  background: yellow;
   text-transform: uppercase;
 }
 
@@ -179,7 +188,6 @@ footer li + li:before {
 }
 
 .section-header {
-  background: maroon;
   width: 100%;
   margin: 0 auto;
 }
@@ -206,6 +214,7 @@ footer li + li:before {
   height: 100%;
 }
 
+/* Ends triangle and h2 in section-header formatting */
 
 
 figcaption p a {
@@ -215,4 +224,8 @@ figcaption p a {
 span.twitter a {
   color: #ededed;
   font-weight: 100;
+}
+
+header nav ul li:first-child {
+  border: 1px solid white;
 }
