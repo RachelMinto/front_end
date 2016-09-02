@@ -3,9 +3,11 @@
 header {
   height: 500px;
   background-image: url("images/header.jpg");
+  background-position: 0 -400px;
+  position: relative;
 }
 
-header:after {
+/*header:after {
   position: absolute;
   content = "";
   z-index: 10;
@@ -13,11 +15,21 @@ header:after {
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(172, 206, 240, 0.17);
+}
+*/
+.layer {
+  position: absolute;
+  content = "";
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
-header:hover {
-  background: rgba(0, 0, 0, 0.6);
+.layer:hover {
+  background: rgba(172, 206, 240, 0.17);
 }
 
 body {
@@ -61,22 +73,34 @@ header ul {
 #social-media {
   position: absolute;
   top: 20px;
-  right: 20px;
+  right: 10px;
 }
 
 #social-media img {
   height: 25px;
   width: auto;
+  padding-right: 0;
+}
+
+#social-media li + li {
+  margin-right: 0;
+  margin-left: 20px;
 }
 
 h1 {
-  padding: 150px 0;
+  padding: 100px 0;
   text-align: center;
-  height: 100px;
+  height: 220px;
+  font-size: 38px;
+  color: #ffffff;
+}
+
+h1 .yellow {
+  color: #FFE40D;
 }
 
 h1 img {
-  height: 70px;
+  height: 100px;
   width: auto;
   vertical-align: middle
 }
@@ -95,8 +119,8 @@ h3 {
   font-size: 24px;
 }
 
-.speakers, .mc, .workshops, .sponsors, .news, #venue-description {
-  max-width: 900px;
+.speakers, .mc, .sponsors, .news, #venue-description {
+  max-width: 982px;
   margin: 0 auto 80px auto;
 }
 
@@ -120,7 +144,9 @@ figure:after {
 }
 
 figcaption {
-  margin-left: 150px;
+  margin-left: 145px;
+  padding-right: 15px;
+  box-sizing: border-box;
 }
 
 figcaption p a {
@@ -129,19 +155,15 @@ figcaption p a {
   font-weight: 600;
 }
 
-/*.speakers li img,
-.mc img {
-  height: auto;
-  width: 125px;
-  float: left;
-}
-*/
-
 .speakers li {
-  width: 50%;
+  width: 48%;
   display: inline-block;
   float: left;
-  margin-bottom: 40px;
+  margin-bottom: 75px;
+}
+
+.speakers li:nth-of-type(2n) {
+  margin-left: 4%;
 }
 
 .speakers:after,
@@ -156,27 +178,38 @@ figcaption p a {
 .speakers li img,
 .mc img, .workshops li img {
   height: auto;
-  width: 125px;
+  width: 120px;
   float: left;
 }
 
 .mc figure {
   margin: 0 auto;
-  padding-left: 182px;
+  padding-left: 228px;
 }
 
 .description {
-  width: 600px;
+  width: 548px;
   margin: 40px auto;
+  line-height: 150%;
+  font-size: 28px;
+  text-align: center;
+}
+
+.workshops, #venue-description {
+  max-width: 982px;
+  margin: 0 auto 80px auto;
 }
 
 .workshops ul li {
   margin-bottom: 50px;
 }
 
-.workshops h3 {
+.workshops h3,
+.news h3,
+.venue h3 {
   text-transform: none;
   font-size: 30px;
+  line-height: 125%;
 }
 
 .workshops h4 {
@@ -187,9 +220,30 @@ figcaption p a {
   margin-top: 25px;
 }
 
+/*.news dd {
+  margin: 20px 0;
+  font-size: 24px;
+}*/
+
+.news dd + dd {
+  font-size: 24px;  
+  margin: 20px 0 50px 0;
+}
+
+time {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #adadad;
+}
+
 .sponsors table {
   width: 800px;
   margin: 0 auto;
+}
+
+.sponsors table img {
+  width: 200px;
+  height: auto;
 }
 
 .sponsors table td {
@@ -199,6 +253,8 @@ figcaption p a {
 .sponsors ul img {
   display: block;
   margin: 0 auto;
+  height: auto;
+  width: 500px;
 }
 
 .container {
@@ -211,14 +267,22 @@ figcaption p a {
   width: 100%;
 }
 
+.venue p {
+  padding: 20px 0;
+}
+
 #venue-description {
-  border-left: 5px solid blue;
-  padding-left: 40px;
   margin-top: 40px;
 }
 
+blockquote {
+  border-left: 4px solid #2887C6;
+  padding-left: 40px;
+  font-style: italic;
+}
+
 #venue-description footer {
-  display: inline;
+  text-align: right;
 }
 
 footer {
@@ -241,20 +305,20 @@ footer li + li:before {
 .right-triangles {
   width: 0;
   height: 0;
-  border-top: 50px solid rgba(172, 206, 240, 0.17);  
-  border-right: 50px solid rgba(172, 206, 240, 0.37);
-  border-bottom: 50px solid rgba(172, 206, 240, 0.17);
-  border-left: 50px solid rgba(172, 206, 240, 0.77);     
+  border-top: 40px solid rgba(172, 206, 240, 0.17);  
+  border-right: 40px solid rgba(172, 206, 240, 0.37);
+  border-bottom: 40px solid rgba(172, 206, 240, 0.17);
+  border-left: 40px solid rgba(172, 206, 240, 0.77);     
 }
 
 .left-triangles {
-  border-top: 50px solid transparent;  
-  border-right: 50px solid transparent;
+  border-top: 40px solid transparent;  
+  border-right: 40px solid transparent;
 }
 
 .right-triangles {  
-  border-bottom: 50px solid transparent;
-  border-left: 50px solid transparent;     
+  border-bottom: 40px solid transparent;
+  border-left: 40px solid transparent;     
 }
 
 .center-wrapper div {
