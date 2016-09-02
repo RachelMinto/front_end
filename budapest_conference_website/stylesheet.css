@@ -65,26 +65,44 @@ header li {
   margin-right: 25px;
 }
 
-header ul {
-  padding: 10px 40px;
-  margin-left: 120px;
+#alt_menu {
+  height: 25px;
+  width: auto;
+  display: none;
 }
 
-#social-media {
+header nav {
   position: absolute;
-  top: 20px;
-  right: 10px;
+  margin-right: 150px;
+}
+
+header ul {
+  padding-top: 20px;
+}
+
+header nav ul {
+  text-align: center;
+  width: 100%;
+  margin-right: 150px;
+}
+
+header nav ul li {
+  vertical-align: middle;
+}
+
+header div div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
 }
 
 #social-media img {
   height: 25px;
   width: auto;
-  padding-right: 0;
-}
+  display: inline-block;
+  vertical-align: middle;
 
-#social-media li + li {
-  margin-right: 0;
-  margin-left: 20px;
 }
 
 h1 {
@@ -188,7 +206,7 @@ figcaption p a {
 }
 
 .description {
-  width: 548px;
+  width: 540px;
   margin: 40px auto;
   line-height: 150%;
   font-size: 28px;
@@ -252,9 +270,9 @@ time {
 
 .sponsors ul img {
   display: block;
-  margin: 0 auto;
-  height: auto;
-  width: 500px;
+  margin: 10px auto;
+  max-height: 250px;
+  max-width: 500px;
 }
 
 .container {
@@ -346,4 +364,79 @@ span.twitter a {
 
 header nav ul li:first-child {
   border: 1px solid white;
+}
+
+@media (max-width: 1024px) {
+  nav ul li a {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  header nav {
+    display: none;
+  }
+
+  #alt_menu img {
+    display: block;
+  }
+
+  .description {
+    font-size: 20px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .speakers figcaption > h3 {
+    font-size: 20px;
+  }
+
+  .twitter {
+    font-size: 18px;
+    display: block;
+  }
+
+  .speakers figcaption p > a {
+   display: block;    
+   font-size: 16px;
+   line-height: 150%;
+  }
+
+  .left-triangles {
+    float: left;
+  }
+
+  .right-triangles {
+    float: right;
+  }
+
+  .center-wrapper:after {
+    clear: both;
+    display: block;
+    content: '';
+  }
+
+  .speakers > ul > li {
+    width: 100%;
+    margin-left: 20px;
+  }
+
+  .speakers li:nth-of-type(2n) {
+    margin-left: 20px;
+  }
+
+  .mc figure {
+    margin: 0 auto;
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sponsors ul img {
+    display: block;
+    margin: 10px auto;
+    max-height: 100px;
+    max-width: 250px;
+  }
 }
