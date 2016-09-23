@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>To Do List</title>
+    <meta charset="UTF-8" />
+    <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+  </head>
+  <body>
+    <input type="checkbox" id="toggle-menu"/>    
+    <label for="toggle-menu">
+      <img id="menu" src="images/alt_menu.png" alt="Hamburger-type menu"/>
+    </label>
+
+    <header>
+      <nav>
+        <table>
+          <thead>
+            <tr id="all-todos">
+              <th>All Todos</th>
+              <th><div class="circle">18</div></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="selected">
+              <td>02/16
+              </td>
+              <td>
+                <div class="circle">8</div>
+              </td>
+            </tr>
+            <tr>
+              <td>03/16
+              </td>
+              <td>
+                <div class="circle">2</div>
+              </td>
+            </tr>
+            <tr>
+              <td>04/16
+              </td>
+              <td>
+                <div class="circle">1</div>
+              </td>
+            </tr>
+            <tr>
+              <td>05/16
+              </td>
+              <td>
+                <div class="circle">1</div>
+              </td>
+            </tr>                        
+            <tr>
+              <td>06/16
+              </td>
+              <td>
+                <div class="circle">6</div>
+              </td>
+            </tr>            
+          </tbody>
+        </table>
+
+        <table>
+          <thead>
+            <tr id="completed">
+              <th>Completed</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>02/16
+              </td>
+              <td>
+              </td>
+            </tr>
+            <tr>
+              <td>03/16
+              </td>
+              <td>
+              </td>
+            </tr>
+            <tr>
+              <td>04/16
+              </td>
+              <td>
+              </td>
+            </tr>
+            <tr>
+              <td>05/16
+              </td>
+              <td>
+              </td>
+            </tr>
+            <tr>
+              <td>06/16
+              </td>
+              <td>
+              </td>
+            </tr>                                   
+          </tbody>
+        </table>
+      </nav>
+    </header>
+
+    <main>
+      <h1>02/16 <span class="circle">8</span></h1>
+      <h3>Add new to do</h3>
+      <ul>
+        <li class="open_modal">
+          <label for="open_modal_checkbox">
+            <a href="#">Item 1</a>
+            <input type="checkbox" id="open_modal_checkbox"/>
+            <span>
+              <form action="#" method="post">
+                <dl>
+                  <dt>
+                    <label for="title">Title</label>
+                  </dt>
+                  <dd>
+                    <input type="text" name="title" id="title" value="Item 2"/>
+                  </dd>
+                  <dt>
+                    <label for="due_date">Due Date</label>
+                  </dt>
+                  <dd>
+                    <select name="day" id="due_date">
+                      <option selected="selected" disabled="disabled">Day</option>
+                      <option>01</option>
+                      <option>02</option>
+                      <option>03</option>
+                      <option>04</option>
+                    </select>  /
+                    <select name="month">
+                      <option selected="selected" disabled="disabled">Month</option>
+                      <option>2016</option>
+                      <option>2015</option>
+                      <option>2014</option>
+                      <option>2013</option>
+                    </select>  /        
+                    <select name="year">
+                      <option selected="selected" disabled="disabled">Year</option>
+                      <option>2016</option>
+                      <option>2015</option>
+                      <option>2014</option>
+                      <option>2013</option>
+                    </select>
+                  </dd>
+                  <dt>
+                    <label for="description_1">Description</label>
+                  </dt>
+                  <dd>
+                  <textarea name="description_1" id="description_1" rows="6" cols="40">Description
+                  </textarea>
+                  </dd>
+                  <dt></dt>
+                    <dd>
+                      <button type="submit">Save</button>
+                      <button type="submit">Mark As Complete</button>
+                    </dd>
+                </dl>
+              </form>
+            </span>
+          </label>
+        </li>
+        <li><a href="#">Item 2</a></li>
+        <li><a href="#" class="completed">Item 3</a></li>   
+        <li><a href="#" class="completed">Item 4</a></li>
+        <li><a href="#" class="completed">Item 5</a></li>
+        <li><a href="#">Item 6</a></li>           
+        <li><a href="#">Item 7</a></li>
+        <li><a href="#">Item 8</a></li>
+        <li><a href="#">Item 9</a></li>           
+      </ul> 
+
+      <div class="invisible">
+        <div class="open_modal">
+          <form action="#" method="post">
+            <dl>
+              <dt>
+                <label for="title2">Title</label>
+              </dt>
+              <dd>
+                <input type="text" name="title2" id="title2" value="Item 2"/>
+              </dd>
+              <dt>
+                <label for="due_date2">Due Date</label>
+              </dt>
+              <dd>
+                <select name="day" id="due_date2">
+                  <option selected="selected" disabled="disabled">Day</option>
+                  <option>01</option>
+                  <option>02</option>
+                  <option>03</option>
+                  <option>04</option>
+                </select>  /
+                <select name="month">
+                  <option selected="selected" disabled="disabled">Month</option>
+                  <option>2016</option>
+                  <option>2015</option>
+                  <option>2014</option>
+                  <option>2013</option>
+                </select>  /        
+                <select name="year">
+                  <option selected="selected" disabled="disabled">Year</option>
+                  <option>2016</option>
+                  <option>2015</option>
+                  <option>2014</option>
+                  <option>2013</option>
+                </select>
+              </dd>
+              <dt>
+                <label for="description_2">Description</label>
+              </dt>
+              <dd>
+              <textarea name="description_2" id="description_2" rows="6" cols="40">Description
+              </textarea>
+              </dd>
+              <dt></dt>
+                <dd>
+                  <button type="submit">Save</button>
+                  <button type="submit">Mark As Complete</button>
+                </dd>
+            </dl>
+          </form>
+        </div>
+      </div>        
+    </main>
+
+    <footer>
+    </footer>
+
+  </body>
+</html>
