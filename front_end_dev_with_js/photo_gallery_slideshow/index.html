@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gallery</title>
+  <link rel="stylesheet" href="style.css" type="text/css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="gallery.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
+</head>
+<body>
+  <main>
+    <h1>My Photo Gallery</h1>
+      <div id="slideshow">
+        <figure>
+          <a href="#"><img src="images/lake.jpg" alt="lake" /></a>
+          <figcaption>Beautiful still pond.</figcaption>
+        </figure>
+        <figure>
+          <a href="#"><img src="images/wall.jpg" alt="Great Wall of China" /></a>
+          <figcaption>View of the Great Wall of China.</figcaption>
+        </figure>
+        <figure>
+          <a href="#"><img src="images/pink_field.jpg" alt="Field" /></a>
+          <figcaption>Field full of pink flowers.</figcaption>
+        </figure>      
+        <figure>
+          <a href="#"><img src="images/bay.jpg" alt="Bay" /></a>
+          <figcaption>Wonderful bay.</figcaption>
+        </figure>   
+      <ul id="thumbnails">
+        <li class="active"><a href="#"><img src="images/lake.jpg" alt="lake" /></a></li><!--
+        --><li><a href="#"><img src="images/wall.jpg" alt="Wall of China" /></a></li><!--
+        --><li><a href="#" id='test'><img src="images/pink_field.jpg" alt="Field with pink flowers" /></a></li><!--
+        --><li><a href="#"><img src="images/bay.jpg" alt="Pond by Mountain" /></a></li>
+      </ul>
+    </div>   
+  </main>
+  <footer>
+    <p>&copy; Rachel Minto 2016</p>
+  </footer>
+</body>
+</html>
