@@ -15,13 +15,35 @@ $(function() {
     var $d = $("<div />", {
       "class": data.shape,
       data: data,
-      css: {
-        left: +data.starting_x,
-        top: +data.starting_y,
-      }
     });
-    
+
+    resetElement($d);
     return $d;
+  }
+
+  function animateElement() {
+    var $e = $(this);
+    var data = $e.data();
+
+    resetElement($e);
+
+    $e.animate({
+      left: data.ending_x, 
+      top: data.ending_y
+    }, +data.duration);
+  }
+
+  function stopAnimation() {
+    $canvas.find("div").stop();
+  }
+
+  function resetElement($e) {
+    var data = $e.data();
+
+    $e.css({
+      left: +data.starting_x,
+      top: +data.starting_y
+    });
   }
   
   $('form').submit(function(e) {
@@ -30,7 +52,18 @@ $(function() {
     var data;
     
     data = getFormObject($f);
-    console.log(data);
     $canvas.append(createElement(data));
+  });
+
+  $('#animate').click(function(e) {
+    e.preventDefault();
+
+    $canvas.find('div').each(animateElement);
+  });
+
+  $('#end_animation').click(function(e) {
+    e.preventDefault();
+
+    stopAnimation();
   });
 });
