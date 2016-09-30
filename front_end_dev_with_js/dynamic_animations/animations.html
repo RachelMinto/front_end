@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="javascript.js"> </script>
+  </head>
+  <body>
+    <main>
+      <div id="canvas">
+      </div>
+      <div id="animation_controls">
+        <a href="#" id="animate">Start</a> 
+        | 
+        <a href="#" id="end_animation">Stop</a>
+      </div>
+
+      <form method="post" action="#">
+        <h1>Add a shape</h1>
+        <h3>Type</h3>
+        <fieldset>
+          <ul>
+            <li>
+              <input type="radio" required="required" value="square" name="shape" id="square"/>
+              <label for="square">Square</label>
+            </li>
+            <li>
+              <input type="radio" required="required" value="circle" name="shape" id="circle"/>
+              <label for="circle">Circle</label>
+            </li>
+            <li>
+              <input type="radio" required="required" value="star" name="shape" id="star"/>
+              <label for="star">Star</label>
+            </li>
+          </ul>
+          <label for="starting_coord">Starting Point</label>
+            <input type="number" required placeholder="x:" name="starting_coord" id="x1" />
+            <input type="number" required placeholder="y:" name="starting_coord" id="y1" />
+          <label for="ending_coord">Ending Point</label>
+            <input type="number" required placeholder="x:" name="ending_coord" id="x2" />
+            <input type="number" required placeholder="y:" name="ending_coord" id="y2" />
+          <input type="submit" name="add" value="add"/>
+        </fieldset>
+      </form>
+    </main>
+  </body>
+</html>
