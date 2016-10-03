@@ -9,8 +9,8 @@ var inventory;
       $('#order_date').html(currentDate.toUTCString());
     },
     cacheTemplate: function() {
-      $li = $('#inventory_item').remove();
-      this.template = $li.html();
+      $iTmpl = $('#inventory_item').remove();
+      this.template = Handlebars.compile($iTmpl.html());
     },
     add: function() {
       this.last_id++;      
@@ -66,8 +66,8 @@ var inventory;
     },
     newItem: function(e) {
       e.preventDefault();
-      var item = this.add(),
-          $item = $(this.template.replace(/ID/g, item.id));
+      var item = this.add();
+      var $item = $(this.template({ id: item.id }));
       $('#inventory').append($item);
     },
     bindEvents: function() {
