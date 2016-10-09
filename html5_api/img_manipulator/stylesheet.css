@@ -1,0 +1,36 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+img {
+  width: 400px;
+  height: auto;
+}
+
+#original {
+  width: 500px;
+  float: left;
+  background: #efefef;
+
+}
+
+#greyscale {
+  width: 500px;
+  height: 100%;
+  color: #ffffff;
+  float: right;
+  background: #948f8f;
+}
+
+main {
+  width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+main:after {
+  display: block;
+  content: '';
+  line-height: 0;
+  clear: both;
+}
