@@ -47,6 +47,10 @@ toDoList.prototype = {
     $todo.remove();
     $total.text(this.collection.length);
   },
+  edit: function(e) {
+    console.log('editing, not deleting');
+    e.stopPropagation();
+  },
   removeFromCollection: function(id) {
 
     this.collection = this.collection.filter(function(item) {    
@@ -93,7 +97,21 @@ toDoList.prototype = {
     $open.on("click", this.openModal.bind(this));
     $complete.on("click", this.completeToDo.bind(this));
     $add.on("click", this.add.bind(this));
-    $('ul').on("click", $(this).attr('delete'), this.delete.bind(this));
+    // $('#test').on("click", $('#edit'), this.edit.bind(this));    
+    // $('ul').on("click", $(this).attr('delete'), this.delete.bind(this));
+
+    // debugger;
+    // $('ul').on('click', function(e) {
+    //   console.log(e, e.target);
+    //   var element = $(this);
+    //   if (element.is("[href^='#']")) {
+    //     console.log('editing');
+    //   } else {
+    //     console.log('deleting');
+    //   }
+    // });
+    $('ul').on('click', '#outer', this.delete.bind(this));
+    $('ul').on('click', '#inner', this.edit.bind(this));
   },
 }
 
