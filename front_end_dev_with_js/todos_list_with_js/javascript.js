@@ -5,6 +5,7 @@ var $modal = $('#open_modal_checkbox');
 var $form = $("form");
 var current_id;
 var $total = $('main div.circle');
+var $table = $('table');
 
 function toDoList() {
   this.init();
@@ -42,13 +43,21 @@ toDoList.prototype = {
     $form.trigger("reset");
   },
   delete: function(e) {
-    var $todo = $(e.target).closest('li');
+    e.stopPropagation();
+    console.log('delete');    
+    var $todo = $(e.target).closest('tr');
+    console.log($todo);
     this.removeFromCollection($todo.attr('data-id'));
     $todo.remove();
     $total.text(this.collection.length);
+
   },
   edit: function(e) {
-    console.log('editing, not deleting');
+    console.log('edit');    
+    e.stopPropagation();
+  },
+  toggleComplete: function(e) {
+    console.log('toggle complete');
     e.stopPropagation();
   },
   removeFromCollection: function(id) {
@@ -83,7 +92,7 @@ toDoList.prototype = {
       title: todo.title,
       due_date: todo.mm_yy,
     }));
-    $('ul').append($item);
+    $('main table').append($item);
   },
   completeToDo: function(e) {
     e.preventDefault();
@@ -96,22 +105,10 @@ toDoList.prototype = {
   bind: function() {
     $open.on("click", this.openModal.bind(this));
     $complete.on("click", this.completeToDo.bind(this));
-    $add.on("click", this.add.bind(this));
-    // $('#test').on("click", $('#edit'), this.edit.bind(this));    
-    // $('ul').on("click", $(this).attr('delete'), this.delete.bind(this));
-
-    // debugger;
-    // $('ul').on('click', function(e) {
-    //   console.log(e, e.target);
-    //   var element = $(this);
-    //   if (element.is("[href^='#']")) {
-    //     console.log('editing');
-    //   } else {
-    //     console.log('deleting');
-    //   }
-    // });
-    $('ul').on('click', '#outer', this.delete.bind(this));
-    $('ul').on('click', '#inner', this.edit.bind(this));
+    $add.on("click", this.add.bind(this)); 
+    $table.on('click', 'tr', this.toggleComplete.bind(this));    
+    $table.on('click', '#edit', this.edit.bind(this));     
+    $table.on('click', '#delete', this.delete.bind(this));    
   },
 }
 

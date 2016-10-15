@@ -20,32 +20,32 @@ header {
 
 table { border-collapse: collapse; }
 
-table:first-child {
+nav table:first-child {
   margin-top: 79px;
   margin-bottom: 35px;
   width: 100%;
 }
 
-td {
+nav td {
   padding: 12px 0;
   color: #b2b5c3;
 }
 
-th {
+nav th {
   padding-bottom: 15px;
   font-size: 18px;
   font-weight: normal; 
 }
 
-td:first-child,
-th:first-child {
+nav td:first-child,
+nav th:first-child {
   padding-left: 138px;
 }
 
-th:first-child { float: left; }
+nav th:first-child { float: left; }
 
-th:nth-child(2),
-td:nth-child(2) {
+nav th:nth-child(2),
+nav td:nth-child(2) {
   font-size: 14px;
 }
 
@@ -75,9 +75,9 @@ td:nth-child(2) {
   left: 100px;
 }
 
-table + table td { text-decoration: line-through; }
+/*table + table td { text-decoration: line-through; }*/
 
-table:first-child td:nth-of-type(even) {
+nav table:first-child td:nth-of-type(even) {
   text-align: center;
   width: 80px;
 }
@@ -131,10 +131,15 @@ main a {
   text-decoration: none;
 }
 
+main a:hover {
+  color: #148fd5;
+}
+
 main h3 {
   font-weight: normal;
   margin: 45px 0 17px 0;
   vertical-align: middle;
+  color: #148fd5;
 }
 
 main h3:before {
@@ -142,10 +147,62 @@ main h3:before {
   content: url('images/add_sign.png');
 }
 
+main table {
+  width: 100%;
+}
+
+main tr {
+  border-top: 1px solid #e7e7e7;
+  width: 100%;
+}
+
+main td {
+  padding: 15px 0;
+}
+
+main a {
+  color: #060606;
+}
+
+main td:first-child:hover {
+  background: rgba(0,100,205, 0.2);
+}
+
+main td:nth-of-type(2):hover {
+  background: rgba(255, 0, 0, 0.4);
+}
+main td + td {
+  text-align: center;
+}
+
+#todo_description:before {
+  padding: 0 12px;
+  content: url('images/checkbox.png');
+}
+/*ul {
+  width: 100%;
+}
+
+li {
+  display: block;
+  width: 100%;
+}
+
+li > div {
+  display: inline-block;
+}
+
+
+
+#delete {
+  width: 37px;
+}
+
 li {
   list-style: none;
   border-top: 1px solid #e7e7e7;
-  padding: 15px 0;
+  width: 100%;
+  position: relative;
 }
 
 li a {
@@ -166,12 +223,28 @@ li:before {
   content: url('images/checkbox.png');
 }
 
-li:after {
-  float: right;
-  content: attr(delete);
-  content: url('images/garbage.png');
+li div:first-child {
+  width: 400px;
 }
 
+#todo_description {
+  position: absolute;
+  left: 20px;
+  width: 600px;
+}
+
+li #delete {
+  float: right;
+  width: 37px;
+  height: 100%;
+  content: attr(delete);
+  margin: 15px 0;
+}
+
+li > div:hover {
+  background: red;
+}
+*/
 /* Modal Form */
 
 select {

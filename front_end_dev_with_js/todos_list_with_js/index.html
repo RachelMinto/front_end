@@ -67,10 +67,14 @@
     <main>
       <h1>All Todos<div class="circle"></div></h1>
       <a id="open" href="#"><h3>Add new to do</h3></a>
-      <ul>
+      <table>
         <script type="text/template" id="main_todos">
-          <li data-id="{{id}}" id="outer"><a href="#" id="inner">{{title}} - {{due_date}}</a></li>
+            <tr data-id="{{id}}">
+                <td id="todo_description"><a href="#" id="edit">{{title}} - {{due_date}}</a></td>
+                <td id="delete"><img alt="delete" src='images/garbage.png'></td>
+              </tr>
         </script>
+        </table>
 <!--         <script type="text/template" id="finished_main_todos">
           <li><a href="#">{{title}} - {{due_date}}</a></li>
         </script>    -->
