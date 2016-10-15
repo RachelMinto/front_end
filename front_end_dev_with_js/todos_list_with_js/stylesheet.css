@@ -168,6 +168,7 @@ li:before {
 
 li:after {
   float: right;
+  content: attr(delete);
   content: url('images/garbage.png');
 }
 

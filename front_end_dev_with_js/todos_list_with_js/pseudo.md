@@ -7,18 +7,22 @@ You can click on "+ Add new to do" to bring up the modal to create a new todo.
 
 Create a todo and Store the collection of todos in localStorage and retrieve when the page is reloaded.
   - Set default for date as 'No Due Date'  CHECK
-  - Look into how to use local storage on the window object. Use setItem and getItem.
-  - Will need to stringify each todos object.
-  - Should be using AJAX requests to seemlessly add todo to main content and all todos.
+  - Look into how to use local storage on the window object. Use setItem and getItem. CHECK
+  - Will need to stringify each todos object. CHECK
+
+ ******** - Should be using AJAX requests to seemlessly add todo to main content and all todos. ????
+
   - Have handlebars template populate in main content box with title and due date. CHECK
 
 You can delete a todo (we’ll do mark as complete later) using the trash can icon.
-  -Will want to use event delegation for this on the parent container. 
-  -Add click event so that when trash is slected, todo is deleted. 
-    -to do is deleted by removing from local storage.
+  -Will want to use event delegation for this on the parent container. CHECK
+  -Add click event so that when trash is slected, todo is deleted. CHECK
+    -to do is deleted by removing from collection based on id. CHECK
+
+  - problem: id is not getting saved properly between sessions. CHECK
 
 The number after on the top of the right panel should reflect the total number of todos.
-  - Retrieve that number dynamically from local storage.
+  - Retrieve that number dynamically from local storage. CHECK
 
 Milestone 2: a Todo list with due dates and the ability to mark todos as complete
 

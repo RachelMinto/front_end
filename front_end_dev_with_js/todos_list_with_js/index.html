@@ -65,14 +65,15 @@
     </header>
 
     <main>
-      <h1>All Todos<div class="circle">8</div></h1>
+      <h1>All Todos<div class="circle"></div></h1>
       <a id="open" href="#"><h3>Add new to do</h3></a>
       <ul>
         <script type="text/template" id="main_todos">
-        {{#each todo_item}}
+          <li data-id="{{id}}"><a href="#">{{title}} - {{due_date}}</a></li>
+        </script>
+<!--         <script type="text/template" id="finished_main_todos">
           <li><a href="#">{{title}} - {{due_date}}</a></li>
-        {{/each}}
-        </script>  
+        </script>    -->
       </ul>
       <label for="open_modal_checkbox">
         <input type="checkbox" id="open_modal_checkbox"/>
