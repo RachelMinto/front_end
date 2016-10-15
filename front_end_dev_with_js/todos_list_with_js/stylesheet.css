@@ -105,18 +105,24 @@ main {
 main h1 {
   font-size: 21px;
   height: 50px;
-  width: 96px;
+/*  width: 96px;*/
   font-weight: normal;
   display: table-cell;
   vertical-align: middle;
 }
 
-main h1 span { float: right; }
+main h1 span { 
+  display: inline-block; }
 
-main span.circle {
+main div.circle {
   background: #148fd5;
   color: #ffffff;
   font-size: 14px;
+  margin-left: 20px;
+}
+
+main div {
+  vertical-align: middle;
 }
 
 main a {
@@ -128,6 +134,7 @@ main a {
 main h3 {
   font-weight: normal;
   margin: 45px 0 17px 0;
+  vertical-align: middle;
 }
 
 main h3:before {
@@ -236,7 +243,7 @@ div.open_modal:before,
   background: rgba(0, 0, 0, 0.2);
 }
 
-div.open_modal > form,
+/*div.open_modal > form,*/
 #open_modal_checkbox ~ span > form {
   position: absolute;
   top: 118px;

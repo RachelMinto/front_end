@@ -65,73 +65,68 @@
     </header>
 
     <main>
-      <h1>02/16 <span class="circle">8</span></h1>
+      <h1>All Todos<div class="circle">8</div></h1>
       <a id="open" href="#"><h3>Add new to do</h3></a>
-      
       <ul>
         <script type="text/template" id="main_todos">
+        {{#each todo_item}}
           <li><a href="#">{{title}} - {{due_date}}</a></li>
-        </script>
-        <li class="open_modal">
-          <label for="open_modal_checkbox">
-            <a href="#">Item 1</a>
-            <input type="checkbox" id="open_modal_checkbox"/>
-            <span>
-              <form action="#" method="post">
-                <dl>
-                  <dt>
-                    <label for="title">Title</label>
-                  </dt>
-                  <dd>
-                    <input type="text" name="title" id="title" value="Item 2"/>
-                  </dd>
-                  <dt>
-                    <label for="due_date">Due Date</label>
-                  </dt>
-                  <dd>
-                    <select name="day" id="due_date">
-                      <option selected="selected" disabled="disabled">Day</option>
-                      <option>01</option>
-                      <option>02</option>
-                      <option>03</option>
-                      <option>04</option>
-                    </select>  /
-                    <select name="month">
-                      <option selected="selected" disabled="disabled">Month</option>
-                      <option>2016</option>
-                      <option>2015</option>
-                      <option>2014</option>
-                      <option>2013</option>
-                    </select>  /        
-                    <select name="year">
-                      <option selected="selected" disabled="disabled">Year</option>
-                      <option>2016</option>
-                      <option>2015</option>
-                      <option>2014</option>
-                      <option>2013</option>
-                    </select>
-                  </dd>
-                  <dt>
-                    <label for="description_1">Description</label>
-                  </dt>
-                  <dd>
-                  <textarea name="description_1" id="description" rows="6" cols="40">Description
-                  </textarea>
-                  </dd>
-                  <dt></dt>
-                    <dd>
-                      <button type="submit" id="save_todo">Save</button>
-                      <button type="submit" id="complete_todo">Mark As Complete</button>
-                    </dd>
-                </dl>
-              </form>
-            </span>
-          </label>
-        </li>
-        
-        <li><a href="#" class="completed">Item 3</a></li>             
+        {{/each}}
+        </script>  
       </ul>
-
+      <label for="open_modal_checkbox">
+        <input type="checkbox" id="open_modal_checkbox"/>
+        <span>
+          <form action="#" method="post">
+            <dl>
+              <dt>
+                <label for="title">Title</label>
+              </dt>
+              <dd>
+                <input type="text" name="title" id="title" value="Item 2"/>
+              </dd>
+              <dt>
+                <label for="due_date">Due Date</label>
+              </dt>
+              <dd>
+                <select name="day" id="day">
+                  <option selected="selected" disabled="disabled">Day</option>
+                  <option>01</option>
+                  <option>02</option>
+                  <option>03</option>
+                  <option>04</option>
+                </select>  /
+                <select name="month" id="month">
+                  <option selected="selected" disabled="disabled">Month</option>
+                  <option>January</option>
+                  <option>February</option>
+                  <option>March</option>
+                  <option>April</option>
+                </select>  /        
+                <select name="year" id="year">
+                  <option selected="selected" disabled="disabled">Year</option>
+                  <option>2016</option>
+                  <option>2015</option>
+                  <option>2014</option>
+                  <option>2013</option>
+                </select>
+              </dd>
+              <dt>
+                <label for="description_1">Description</label>
+              </dt>
+              <dd>
+              <textarea name="description_1" id="description" rows="6" cols="40">Description
+              </textarea>
+              </dd>
+              <dt></dt>
+                <dd>
+                  <button type="submit" id="save_todo">Save</button>
+                  <button type="submit" id="complete_todo">Mark As Complete</button>
+                </dd>
+            </dl>
+          </form>
+        </span>
+      </label>
     </main>
     <footer>
     </footer>

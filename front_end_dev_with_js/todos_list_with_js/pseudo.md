@@ -6,10 +6,11 @@ You can click on "+ Add new to do" to bring up the modal to create a new todo.
     -modal is toggled by: #open_modal_checkbox:checked  CHECK
 
 Create a todo and Store the collection of todos in localStorage and retrieve when the page is reloaded.
-  - Set default for date as 'No Due Date'
+  - Set default for date as 'No Due Date'  CHECK
   - Look into how to use local storage on the window object. Use setItem and getItem.
   - Will need to stringify each todos object.
   - Should be using AJAX requests to seemlessly add todo to main content and all todos.
+  - Have handlebars template populate in main content box with title and due date. CHECK
 
 You can delete a todo (we’ll do mark as complete later) using the trash can icon.
   -Will want to use event delegation for this on the parent container. 

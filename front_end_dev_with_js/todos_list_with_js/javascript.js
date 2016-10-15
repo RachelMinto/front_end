@@ -10,6 +10,7 @@ function toDoList() {
 }
 
 toDoList.prototype = {
+  collection: [],
   init: function() {
     this.bind();
     this.cacheTemplate();
@@ -17,14 +18,15 @@ toDoList.prototype = {
   cacheTemplate: function() {
     $template = $('#main_todos').remove();
     this.mainListTemplate = Handlebars.compile($template.html());
-    console.log(this.mainListTemplate());
   },
   add: function(e) {
     e.preventDefault();
     $modal.prop("checked", false);
     todo = this.createToDo();
+    this.collection.push(todo);
     localStorage.setItem('todo', JSON.stringify(todo));
-    this.updateTodoList();
+    this.updateTodoList(todo);
+    $form.trigger("reset");
   },
   delete: function() {
 
@@ -32,7 +34,7 @@ toDoList.prototype = {
   createToDo: function() {
     var todo = {
       title: $form.find("#title").val() || "no title",
-      due_date: $form.find("#due_date").val() || "No Due Date",
+      mm_yy: $form.find("#month").val() + '/' + $form.find("#year").val() || "No Due Date",
       description: $form.find("#description").val() || "no description",
       id: current_id,
     }
@@ -40,12 +42,15 @@ toDoList.prototype = {
     current_id++;
     return todo;
   },
-  updateTodoList: function() {
-    console.log(localStorage.getItem('todo'));
+  updateTodoList: function(todo) {
+    var $item = $(this.mainListTemplate({ 
+      title: todo.title,
+      due_date: todo.mm_yy,
+    }));
+    $('ul').append($item);
   },
   completeToDo: function(e) {
     e.preventDefault();
-    console.log('completed');
     $modal.prop("checked", false);
   },
   openModal: function(e) {
