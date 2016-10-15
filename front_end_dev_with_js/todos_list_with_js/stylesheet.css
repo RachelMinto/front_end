@@ -1,0 +1,285 @@
+@import url("whitespace-reset.css");
+
+body {
+  font: normal 16px Helvetica, Arial, sans-serif;
+  position: relative;
+  min-width: 400px;
+}
+
+header {
+  background: #464f77;
+  width: 335px;
+  float: left;
+  color: #ffffff;
+  position: absolute;
+  min-height: 910px;
+  height: 100%;
+}
+
+/* Navigation Pane */
+
+table { border-collapse: collapse; }
+
+table:first-child {
+  margin-top: 79px;
+  margin-bottom: 35px;
+  width: 100%;
+}
+
+td {
+  padding: 12px 0;
+  color: #b2b5c3;
+}
+
+th {
+  padding-bottom: 15px;
+  font-size: 18px;
+  font-weight: normal; 
+}
+
+td:first-child,
+th:first-child {
+  padding-left: 138px;
+}
+
+th:first-child { float: left; }
+
+th:nth-child(2),
+td:nth-child(2) {
+  font-size: 14px;
+}
+
+.circle {
+  display: inline-block;
+  background: #6b7292;
+  padding: 1.4px 6px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+#all-todos .circle { padding: 5px 5px; }
+
+#all-todos:before,
+#completed:before {
+  background: #464f77;
+  position: absolute;
+  right: 208px;
+}
+
+#all-todos:before {
+  content: url('images/icon_menu.png');  
+  top: 73px;
+}
+#completed:before {
+  content: url('images/icon_completed.png');  
+  left: 100px;
+}
+
+table + table td { text-decoration: line-through; }
+
+table:first-child td:nth-of-type(even) {
+  text-align: center;
+  width: 80px;
+}
+
+.selected td {
+  background: #383f5f;
+  color: #ffffff;
+}
+
+.selected .circle { background: #148fd5; }
+
+/* Alternate Menu */
+
+#toggle-menu,
+#menu { display: none; }
+
+/* Main Content */
+
+main {
+  margin-left: 335px;
+  padding: 67px 100px 0 21px;
+  min-width: 280px;
+}
+
+main h1 {
+  font-size: 21px;
+  height: 50px;
+  width: 96px;
+  font-weight: normal;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+main h1 span { float: right; }
+
+main span.circle {
+  background: #148fd5;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+main a {
+  color: #148fd5;
+  margin: 45px 0 17px 0;
+  text-decoration: none;
+}
+
+main h3 {
+  font-weight: normal;
+  margin: 45px 0 17px 0;
+}
+
+main h3:before {
+  padding: 0 12px;
+  content: url('images/add_sign.png');
+}
+
+li {
+  list-style: none;
+  border-top: 1px solid #e7e7e7;
+  padding: 15px 0;
+}
+
+li a {
+  text-decoration: none;
+  color: #060606;
+}
+
+li a:hover,
+li a.completed:hover { color: #148fd5; }
+
+li a.completed {
+  text-decoration: line-through;
+  color: #b3b3b3;
+}
+
+li:before {
+  padding: 0 12px;
+  content: url('images/checkbox.png');
+}
+
+li:after {
+  float: right;
+  content: url('images/garbage.png');
+}
+
+/* Modal Form */
+
+select {
+  -webkit-appearance: none; 
+  -webkit-border-radius: 0px;
+  width: 27%;
+  background: url("images/select_arrows.png") no-repeat right;
+}
+
+textarea {
+  resize: none;
+  width: 395px;
+  height: 142px;
+}
+
+button {
+  background: #148fd5;
+  border-radius: 4px;
+  color: #ffffff;
+  border: none;
+  font-size: 16px;
+  width: 186px;
+  height: 32px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+input[type="text"],
+select,
+textarea {
+  padding: 4px;
+  color: #757575;
+  font-size: 16px;
+  font-family: Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+dt, dd {
+  display: inline-block;
+  box-sizing: border-box;
+  margin-bottom: 25px;
+}
+
+dt {
+  width: 140px;
+  vertical-align: top;
+  padding-left: 30px;
+}
+
+dd { width: 430px; }
+
+/* Item 1 checkbox toggles Modal Box */
+
+input[type=checkbox] {
+  position: relative;
+  left: -79px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+div.open_modal:before,
+#open_modal_checkbox:checked + span:before {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: "";
+  background: rgba(0, 0, 0, 0.2);
+}
+
+div.open_modal > form,
+#open_modal_checkbox ~ span > form {
+  position: absolute;
+  top: 118px;
+  left: 34%;
+  margin: 0 0 0 -288;
+  background: #ffffff;
+  height: 400px;
+  width: 576px;
+  z-index: 4;
+  color: #060606;
+  padding: 40px 0;
+  box-sizing: border-box;
+}
+
+#open_modal_checkbox ~ span > form {
+  display: none;
+}
+
+#open_modal_checkbox:checked ~ span > form { display: block; }
+
+/* Toggle Modal Box by Adding class "visible" in index.html line 175 */
+
+/*.invisible { display: none }
+*/
+/*.visible { display: block !important; }*/
+
+/* Media Queries */
+
+@media (max-width: 860px) {
+  header { display: none; }
+
+  main { margin-left: 0; }
+
+  #menu {
+    display: block;
+    position: absolute;
+    top: 23px;
+    left: 20px;
+  }
+
+  #toggle-menu:checked + label #menu{ left: 355px; }
+
+  #toggle-menu:checked ~ header { display: block; }
+
+  #toggle-menu:checked ~ main { margin-left: 335px; }
+}
