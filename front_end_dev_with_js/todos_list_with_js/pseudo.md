@@ -3,10 +3,10 @@ Milestone 1: a Todo list (focus on the right panel)
 You can click on "+ Add new to do" to bring up the modal to create a new todo.
   - Make "Add new todo" a link. Fix formatting. CHECK
   - Add click event to link so that when it's clicked, the modal is toggled.
-    -modal is toggled by: #open_modal_checkbox:checked
-  - Set default for date as 'No Due Date'
+    -modal is toggled by: #open_modal_checkbox:checked  CHECK
 
-Store the collection of todos in localStorage and retrieve when the page is reloaded.
+Create a todo and Store the collection of todos in localStorage and retrieve when the page is reloaded.
+  - Set default for date as 'No Due Date'
   - Look into how to use local storage on the window object. Use setItem and getItem.
   - Will need to stringify each todos object.
   - Should be using AJAX requests to seemlessly add todo to main content and all todos.

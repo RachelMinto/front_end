@@ -66,8 +66,12 @@
 
     <main>
       <h1>02/16 <span class="circle">8</span></h1>
-      <a id="add" href="#"><h3>Add new to do</h3></a>
+      <a id="open" href="#"><h3>Add new to do</h3></a>
+      
       <ul>
+        <script type="text/template" id="main_todos">
+          <li><a href="#">{{title}} - {{due_date}}</a></li>
+        </script>
         <li class="open_modal">
           <label for="open_modal_checkbox">
             <a href="#">Item 1</a>
@@ -111,25 +115,23 @@
                     <label for="description_1">Description</label>
                   </dt>
                   <dd>
-                  <textarea name="description_1" id="description_1" rows="6" cols="40">Description
+                  <textarea name="description_1" id="description" rows="6" cols="40">Description
                   </textarea>
                   </dd>
                   <dt></dt>
                     <dd>
-                      <button type="submit">Save</button>
-                      <button type="submit">Mark As Complete</button>
+                      <button type="submit" id="save_todo">Save</button>
+                      <button type="submit" id="complete_todo">Mark As Complete</button>
                     </dd>
                 </dl>
               </form>
             </span>
           </label>
         </li>
-        <li><a href="#">Item 2</a></li>
-        <li><a href="#" class="completed">Item 3</a></li>   
-        <li><a href="#" class="completed">Item 4</a></li>
-        <li><a href="#">Item 8</a></li>
-        <li><a href="#">Item 9</a></li>           
-      </ul>       
+        
+        <li><a href="#" class="completed">Item 3</a></li>             
+      </ul>
+
     </main>
     <footer>
     </footer>
