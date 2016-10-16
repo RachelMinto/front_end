@@ -50,8 +50,11 @@ toDoList.prototype = {
     var completeByDate = this.getTodosByDate(completeTodos);
     var allByDate = this.getTodosByDate(self.collection);
 
-    $("#all-todos").append(templates.all_todos_summary({ total_all: self.collection.length, all_todo: allByDate }));
-    $("#completed").append(templates.complete_todos_summary({ total_complete: completeTodos.length, complete_todo_h: completeByDate }));  
+    var allTodosContext = { total_all: self.collection.length, all_todo: allByDate }
+    var completeTodosContext = { total_complete: completeTodos.length, complete_todo_h: completeByDate };
+
+    $("#all-todos").append(templates.all_todos_summary(allTodosContext));
+    $("#completed").append(templates.complete_todos_summary(completeTodosContext));  
   },
   getTodosByDate: function(todos) {
     var dateAndCount = {};
@@ -101,7 +104,8 @@ toDoList.prototype = {
         }
       }
 
-      $('main').find('[data-id="' + todo.id + '"]').find('a').replaceWith('<a href="#" id="edit">' + todo.title + ' - ' + todo.mm_yy + '</a>');
+      $('main').find('[data-id="' + todo.id + '"]')
+      .find('a').replaceWith('<a href="#" id="edit">' + todo.title + ' - ' + todo.mm_yy + '</a>');
     }
 
     $form.trigger("reset");
@@ -146,7 +150,8 @@ toDoList.prototype = {
   toggleComplete: function(e) {
     e.stopPropagation();
     var id = $(e.target).closest('tr').data('id');
-    var todo = this.getToDo(id); /*returns string of id  FIX!!*/
+    var todo = this.getToDo(id);
+    var $todo = $('main table').find('[data-id="' + String(id) +'"]');
 
     todo.complete = todo.complete === false ? true : false;
 
@@ -156,11 +161,7 @@ toDoList.prototype = {
       }
     }
 
-    if (todo.complete === false) {
-      $('main table').find('[data-id="' + String(id) +'"]').removeClass('completed');
-    } else {
-      $('main table').find('[data-id="' + String(id) +'"]').addClass('completed');
-    }
+    todo.complete === false ? $todo.removeClass('completed') : $todo.addClass('completed');
   },
   createToDo: function(todoToUpdate) {
     var mmYY = this.setMonthYear($form.find("#month").val(), $form.find("#year").val());

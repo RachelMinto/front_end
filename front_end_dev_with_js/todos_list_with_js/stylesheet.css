@@ -80,10 +80,9 @@ thead td {
 #all-todos:before,
 #completed:before {
   background: #464f77;
-  position: relative;
-/*  right: 135px;*/
-  left: 90px;
-  bottom: 40px;
+  position: absolute;
+  top: 13px;
+  left: 80px;
 }
 
 #all-todos:before {
@@ -93,7 +92,9 @@ thead td {
   content: url('images/icon_completed.png');  
 }
 
-/*table + table td { text-decoration: line-through; }*/
+nav table {
+  position: relative;
+}
 
 nav table td:nth-of-type(even) {
   text-align: center;
@@ -203,6 +204,9 @@ main tr.completed a {
   content: url('images/checkbox.png');
 }
 
+main #delete {
+  width: 45px;
+}
 /* Modal Form */
 
 select {
