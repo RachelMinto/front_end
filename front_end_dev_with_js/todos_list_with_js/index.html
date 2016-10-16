@@ -16,26 +16,29 @@
     <header>
       <nav>
         <table>
-          <thead>
+          <thead class="selected">
             <tr id="all-todos">
               <th>All Todos</th>
               <script type="text/x-handlebars" id="todos_by_month">
                 <th><div class="circle">{{total}}</div></th>
               </script>  
             </tr>
-            </thead>
-            <tbody>
-              <script type="text/x-handlebars" id="all_todos">
-              <tr>
-                <td>{{mm_yy}}
-                </td>
-                <td>
-                  <div class="circle">{{total_per_month}}</div>
-                </td>
-              </tr>
+          </thead>
+            <tbody id="all_summary">
+              <script type="text/x-handlebars" id="all_todos_summary">
+                {{#each todo}}
+                {{> all}}
+                {{/each}}
               </script>
-            
-          </tbody>
+              <script id="all" data-type="partial" type="text/handlebars">
+                <tr>
+                  <td>{{mm_yy}}
+                  </td>
+                  <td><div class="circle">{{total}}</div>
+                  </td>
+                </tr>
+              </script>    
+            </tbody>
         </table>
 
         <table>
@@ -57,7 +60,7 @@
             <tr>
               <td>{{mm_yy}}
               </td>
-              <td class="circle">{{total}}
+              <td><div class="circle">{{total}}</div>
               </td>
             </tr>
             </script>                            
@@ -67,7 +70,7 @@
     </header>
 
     <main>
-      <h1>All Todos<div class="circle"></div></h1>
+      <h1>All Todos<div class="circle">0</div></h1>
       <a id="open" href="#"><h3>Add new to do</h3></a>
       <table id="incomplete_todos">
         <script type="text/x-handlebars" id="main_todos">

@@ -20,7 +20,7 @@ header {
 
 table { 
   border-collapse: collapse; 
-  margin-right: 20px;
+/*  margin-right: 20px;*/
   width: 100%;
   }
 
@@ -30,9 +30,6 @@ nav table:first-child {
   width: 100%;
 }
 
-nav {
-  padding-right: 20px;
-}
 
 nav td {
   padding: 12px 0;
@@ -41,6 +38,7 @@ nav td {
 
 nav th {
   padding-bottom: 15px;
+  padding-top: 15px;
   font-size: 18px;
   font-weight: normal; 
 }
@@ -63,43 +61,47 @@ nav td:nth-child(2) {
   padding: 1.4px 6px;
   border-radius: 50%;
   margin: 0 auto;
-
 }
 
-#all-todos .circle { 
+.selected .circle { 
   padding: 5px 10px;
   background: #148fd5;
+}
+
+thead td {
+  vertical-align: middle;
+}
+
+.selected {
+  background: #383f5f;
+  color: #ffffff;
 }
 
 #all-todos:before,
 #completed:before {
   background: #464f77;
-  position: absolute;
-  right: 208px;
+  position: relative;
+  right: 135px;
+  top: 10px;
 }
 
 #all-todos:before {
   content: url('images/icon_menu.png');  
-  top: 73px;
 }
 #completed:before {
   content: url('images/icon_completed.png');  
-  left: 100px;
 }
 
 /*table + table td { text-decoration: line-through; }*/
 
-nav table:first-child td:nth-of-type(even) {
+nav table td:nth-of-type(even) {
   text-align: center;
   width: 80px;
 }
 
-/*.selected td {
-  background: #383f5f;
-  color: #ffffff;
+nav thead tr:first-child {
+  width: 227px;
 }
-
-.selected .circle { background: #148fd5; }*/
 
 /* Alternate Menu */
 
@@ -117,7 +119,6 @@ main {
 main h1 {
   font-size: 21px;
   height: 50px;
-/*  width: 96px;*/
   font-weight: normal;
   display: table-cell;
   vertical-align: middle;
@@ -187,7 +188,6 @@ main td + td {
   text-align: center;
 }
 
-
 main tr.completed a {
   text-decoration: line-through;
   color: #b3b3b3;
@@ -197,66 +197,7 @@ main tr.completed a {
   padding: 0 12px;
   content: url('images/checkbox.png');
 }
-/*ul {
-  width: 100%;
-}
 
-li {
-  display: block;
-  width: 100%;
-}
-
-li > div {
-  display: inline-block;
-}
-
-
-
-#delete {
-  width: 37px;
-}
-
-li {
-  list-style: none;
-  border-top: 1px solid #e7e7e7;
-  width: 100%;
-  position: relative;
-}
-
-li a {
-  text-decoration: none;
-  color: #060606;
-}
-
-
-
-li:before {
-  padding: 0 12px;
-  content: url('images/checkbox.png');
-}
-
-li div:first-child {
-  width: 400px;
-}
-
-#todo_description {
-  position: absolute;
-  left: 20px;
-  width: 600px;
-}
-
-li #delete {
-  float: right;
-  width: 37px;
-  height: 100%;
-  content: attr(delete);
-  margin: 15px 0;
-}
-
-li > div:hover {
-  background: red;
-}
-*/
 /* Modal Form */
 
 select {
@@ -349,12 +290,6 @@ div.open_modal:before,
 }
 
 #open_modal_checkbox:checked ~ span > form { display: block; }
-
-/* Toggle Modal Box by Adding class "visible" in index.html line 175 */
-
-/*.invisible { display: none }
-*/
-/*.visible { display: block !important; }*/
 
 /* Media Queries */
 

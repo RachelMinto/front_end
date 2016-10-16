@@ -35,7 +35,7 @@ toDoList.prototype = {
   },
   loadTodos: function() {
     var previousToDos = JSON.parse(localStorage.getItem('todos'));
-    if (!previousToDos) { return };
+    if (!previousToDos) {return};
 
     var self = this;
     previousToDos.forEach(function(todo) {
@@ -55,8 +55,9 @@ toDoList.prototype = {
 
     this.getTodosByDate(self.collection);
     completeByDate = this.getTodosByDate(completeTodos);
-    $("#complete_summary").html(templates.complete_todos_summary({ complete_todo: completeByDate }));
-
+    allByDate = this.getTodosByDate(self.collection);
+    $("#all_summary").html(templates.all_todos_summary({ todo: allByDate }));
+    $("#complete_summary").html(templates.complete_todos_summary({ complete_todo: completeByDate }));  
   },
   getTodosByDate: function(todos) {
     var dateAndCount = {};
@@ -77,15 +78,14 @@ toDoList.prototype = {
       todosByDate.push(obj);
     }
     
-    console.log(todosByDate);
     return todosByDate;
   },
   getCompleteTodos: function() {
-    incomplete = this.collection.filter(function(item) {
+    complete = this.collection.filter(function(item) {
       return item.complete === true;
     });
 
-    return incomplete;
+    return complete;
   },
   add: function(e) {
     e.preventDefault();
@@ -114,8 +114,9 @@ toDoList.prototype = {
   },
   getToDo: function(id) {
     todo = this.collection.filter(function(item) {
-      return Number(item.id) === Number(id)
+      return (Number(item.id) === Number(id));
     });
+
     return todo[0];
   },
   setFormValues: function(id) {
@@ -125,15 +126,30 @@ toDoList.prototype = {
     $form.prop('target', id)
   },
   updateTodo: function(id) {
-    var todo = getToDo(id);
-    this.updateTodoList(todo);
+    // var todo = getToDo(id);
+    // this.updateTodoList(todo);
 
-    $form.trigger("reset");
+    // $form.trigger("reset");
   },
   toggleComplete: function(e) {
-    e.stopPropagation();    
-    var id = this.getID(e);
-    var todo = this.getToDo(id);
+    e.stopPropagation();
+    debugger;
+    var id = $(e.target).closest('tr').data('id');
+    var todo = this.getToDo(id); /*returns string of id  FIX!!*/
+
+    todo.complete = todo.complete === false ? true : false;
+
+    for(var item in this.collection) {
+      if (Number(item.id) === Number(id)) {
+        item.complete = todo.complete;
+      }
+    }
+
+    if (todo.complete === false) {
+      $('main table').find('[data-id="' + String(id) +'"]').removeClass('completed');
+    } else {
+      $('main table').find('[data-id="' + String(id) +'"]').addClass('completed');
+    }
   },
   removeFromCollection: function(id) {
     this.collection = this.collection.filter(function(item) {    
@@ -172,6 +188,7 @@ toDoList.prototype = {
   },
   updateTodoList: function(todo) {
     var $item = $(templates['main_todos']({
+
       incomplete: !(todo.complete),
       id: todo.id,
       title: todo.title,
