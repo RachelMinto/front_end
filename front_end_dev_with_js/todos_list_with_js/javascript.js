@@ -28,7 +28,7 @@ toDoList.prototype = {
       templates[$tmpl.attr("id")] = Handlebars.compile($tmpl.html());
     });
 
-    $("[data-type='partial']").each(function() {
+    $('[data-type="partial"]').each(function() {
       var $partial = $(this);
       Handlebars.registerPartial($partial.attr("id"), $partial.html());
     });
@@ -49,9 +49,36 @@ toDoList.prototype = {
     var total = $(templates['todos_by_month']({total: self.collection.length}));
     $('#all-todos').append(total);
 
-    var totalComplete = this.getCompleteTodos.length;
-    var completeTotal = $(templates['total_complete']({total: totalComplete}));
+    var completeTodos = this.getCompleteTodos();
+    var completeTotal = $(templates['total_complete']({total: completeTodos.length}));
     $('#completed').append(completeTotal);
+
+    this.getTodosByDate(self.collection);
+    completeByDate = this.getTodosByDate(completeTodos);
+    $("#complete_summary").html(templates.complete_todos_summary({ complete_todo: completeByDate }));
+
+  },
+  getTodosByDate: function(todos) {
+    var dateAndCount = {};
+    var todosByDate = [];
+
+    todos.forEach(function(todo) {
+      if (dateAndCount.hasOwnProperty(todo.mm_yy)) {
+        dateAndCount[todo.mm_yy]++
+        } else {
+        dateAndCount[todo.mm_yy] = 1;
+      }
+    });
+
+    for (date in dateAndCount) {
+      obj = {}
+      obj['mm_yy'] = date;
+      obj['total'] = dateAndCount[date];
+      todosByDate.push(obj);
+    }
+    
+    console.log(todosByDate);
+    return todosByDate;
   },
   getCompleteTodos: function() {
     incomplete = this.collection.filter(function(item) {
@@ -114,14 +141,13 @@ toDoList.prototype = {
     });
   },
   createToDo: function() {
-    var month_year = $form.find("#month").val() + '/' + $form.find("#year").val();
-    var mmYY = this.setMonthYear(month_year);
+    var mmYY = this.setMonthYear($form.find("#month").val(), $form.find("#year").val());
     var todo = {
       title: $form.find("#title").val() || "",
       mm_yy: mmYY,
-      day: day,
-      month: month,
-      year: year,
+      day: $form.find("#day").val() || "",
+      month: $form.find("#month").val() || "" ,
+      year: $form.find("#year").val() || "",
       description: $form.find("#description").val() || "no description",
       id: current_id,
       complete: false,
@@ -129,12 +155,19 @@ toDoList.prototype = {
     current_id++;
     return todo;
   },
-  setMonthYear: function(month_year) {
-    if (month_year !== "null/null") {
-      var date = month_year;
-      } else {
-      var date = "No Due Date";
-      };
+  setMonthYear: function(month, year) {
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var date;
+
+    if (month === null || year === null) {
+      date = "No Due Date";
+    } else {
+      var month = String(months.indexOf(month) + 1);
+      month = month.length < 2 ? '0' + month : month;
+      var year = year.slice(2);
+      date = month + "/" + year;
+    }
+
     return date;
   },
   updateTodoList: function(todo) {

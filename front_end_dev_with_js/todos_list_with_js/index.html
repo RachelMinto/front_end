@@ -47,19 +47,20 @@
               </script>  
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>02/16
-              </td>
-              <td>
-              </td>
-            </tr>
+          <tbody id="complete_summary">
+          <script type="text/x-handlebars" id="complete_todos_summary">
+            {{#each complete_todo}}
+            {{> complete}}
+            {{/each}}
+          </script>
+          <script id="complete" data-type="partial" type="text/handlebars">
             <tr>
               <td>{{mm_yy}}
               </td>
-              <td>
+              <td class="circle">{{total}}
               </td>
-            </tr>                            
+            </tr>
+            </script>                            
           </tbody>
         </table>
       </nav>

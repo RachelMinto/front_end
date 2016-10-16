@@ -64,6 +64,14 @@ the due months, in the format of (mm/yy), should be dynamic and based on the due
 - On page reload, Sort results taken from localStorage. 
 - Have a handlebars template for creating the toodos list.
 
+
+- Take all dates in collection. Create new object that is in this format:
+
+{
+'No Due Date': total, 
+02/15: total,
+}
+
 the numbers after the "All Todos", "Completed" and the due months are dynamic and they should be the number of todos that due in that month.
 
 by default, all todos are created in the “No Due Date” list, but when a Todo has due date, it should be put into the month that it’s due.
