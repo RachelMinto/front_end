@@ -90,6 +90,7 @@ toDoList.prototype = {
   add: function(e) {
     e.preventDefault();
     $modal.prop("checked", false);
+    debugger;
     todo = this.createToDo();
     this.collection.push(todo);
     this.updateTodoList(todo);
