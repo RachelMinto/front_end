@@ -81,8 +81,9 @@ thead td {
 #completed:before {
   background: #464f77;
   position: relative;
-  right: 135px;
-  top: 10px;
+/*  right: 135px;*/
+  left: 90px;
+  bottom: 40px;
 }
 
 #all-todos:before {
@@ -97,6 +98,10 @@ thead td {
 nav table td:nth-of-type(even) {
   text-align: center;
   width: 80px;
+}
+
+div.circle:empty {
+  display: none;
 }
 
 nav thead tr:first-child {
