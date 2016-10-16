@@ -16,20 +16,20 @@ toDoList.prototype = {
   collection: [],
   init: function() {
     this.bind();
-    this.cacheTemplate();
+    this.cacheTemplates();
     this.loadTodos();
-    current_id = localStorage.getItem('current_id') || '0';    /*need to fix this! */
+    current_id = localStorage.getItem('current_id') || '0';
     localStorage.removeItem('todos');
     this.loadMenus();
   },
-  cacheTemplate: function() {
+  cacheTemplates: function() {
     $("script[type='text/x-handlebars']").each(function() {
       var $tmpl = $(this).remove();
       templates[$tmpl.attr("id")] = Handlebars.compile($tmpl.html());
     });
 
     $('[data-type="partial"]').each(function() {
-      var $partial = $(this);
+      var $partial = $(this).remove();
       Handlebars.registerPartial($partial.attr("id"), $partial.html());
     });
   },
@@ -45,19 +45,13 @@ toDoList.prototype = {
     $total.text(previousToDos.length);
   },
   loadMenus: function() {
-    self = this;
-    var total = $(templates['todos_by_month']({total: self.collection.length}));
-    $('#all-todos').append(total);
-
+    var self = this;
     var completeTodos = this.getCompleteTodos();
-    var completeTotal = $(templates['total_complete']({total: completeTodos.length}));
-    $('#completed').append(completeTotal);
+    var completeByDate = this.getTodosByDate(completeTodos);
+    var allByDate = this.getTodosByDate(self.collection);
 
-    this.getTodosByDate(self.collection);
-    completeByDate = this.getTodosByDate(completeTodos);
-    allByDate = this.getTodosByDate(self.collection);
-    $("#all_summary").html(templates.all_todos_summary({ todo: allByDate }));
-    $("#complete_summary").html(templates.complete_todos_summary({ complete_todo: completeByDate }));  
+    $("#all-todos").append(templates.all_todos_summary({ total_all: self.collection.length, all_todo: allByDate }));
+    $("#completed").append(templates.complete_todos_summary({ total_complete: completeTodos.length, complete_todo_h: completeByDate }));  
   },
   getTodosByDate: function(todos) {
     var dateAndCount = {};
@@ -105,10 +99,8 @@ toDoList.prototype = {
           this.collection[item] = todo;
         }
       }
-      // console.log(todo.title);
-      // debugger;
+
       $('main').find('[data-id="' + todo.id + '"]').find('a').replaceWith('<a href="#" id="edit">' + todo.title + ' - ' + todo.mm_yy + '</a>');
-      // '<a href="#" id="edit"> name - No Due Date</a>'
     }
 
     $form.trigger("reset");

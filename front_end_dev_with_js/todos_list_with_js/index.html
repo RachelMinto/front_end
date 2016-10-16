@@ -15,46 +15,44 @@
 
     <header>
       <nav>
-        <table>
+        <table id="all-todos">
+        <script type="text/x-handlebars" id="all_todos_summary">
           <thead class="selected">
-            <tr id="all-todos">
+            <tr >
               <th>All Todos</th>
-              <script type="text/x-handlebars" id="todos_by_month">
-                <th><div class="circle">{{total}}</div></th>
-              </script>  
+                <th><div class="circle">{{total_all}}</div></th> 
             </tr>
           </thead>
             <tbody id="all_summary">
-              <script type="text/x-handlebars" id="all_todos_summary">
-                {{#each todo}}
+                {{#each all_todo}}
                 {{> all}}
                 {{/each}}
-              </script>
-              <script id="all" data-type="partial" type="text/handlebars">
-                <tr>
-                  <td>{{mm_yy}}
-                  </td>
-                  <td><div class="circle">{{total}}</div>
-                  </td>
-                </tr>
-              </script>    
             </tbody>
+        </script>
+        <script id="all" data-type="partial" type="text/handlebars">
+          <tr>
+            <td>{{mm_yy}}
+            </td>
+            <td><div class="circle">{{total}}</div>
+            </td>
+          </tr>
+        </script>    
+            
         </table>
 
-        <table>
+        <table id="completed">
+        <script type="text/x-handlebars" id="complete_todos_summary">
           <thead>
-            <tr id="completed">
-              <th>Completed</th>
-              <script type="text/x-handlebars" id="total_complete">
-                <th><div class="circle">{{total}}</div></th>
-              </script>  
+            <tr>
+              <th id="complete_summary">Completed</th>
+              <th><div class="circle">{{total_complete}}</div></th> 
             </tr>
           </thead>
-          <tbody id="complete_summary">
-          <script type="text/x-handlebars" id="complete_todos_summary">
-            {{#each complete_todo}}
+          <tbody>
+            {{#each complete_todo_h}}
             {{> complete}}
-            {{/each}}
+            {{/each}}                          
+          </tbody>
           </script>
           <script id="complete" data-type="partial" type="text/handlebars">
             <tr>
@@ -63,8 +61,7 @@
               <td><div class="circle">{{total}}</div>
               </td>
             </tr>
-            </script>                            
-          </tbody>
+        </script>  
         </table>
       </nav>
     </header>
