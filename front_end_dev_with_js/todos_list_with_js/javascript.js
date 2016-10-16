@@ -6,6 +6,7 @@ var $form = $("form");
 var current_id;
 var $total = $('main div.circle');
 var $table = $('main table');
+var templates = {};
 
 function toDoList() {
   this.init();
@@ -19,10 +20,18 @@ toDoList.prototype = {
     this.loadTodos();
     current_id = localStorage.getItem('current_id') || 0;    /*need to fix this! */
     localStorage.removeItem('todos');
+    this.loadMenus();
   },
   cacheTemplate: function() {
-    $template = $('#main_todos').remove();
-    this.mainListTemplate = Handlebars.compile($template.html());
+    $("script[type='text/x-handlebars']").each(function() {
+      var $tmpl = $(this).remove();
+      templates[$tmpl.attr("id")] = Handlebars.compile($tmpl.html());
+    });
+
+    $("[data-type='partial']").each(function() {
+      var $partial = $(this);
+      Handlebars.registerPartial($partial.attr("id"), $partial.html());
+    });
   },
   loadTodos: function() {
     var previousToDos = JSON.parse(localStorage.getItem('todos'));
@@ -34,6 +43,22 @@ toDoList.prototype = {
       self.updateTodoList(todo);
     });
     $total.text(previousToDos.length);
+  },
+  loadMenus: function() {
+    self = this;
+    var total = $(templates['todos_by_month']({total: self.collection.length}));
+    $('#all-todos').append(total);
+
+    var totalComplete = this.getCompleteTodos.length;
+    var completeTotal = $(templates['total_complete']({total: totalComplete}));
+    $('#completed').append(completeTotal);
+  },
+  getCompleteTodos: function() {
+    incomplete = this.collection.filter(function(item) {
+      return item.complete === true;
+    });
+
+    return incomplete;
   },
   add: function(e) {
     e.preventDefault();
@@ -52,12 +77,10 @@ toDoList.prototype = {
     $total.text(this.collection.length);
   },
   edit: function(e) { 
-    debugger;
     e.stopPropagation();
     var $todo = $(e.target).closest('tr');
     this.setFormValues($todo.data('id'));
     $modal.prop("checked", true);
-
   },
   getID: function(e) {
     return +$(e.target).closest('form').prop('target');
@@ -76,8 +99,6 @@ toDoList.prototype = {
   },
   updateTodo: function(id) {
     var todo = getToDo(id);
-    debugger;
-
     this.updateTodoList(todo);
 
     $form.trigger("reset");
@@ -117,7 +138,7 @@ toDoList.prototype = {
     return date;
   },
   updateTodoList: function(todo) {
-    var $item = $(this.mainListTemplate({
+    var $item = $(templates['main_todos']({
       incomplete: !(todo.complete),
       id: todo.id,
       title: todo.title,
@@ -142,10 +163,7 @@ toDoList.prototype = {
       }
     });
 
-
     $table.find('[data-id="' + todo.id + '"]').addClass('completed');
-
-
     $modal.prop("checked", false);
   },
   openModal: function(e) {

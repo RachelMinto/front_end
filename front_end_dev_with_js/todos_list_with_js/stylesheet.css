@@ -18,12 +18,19 @@ header {
 
 /* Navigation Pane */
 
-table { border-collapse: collapse; }
+table { 
+  border-collapse: collapse; 
+  margin-right: 20px;
+  }
 
 nav table:first-child {
   margin-top: 79px;
   margin-bottom: 35px;
   width: 100%;
+}
+
+nav {
+  padding-right: 20px;
 }
 
 nav td {
@@ -55,9 +62,13 @@ nav td:nth-child(2) {
   padding: 1.4px 6px;
   border-radius: 50%;
   margin: 0 auto;
+
 }
 
-#all-todos .circle { padding: 5px 5px; }
+#all-todos .circle { 
+  padding: 5px 10px;
+  background: #148fd5;
+}
 
 #all-todos:before,
 #completed:before {
@@ -82,12 +93,12 @@ nav table:first-child td:nth-of-type(even) {
   width: 80px;
 }
 
-.selected td {
+/*.selected td {
   background: #383f5f;
   color: #ffffff;
 }
 
-.selected .circle { background: #148fd5; }
+.selected .circle { background: #148fd5; }*/
 
 /* Alternate Menu */
 

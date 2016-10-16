@@ -19,17 +19,22 @@
           <thead>
             <tr id="all-todos">
               <th>All Todos</th>
-              <th><div class="circle">18</div></th>
+              <script type="text/x-handlebars" id="todos_by_month">
+                <th><div class="circle">{{total}}</div></th>
+              </script>  
             </tr>
-          </thead>
-          <tbody>
-            <tr class="selected">
-              <td>02/16
-              </td>
-              <td>
-                <div class="circle">8</div>
-              </td>
-            </tr>  
+            </thead>
+            <tbody>
+              <script type="text/x-handlebars" id="all_todos">
+              <tr>
+                <td>{{mm_yy}}
+                </td>
+                <td>
+                  <div class="circle">{{total_per_month}}</div>
+                </td>
+              </tr>
+              </script>
+            
           </tbody>
         </table>
 
@@ -37,7 +42,9 @@
           <thead>
             <tr id="completed">
               <th>Completed</th>
-              <th></th>
+              <script type="text/x-handlebars" id="total_complete">
+                <th><div class="circle">{{total}}</div></th>
+              </script>  
             </tr>
           </thead>
           <tbody>
@@ -48,17 +55,11 @@
               </td>
             </tr>
             <tr>
-              <td>03/16
+              <td>{{mm_yy}}
               </td>
               <td>
               </td>
-            </tr>
-            <tr>
-              <td>04/16
-              </td>
-              <td>
-              </td>
-            </tr>                                
+            </tr>                            
           </tbody>
         </table>
       </nav>
@@ -68,7 +69,7 @@
       <h1>All Todos<div class="circle"></div></h1>
       <a id="open" href="#"><h3>Add new to do</h3></a>
       <table id="incomplete_todos">
-        <script type="text/template" id="main_todos">
+        <script type="text/x-handlebars" id="main_todos">
             <tr data-id="{{id}}">
               <td id="todo_description"><a href="#" id="edit">{{title}} - {{due_date}}</a></td>
               <td id="delete"><img alt="delete" src='images/garbage.png'></td>
@@ -76,12 +77,6 @@
         </script>
         </table>
         <table id="complete_todos">
-           <script type="text/template" id="main_todos">
-            <tr data-id="{{id}}">
-              <td id="todo_description"><a href="#" id="edit">{{title}} - {{due_date}}</a></td>
-              <td id="delete"><img alt="delete" src='images/garbage.png'></td>
-            </tr>
-        </script>
         </table>
 
       <label for="open_modal_checkbox">
