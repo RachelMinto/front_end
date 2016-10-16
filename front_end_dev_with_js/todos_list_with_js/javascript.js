@@ -18,7 +18,7 @@ toDoList.prototype = {
     this.bind();
     this.cacheTemplate();
     this.loadTodos();
-    current_id = localStorage.getItem('current_id') || 0;    /*need to fix this! */
+    current_id = localStorage.getItem('current_id') || '0';    /*need to fix this! */
     localStorage.removeItem('todos');
     this.loadMenus();
   },
@@ -90,12 +90,29 @@ toDoList.prototype = {
   add: function(e) {
     e.preventDefault();
     $modal.prop("checked", false);
-    debugger;
-    todo = this.createToDo();
-    this.collection.push(todo);
-    this.updateTodoList(todo);
-    $total.text(this.collection.length);
+
+    if ($form.prop('target') === 'new') {
+      todo = this.createToDo();
+      this.collection.push(todo);
+      this.updateTodoList(todo);
+      $total.text(this.collection.length);
+    } else {
+      id = $form.prop('target');
+      todo = this.createToDo(this.getToDo(id));
+
+      for(item in this.collection) { 
+        if (Number(this.collection[item].id) === Number(id)) {
+          this.collection[item] = todo;
+        }
+      }
+      // console.log(todo.title);
+      // debugger;
+      $('main').find('[data-id="' + todo.id + '"]').find('a').replaceWith('<a href="#" id="edit">' + todo.title + ' - ' + todo.mm_yy + '</a>');
+      // '<a href="#" id="edit"> name - No Due Date</a>'
+    }
+
     $form.trigger("reset");
+    $form.prop('target', 'new');
   },
   delete: function(e) {
     e.stopPropagation();   
@@ -109,6 +126,7 @@ toDoList.prototype = {
     var $todo = $(e.target).closest('tr');
     this.setFormValues($todo.data('id'));
     $modal.prop("checked", true);
+    $('form').prop('target', $todo.attr('data-id'));
   },
   getID: function(e) {
     return +$(e.target).closest('form').prop('target');
@@ -126,15 +144,8 @@ toDoList.prototype = {
     $('#description').val(todo.description);
     $form.prop('target', id)
   },
-  updateTodo: function(id) {
-    // var todo = getToDo(id);
-    // this.updateTodoList(todo);
-
-    // $form.trigger("reset");
-  },
   toggleComplete: function(e) {
     e.stopPropagation();
-    debugger;
     var id = $(e.target).closest('tr').data('id');
     var todo = this.getToDo(id); /*returns string of id  FIX!!*/
 
@@ -157,8 +168,10 @@ toDoList.prototype = {
       return Number(item.id) !== Number(id);
     });
   },
-  createToDo: function() {
+  createToDo: function(todoToUpdate) {
     var mmYY = this.setMonthYear($form.find("#month").val(), $form.find("#year").val());
+    var id = todoToUpdate ? todoToUpdate.id : current_id;
+
     var todo = {
       title: $form.find("#title").val() || "",
       mm_yy: mmYY,
@@ -166,10 +179,10 @@ toDoList.prototype = {
       month: $form.find("#month").val() || "" ,
       year: $form.find("#year").val() || "",
       description: $form.find("#description").val() || "no description",
-      id: current_id,
+      id: id,
       complete: false,
     }
-    current_id++;
+    if (!todoToUpdate) { current_id++ };
     return todo;
   },
   setMonthYear: function(month, year) {
@@ -221,6 +234,9 @@ toDoList.prototype = {
     e.preventDefault();
     $modal.prop("checked", true);
   },
+  resetFormTarget: function() {
+    $form.prop('target', 'new');
+  },
   bind: function() {
     $open.on("click", this.openModal.bind(this));
     $complete.on("click", this.completeToDo.bind(this));
@@ -228,6 +244,7 @@ toDoList.prototype = {
     $table.on('click', 'tr', this.toggleComplete.bind(this));    
     $table.on('click', '#edit', this.edit.bind(this));     
     $table.on('click', '#delete', this.delete.bind(this));
+    $('#open_modal_checkbox').on('click', this.resetFormTarget.bind(this));
   },
 }
 
