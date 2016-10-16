@@ -67,28 +67,33 @@
     <main>
       <h1>All Todos<div class="circle"></div></h1>
       <a id="open" href="#"><h3>Add new to do</h3></a>
-      <table>
+      <table id="incomplete_todos">
         <script type="text/template" id="main_todos">
             <tr data-id="{{id}}">
-                <td id="todo_description"><a href="#" id="edit">{{title}} - {{due_date}}</a></td>
-                <td id="delete"><img alt="delete" src='images/garbage.png'></td>
-              </tr>
+              <td id="todo_description"><a href="#" id="edit">{{title}} - {{due_date}}</a></td>
+              <td id="delete"><img alt="delete" src='images/garbage.png'></td>
+            </tr>
         </script>
         </table>
-<!--         <script type="text/template" id="finished_main_todos">
-          <li><a href="#">{{title}} - {{due_date}}</a></li>
-        </script>    -->
-      </ul>
+        <table id="complete_todos">
+           <script type="text/template" id="main_todos">
+            <tr data-id="{{id}}">
+              <td id="todo_description"><a href="#" id="edit">{{title}} - {{due_date}}</a></td>
+              <td id="delete"><img alt="delete" src='images/garbage.png'></td>
+            </tr>
+        </script>
+        </table>
+
       <label for="open_modal_checkbox">
         <input type="checkbox" id="open_modal_checkbox"/>
         <span>
-          <form action="#" method="post">
+          <form action="#" method="post" target="new">
             <dl>
               <dt>
                 <label for="title">Title</label>
               </dt>
               <dd>
-                <input type="text" name="title" id="title" value="Item 2"/>
+                <input type="text" name="title" id="title" placeholder="Item 1"/>
               </dd>
               <dt>
                 <label for="due_date">Due Date</label>
@@ -96,7 +101,7 @@
               <dd>
                 <select name="day" id="day">
                   <option selected="selected" disabled="disabled">Day</option>
-                  <option>01</option>
+                  <option value='01'>01</option>
                   <option>02</option>
                   <option>03</option>
                   <option>04</option>
@@ -163,7 +168,7 @@
                 <label for="description_1">Description</label>
               </dt>
               <dd>
-              <textarea name="description_1" id="description" rows="6" cols="40">Description
+              <textarea placeholder="" id="description" rows="6" cols="40">Description
               </textarea>
               </dd>
               <dt></dt>

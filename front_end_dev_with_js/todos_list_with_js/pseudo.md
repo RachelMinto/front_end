@@ -27,15 +27,23 @@ The number after on the top of the right panel should reflect the total number o
 Milestone 2: a Todo list with due dates and the ability to mark todos as complete
 
 after a todo is created, you can click on it which will bring up a modal that shows details of the todo. 
-  - bring up modal with autopopulated fields.
+  - find todo ID CHECK
+  - Use ID to get description, title and date values from collection. CHECK
+  - bring up modal with autopopulated fields.   CHECK
+    - ********** if user exits (clicks on external div), nothing should happen to the object and form should clear *************
+
+    - if user saves, update collection and repopulate all lists
+    - if user marks as complete, update collection and repopulate all lists. CHECK.
+
+  - Edits should save to collection. No change should go unchanged.
 
 Here you can add a due date for the todo, after you click on “save”, it should close the modal, save it to the todo and on the todo list, and add the due month and year to the todo. For example, if the todo's name is "buy some milk" and it's due on 08/20/2016, show it as "buy some milk - 08/16".
 
-in the details modal of a todo, have a button to mark this todo as complete. once clicked, this should close the modal, and show the todo as completed with strike-through.
-   - add class "completed" to that todo item's html.
+in the details modal of a todo, have a button to mark this todo as complete. once clicked, this should close the modal, and show the todo as completed with strike-through.  CHECK
+   - add class "completed" to that todo item's html.  CHECK
 
-all completed tasks should be on the bottom of the todo list.
-  - This is done just on page refresh, not using AJAX.
+all completed tasks should be on the bottom of the todo list. CHECK
+  - This is done just on page refresh, not using AJAX. CHECK
 
 
 Milestone 3: a Todo list by months
@@ -64,4 +72,5 @@ when a todo is completed, it should be put into the “Completed” lists.
 
 
 If TIME:
+-Clear out form when someone doesn't edit their item.
 -Alert when try to mark not created item as complete.
