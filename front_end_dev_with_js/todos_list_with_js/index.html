@@ -57,19 +57,43 @@
     </header>
 
     <main>
-      <h1>All Todos<div class="circle">0</div></h1>
-      <a id="open" href="#"><h3>Add new to do</h3></a>
+
       <table id="incomplete_todos">
+      </table>
+      <table id="complete_todos">
+      </table>
+
         <script type="text/x-handlebars" id="main_todos">
             <tr data-id="{{id}}">
               <td id="todo_description"><a href="#" id="edit">{{title}} - {{due_date}}</a></td>
               <td id="delete"><img alt="delete" src='images/garbage.png'></td>
             </tr>
         </script>
-        </table>
-        <table id="complete_todos">
-        </table>
 
+      <script id="main_content_header" type="text/x-handlebars">
+          <h1>{{todoListTitle}}<div class="circle">{{total}}</div></h1>
+          <a id="open" href="#"><h3>Add new to do</h3></a>
+      </script>
+      <script id="complete_listing" data-type="partial" type="text/handlebars">
+            <tr class="completed" data-id="{{id}}">   
+              <td id="todo_description"><a href="#" id="edit">{{title}} - {{mm_yy}}</a></td>
+              <td id="delete"><img alt="delete" src='images/garbage.png'></td>
+            </tr>
+      </script>      
+<!--       <script>
+        Handlebars.registerHelper("debug", function(optionalValue) {
+        console.log("Current Context");
+        console.log("====================");
+        console.log(this);
+       
+        if (optionalValue) {
+          console.log("Value");
+          console.log("====================");
+          console.log(optionalValue);
+        }
+      });
+      </script> -->
+        
       <label for="open_modal_checkbox">
         <input type="checkbox" id="open_modal_checkbox"/>
         <span>

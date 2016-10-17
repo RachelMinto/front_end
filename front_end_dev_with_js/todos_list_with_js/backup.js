@@ -1,6 +1,6 @@
 // var $open = $("#open");
 var $complete = $("#complete_todo");
-var $save = $("#save_todo");
+// var $add = $("#save_todo");
 var $modal = $('#open_modal_checkbox');
 var $form = $("form");
 var $total = $('main div.circle');
@@ -35,21 +35,15 @@ toDoList.prototype = {
     });
   },
   loadTodos: function() {
-    var self = this;
     var previousToDos = JSON.parse(localStorage.getItem('todos'));
-    if (!previousToDos) {
-      this.updateMainList(previousToDos);
-    } else {
-     $('main table').empty();
-      var self = this;
-      previousToDos.forEach(function(todo) {
-      self.collection.push(todo);
-      self.insertTodo(todo);
-    });
-    this.updateMainList(previousToDos);
-    $('main div.circle').text(previousToDos.length);
-    }
+    if (!previousToDos) {return};
 
+    var self = this;
+    previousToDos.forEach(function(todo) {
+      self.collection.push(todo);
+    });
+    this.updateTodoList(previousToDos, "All Todos");
+    $total.text(previousToDos.length);
   },
   loadMenus: function() {
     var self = this;
@@ -66,8 +60,8 @@ toDoList.prototype = {
       complete_todo_h: completeByDate 
     };
 
-    $("#all-todos").empty().append(templates.all_todos_summary(allTodosContext));
-    $("#completed").empty().append(templates.complete_todos_summary(completeTodosContext));
+    $("#all-todos").append(templates.all_todos_summary(allTodosContext));
+    $("#completed").append(templates.complete_todos_summary(completeTodosContext));
   },
   getTodosByDate: function(todos) {
     var dateAndCount = {};
@@ -99,74 +93,29 @@ toDoList.prototype = {
     return complete;
   },
   insertTodo: function(todo) {
-    var todoDescription = todo.title + '-' + String(todo.mm_yy);
-    if (todo.complete)  {
-      var testing = '<tr class="completed" data-id="' + String(todo.id) + '"> <td id="todo_description"><a href="#" id="edit">' + todoDescription + '</a></td> <td id="delete"><img alt="delete" src="images/garbage.png"></td> </tr>';
-      $('#complete_todos').append(testing);
-      } else {
-      var testing = '<tr data-id="' + String(todo.id) +'"> <td id="todo_description"><a href="#" id="edit">' + todoDescription + '</a></td> <td id="delete"><img alt="delete" src="images/garbage.png"></td> </tr>';
-      $('#incomplete_todos').append(testing);
-    }
+    var todoDescription = todo.title + '-' + String(todo.due_date);
+    var testing = '<tr class="completed" data-id="11"> <td id="todo_description"><a href="#" id="edit">' + todoDescription + '</a></td> <td id="delete"><img alt="delete" src="images/garbage.png"></td> </tr>';
+    $('main table').append(testing);
 
-    this.loadMenus();  /* may be duplicate call when loading from start? */
+    this.loadMenus();
   },
-  openModal: function(e) {
+  add: function(e) {
     e.preventDefault();
     $modal.prop("checked", true);
-  },
-  saveTodo: function(e) {
-    e.preventDefault();
-    $modal.prop("checked", false);
-    debugger;
+
+
     if ($form.prop('target') === 'new') {
       todo = this.createToDo();
       this.collection.push(todo);
       this.insertTodo(todo);
+      $total.text(this.collection.length);
     } else {
       this.updateTodo();
     }
+    $modal.prop("checked", false);
 
+    this.resetForm();
   },
-    createToDo: function(todoToUpdate) {
-    var mmYY = this.setMonthYear($form.find("#month").val(), $form.find("#year").val());
-    var id = todoToUpdate ? todoToUpdate.id : current_id;
-
-    var todo = {
-      title: $form.find("#title").val() || "",
-      mm_yy: mmYY,
-      day: $form.find("#day").val() || "",
-      month: $form.find("#month").val() || "" ,
-      year: $form.find("#year").val() || "",
-      description: $form.find("#description").val() || "",
-      id: id,
-      incomplete: true,
-    }
-    if (!todoToUpdate) { current_id++ };
-    return todo;
-  },
-  setMonthYear: function(month, year) {
-    var months = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July',
-                  'August', 'September', 'October', 'November', 'December'];
-    var date;
-
-    if (month === null || year === null) {
-      date = "No Due Date";
-    } else {
-      var month = ('0' + String(months.indexOf(month))).slice(-2);
-      var year = year.slice(2);
-      date = month + "/" + year;
-    }
-
-    return date;
-  },
-  //     $total.text(this.collection.length);
-  //   } else {
-  //     this.updateTodo();
-  //   }
-  //   $modal.prop("checked", false);
-
-  //   this.resetForm();
-  // },
   updateTodo: function() {
     var id = $form.prop('target');
     var todo = this.createToDo(this.getToDo(id));
@@ -178,7 +127,8 @@ toDoList.prototype = {
       }
     }
 
-  $('main').find('[data-id="' + todo.id + '"] a').replaceWith('<a href="#" id="edit">' + newDescription + '</a>');
+  $('main').find('[data-id="' + todo.id + '"] a')
+      .replaceWith('<a href="#" id="edit">' + newDescription + '</a>');
   },
   delete: function(e) {
     e.stopPropagation();
@@ -191,7 +141,6 @@ toDoList.prototype = {
     $todo.remove();
     $total.text(this.collection.length);
     this.loadMenus();
-    $('main div.circle').text(this.collection.length);
   },
   setFormValues: function(e) {
     e.stopPropagation();
@@ -232,13 +181,45 @@ toDoList.prototype = {
     }
 
     todo.complete === false ? $todo.removeClass('completed') : $todo.addClass('completed');
-    this.loadMenus();
+    debugger;
   },
-  updateMainList: function(todos) {
-    $('main').prepend($(templates['main_content_header']({todoListTitle: 'All Todos', total: 0})));
+  createToDo: function(todoToUpdate) {
+    var mmYY = this.setMonthYear($form.find("#month").val(), $form.find("#year").val());
+    var id = todoToUpdate ? todoToUpdate.id : current_id;
 
-    // var $item = $(templates['main_todos']({list_title: 'All Todos', total: 0, todo: todos}));
-      // $('main').append($item.addClass('completed'));
+    var todo = {
+      title: $form.find("#title").val() || "",
+      mm_yy: mmYY,
+      day: $form.find("#day").val() || "",
+      month: $form.find("#month").val() || "" ,
+      year: $form.find("#year").val() || "",
+      description: $form.find("#description").val() || "",
+      id: id,
+      complete: false,
+    }
+    if (!todoToUpdate) { current_id++ };
+    return todo;
+  },
+  setMonthYear: function(month, year) {
+    var months = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July',
+                  'August', 'September', 'October', 'November', 'December'];
+    var date;
+
+    if (month === null || year === null) {
+      date = "No Due Date";
+    } else {
+      var month = ('0' + String(months.indexOf(month))).slice(-2);
+      var year = year.slice(2);
+      date = month + "/" + year;
+    }
+
+    return date;
+  },
+  updateTodoList: function(todos, listTitle) {
+    var total = todos.length
+    debugger;
+    var $item = $(templates['main_todos']({list_title: listTitle, total: total, todo: todos}));
+    $('main').append($item.addClass('completed'));
   },
   completeToDo: function(e) {
     e.preventDefault();
@@ -251,22 +232,21 @@ toDoList.prototype = {
       }
     });
 
-    $main.find('[data-id="' + todo.id + '"]').addClass('completed');
-    this.loadMenus();
+    $table.find('[data-id="' + todo.id + '"]').addClass('completed');
     $modal.prop("checked", false);
   },
-  openModal: function(e) {
-    e.preventDefault();
-    $modal.prop("checked", true);
-  },
+  // openModal: function(e) {
+  //   e.preventDefault();
+  //   $modal.prop("checked", true);
+  // },
   resetForm: function() {
     $form.prop('target', 'new');
     $form.trigger("reset");
   },
   bind: function() {
-    $main.on("click", '#open', this.openModal.bind(this));
+    $main.on("click", '#open', this.add.bind(this));
     $complete.on("click", this.completeToDo.bind(this));
-    $save.on("click", this.saveTodo.bind(this)); 
+    // $add.on("click", this.add.bind(this)); 
     $main.on('click', 'tr', this.toggleComplete.bind(this));
     $main.on('click', '#edit', this.setFormValues.bind(this));
     $main.on('click', '#delete', this.delete.bind(this));
@@ -276,8 +256,8 @@ toDoList.prototype = {
 
 toDos = new toDoList();
 
-$(window).on('unload', function() {
-  localStorage.removeItem('todos');
-  localStorage.setItem('todos', JSON.stringify(toDos.collection));
-  localStorage.setItem('current_id', this.current_id.toString());
-});
+// $(window).on('unload', function() {
+//   localStorage.removeItem('todos');
+//   localStorage.setItem('todos', JSON.stringify(toDos.collection));
+//   localStorage.setItem('current_id', this.current_id.toString());
+// });
