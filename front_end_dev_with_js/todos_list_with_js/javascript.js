@@ -6,7 +6,7 @@ var $total = $('main div.circle');
 var $main = $('main');
 var $nav = $('nav');
 var templates = {};
-var $openModal = $('#open_modal_checkbox');
+// var $openModal = $('#open_modal_checkbox');
 var current_id;
 
 
@@ -309,6 +309,7 @@ toDoList.prototype = {
     this.updateMainList(todos, dateID);
   },
   openModal: function(e) {
+    console.log('clicking');
     e.preventDefault();
     $modal.prop("checked", true);
   },
@@ -323,7 +324,7 @@ toDoList.prototype = {
     $main.on('click', 'tr', this.toggleComplete.bind(this));
     $main.on('click', '#edit', this.setFormValues.bind(this));
     $main.on('click', '#delete', this.delete.bind(this));
-    $openModal.on('click', this.resetForm.bind(this));
+    // $openModal.on('click', this.resetForm.bind(this));
     $nav.on('click', 'tr', this.changeList.bind(this));
   },
 }
