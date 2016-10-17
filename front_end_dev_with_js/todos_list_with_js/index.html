@@ -16,8 +16,8 @@
       <nav>
         <table id="all-todos">
         <script type="text/x-handlebars" id="all_todos_summary">
-          <thead class="selected">
-            <tr >
+          <thead>
+            <tr class="selected">
               <th>All Todos</th>
                 <th><div class="circle">{{total_all}}</div></th> 
             </tr>
@@ -33,7 +33,7 @@
         <table id="completed">
         <script type="text/x-handlebars" id="complete_todos_summary">
           <thead>
-            <tr>
+            <tr data-id="Completed">
               <th id="complete_summary">Completed</th>
               <th><div class="circle">{{total_complete}}</div></th> 
             </tr>
@@ -45,7 +45,7 @@
           </tbody>
           </script>
           <script id="summary" data-type="partial" type="text/handlebars">
-            <tr>
+            <tr data-id={{mm_yy}}>
               <td>{{mm_yy}}
               </td>
               <td><div class="circle">{{total}}</div>
