@@ -61,12 +61,17 @@ nav td:nth-child(2) {
   margin: 0 auto;
 }
 
-.selected .circle { 
+table thead .circle,
+main .circle {
   padding: 5px 10px;
-  background: #148fd5;
 }
 
-thead td {
+.selected .circle { 
+  background: #148fd5;
+  color: #ffffff;
+}
+
+table > tr td {
   vertical-align: middle;
 }
 
@@ -103,10 +108,10 @@ div.circle:empty {
   display: none;
 }
 
-nav thead tr:first-child {
+/*nav thead tr:first-child {
   width: 227px;
 }
-
+*/
 /* Alternate Menu */
 
 #toggle-menu,
