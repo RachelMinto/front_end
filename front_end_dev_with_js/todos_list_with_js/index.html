@@ -6,7 +6,6 @@
     <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>     
-    <!-- <script src="javascript.js"> </script>    --> 
   </head>
     <input type="checkbox" id="toggle-menu"/>    
     <label for="toggle-menu">
@@ -25,19 +24,10 @@
           </thead>
             <tbody id="all_summary">
                 {{#each all_todo}}
-                {{> all}}
+                {{> summary}}
                 {{/each}}
             </tbody>
-        </script>
-        <script id="all" data-type="partial" type="text/handlebars">
-          <tr>
-            <td>{{mm_yy}}
-            </td>
-            <td><div class="circle">{{total}}</div>
-            </td>
-          </tr>
-        </script>    
-            
+        </script>         
         </table>
 
         <table id="completed">
@@ -50,11 +40,11 @@
           </thead>
           <tbody>
             {{#each complete_todo_h}}
-            {{> complete}}
+            {{> summary}}
             {{/each}}                          
           </tbody>
           </script>
-          <script id="complete" data-type="partial" type="text/handlebars">
+          <script id="summary" data-type="partial" type="text/handlebars">
             <tr>
               <td>{{mm_yy}}
               </td>
@@ -164,8 +154,7 @@
                 <label for="description_1">Description</label>
               </dt>
               <dd>
-              <textarea placeholder="Description" id="description" rows="6" cols="40">
-              </textarea>
+              <textarea placeholder="Description" id="description" rows="6" cols="40"></textarea>
               </dd>
               <dt></dt>
                 <dd>

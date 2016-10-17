@@ -3,11 +3,11 @@ var $complete = $("#complete_todo");
 var $add = $("#save_todo");
 var $modal = $('#open_modal_checkbox');
 var $form = $("form");
-var current_id;
 var $total = $('main div.circle');
 var $table = $('main table');
 var templates = {};
 var $openModal = $('#open_modal_checkbox');
+var current_id;
 
 function toDoList() {
   this.init();
@@ -51,8 +51,14 @@ toDoList.prototype = {
     var completeByDate = this.getTodosByDate(completeTodos);
     var allByDate = this.getTodosByDate(self.collection);
 
-    var allTodosContext = { total_all: self.collection.length, all_todo: allByDate }
-    var completeTodosContext = { total_complete: completeTodos.length, complete_todo_h: completeByDate };
+    var allTodosContext = { 
+      total_all: self.collection.length, 
+      all_todo: allByDate 
+    }
+    var completeTodosContext = { 
+      total_complete: completeTodos.length, 
+      complete_todo_h: completeByDate 
+    };
 
     $("#all-todos").append(templates.all_todos_summary(allTodosContext));
     $("#completed").append(templates.complete_todos_summary(completeTodosContext));
@@ -70,7 +76,7 @@ toDoList.prototype = {
     });
 
     for (date in dateAndCount) {
-      obj = {}
+      var obj = {}
       obj['mm_yy'] = date;
       obj['total'] = dateAndCount[date];
       todosByDate.push(obj);
@@ -99,8 +105,7 @@ toDoList.prototype = {
       this.updateTodo();
     }
 
-    $form.trigger("reset");
-    $form.prop('target', 'new');
+    this.resetForm();
   },
   updateTodo: function() {
     var id = $form.prop('target');
@@ -177,7 +182,7 @@ toDoList.prototype = {
       day: $form.find("#day").val() || "",
       month: $form.find("#month").val() || "" ,
       year: $form.find("#year").val() || "",
-      description: $form.find("#description").val() || "no description",
+      description: $form.find("#description").val() || "",
       id: id,
       complete: false,
     }
@@ -185,15 +190,14 @@ toDoList.prototype = {
     return todo;
   },
   setMonthYear: function(month, year) {
-    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+    var months = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July',
                   'August', 'September', 'October', 'November', 'December'];
     var date;
 
     if (month === null || year === null) {
       date = "No Due Date";
     } else {
-      var month = String(months.indexOf(month) + 1);
-      month = month.length < 2 ? '0' + month : month;
+      var month = ('0' + String(months.indexOf(month))).slice(-2);
       var year = year.slice(2);
       date = month + "/" + year;
     }
