@@ -6,7 +6,6 @@
     <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>     
-
   </head>
   <body>
     <header>
@@ -15,69 +14,56 @@
     </header>
 
     <main>
-
-      <div id="no_contacts">
-        <div class="search">
-          <button class="add">Add Contact</button>
-          <button>Will be Search</button>
-        </div>
-        <h2>There are no contacts.</h2>
-        <button class="add">Add Contact</button>
-      </div>
-
-      <div id="contacts"></div>
-        <div class="search">
-          <button class="add">Add Contact</button>
-          <button>Will be Search</button>
-        </div>
-      </div>
-
-      <div id="create"></div>
-        <h1>Create Contact</h1>
-        <form method="" action="">
-        <label for="name">Full name:</label>
-          <input type="text" id="name" name="name"/>
-        <label for="email">Email:</label>
-          <input type="email" id="email" name="email"/>        
-        <label for="tel">Telephone Number:</label>
-          <input type="tel" id="tel" name="tel"/>
-        <button type="submit" id="submit">Submit</button>
-        <button type="submit" id="cancel">Cancel</button>              
-        </form>
-      </div>
-
     </main>
-    <script type="text/x-handlebars-template" id="contacts">
-      <div class="contact">
-        <h3>{{name}}</h3>
-        <p><strong>Phone Number:</strong></p>
-        <p>{{tel}}</p>
-        <p><strong>Email:</strong></p>
-        <p>{{email}}</p>
-        <button id="edit">Edit</button>
-        <button id="delete">Delete</button>
+    
+      <script id="contacts" data-type="partial" type="text/handlebars">
+       {{#each contact}}
+        <div class="contact">
+          <h3>{{name}}</h3>
+          <p><strong>Phone Number:</strong></p>
+          <p>{{tel}}</p>
+          <p><strong>Email:</strong></p>
+          <p>{{email}}</p>
+          <button id="edit">Edit</button>
+          <button id="delete">Delete</button>
+        </div>
+      {{/each}}
+      </script>
+
+      <script type="text/x-handlebars-template" id="main_content">
+        <div class="search">
+          <form action="#" method="">
+            <button class="add">Add Contact</button>
+            <input type="text" placeholder="search">
+          </form>
+        </div>
+        {{#if contacts}}
+
+        {{else}}
+          <h2>There are no contacts.</h2>
+          <button class="add">Add Contact</button>
+        {{#if}}
       </div>
     </script>
 
+      <script type="text/x-handlebars-template" id="contact_form">
+        <h1>{{form_title}}</h1>
+        <form method="" action="">
+          <label for="name">Full name:</label>
+            <input type="text" id="name" name="name"/>
+          <label for="email">Email:</label>
+            <input type="email" id="email" name="email"/>        
+          <label for="tel">Telephone Number:</label>
+            <input type="tel" id="tel" name="tel"/>
+          <button type="submit" id="submit">Submit</button>
+          <button type="submit" id="cancel">Cancel</button>              
+        </form>
+       </script>
+
     <footer>
-    <p>Developed by Cheech!</p>
+      <p>Developed by Rachel Minto</p>
     </footer>
     <script src="javascript.js"> </script>
   </body>
 
 </html>
-
-<!--
-Pseudo Code
-HTML setup: 2 divs.
-  -one always showing.
-  -second alternates between two options - a contact form and showing the contacts.
-Showing the contacts is done with handlebars template.
-
-Bind click event to button.add
-  -second toggles which of the two second divs should be shown. Slides in from bottom.
-
-Add tags option. Should be implemented like the inventory filter.
-
-
--->

@@ -25,3 +25,12 @@ input {
   display: block;
   margin-bottom: 15px;
 }
+
+button {
+  padding: 20px;
+}
+
+button:hover {
+  color: #ffffff;
+  background: #5e4087;
+}
