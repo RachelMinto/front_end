@@ -1,0 +1,27 @@
+header {
+  background: #5e4087;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px 0;
+}
+
+main, footer {
+  width: 1100px;
+  margin: 0 auto;
+}
+
+.search {
+  background: #eae8ed;
+  height: 60px;
+}
+
+footer {
+  text-align: center;
+  border-top: 1px solid #eae8ed;
+  margin-top: 60px;
+}
+
+input {
+  display: block;
+  margin-bottom: 15px;
+}
