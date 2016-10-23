@@ -6,11 +6,11 @@ var TodoList = {
     this.attachTodoMethods();
     this.cacheTemplates();
     this.renderContent();
+    this.selectAllTodos()
     this.bind();
   },
   attachTodoMethods: function() {
     this.collection.map(function(todo) {
-      debugger;
       Object.setPrototypeOf(todo, Todo);
     });
   },
@@ -29,6 +29,9 @@ var TodoList = {
       Handlebars.registerPartial(element.id, element.innerHTML);
     }); 
   },
+  selectAllTodos: function() {
+    document.querySelectorAll('[data-id="All"]')[0].setAttribute('id', 'selected');
+  },
   renderContent: function() {
     this.loadMainContent(this.collection, 'All Todos');
     this.loadSideContent(this.collection);
@@ -36,9 +39,7 @@ var TodoList = {
   modifyMainList: function(e) {
     e.preventDefault();
     var target = e.target
-    // if (target.tagName === "MAIN") {
-    //   console.log('main click');
-    // } else 
+
     if (target.tagName === "H3") {
       this.openNewContactForm();
     } else if (target.id === "save_new") {
@@ -86,7 +87,7 @@ var TodoList = {
     var todosByDate = [];
 
     todos.sort(function (a, b) {
-      return a.year - b.year || b.month - a.month;
+      return a.year - b.year || a.month - b.month;
     });
 
     todos.forEach(function(todo) {
@@ -107,16 +108,30 @@ var TodoList = {
     if (todosByDate.length === 0) {return [{}]};
     return todosByDate;
   },
-  selectFilteredList: function(dueDate, complete) {
-    // remove selected class
-    // add selected class
-    var filteredList = this.filterList(this.collection, 'dueDate', dueDate);
+  selectFilteredList: function(e) {
+    document.getElementById('selected').removeAttribute('id', 'selected');
+    var filteredList = this.collection;
+    var row = e.target.closest('tr') || e.target.querySelectorAll('tr')[0];
+    var title = row.dataset.id;
+    var allOrComplete = title;
+    var complete;
 
+    row.setAttribute('id', 'selected');
+
+    if (e.target.nodeName === 'TD') {
+      title = title === 'No' ? 'No Due Date' : title;
+      allOrComplete = e.target.closest('table').dataset.type;
+
+      filteredList = this.filterList(filteredList, 'dueDate', title);
+    }
+
+    complete = allOrComplete === 'Completed';
     if (complete) {
-      filteredList = this.filterList(this.collection, 'complete', true);
-    }  
+      filteredList = this.filterList(filteredList, 'complete', true);
+    }
 
-    this.loadMainContent(filteredList, dueDate);
+    title = title === 'All' ? "All Todos" : title;
+    this.loadMainContent(filteredList, title);
   },
   filterList: function(todos, property, value) {
     var filteredList = todos.filter(function(todo){

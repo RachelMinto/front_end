@@ -66,7 +66,7 @@ main .circle {
   padding: 5px 10px;
 }
 
-.selected .circle { 
+#selected .circle { 
   background: #148fd5;
   color: #ffffff;
 }
@@ -75,7 +75,7 @@ table > tr td {
   vertical-align: middle;
 }
 
-.selected {
+#selected {
   background: #383f5f;
   color: #ffffff;
 }

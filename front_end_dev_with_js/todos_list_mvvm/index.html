@@ -23,7 +23,7 @@
     </footer>
 
         <script type="text/x-handlebars" id="summary_by_date"> 
-          <table>
+          <table data-type={{listTitle}}>
             <thead>
               <tr data-id={{listTitle}}>
                 <th>{{listTitle}}</th>
@@ -55,13 +55,13 @@
             <a id="add" href="#"><h3>Add new to do</h3></a>
             {{#each incomplete}}
               <tr data-id="{{id}}">
-                <td><a href="#" id="edit">{{title}} - {{dueDate}}</a></td>
+                <td class="todo_description"><a href="#" id="edit">{{title}} - {{dueDate}}</a></td>
                 <td id="delete"><img alt="delete" src='images/garbage.png'></td>
               </tr>
             {{/each}}
             {{#each complete}}
               <tr data-id="{{id}}" class="completed">
-                <td><a href="#" id="edit">{{title}} - {{dueDate}}</a></td>
+                <td class="todo_description"><a href="#" id="edit">{{title}} - {{dueDate}}</a></td>
                 <td id="delete"><img alt="delete" src='images/garbage.png'></td>
               </tr>
             {{/each}}
