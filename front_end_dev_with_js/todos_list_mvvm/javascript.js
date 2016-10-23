@@ -3,22 +3,31 @@ var TodoList = {
   currentID: JSON.parse(localStorage.getItem('currentID')) || 0,
   templates: {},
   init: function() {
+    this.attachTodoMethods();
     this.cacheTemplates();
     this.renderContent();
     this.bind();
   },
+  attachTodoMethods: function() {
+    this.collection.map(function(todo) {
+      debugger;
+      Object.setPrototypeOf(todo, Todo);
+    });
+  },
   cacheTemplates: function() {
     self = this;
-    // convert the following to JS:
-    $("script[type='text/x-handlebars']").each(function() {
-      var $tmpl = $(this).remove();
-      self.templates[$tmpl.attr("id")] = Handlebars.compile($tmpl.html());
-    });
 
-    $('[data-type="partial"]').each(function() {
-      var $partial = $(this).remove();
-      Handlebars.registerPartial($partial.attr("id"), $partial.html());
-    });
+    document.querySelectorAll('script[type="text/x-handlebars"').forEach(function(template) {
+      var element = document.getElementById(template.id);
+      element.parentNode.removeChild(element);
+      self.templates[element.id] = Handlebars.compile(element.innerHTML);
+    }); 
+
+    document.querySelectorAll('[data-type="partial"]').forEach(function(partial) {
+      var element = document.getElementById(partial.id);
+      element.parentNode.removeChild(element);
+      Handlebars.registerPartial(element.id, element.innerHTML);
+    }); 
   },
   renderContent: function() {
     this.loadMainContent(this.collection, 'All Todos');
@@ -27,9 +36,10 @@ var TodoList = {
   modifyMainList: function(e) {
     e.preventDefault();
     var target = e.target
-    if (target.tagName === "MAIN") {
-      console.log('main click')
-    } else if (target.tagName === "H3") {
+    // if (target.tagName === "MAIN") {
+    //   console.log('main click');
+    // } else 
+    if (target.tagName === "H3") {
       this.openNewContactForm();
     } else if (target.id === "save_new") {
       this.createNewTodo();
@@ -43,9 +53,10 @@ var TodoList = {
       this.openEditContactForm(e);
     } else if (target.id === "save_edits") {
       this.updateTodo();
+    } else if (target.id === "mark_complete") {
+      this.completeTodo(target);      
     } else if (target.tagName === "SPAN") {
       document.getElementById("open_modal_checkbox").checked = false;
-      /* reset form */
     } 
   },
   bind: function() {
@@ -56,8 +67,7 @@ var TodoList = {
     var complete = this.filterList(todos, 'complete', true);
     var incomplete = this.filterList(todos, 'complete', false);
     var context = {listTitle: title, total: todos.length, complete: complete, incomplete: incomplete};
-
-    document.getElementById("main").innerHTML = this.templates['main'](context);
+    document.getElementById("main").innerHTML = this.templates['main_list'](context);
   },
   toggleTodoComplete: function(id) {
     this.retrieveTodo(id).toggleComplete();
@@ -126,7 +136,8 @@ var TodoList = {
   updateTodo: function() {
     var todo = document.forms[0].elements;
     var newProperties = {title: todo.title.value, day: todo.day.value, month: todo.month.value, year: todo.year.value, description: todo.description.value};
-    this.retrieveTodo(document.forms[0].target).updateProperties(newProperties);
+    var todoObject = this.retrieveTodo(document.forms[0].target);
+    todoObject.updateProperties(newProperties);
     this.renderContent();
   },
   deleteTodo: function(id) {
@@ -143,6 +154,11 @@ var TodoList = {
 
     return filteredTodo[0];
   },
+  completeTodo: function(e){
+    todo = this.retrieveTodo(e.closest('form').target);
+    todo.setComplete();
+    this.renderContent();
+  },
   openNewContactForm: function() {
     document.getElementById("main").innerHTML += this.templates['modal']({save: 'save_new', complete: 'cannot_mark_complete', target: 'new'});
     document.getElementById("open_modal_checkbox").checked = true;
@@ -150,9 +166,8 @@ var TodoList = {
   openEditContactForm: function(e) {
     var id = e.target.closest('tr').dataset.id;
     var todo = this.retrieveTodo(id);
-
-    /* pass todo existing values into form vals and display form. */
-    document.getElementById("main").innerHTML += this.templates['modal']({save: 'save_edits', complete: 'mark_complete', target: id});
+    var context = {save: 'save_edits', complete: 'mark_complete', target: id};
+    document.getElementById("main").innerHTML += this.templates['modal'](context);
     document.getElementById("title").value = todo.title;
     document.getElementById("day").value = todo.day;
     document.getElementById("month").value = todo.month;
@@ -163,7 +178,6 @@ var TodoList = {
 };
 
 var Todo = {
-  complete: false,
   init: function(id) {
     var todo = document.forms[0];
     this.title = todo.elements['title'].value;
@@ -173,6 +187,7 @@ var Todo = {
     this.year = todo.elements['year'].value
     this.dueDate = this.getDueDate(this.findMonthNumber(this.month), this.year);
     this.id = id;
+    this.complete = false;
     return this;
   },
   findMonthNumber: function(month) {
@@ -196,7 +211,7 @@ var Todo = {
     }
   },
   toggleComplete: function() {
-    this.complete = this.complete === true ? false : true; 
+    this.complete = this.complete === true ? false : true;
   },
   setComplete: function() {
     this.complete = true;
@@ -214,7 +229,7 @@ var Todo = {
 mainTodoList = Object.create(TodoList);
 mainTodoList.init();
 
-$(window).on('unload', function() {
+window.onunload = function() {
   localStorage.setItem('todos', JSON.stringify(mainTodoList.collection));
   localStorage.setItem('currentID', mainTodoList.currentID.toString());
-});
+};
