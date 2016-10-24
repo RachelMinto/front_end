@@ -17,7 +17,7 @@ var TodoList = {
   cacheTemplates: function() {
     self = this;
 
-    document.querySelectorAll('script[type="text/x-handlebars"').forEach(function(template) {
+    document.querySelectorAll('[type="text/x-handlebars"').forEach(function(template) {
       var element = document.getElementById(template.id);
       element.parentNode.removeChild(element);
       self.templates[element.id] = Handlebars.compile(element.innerHTML);
@@ -77,17 +77,20 @@ var TodoList = {
   loadSideContent: function(todos) {
     var complete = this.filterList(todos, 'complete', true);
     var completeByDate = this.summarizeByDate(complete); 
-    var allByDate = this.summarizeByDate(todos); 
+    var allByDate = this.summarizeByDate(todos);
+    var all = {listTitle: 'All Todos', total: todos.length, todos: allByDate};
+    var comp = {listTitle: 'Completed', total: complete.length, todos: completeByDate}
 
-    document.getElementById("nav").innerHTML = this.templates['summary_by_date']({listTitle: 'All Todos', total: todos.length, todos: allByDate});
-    document.getElementById("nav").innerHTML += this.templates['summary_by_date']({listTitle: 'Completed', total: complete.length, todos: completeByDate});
+    document.getElementById("nav").innerHTML = this.templates['summary_by_date'](all);
+    document.getElementById("nav").innerHTML += this.templates['summary_by_date'](comp);
   },
   summarizeByDate: function(todos) {
     var dateAndCount = {};
     var todosByDate = [];
 
     todos.sort(function (a, b) {
-      return a.year - b.year || a.month - b.month;
+      return a.year < b.year ? -1 : a.year > b.year ? 1 :
+      a.month < b.month ? -1 : a.month > b.month ? 1 : 0;
     });
 
     todos.forEach(function(todo) {
@@ -109,7 +112,9 @@ var TodoList = {
     return todosByDate;
   },
   selectFilteredList: function(e) {
-    document.getElementById('selected').removeAttribute('id', 'selected');
+    if (document.getElementById('selected')) {
+      document.getElementById('selected').removeAttribute('id', 'selected');
+    }
     var filteredList = this.collection;
     var row = e.target.closest('tr') || e.target.querySelectorAll('tr')[0];
     var title = row.dataset.id;
