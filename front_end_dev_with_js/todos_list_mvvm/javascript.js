@@ -6,7 +6,6 @@ var TodoList = {
     this.attachTodoMethods();
     this.cacheTemplates();
     this.renderContent();
-    this.selectAllTodos()
     this.bind();
   },
   attachTodoMethods: function() {
@@ -35,6 +34,7 @@ var TodoList = {
   renderContent: function() {
     this.loadMainContent(this.collection, 'All Todos');
     this.loadSideContent(this.collection);
+    this.selectAllTodos();    
   },
   modifyMainList: function(e) {
     e.preventDefault();
