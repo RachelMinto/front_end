@@ -1,5 +1,5 @@
 var Todo = {
-  init: function(id) { //redundant code. update combined?
+  init: function(id) { 
     var todo = document.forms[0].elements;
     this.update();
     this.complete = false;
@@ -34,7 +34,6 @@ var Todo = {
   },
   update: function() {
     var todo = document.forms[0].elements;
-    // var todoObject = this.retrieveTodo(document.forms[0].target); nned to move out.
     this.title = todo.title.value;
     this.description = todo.description.value;
     this.day = todo.day.value;
@@ -47,12 +46,15 @@ var Todo = {
 var TodoList = { 
   currentID: JSON.parse(localStorage.getItem('currentID')) || 0,
   todos: JSON.parse(localStorage.getItem('todos')) || [],
-  filter: function(todos, property, value) {
+  filterList: function(todos, property, value) {
+    if (!todos) { 
+      return []
+    };
+
     var filteredList = todos.filter(function(todo){
       return todo[property] === value;
     });
-
-    return filteredList;
+    return filteredList
   },
   attachTodoMethods: function() {
     this.todos.map(function(todo) {
@@ -60,10 +62,10 @@ var TodoList = {
     });
   },
   completeTodos: function() {
-    return this.filter(this.todos, 'complete', true);
+    return this.filterList(this.todos, 'complete', true);
   },
   incompleteTodos: function() {
-    return this.filter(this.todos, 'complete', false);
+    return this.filterList(this.todos, 'complete', false);
   },
   createNewTodo: function() {
     var newTodo = Object.create(Todo);
@@ -86,6 +88,7 @@ var TodoList = {
   },
   summarizeByDate: function(todos) {
     var dateAndCount = {};
+    var rows = [];
 
     todos.sort(function (a, b) {
       return a.year < b.year ? -1 : a.year > b.year ? 1 :
@@ -100,8 +103,8 @@ var TodoList = {
       }
     });
 
-    console.log(dateAndCount);
-    return dateAndCount;
+    rows.push(dateAndCount);
+    return rows;
   },
 };
 
@@ -114,20 +117,21 @@ var TodoApp = {
     this.instantiateTodoList();
     this.instantiateViews(this);
     this.bindAll();
+    this.todoList.attachTodoMethods();
   },
   instantiateViews: function(app) {
     var sideCompletedView = Object.create(CompletedTodosDateView);
     var sideAllView = Object.create(AllTodosDateView);    
     var mainView = Object.create(MainView)
     mainView.init(this);
-    sideAllView.init(this);
-    sideCompletedView.init(this);
+    sideAllView.init(this, this.todoList.todos.length, this.todoList.summarizeByDate(this.todoList.todos));
+    sideCompletedView.init(this, this.todoList.completeTodos().length, this.todoList.summarizeByDate(this.todoList.completeTodos()));
     this.views = { main: mainView, complete: sideCompletedView, all: sideAllView };
   },
   renderContent: function() {
     this.updateMainView(this.todos, 'All todos');
     this.updateAllTodosView(this.todos);
-    this.updateCompletedTodosView(this.filter(this.todos, 'complete', true)); 
+    this.updateCompletedTodosView(this.todoList.completeTodos()); 
   },
   bindAll: function() {
     document.getElementById("main").addEventListener("click", this.views['main'].eventDelegation.bind(this.views['main']));
@@ -135,15 +139,16 @@ var TodoApp = {
     document.getElementById("all_todos").addEventListener("click", this.views['all'].selectList.bind(this.views['all'])); 
   },
   updateMainView: function(todos, title) {
-    complete = this.filter(todos, 'complete', true);
-    incomplete = this.filter(todos, 'complete', false);
+    complete = this.todoList.completeTodos();
+    incomplete = this.todoList.incompleteTodos();
     this.views['main'].updateDisplayModel(title, complete, incomplete)
   },
   updateAllTodosView: function() {
-    this.views['all'].updateDisplayModel(this.todos);
+    this.views['all'].updateDisplayModel(this.todoList.summarizeByDate(this.todoList.todos), this.todoList.todos.length);
   },
   updateCompletedTodosView: function() {
-    this.views['complete'].updateDisplayModel(this.filter(this.todos, 'complete', true));
+    var complete = this.todoList.completeTodos();
+    this.views['complete'].updateDisplayModel(this.todoList.summarizeByDate(complete), complete.length);
   },
   openNewContactForm: function() {
     var context = {save: 'save_new', complete: 'cannot_mark_complete', target: 'new'};
@@ -187,16 +192,21 @@ var MainView = {
     } else if (target.id === "delete") {
       this.app.todoList.deleteTodo(target.closest('tr').dataset.id);
       this.updateDisplayModel( 'All Todos', this.app.todoList.completeTodos(), this.app.todoList.incompleteTodos());
+      this.app.renderContent();
     } else if (target.tagName === "TD") {
-      this.app.todoList.toggleTodoComplete(target.closest('tr').dataset.id);
+      var todo = this.app.todoList.retrieveTodo(target.closest('tr').dataset.id);
+      todo.toggleComplete.call(todo);
+      this.app.renderContent();
     } else if (target.id === "edit") {
       this.app.openEditContactForm(e);
     } else if (target.id === "save_edits") {
       this.app.todoList.retrieveTodo(document.forms[0].target).update();
       document.getElementById("open_modal_checkbox").checked = true;
-      this.updateDisplayModel( 'All Todos', this.app.todoList.completeTodos(), this.app.todoList.incompleteTodos());
+      this.app.renderContent();
     } else if (target.id === "mark_complete") {
-      this.app.todoList.completeTodo(target);      
+      this.app.todoList.retrieveTodo(document.forms[0].target).complete = true;
+      this.app.renderContent();
+      document.getElementById("open_modal_checkbox").checked = false; 
     } else if (target.tagName === "SPAN") {
       document.getElementById("open_modal_checkbox").checked = false;
     } 
@@ -205,10 +215,11 @@ var MainView = {
     this.app.todoList.createNewTodo();
     var self = this;
     this.updateDisplayModel( 'All Todos', self.app.todoList.completeTodos(), self.app.todoList.incompleteTodos());
+    this.app.renderContent();
   },
   updateDisplayModel: function(title, completeTodos, incompleteTodos) {
     this.viewModel.listTitle = title;
-    this.viewModel.total = (completeTodos.length + incompleteTodos.length);
+    this.viewModel.total = (this.app.todoList.todos.length);
     this.viewModel.complete = completeTodos;
     this.viewModel.incomplete = incompleteTodos;
     this.render();
@@ -223,11 +234,14 @@ var MainView = {
 
 var AllTodosDateView = {
   viewModel: { listTitle: 'All Todos', total: 0, rows: [{'02/18': 5}, {'03/18': 3}] },  // rows are an array of small objects, like [{“02/18”, 1}, {“03/18”, 3}… ];
-  init: function(app) {
+  init: function(app, total, rows) {
     this.app = app;
     this.bind();
+    this.viewModel.total = total;
+    this.viewModel.rows = rows;    
     this.compile();
-    this.render();    
+    this.render();
+    document.querySelectorAll('[data-id="All"]')[0].setAttribute('id', 'selected');
   },
   bind: function() {
     document.getElementById("all_todos").addEventListener("click", this.selectList.bind(this)); 
@@ -236,19 +250,26 @@ var AllTodosDateView = {
     this.template = Handlebars.compile(document.getElementById('summary_by_date').innerHTML);
   },
   selectList: function(e) {
-    var rowID = e.target(); // probably wrong code.   
+    var rowID = e.target.closest('tr').dataset.id;
     var newList;
+    var complete; 
+
     if (document.getElementById('selected')) {
       document.getElementById('selected').removeAttribute('id', 'selected');
     }
 
-    rowID.setAttribute('id', 'selected');
-    newList = this.app.todoList.filter(this.app.todoList.todos, 'dueDate', rowID);
-    this.app.views['main'].updateDisplayModel(newList);
+    rowID = rowID === 'No' ? 'No Due Date' : rowID;
+    rowID = rowID === 'All' ? 'All Todos' : rowID;
+
+    document.querySelectorAll('[data-id="All"]')[0].setAttribute('id', 'selected');
+    newList = this.app.todoList.filterList(this.app.todoList.todos, 'dueDate', rowID);
+    complete = this.app.todoList.filterList(newList, 'complete', true);
+    incomplete = this.app.todoList.filterList(newList, 'complete', false);   
+    this.app.views['main'].updateDisplayModel(rowID, complete, incomplete);
   },
-  updateDisplayModel: function(todos) {
-    this.viewModel.total = (todos.length);
-    this.viewModel.todos = todos;
+  updateDisplayModel: function(rows, total) {
+    this.viewModel.total = (total);
+    this.viewModel.rows = rows;
     this.render();
   },  
   render: function() {
@@ -259,29 +280,35 @@ var AllTodosDateView = {
 
 var CompletedTodosDateView = {
   viewModel: {listTitle: 'Completed', total: 0, rows: []},
-  init: function(app) {
+  init: function(app, total, rows) {
     this.app = app;
-    // this.viewModel = {listTitle: 'Completed', total: this.app.todoList.todos.length, rows: []}
+    this.viewModel.total = total;
+    this.viewModel.rows = rows;
     this.compile();
     this.render();
   },
   selectList: function(e) {
-    var rowID = e.target();
+    var rowID = e.target.closest('tr').dataset.id;
     var newList;
+    var complete; 
+
     if (document.getElementById('selected')) {
       document.getElementById('selected').removeAttribute('id', 'selected');
     }
 
-    rowID.setAttribute('id', 'selected');
-    newList = this.app.todoList.filter(this.app.todoList.todos, 'dueDate', rowID);
-    newList = this.app.todoList.filter(newList, 'complete', true);
-    this.app.views['main'].updateDisplayModel(newList);
+    rowID = rowID === 'No' ? 'No Due Date' : rowID;
+
+    document.querySelectorAll('[data-id="All"]')[0].setAttribute('id', 'selected');
+    newList = this.app.todoList.completeTodos();
+    newList = this.app.todoList.filterList(newList, 'dueDate', rowID);
+    complete = this.app.todoList.filterList(newList, 'complete', true);
+    this.app.views['main'].updateDisplayModel(rowID, complete, []);
   },
   compile: function(list) {
     this.template = Handlebars.compile(document.getElementById('summary_by_date').innerHTML);
   },
-  updateDisplayModel: function(todos) {
-    this.viewModel.total = (todos.length);
+  updateDisplayModel: function(todos, total) {
+    this.viewModel.total = (total);
     this.viewModel.rows = todos;
     this.render();
   },  
