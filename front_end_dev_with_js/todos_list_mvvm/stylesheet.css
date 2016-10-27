@@ -80,7 +80,7 @@ table > tr td {
   color: #ffffff;
 }
 
-#all-todos:before,
+#all_todos:before,
 #completed:before {
   background: #464f77;
   position: absolute;
@@ -88,7 +88,7 @@ table > tr td {
   left: 80px;
 }
 
-#all-todos:before {
+#all_todos:before {
   content: url('images/icon_menu.png');  
 }
 #completed:before {

@@ -14,6 +14,10 @@
 
     <header>
       <nav id="nav">
+        <table id="all_todos">
+        </table>
+        <table id="completed">
+        </table>
       </nav>
     </header>
 
@@ -23,7 +27,6 @@
     </footer>
 
         <script type="text/x-handlebars" id="summary_by_date"> 
-          <table data-type={{listTitle}}>
             <thead>
               <tr data-id={{listTitle}}>
                 <th>{{listTitle}}</th>
@@ -31,23 +34,18 @@
               </tr>
             </thead>
             <tbody>
-              {{#each todos}}
-                {{> summary}}
+              {{#each rows as |value key|}}
+              {{#each value as |dateTotal dueDate|}}
+                <tr data-id={{dueDate}}>
+                  <td>{{dueDate}}
+                  </td>
+                  <td><div class="circle">{{dateTotal}}</div>
+                  </td>
+                </tr>
+                {{/each}}
               {{/each}}                          
             </tbody>
-          </table>
-        </script>
-
-
-
-          <script id="summary" data-type="partial" type="text/handlebars">
-            <tr data-id={{dueDate}}>
-              <td>{{dueDate}}
-              </td>
-              <td><div class="circle">{{total}}</div>
-              </td>
-            </tr>
-        </script>      
+        </script>  
 
         <script type="text/x-handlebars" id="main_list">
           <table>
