@@ -77,7 +77,7 @@ var TodoList = {
   deleteTodo: function(id) {
     this.todos = this.todos.filter(function(todo){
       return Number(todo.id) !== Number(id);
-    });
+    });    
   },
   retrieveTodo: function(id) {
     var filteredTodo = this.todos.filter(function(todo){
@@ -123,9 +123,12 @@ var TodoApp = {
     var sideCompletedView = Object.create(CompletedTodosDateView);
     var sideAllView = Object.create(AllTodosDateView);    
     var mainView = Object.create(MainView)
+    var todos = this.todoList.todos;
+    var complete = this.todoList.completeTodos();
+
     mainView.init(this);
-    sideAllView.init(this, this.todoList.todos.length, this.todoList.summarizeByDate(this.todoList.todos));
-    sideCompletedView.init(this, this.todoList.completeTodos().length, this.todoList.summarizeByDate(this.todoList.completeTodos()));
+    sideAllView.init(this, todos.length, this.todoList.summarizeByDate(todos));
+    sideCompletedView.init(this, complete.length, this.todoList.summarizeByDate(complete));
     this.views = { main: mainView, complete: sideCompletedView, all: sideAllView };
   },
   renderContent: function() {
@@ -144,7 +147,8 @@ var TodoApp = {
     this.views['main'].updateDisplayModel(title, complete, incomplete)
   },
   updateAllTodosView: function() {
-    this.views['all'].updateDisplayModel(this.todoList.summarizeByDate(this.todoList.todos), this.todoList.todos.length);
+    var todos = this.todoList.todos;
+    this.views['all'].updateDisplayModel(this.todoList.summarizeByDate(todos), todos.length);
   },
   updateCompletedTodosView: function() {
     var complete = this.todoList.completeTodos();
@@ -190,32 +194,43 @@ var MainView = {
     } else if (target.id === "cannot_mark_complete") {
       window.alert('Cannot mark an unsaved todo as complete.');
     } else if (target.id === "delete") {
-      this.app.todoList.deleteTodo(target.closest('tr').dataset.id);
-      this.updateDisplayModel( 'All Todos', this.app.todoList.completeTodos(), this.app.todoList.incompleteTodos());
-      this.app.renderContent();
+      this.deleteFromList(target);
     } else if (target.tagName === "TD") {
-      var todo = this.app.todoList.retrieveTodo(target.closest('tr').dataset.id);
-      todo.toggleComplete.call(todo);
-      this.app.renderContent();
+      this.toggleTodoStatus(target);
     } else if (target.id === "edit") {
       this.app.openEditContactForm(e);
     } else if (target.id === "save_edits") {
-      this.app.todoList.retrieveTodo(document.forms[0].target).update();
-      document.getElementById("open_modal_checkbox").checked = true;
-      this.app.renderContent();
+      this.saveUpdated(target);
     } else if (target.id === "mark_complete") {
-      this.app.todoList.retrieveTodo(document.forms[0].target).complete = true;
-      this.app.renderContent();
-      document.getElementById("open_modal_checkbox").checked = false; 
+      this.markTodoComplete(target);
     } else if (target.tagName === "SPAN") {
       document.getElementById("open_modal_checkbox").checked = false;
-    } 
+    }
+  },
+  markTodoComplete: function(target) {
+    this.app.todoList.retrieveTodo(document.forms[0].target).complete = true;
+    this.app.renderContent();
+    document.getElementById("open_modal_checkbox").checked = false; 
+  },
+  toggleTodoStatus: function(target) {
+    var todo = this.app.todoList.retrieveTodo(target.closest('tr').dataset.id);
+    todo.toggleComplete.call(todo);
+    this.app.renderContent();    
+  },
+  deleteFromList: function(target) {
+    this.app.todoList.deleteTodo(target.closest('tr').dataset.id);
+    this.app.renderContent();     
+  },
+  saveUpdated: function(target) {
+    this.app.todoList.retrieveTodo(document.forms[0].target).update();
+    document.getElementById("open_modal_checkbox").checked = true;
+    this.app.renderContent();
   },
   saveNew: function() {
     this.app.todoList.createNewTodo();
-    var self = this;
-    this.updateDisplayModel( 'All Todos', self.app.todoList.completeTodos(), self.app.todoList.incompleteTodos());
-    this.app.renderContent();
+    var list = this.app.todoList
+    this.updateDisplayModel( 'All Todos', list.completeTodos(), list.incompleteTodos());
+    this.app.renderContent();    
   },
   updateDisplayModel: function(title, completeTodos, incompleteTodos) {
     this.viewModel.listTitle = title;
@@ -223,7 +238,7 @@ var MainView = {
     this.viewModel.complete = completeTodos;
     this.viewModel.incomplete = incompleteTodos;
     this.render();
-  },
+  },  
   compile: function(list) {
     this.template = Handlebars.compile(document.getElementById('main_list').innerHTML);
   },
@@ -233,7 +248,7 @@ var MainView = {
 };
 
 var AllTodosDateView = {
-  viewModel: { listTitle: 'All Todos', total: 0, rows: [{'02/18': 5}, {'03/18': 3}] },  // rows are an array of small objects, like [{“02/18”, 1}, {“03/18”, 3}… ];
+  viewModel: { listTitle: 'All Todos', total: 0, rows: [] },
   init: function(app, total, rows) {
     this.app = app;
     this.bind();
