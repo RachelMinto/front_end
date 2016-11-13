@@ -1,32 +1,52 @@
 function ModelConstructor(options) {
-  var idCount = 0;
+  var id_count = 0;  
   function Model(attrs) {
-    idCount++;
+    id_count++;    
 
     var self = this;
     self.attributes = attrs || {};
-    self.id = idCount;
-    self.attributes.id = idCount;
-  };
+    self.id = id_count;
+    self.attributes.id = id_count;
+
+    if (options && options.change && _.isFunction(options.change)) {
+      this.__events.push(options.change);
+    }
+  }
 
   Model.prototype = {
     __events: [],
+    __remove: function() {},
+    set: function(key, val) {
+      this.attributes[key] = val;
+      this.triggerChange();
+    },
+    get: function(key) {
+      return this.attributes[key];
+    },
+    remove: function(key) {
+      delete this.attributes[key];
+      this.triggerChange();
+    },
+    triggerChange: function() {
+      this.__events.forEach(function(cb) {
+        cb();
+      })
+    },
     addCallback: function(cb) {
       this.__events.push(cb);
-    }    
+    }
   };
 
-  _.extend(Model.prototype, options)
+  _.extend(Model.prototype, options);
 
   return Model;
 };
-
 
 function CollectionConstructor(options) {
   function Collection(ModelConstructor) {
     this.models = [];
     this.model = ModelConstructor;
-  }
+  };
 
   Collection.prototype = {
     add: function(model) {
@@ -40,38 +60,60 @@ function CollectionConstructor(options) {
 
       return newModel;
     },
-    set: function(model) {
+    remove: function(model) {
+      model = _.isNumber(model) ? { id: model } : model;
+
+      var m = _(this.models).findWhere(model);
+
+      if (!m) { return; }
+
+      m.__remove();
+      this.models = this.models.filter(function(existingM) {
+        return existingM.attributes.id !== m.id;
+      });
+    },
+    set: function(models) {
       this.reset();
-      this.add(model)     
-      $('#todos').append("<li>" + todo(model) + "<li>");
+      models.forEach(this.add.bind(this));
+    },
+    get: function(idx) {
+      return _(this.models).findWhere({ id: idx });
     },
     reset: function() {
       this.models = [];
-    },    
-  }
-  _.extend(Collection.prototype, options);
+    },
+  };
+
+  _.extend(Collection.prototype, options)
   return Collection;
-};
+}
 
 function ViewConstructor(options) {
   function View(model) {
     this.model = model;
     this.model.addCallback(this.render.bind(this));
+    this.model.__remove = this.remove.bind(this);
+    this.attributes["data-id"] = this.model.id;    
+    this.model.view = this;
     this.$el = $("<" + this.tag_name + " />", this.attributes);
     this.render();
   }
 
   View.prototype = {
-    tag_name: "li",
+    tag_name: "div",
     attributes: {},
-    template: todo,
-    events: {},      
+    events: {},
+    template: function() {},
     render: function() {
-      this.unbindEvents();
+      this.unbindEvents();      
       this.$el.html(this.template(this.model.attributes));
 
       this.bindEvents();
-      return this.$el;      
+      return this.$el;
+    },
+    remove: function() {
+      this.unbindEvents();
+      this.$el.remove();
     },
     bindEvents: function() {
       var $el = this.$el;
@@ -96,7 +138,8 @@ function ViewConstructor(options) {
     },
   };
 
-  _.extend(View.prototype, options)
-  return View;
-};
+  _.extend(View.prototype, options);
+  return View;  
+}
+
 

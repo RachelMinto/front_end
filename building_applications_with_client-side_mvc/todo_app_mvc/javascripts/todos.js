@@ -1,47 +1,99 @@
-var todo = Handlebars.compile($("#todo").html());
-var editTodo = Handlebars.compile($("#todo_edit").html());
-var Todo = new ModelConstructor();
-var Todos = new CollectionConstructor();
+var App = {
+  $el: $("main"),
+  $todos: $("#todos"),
+  newTodo: function(e) {
+    e.preventDefault();
+    var name = $(e.target).find("#todo_name").val();
+    var model;
+    var view;
 
-var TodoView = new ViewConstructor({      
-      tag_name: "li",
-      template: todo,
-      events: {
-        "click": function(e) {
-          this.$el.replaceWith(editTodo(this.model.attributes));
-          this.bindEvents();
-        },
-        "click a": function(e) {
-          e.stopPropagation();
-          if (this.$el.hasClass('complete')) {
-            this.$el.removeClass('complete') 
-          }
-          else {
-            this.$el.addClass('complete');
-          }
-        },
-        "focusout": function(e) {
-          e.preventDefault();
-          debugger;
-          console.log('blurring');
-        },
-      }
+    if (!name) { return; }
+
+    model = this.Todos.add({
+      name: name,
+      complete: false
     });
-var list = new Todos(Todo);
-var $todos = $("#todos");
+    view = new this.TodoView(model);
+    view.$el.appendTo(this.$todos);
 
+    e.target.reset();
+  },
+  editTodo: function(e) {
+    var idx = this.model.attributes.id;
+    var model = App.Todos.get(idx);
+    var $editForm = $(templates.todo_edit(model.attributes))
+    
+    model.view.$el.after($editForm);
+    model.view.$el.remove();
 
-$("form").on("submit", function(e) {
-  e.preventDefault();
-  var $form = $(this);
-  var properties = {
-    name: $form.find("[name=todo_name]").val(),
-    };
-  var model;  
+    $editForm.on("blur", "input", App.hideEdit.bind(App));
+  },
+  hideEdit: function(e) {
+    var $input = $(e.currentTarget);
+    var $li = $input.closest("li");
+    var name = $input.val();
+    var idx = +$li.attr('data-id');
+    var model = App.Todos.get(idx);
 
-  model = list.add(properties);
-  $todos.append((new TodoView(model)).$el);
-  this.reset();
+    model.set("name", name);
+    $li.after(model.view.$el);
+    $li.remove();
+    $input.off(e);
+  },
+  toggleComplete: function(e) {
+    var $li = $(e.target).closest("li");
+    var idx = +$li.attr("data-id");
+    var model = App.Todos.get(idx);
+    model.set("complete", !model.get("complete"));
+    $li.toggleClass("complete", model.get("complete"));
+
+    return false;
+  },
+  clearCompleted: function(e) {
+    e.preventDefault();
+
+    var completed = App.Todos.models.filter(function(model) {
+      return model.attributes.complete;
+    });
+
+    completed.forEach(function(model) {
+      App.Todos.remove(model);
+    });
+  },
+  bind: function() {
+    this.$el.find("form").on("submit", this.newTodo.bind(this));
+    this.$el.find("#clear").on("click", this.clearCompleted.bind(this));
+  },
+  init: function() {
+    this.bind();
+  }
+};
+
+var templates = {};
+
+$('[type="text/x-handlebars"]').each(function() {
+  var $t = $(this);
+
+  templates[$t.attr("id")] = Handlebars.compile($t.html());
 });
 
-// clear complete. 
+// Todo model constructor: used in our todos CollectionConstructor
+App.TodoConstructor = new ModelConstructor();
+
+// Todos collection constructor
+App.TodosConstructor = new CollectionConstructor();
+
+// Todos collection creation
+App.Todos = new App.TodosConstructor(App.TodoConstructor);
+
+// The 
+App.TodoView = new ViewConstructor({
+  tag_name: "li",
+  template: templates.todo,
+  events: {
+    "click": App.editTodo,
+    "click a.toggle": App.toggleComplete,
+  }
+});
+
+App.init();
