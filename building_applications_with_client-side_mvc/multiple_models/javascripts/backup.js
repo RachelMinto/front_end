@@ -1,17 +1,5 @@
 var App = {
   $body: $("tbody"),
-  bind: function() {
-    this.$body.on("click", "a", this.removeItem.bind(this));
-  },
-  init: function() {
-    this.Items = new ItemsCollection(items_json);
-    this.Items.sortByName();
-    this.render();
-    this.bind();
-  }
-}
-
-var View = Backbone.View.extend({
   template: Handlebars.compile($("#items").html()),
   render: function() {
     this.$body.html(this.template({
@@ -23,7 +11,16 @@ var View = Backbone.View.extend({
     var model = this.Items.get(+$(e.target).attr("data-id"));
     this.Items.remove(model);
   },
-});
+  bind: function() {
+    this.$body.on("click", "a", this.removeItem.bind(this));
+  },
+  init: function() {
+    this.Items = new ItemsCollection(items_json);
+    this.Items.sortByName();
+    this.render();
+    this.bind();
+  }
+}
 
 var ItemModel = Backbone.Model.extend({
   idAttribute: "id",
