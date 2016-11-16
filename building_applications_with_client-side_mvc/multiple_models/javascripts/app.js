@@ -15,6 +15,7 @@ var ItemModel = Backbone.Model.extend({
 });
 
 var ItemsView = Backbone.View.extend({
+  el: "tbody",
   events: {
     "click a": "removeItem"
   },
