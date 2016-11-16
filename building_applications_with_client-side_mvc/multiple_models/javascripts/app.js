@@ -1,35 +1,38 @@
 var App = {
-  $body: $("tbody"),
-  bind: function() {
-    this.$body.on("click", "a", this.removeItem.bind(this));
-  },
   init: function() {
     this.Items = new ItemsCollection(items_json);
+    this.View = new ItemsView({ collection: this.Items });
     this.Items.sortByName();
-    this.render();
-    this.bind();
   }
-}
-
-var View = Backbone.View.extend({
-  template: Handlebars.compile($("#items").html()),
-  render: function() {
-    this.$body.html(this.template({
-      items: this.Items.models
-    }));
-  },
-  removeItem: function(e) {
-    e.preventDefault();
-    var model = this.Items.get(+$(e.target).attr("data-id"));
-    this.Items.remove(model);
-  },
-});
+};
 
 var ItemModel = Backbone.Model.extend({
   idAttribute: "id",
   initialize: function() {
     this.collection.incrementID();
     this.set("id", this.collection.last_id);
+  }
+});
+
+var ItemsView = Backbone.View.extend({
+  events: {
+    "click a": "removeItem"
+  },
+  template: Handlebars.compile($("#items").html()),
+  render: function() {
+    this.$el.html(this.template({
+      items: this.collection.toJSON()
+    }));
+  },
+  removeItem: function(e) {
+    e.preventDefault();
+    var model = this.collection.get(+$(e.target).attr("data-id"));
+    this.collection.remove(model);
+  },
+  initialize: function() {
+    this.$el = $("tbody");
+    this.render();
+    this.listenTo(this.collection, "remove reset rerender", this.render);
   }
 });
 
@@ -43,13 +46,10 @@ var ItemsCollection = Backbone.Collection.extend({
     this.models = _(this.models).sortBy(function(m) {
       return m.attributes[prop];
     });
-    App.render();
+    this.trigger("rerender");
   },
-  sortByName: function() {
-    this.sortBy("name");
-  },
+  sortByName: function() { this.sortBy("name"); },
   initialize: function() {
-    this.on("remove reset", App.render.bind(App));
     this.on("add", this.sortByName);
   }
 });
@@ -58,9 +58,9 @@ Handlebars.registerPartial("item", $("#item").html());
 
 $("form").on("submit", function(e) {
   e.preventDefault();
-  var inputs = $(this).serializeArray();
-  var attrs = {};
-  var item;
+  var inputs = $(this).serializeArray(),
+      attrs = {},
+      item;
 
   inputs.forEach(function(input) {
     attrs[input.name] = input.value;
@@ -72,13 +72,12 @@ $("form").on("submit", function(e) {
 
 $("th").on("click", function() {
   var prop = $(this).attr("data-prop");
-
   App.Items.sortBy(prop);
-})
+});
 
 $("p a").on("click", function(e) {
   e.preventDefault();
   App.Items.reset();
-})
+});
 
 App.init();

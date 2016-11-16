@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="stylesheets/page.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="javascripts/underscore.js"></script>
-    <script src="javascripts/backbone.js"></script>
+    <script src="javascripts/underscore-min.js"></script>
+    <script src="javascripts/backbone-min.js"></script>
     <script src="javascripts/handlebars-v3.0.0.js"></script>
   </head>
   <body>
@@ -38,9 +38,7 @@
 
     <script id="items" type="text/x-handlebars">
       {{#each items}}
-        {{#with attributes}}
         {{> item}}
-        {{/with}}
       {{/each}}
     </script>
 
@@ -61,6 +59,7 @@
         quantity: 4
       }];
     </script>
-    <script src="javascripts/model.js"></script>
+
+    <script src="javascripts/app.js"></script>
   </body>
 </html>
