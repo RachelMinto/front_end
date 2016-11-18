@@ -11,9 +11,8 @@ var App = {
 
     model = this.Todos.add({
       name: name,
-      complete: false
     });
-    view = new TodoView( { model: model });
+    view = new this.TodoView({ model: model });
     view.$el.appendTo(this.$todos);
 
     e.target.reset();
@@ -21,13 +20,9 @@ var App = {
   clearCompleted: function(e) {
     e.preventDefault();
 
-    var completed = App.Todos.models.filter(function(model) {
-      return model.attributes.complete;
-    });
+    var incomplete = App.Todos.where({ complete: false });
 
-    completed.forEach(function(model) {
-      App.Todos.remove(model);
-    });
+    App.Todos.set(incomplete);
   },
   bind: function() {
     this.$el.find("form").on("submit", this.newTodo.bind(this));
@@ -46,59 +41,76 @@ $('[type="text/x-handlebars"]').each(function() {
   templates[$t.attr("id")] = Handlebars.compile($t.html());
 });
 
-App.TodoConstructor = new Backbone.Model.extend({});
-App.TodosConstructor = new Backbone.Collection.extend({});
-App.Todos = new App.TodosConstructor(App.TodoConstructor);
+(function() {
+  var id = 1;
 
+  var todoModel = Backbone.Model.extend({
+    idAttribute: "id",
+    defaults: {
+      complete: false,
+    },
+    initialize: function() {
+      this.set("id", id);
+      id++;
+    }
+  });
 
-TodoView = Backbone.View.extend({
+  App.Todo = todoModel;
+})();
+
+App.Todos = new Backbone.Collection([], {
+  model: App.Todo,
+});
+
+App.TodoView = Backbone.View.extend({
   tagName: "li",
-  attributes: {},
+  template: templates.todo,
   events: {
-    "click": "editTodo",    
-    "click a": "toggleComplete",
+    "click": "editTodo",
+    "click a.toggle": "toggleComplete",
   },
-  template: Handlebars.compile($("#todo").html()),
   render: function() {
-    this.$el.html(this.template({ name: this.model.attributes.name}));
-    return this.$el;
-  },
-  remove: function() {
-    this.$el.remove();
-  },
-  toggleComplete: function(e) {
-    var $li = $(e.target).closest("li");
-    this.model.set("complete", !this.model.get("complete"));
-    $li.toggleClass("complete", this.model.get("complete"));
-
-    return false;
+    this.$el.attr("data-id", this.model.get("id"));
+    this.$el.html(this.template(this.model.toJSON()));
   },
   editTodo: function(e) {
-    var $editForm = $(templates.todo_edit(this.model.attributes))
+    var idx = $(e.target).attr("data-id");
+    var model = App.Todos.get(idx);
+    var $editForm = $(templates.todo_edit(model.toJSON()));
     
     this.$el.after($editForm);
     this.$el.remove();
 
+    $editForm.find("input").focus();
+
     $editForm.on("blur", "input", this.hideEdit.bind(this));
+  },
+  toggleComplete: function(e) {
+    var $li = $(e.target).closest("li");
+    var idx = +$li.attr("data-id");
+    var model = App.Todos.get(idx);
+    model.set("complete", !model.get("complete"));
+    $li.toggleClass("complete", model.get("complete"));
+
+    return false;
   },
   hideEdit: function(e) {
     var $input = $(e.currentTarget);
     var $li = $input.closest("li");
     var name = $input.val();
-    var idx = +$li.attr('data-id');
 
     this.model.set("name", name);
-    $li.after(this.$el.html(this.template({ name: this.model.attributes.name})));
+    $li.after(this.$el);
     $li.remove();
-    debugger;
     $input.off(e);
+
+    this.delegateEvents();
   },  
   initialize: function() {
-    var $el = $("#todos");
     this.render();
-  }
-});
-
-
+    this.listenTo(this.model, "change", this.render);
+    this.listenTo(this.model, "remove", this.remove);
+  },  
+})
 
 App.init();

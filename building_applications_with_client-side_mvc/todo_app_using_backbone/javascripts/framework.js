@@ -15,6 +15,7 @@ function ModelConstructor(options) {
 
   Model.prototype = {
     __events: [],
+    __remove: function() {},
     set: function(key, val) {
       this.attributes[key] = val;
       this.triggerChange();
@@ -22,8 +23,8 @@ function ModelConstructor(options) {
     get: function(key) {
       return this.attributes[key];
     },
-    remove: function() {
-      delete this.attributes;
+    remove: function(key) {
+      delete this.attributes[key];
       this.triggerChange();
     },
     triggerChange: function() {
@@ -60,14 +61,13 @@ function CollectionConstructor(options) {
       return newModel;
     },
     remove: function(model) {
-      debugger;
       model = _.isNumber(model) ? { id: model } : model;
 
       var m = _(this.models).findWhere(model);
 
       if (!m) { return; }
 
-      m.remove();
+      m.__remove();
       this.models = this.models.filter(function(existingM) {
         return existingM.attributes.id !== m.id;
       });
@@ -88,61 +88,58 @@ function CollectionConstructor(options) {
   return Collection;
 }
 
+function ViewConstructor(options) {
+  function View(model) {
+    this.model = model;
+    this.model.addCallback(this.render.bind(this));
+    this.model.__remove = this.remove.bind(this);
+    this.attributes["data-id"] = this.model.id;    
+    this.model.view = this;
+    this.$el = $("<" + this.tag_name + " />", this.attributes);
+    this.render();
+  }
 
-// var EditView = Backbone.View.extend({
+  View.prototype = {
+    tag_name: "div",
+    attributes: {},
+    events: {},
+    template: function() {},
+    render: function() {
+      this.unbindEvents();      
+      this.$el.html(this.template(this.model.attributes));
 
-// });
+      this.bindEvents();
+      return this.$el;
+    },
+    remove: function() {
+      this.unbindEvents();
+      this.$el.remove();
+    },
+    bindEvents: function() {
+      var $el = this.$el;
+      var event;
+      var selector;
+      var parts;
 
-// function ViewConstructor(options) {
-//   function View(model) {
-//     this.model = model;
-//     this.model.addCallback(this.render.bind(this));
-//     this.model.__remove = this.remove.bind(this);
-//     this.attributes["data-id"] = this.model.id;    
-//     this.model.view = this;
-//     this.$el = $("<" + this.tag_name + " />", this.attributes);
-//     this.render();
-//   }
+      for (var prop in this.events) {
+        parts = prop.split(" ");
+        selector = parts.length > 1 ? parts.slice(1).join(' ') : undefined;
+        event = parts[0];
+        if (selector) {
+          $el.on(event + ".view", selector, this.events[prop].bind(this));
+        }
+        else {
+          $el.on(event + ".view", this.events[prop].bind(this));
+        }
+      }
+    },
+    unbindEvents: function() {
+      this.$el.off(".view");
+    },
+  };
 
-//   View.prototype = {
-//     tag_name: "div",
-//     attributes: {},
-//     events: {},
-//     template: function() {},
-//     render: function() {
-//       this.unbindEvents();      
-//       this.$el.html(this.template(this.model.attributes));
+  _.extend(View.prototype, options);
+  return View;  
+}
 
-//       this.bindEvents();
-//       return this.$el;
-//     },
-//     remove: function() {
-//       this.unbindEvents();
-//       this.$el.remove();
-//     },
-//     bindEvents: function() {
-//       var $el = this.$el;
-//       var event;
-//       var selector;
-//       var parts;
 
-//       for (var prop in this.events) {
-//         parts = prop.split(" ");
-//         selector = parts.length > 1 ? parts.slice(1).join(' ') : undefined;
-//         event = parts[0];
-//         if (selector) {
-//           $el.on(event + ".view", selector, this.events[prop].bind(this));
-//         }
-//         else {
-//           $el.on(event + ".view", this.events[prop].bind(this));
-//         }
-//       }
-//     },
-//     unbindEvents: function() {
-//       this.$el.off(".view");
-//     },
-//   };
-
-//   _.extend(View.prototype, options);
-//   return View;  
-// }
