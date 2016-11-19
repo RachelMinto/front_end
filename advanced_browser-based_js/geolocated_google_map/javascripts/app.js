@@ -43,8 +43,10 @@ var weather = {
     return kelvinToF(kelvin).toFixed(1) + "&deg;F";
   },
   processData: function(json) {
+    debugger;
     return {
       temp: this.temp(json.main.temp),
+      icon: json.cod,
       description: json.weather[0].description,
       location: json.name
     };

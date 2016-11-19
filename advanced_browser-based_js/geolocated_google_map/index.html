@@ -5,8 +5,6 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="stylesheets/page.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!--     <script src="javascripts/underscore.js"></script>
-    <script src="javascripts/backbone.js"></script> -->
     <script src="javascripts/handlebars-v3.0.0.js"></script>
   </head>
   <body>
@@ -21,7 +19,7 @@
     <script id="weather_card" type="text/x-handlebars">
       <h2>{{location}}</h2>
       <h3>{{{temp}}}</h3>
-      <p>{{description}}</p>
+      <p><i class="owf owf-{{icon}}"></i>{{description}}</p>
     </script>
     <script src="javascripts/app.js"></script>
 </html>
