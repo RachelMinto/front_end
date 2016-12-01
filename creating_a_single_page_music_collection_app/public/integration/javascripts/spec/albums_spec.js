@@ -10,4 +10,14 @@ describe("Albums collection", function() {
 
     App.init();
   });
+
+  it("sets a tracks_url property when models are created", function(done) {
+    App.albumsLoaded = function() {
+      expect(App.albums.first().get("tracks_url")).toMatch(/\/album/);
+      done();
+    };
+
+    App.init();
+
+  });
 });

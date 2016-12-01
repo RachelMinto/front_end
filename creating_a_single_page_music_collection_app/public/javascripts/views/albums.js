@@ -1,5 +1,5 @@
 var AlbumsView = Backbone.View.extend({
-  template: Handlebars.compile($("data-name=albums]").html()),
+  template: Handlebars.compile($("[data-name=albums]").html()),
   render: function() {
     this.$el.html(this.template({ albums: this.collection.toJSON() }));
   },
