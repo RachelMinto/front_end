@@ -40,3 +40,34 @@ ul li h2 {
 ul li h3 {
   font-size: 1.25em;
 }
+a.button,
+input[type="submit"] {
+  position: relative;
+  display: inline-block;
+  padding: 10px 25px;
+  font-size: 18px;
+  text-decoration: none;
+  color: #fff;
+  background: #00a388;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  transition: box-shadow 200ms ease, top 200ms ease, left 200ms ease, color 200ms ease;
+  box-shadow: 2px 2px 0 2px #008a73;
+}
+a.button:hover,
+input[type="submit"]:hover,
+a.button:focus,
+input[type="submit"]:focus {
+  color: #ffff9d;
+}
+a.button:active,
+input[type="submit"]:active {
+  left: 2px;
+  top: 2px;
+  box-shadow: 1px 1px 0 1px #008a73;
+}
