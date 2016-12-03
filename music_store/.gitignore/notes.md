@@ -123,5 +123,52 @@ Install the Stylus module and use the Express connect middleware in app.js to us
 
   Add following to application.styl
     @import "whitespace-reset.css"
-    @import "mixins"
+    @import "mixins" // check for errors as you go. Problems with this file may mean the application.css file isn't found.
 
+Create a views/_mixins.jade file
+    mixin stylesheet_link_tag(src)
+      link(rel='stylesheet' href='/stylesheets/#{src}.css')
+
+    mixin javascript_include_tag(src, ...reset)
+      script(type="text/javascript" src="/javascripts/#{src}.js")
+      each file in rest
+        script(type="text/javascript" scr="javascripts/#{file}.js")
+
+Add to layout.jade:  include /_mixins
+  -modify link tags in layout.jade to be +stylesheet_link_tag("application")
+
+Since we now have absolute path, need to modify express in app.js
+
+Add to app.js before error handlers: app.locals.basedir = path.join(__dirname, 'views');
+
+touch views/new.jade
+begin new.jade with:
+  extend layout
+
+  block content
+    {all html here...}
+
+touch routes/albums.js
+
+var path = require("path");
+var fs = require("fs");
+var express = require("express");
+var router = express.Router();
+var file_path = path.resolve(path.dirname(__dirname), "data/albums.json");
+
+function getAlbums() {
+  return JSON.parse(fs.readFileSync(file_path, "utf8"));
+}
+
+router.get("/albums/new", function(req, res) {
+  res.render("new");
+});
+
+module.exports = router;
+
+
+*** npm start. If fails, make sure you've exported the router.
+
+Add new route to app.js:
+  app.use('/', albums);
+  var albums = require('./routes/albums');
