@@ -172,3 +172,115 @@ module.exports = router;
 Add new route to app.js:
   app.use('/', albums);
   var albums = require('./routes/albums');
+
+You can combine all routes in one file: touch routes/all.js
+
+var express = require("express");
+var router = express.Router();
+var path = require("path");
+var route_files = ["index", "albums"];
+
+for (var i = 0; i < route_files.length; i++) {
+  require(path.resolve(path.dirname(__dirname), "routes/" + route_files[i]))(router);
+}
+
+module.exports = router; //exports router
+
+Revised albums.js file:
+
+var path = require("path");
+var fs = require("fs");
+var file_path = path.resolve(path.dirname(__dirname), "data/albums.json");
+
+function getAlbums() {
+  return JSON.parse(fs.readFileSync(file_path, "utf8"));
+}
+
+module.exports = function(router) { // receives router as an object we're passing in.
+  router.get("/albums/new", function(req, res) {
+    res.render("new");
+  });
+};
+
+***
+
+Similarly updated index.js file:
+var path = require("path");
+var fs = require("fs");
+var file_path = path.resolve(path.dirname(__dirname), "data/albums.json");
+
+function getAlbums() {
+  return JSON.parse(fs.readFileSync(file_path, "utf8"));
+}
+
+module.exports = function(router) {
+  router.get('/', function(req, res, next) {
+    res.render('index', { 
+      albums: getAlbums() 
+    });
+  });
+};
+
+
+***
+
+Remove from app.js
+var albums = require('./routes/albums');
+var routes = require('./routes/index');
+app.use('/', albums);
+
+Add instead
+var routes = require('./routes/all');
+
+
+// Now we don't need to modify app.js when we add routes.
+***
+
+
+Change albums.json to this content:
+{
+  "last_id": 0,
+  "data": []
+}
+
+Now we need to make a post route to accept contents of the form.
+
+Updated albums.js:
+var path = require("path");
+var fs = require("fs");
+var file_path = path.resolve(path.dirname(__dirname), "data/albums.json");
+
+function getAlbums() {
+  return JSON.parse(fs.readFileSync(file_path, "utf8")).data;
+}
+
+function nextID() {
+  return JSON.parse(fs.readFileSync(file_path, "utf8")).last_id + 1;
+}
+
+function writeAlbums(data) {
+  fs.writeFileSync(file_path, JSON.stringify(data), "utf8");
+}
+
+module.exports = function(router) {
+  router.post("/albums", function(req, res) {
+    var album = req.body;
+    var albums = getAlbums();
+
+    album.id = nextID();
+    albums.push(album);
+    writeAlbums({ last_id: album.id, data: albums })
+    res.json(album) // response. Automatically sets content headers so content is JSON.
+  });
+
+  router.get("/albums/new", function(req, res) {
+    res.render("new");
+  });
+};
+
+***
+
+Modify index.js to have .data;  at end of getAlbums() function.
+
+Check that form goes through.
+

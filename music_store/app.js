@@ -7,8 +7,8 @@ var bodyParser = require('body-parser');
 var stylus = require('stylus');
 var nib = require('nib')
 
-var routes = require('./routes/index');
-var albums = require('./routes/albums');
+var routes = require('./routes/all');
+
 
 var app = express();
 
@@ -32,7 +32,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/', albums);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
