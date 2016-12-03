@@ -284,3 +284,21 @@ Modify index.js to have .data;  at end of getAlbums() function.
 
 Check that form goes through.
 
+
+Refactor the album JSON manipulation code to a Node module.
+Create get and set methods:
+get will return the data property on the data being read in.
+set will get the current last_id and add 1, then write the albums array and the last_id to the JSON file.
+Create a getLastID method, which will simply return the last_id property.
+Replace the code in both routes with the new albums module method calls. To require the module, you'll need to sue a similar method of building the relative path using the path module as you did with reading the JSON file in.
+Create put and delete actions for the "/albums" route.
+put:
+Use the Underscore Node module to locate the current album based on an ID received from the request body.
+Overwrite properties from the request body on the current album.
+Save the albums data with the set method.
+Send the updated current album back as JSON using the response object.
+delete:
+Use the Underscore reject method to obtain all albums except the one with the ID from req.body.
+Save the albums data with the set method.
+Send a status code of 200, then end the response using res.status(200).end().
+

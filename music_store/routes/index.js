@@ -1,15 +1,10 @@
 var path = require("path");
-var fs = require("fs");
-var file_path = path.resolve(path.dirname(__dirname), "data/albums.json");
-
-function getAlbums() {
-  return JSON.parse(fs.readFileSync(file_path, "utf8")).data;
-}
+var Albums = require(path.resolve(path.dirname(__dirname), "routes/album_node"));
 
 module.exports = function(router) {
   router.get('/', function(req, res, next) {
-    res.render('index', { 
-      albums: getAlbums() 
+    res.render('index', {
+      albums: Albums.get()
     });
   });
 };
