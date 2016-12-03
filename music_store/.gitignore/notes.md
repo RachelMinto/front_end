@@ -302,3 +302,64 @@ Use the Underscore reject method to obtain all albums except the one with the ID
 Save the albums data with the set method.
 Send a status code of 200, then end the response using res.status(200).end().
 
+Make model, view, collection directories in public/javascripts
+
+Include the view and model files in layout.jade
+
+Starting up a collection within the view allows us to send in json data as part of html file which reduces number of http requests.
+
+npm install -D grunt-contrib-handlebars
+
+Add handlebars to Gruntfile.js
+module.exports = function(grunt) {
+  grunt.initConfig({
+    uglify: {
+      my_target: {
+        files: {
+          "public/javascripts/vendor/all.js": ["public/javascripts/vendor/all.js"]
+        }
+      }
+    },
+    bower_concat: {
+      all: {
+        dest: "public/javascripts/vendor/all.js",
+        dependencies: {
+          "underscore": "jquery",
+          "backbone": "underscore"
+        }
+      }
+    },
+    handlebars: {
+      all: {
+        files: {
+          "public/javascripts/handlebars_templates.js": ["handlebars/**/*.hbs"]
+        },
+        options: {
+          processContent: removeWhitespace,
+          prcoessName: extractFileName
+        }
+      }
+    }
+  });
+
+  [
+    "grunt-bower-concat",
+    "grunt-contrib-uglify",
+    "grunt-contrib-handlebars"
+  ].forEach(function(task) {
+    grunt.loadNpmTasks(task)
+  });
+
+  grunt.registerTask("default", ["bower_concat", "uglify"]);
+};
+
+function removeWhitespace(template) {
+  return template.replace(/ {2,}/mg, "").replace(/\r|\n/mg/, "");
+}
+
+function extractFileName(file) {
+  return file.match(/\/(.+)\.hbs$/).pop();
+}
+
+
+*****
