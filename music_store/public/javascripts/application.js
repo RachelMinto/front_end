@@ -1,6 +1,10 @@
 var App = {
   templates: JST,
   $el: $('main'),
+  indexView: function() {
+    this.indexView = new IndexView();
+    this.renderAlbums();
+  },
   renderAlbums: function() {
     this.albums.each(this.renderAlbumView);
   },
@@ -9,8 +13,16 @@ var App = {
       model: album
     });
   },
+  newAlbum: function() {
+    new NewAlbumView();
+  },
+  bindEvents: function() {
+    _.extend(this, Backbone.Events);
+    this.listenTo(this.indexView, "add_album", this.newAlbum);
+  },
   init: function() {
-    this.renderAlbums();
+    this.indexView();
+    this.bindEvents();
   }
 };
 
