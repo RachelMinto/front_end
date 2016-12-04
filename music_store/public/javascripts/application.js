@@ -2,7 +2,7 @@ var App = {
   templates: JST,
   $el: $('main'),
   indexView: function() {
-    this.indexView = new IndexView();
+    this.index = new IndexView();
     this.renderAlbums();
   },
   renderAlbums: function() {
@@ -18,12 +18,8 @@ var App = {
   },
   bindEvents: function() {
     _.extend(this, Backbone.Events);
-    this.listenTo(this.indexView, "add_album", this.newAlbum);
+    this.listenTo(this.index, "add_album", this.newAlbum);
   },
-  init: function() {
-    this.indexView();
-    this.bindEvents();
-  }
 };
 
 Handlebars.registerHelper("format_price", function(price) {

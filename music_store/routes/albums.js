@@ -24,4 +24,10 @@ module.exports = function(router) {
     Albums.set(albums);
     res.status(200).end();
   });
+
+  router.get("/albums/new", function(req, res) {
+    res.render("new", {
+      albums: Albums.get()
+    });
+  });
 };

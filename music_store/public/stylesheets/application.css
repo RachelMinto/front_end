@@ -56,8 +56,8 @@ main {
 #index ul li h3 {
   font-size: 1.25em;
 }
-#index a.button,
-#index input[type="submit"] {
+a.button,
+input[type="submit"] {
   position: relative;
   display: inline-block;
   padding: 10px 25px;
@@ -75,14 +75,14 @@ main {
   transition: box-shadow 200ms ease, top 200ms ease, left 200ms ease, color 200ms ease;
   box-shadow: 2px 2px 0 2px #008a73;
 }
-#index a.button:hover,
-#index input[type="submit"]:hover,
-#index a.button:focus,
-#index input[type="submit"]:focus {
+a.button:hover,
+input[type="submit"]:hover,
+a.button:focus,
+input[type="submit"]:focus {
   color: #ffff9d;
 }
-#index a.button:active,
-#index input[type="submit"]:active {
+a.button:active,
+input[type="submit"]:active {
   left: 2px;
   top: 2px;
   box-shadow: 1px 1px 0 1px #008a73;

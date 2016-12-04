@@ -17,9 +17,9 @@ this["JST"]["albums"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":fu
 },"useData":true});
 
 this["JST"]["index"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<h1>Albums</h1><ul></ul><footer><a class=\"button\" href=\"#\">Add an album</a></footer>";
+    return "<h1>Albums</h1><ul></ul><footer><a class=\"button\" href=\"/albums/new\">Add an album</a></footer>";
 },"useData":true});
 
 this["JST"]["new_album"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<form action=\"/albums\" method=\"post\"><fieldset><dl><dt><label>Title</label></dt><dd><input type=\"text\" name=\"title\" /></dd><dt><label>Artist</label></dt><dd><input type=\"text\" name=\"artist\" /></dd><dt><label>Date</label></dt><dd><input type=\"date\" name=\"date\" /></dd><dt><label>Cover</label></dt><dd><input type=\"url\" name=\"cover\" /></dd><dt><label>Price</label></dt><dd><input type=\"text\" name=\"price\" /></dd></dl></fieldset><fieldset class=\"actions\"><input type=\"submit\" value=\"Create\" /></fieldset></form>";
+    return "<form action=\"/albums\" method=\"post\"><h1>Add Album</h1><fieldset><dl><dt><label>Title</label></dt><dd><input type=\"text\" name=\"title\" /></dd><dt><label>Artist</label></dt><dd><input type=\"text\" name=\"artist\" /></dd><dt><label>Date</label></dt><dd><input type=\"date\" name=\"date\" /></dd><dt><label>Cover</label></dt><dd><input type=\"url\" name=\"cover\" /></dd><dt><label>Price</label></dt><dd><input type=\"text\" name=\"price\" /></dd></dl></fieldset><fieldset class=\"actions\"><input type=\"submit\" value=\"Create\" /></fieldset></form>";
 },"useData":true});
