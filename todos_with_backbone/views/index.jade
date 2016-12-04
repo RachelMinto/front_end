@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 Todos
+  ul
+    each todo in todos
+      li
+        h2= todo.title
+        h3= todo.description
+        p= todo.day
