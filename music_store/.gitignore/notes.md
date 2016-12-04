@@ -1,3 +1,4 @@
+.gitignore
 Set up the Express application.
 From the root directory of your project, run express .
 Ensure you have Nodemon installed globally (or run npm install -D nodemon), modify the package.json start command to use Nodemon.
