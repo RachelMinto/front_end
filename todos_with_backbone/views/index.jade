@@ -10,7 +10,7 @@ block content
             .circle 4
           each todo in todos
             if todo.month && todo.year
-              dt #{todo.month}/#{todo.year}
+              dt #{todo.month}/#{todo.year.slice(-2)}
             else
               dt undefined
             dd
@@ -22,7 +22,7 @@ block content
               .circle 2
           each todo in todos
             if todo.month && todo.year
-              dt #{todo.month}/#{todo.year}
+              dt #{todo.month}/#{todo.year.slice(-2)}
             else
               dt undefined
             dd
@@ -37,8 +37,10 @@ block content
           each todo in todos
             tr
               if todo.month && todo.year
-                td.todo_description #{todo.title} - #{todo.month}/#{todo.year}
+                td.todo_description #{todo.title} - #{todo.month}/#{todo.year.slice(-2)}
               else
                 td.todo_description #{todo.title} - undefined
               td#delete 
                 img(src='/images/garbage.png')
+
+    #overlay

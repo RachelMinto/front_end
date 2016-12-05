@@ -1,0 +1,34 @@
+<form action="/todos" method="post">
+  <h1>Add Todo</h1>
+  <fieldset>
+    <dl>
+      <dt>
+        <label>Title</label>
+      </dt>
+      <dd>
+        <input type="text" name="title" />
+      </dd>
+      <dt>
+        <label>Description</label>
+      </dt>
+      <dd>
+        <input type="text" name="description" />
+      </dd>
+      <dt>
+        <label>Date</label>
+      </dt>
+      <dd>
+        <input type="date" name="date" />
+      </dd>
+      <dt>        
+        <label>Cover</label>
+      </dt>
+      <dd>
+        <input type="url" name="cover" />
+      </dd>
+    </dl>
+  </fieldset>
+  <fieldset class="actions">
+    <input type="submit" value="Create" />
+  </fieldset>
+</form>

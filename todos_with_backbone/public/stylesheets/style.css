@@ -119,3 +119,17 @@ main table tr td#delete {
 .selected + dd {
   background: #383f5f;
 }
+.selected + dd div {
+  color: #fff;
+  background: #148fd5;
+}
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+  background: rgba(0,0,0,0.6);
+}
