@@ -1,10 +1,44 @@
 extends layout
 
 block content
-  h1 Todos
-  ul
-    each todo in todos
-      li
-        h2= todo.title
-        h3= todo.description
-        p= todo.day
+  body
+    .container
+      nav
+        dl
+          dt#all_todos.selected All Todos
+          dd
+            .circle 4
+          each todo in todos
+            if todo.month && todo.year
+              dt #{todo.month}/#{todo.year}
+            else
+              dt undefined
+            dd
+              .circle 1
+        dl
+          h1
+            dt#completed Completed
+            dd
+              .circle 2
+          each todo in todos
+            if todo.month && todo.year
+              dt #{todo.month}/#{todo.year}
+            else
+              dt undefined
+            dd
+              .circle 1     
+      main
+        h1 
+          div Todos
+          .circle 4
+        #add
+          a(href="#") Add new todo
+        table
+          each todo in todos
+            tr
+              if todo.month && todo.year
+                td.todo_description #{todo.title} - #{todo.month}/#{todo.year}
+              else
+                td.todo_description #{todo.title} - undefined
+              td#delete 
+                img(src='/images/garbage.png')

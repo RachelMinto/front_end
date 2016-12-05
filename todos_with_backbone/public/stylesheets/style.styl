@@ -1,16 +1,87 @@
 @import "whitespace-reset.css"
 @import "mixins"
 
-body
+html, body, .container
+  height: 100%
   font: normal 16px Helvetica, Arial, sans-serif
-  position: relative
+
+nav
+  float: left
+  width: 336px
+  margin-right: -336px
+  height: 100%
+  background: colors.nav.bg
+  color: colors.nav.text
+  padding-top: 82px
+  box-sizing: border-box
+  dl
+    + dl
+      margin-top: 120px   
+  #completed
+    navheader()
+    &:before
+      content: url(/images/icon_completed.png)
+      margin: 0 20px 0 -50px
+  #all_todos
+    navheader()
+    &:before
+      content: url(/images/icon_menu.png)
+      margin: 0 20px 0 -50px
+  dt
+    navrow()
+    width: 80%
+    text-indent: 140px
+  dd
+    navrow()
+    width: 20%
+
+main
+  margin-left: 336px
+  padding: 82px 100px 0 20px
+  h1
+    font-size: 21px
+    font-weight: normal
+    .circle
+      background: colors.circle.emphasis
+      color: colors.nav.heading
+    div
+      float: left
+      padding-right: 20px
+  #add
+    padding: 15px 0
+    margin-top: 55px
+    a
+      color: colors.hover
+      margin: 45px 0 17px 0
+      text-decoration: none
+      &:before
+        content: url(/images/add_sign.png)
+        padding: 0 12px
+  table
+    border-collapse: collapse
+    width: 100%;   
+    tr
+      border-top: 1px solid colors.border
+      td
+        padding: 15px 0
+      .todo_description     
+        &:before
+          content: url(/images/checkbox.png)
+          padding: 0 12px
+      td#delete
+        width: 45px;
+
+.container
   min-width: 400px
 
-header
-  background: #464f77
-  width: 335px
-  float: left
-  color: #ffffff
-  position: absolute
-  min-height: 910px
-  height: 100%
+.circle
+  background: colors.circle.regular
+  padding: 1.4px 6px
+  border-radius: 50%
+  margin: 0 auto
+  width: 12px
+
+.selected
+  background: colors.nav.bg_emphasis
+  + dd
+    background: colors.nav.bg_emphasis

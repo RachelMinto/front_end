@@ -1,15 +1,121 @@
 @import "whitespace-reset.css";
-body {
+html,
+body,
+.container {
+  height: 100%;
   font: normal 16px Helvetica, Arial, sans-serif;
-  position: relative;
+}
+nav {
+  float: left;
+  width: 336px;
+  margin-right: -336px;
+  height: 100%;
+  background: #464f77;
+  color: #b2b5c3;
+  padding-top: 82px;
+  box-sizing: border-box;
+}
+nav dl + dl {
+  margin-top: 120px;
+}
+nav #completed {
+  color: #fff;
+  font-size: 18px;
+  font-weight: normal;
+}
+nav #completed + dd .circle {
+  font-size: 20px;
+  width: 16px;
+}
+nav #completed:before {
+  content: url("/images/icon_completed.png");
+  margin: 0 20px 0 -50px;
+}
+nav #all_todos {
+  color: #fff;
+  font-size: 18px;
+  font-weight: normal;
+}
+nav #all_todos + dd .circle {
+  font-size: 20px;
+  width: 16px;
+}
+nav #all_todos:before {
+  content: url("/images/icon_menu.png");
+  margin: 0 20px 0 -50px;
+}
+nav dt {
+  float: left;
+  padding: 10px 0;
+  height: 40px;
+  width: 80%;
+  text-indent: 140px;
+}
+nav dd {
+  float: left;
+  padding: 10px 0;
+  height: 40px;
+  width: 20%;
+}
+main {
+  margin-left: 336px;
+  padding: 82px 100px 0 20px;
+}
+main h1 {
+  font-size: 21px;
+  font-weight: normal;
+}
+main h1 .circle {
+  background: #148fd5;
+  color: #fff;
+}
+main h1 div {
+  float: left;
+  padding-right: 20px;
+}
+main #add {
+  padding: 15px 0;
+  margin-top: 55px;
+}
+main #add a {
+  color: #148fd5;
+  margin: 45px 0 17px 0;
+  text-decoration: none;
+}
+main #add a:before {
+  content: url("/images/add_sign.png");
+  padding: 0 12px;
+}
+main table {
+  border-collapse: collapse;
+  width: 100%;
+}
+main table tr {
+  border-top: 1px solid #e7e7e7;
+}
+main table tr td {
+  padding: 15px 0;
+}
+main table tr .todo_description:before {
+  content: url("/images/checkbox.png");
+  padding: 0 12px;
+}
+main table tr td#delete {
+  width: 45px;
+}
+.container {
   min-width: 400px;
 }
-header {
-  background: #464f77;
-  width: 335px;
-  float: left;
-  color: #fff;
-  position: absolute;
-  min-height: 910px;
-  height: 100%;
+.circle {
+  background: #6b7292;
+  padding: 1.4px 6px;
+  border-radius: 50%;
+  margin: 0 auto;
+  width: 12px;
+}
+.selected {
+  background: #383f5f;
+}
+.selected + dd {
+  background: #383f5f;
 }

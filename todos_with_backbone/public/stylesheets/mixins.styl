@@ -1,0 +1,30 @@
+colors = {
+  text: #060606,
+  hover: #148fd5,
+  complete: #888888,
+  border: #e7e7e7,
+  nav: {
+    bg: #464f77,
+    bg_emphasis: #383f5f,
+    heading: #ffffff,
+    text: #b2b5c3
+  },
+  circle: {
+    emphasis: #148fd5,
+    regular: #6b7292
+  }
+}
+
+navheader()
+  color: colors.nav.heading
+  font-size: 18px
+  font-weight: normal
+  + dd
+    .circle
+      font-size: 20px
+      width: 16px
+
+navrow()
+  float: left
+  padding: 10px 0
+  height: 40px
