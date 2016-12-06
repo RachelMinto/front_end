@@ -9,18 +9,24 @@ html
     +javascript_include_tag("vendor/all")
     +javascript_include_tag("handlebars_templates")
   body
-    header
-      h1 Sushi Website!
-      #cart
+    #container
+      header
+        img(src="/images/logo.png")
+        #cart
+          div
+            p Shopping Cart
+            button(type="submit") 0 Items
 
-    main
-      block content
+      main
+        block content
 
-    footer
-      p Learn more about Kendo UI® SPA at docs.telerik.com/kendo-ui.
-      p Copyright © 2016, Progress Software Corporation and/or its subsidiaries or affiliates. All Rights Reserved.
+      footer
+        p Learn more about Kendo UI® SPA at
+          span  docs.telerik.com/kendo-ui.
+        p Copyright © 2016, Progress Software Corporation and/or its subsidiaries or affiliates. All Rights Reserved.
 
-    +javascript_include_tag("application") 
-    +javascript_include_tag("models/food_item")
-    +javascript_include_tag("collections/food_items")
-    +javascript_include_tag("views/food_item")
+      +javascript_include_tag("application") 
+      +javascript_include_tag("models/food_item")
+      +javascript_include_tag("collections/food_items")
+      +javascript_include_tag("views/food_item")
+      block scripts

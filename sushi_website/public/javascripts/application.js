@@ -1,6 +1,9 @@
 var App = {
   templates: JST,
   $el: $('main'),
+  init: function() {
+    this.renderFoodItems();
+  },
   indexView: function() {
     this.index = new IndexView();
     this.renderFoodItems();
@@ -8,7 +11,7 @@ var App = {
     this.bindEvents();
   },
   renderFoodItems: function() {
-    this.foodItems.each(this.renderFoodItemView); //Where does this.albums come from?
+    this.food_items.each(this.renderFoodItemView); //this.food_items is set up in index.jade script. Reduces load time by reducing http requests.
   },
   createCart: function() {
     this.cart = new CartItems();
@@ -18,11 +21,8 @@ var App = {
   },
   renderFoodItemView: function(foodItem) {
     new FoodItemView({
-      model: FoodItem
+      model: foodItem
     });
-  },
-  newAlbum: function() {
-    new NewAlbumView();
   },
   bindEvents: function() {
   },

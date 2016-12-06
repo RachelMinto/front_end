@@ -169,26 +169,62 @@ Order of Creation
         model: FoodItem
         });
   ~include those js files in the layout.jade file.
+  ~Add block scripts at the end to allow for inclusion of scripts on a per-page basis
   ~include bower-concatenated file public/javascripts/vendor/all.js
 
   Add app.locals.basedir = path.join(__dirname, 'views'); to app.js
 
   Connect up application.styl by installing jade (package.json, npm install, app.js)
 
-  ~remove from index jade:
-  block content
-  ul
-    each food_item in food_items
-      li
+  Create FoodItemView:
+  var FoodItemView = Backbone.View.extend({
+    tagName: "li"
+  });
+
+  Add to index.jade:
+    script(type="text/javascript").
+    App.food_items = new FoodItems(!{JSON.stringify(food_items)});
+
+
+At this point you can inspect elements and will see the json data in the script tag.
+It is available to App at App.food_items
+
+Create template and view content:
+  Remove from index.jade:
         img(src="#{food_item.image}")
         h2= food_item.title
         h3= food_item.description
         p $#{food_item.price}
         a.button(href="#") Add to cart
 
+  Create handlebars template for food_item
+  run grunt handlebars
+
+  Add to the FoodItemView your template, and render and initialize methods
+
+  Updated index.jade:
+    extends layout
+
+    block content
+      ul
+
+      block scripts
+        script(type="text/javascript").
+          App.food_items = new FoodItems(!{JSON.stringify(food_items)});
+
+Add to application.js:
+  init: function() {
+    this.renderFoodItems();
+  },
 
 
-  Create basic styl
+Make sure backbone models and views are connected. \
+  -view contains backreference for the model.
+  -App passes model into view.
+
+
+
+
   Create jasmine test suite
   Create view of individual food item on click
   Create add to cart methods

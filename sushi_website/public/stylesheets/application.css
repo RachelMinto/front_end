@@ -1,7 +1,91 @@
 @import "whitespace-reset.css";
+html {
+  background: #000;
+}
+#container {
+  width: 1000px;
+  margin: 0 auto;
+}
 body {
   font: normal 16px "Droid Sans", sans-serif;
   color: #fff;
   background-repeat: repeat repeat;
   background-image: url("/images/background-image.png");
+}
+header {
+  padding: 55px 0;
+}
+#cart {
+  float: right;
+  display: inline-block;
+  background: #000;
+  padding: 3px;
+}
+#cart p {
+  display: inline-block;
+}
+#cart div button {
+  background: #d60041;
+  color: #fff;
+}
+#cart div button:before {
+  width: 100px;
+  content: "Hello";
+}
+.cart_preview {
+  border-top: 0.5px solid #787878;
+  margin-bottom: 22px;
+}
+ul {
+  padding: 0;
+}
+li {
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 22px;
+  background: #fff;
+  font-size: 18px;
+  font-weight: normal;
+}
+li figure img {
+  display: block;
+}
+li figcaption {
+  color: #000;
+}
+li figcaption div {
+  color: #ab7829;
+  padding: 32px 0;
+  border-bottom: 1px dotted #787878;
+  -webkit-box-shadow: inset -10px 0px 5px -6px;
+  box-shadow: inset -5px 0px 5px -6px;
+}
+li figcaption div p {
+  color: #787878;
+}
+li figcaption div a {
+  color: #d60041;
+}
+li figcaption div + div {
+  padding: 12px 0;
+  font-size: 16px;
+}
+li figcaption div + div:hover {
+  background: #d60041;
+}
+li figcaption div + div:hover a {
+  color: #fff;
+}
+a {
+  text-decoration: none;
+}
+footer {
+  font-size: 12px;
+  color: #787878;
+}
+footer p {
+  margin: 10px 0;
+}
+footer span {
+  color: #d60041;
 }

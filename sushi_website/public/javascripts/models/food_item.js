@@ -1,1 +1,2 @@
-var FoodItem = Backbone.Model.extend({});
+var FoodItem = Backbone.Model.extend({
+});
