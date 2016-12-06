@@ -1,0 +1,7 @@
+@import "whitespace-reset.css";
+body {
+  font: normal 16px "Droid Sans", sans-serif;
+  color: #fff;
+  background-repeat: repeat repeat;
+  background-image: url("/images/background-image.png");
+}

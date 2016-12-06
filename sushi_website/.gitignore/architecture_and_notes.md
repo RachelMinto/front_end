@@ -134,9 +134,8 @@ Order of Creation
   ~Create dummy data/food_items.json~
   ~Use the path and fs modules to read in JSON file. (Modify index.js)
   ~Run server with npm start to check content.
-  Create general page layout in index.jade
-
-  Create layout.jade file:
+  ~Create general page layout in index.jade
+  ~Create layout.jade file:
 
   doctype html
   html
@@ -156,8 +155,39 @@ Order of Creation
       script(type="text/javascript" src="/javascripts/application.js")        
 
 
-  Set up handlebars template for index
-  Get grunt working for handlebars
+  ~Set up handlebars template for index
+  ~Get grunt working for handlebars
+  ~touch public/javascripts/application.js
+  ~mkdir public/javascripts/views
+  ~mkdir public/javascripts/models
+  ~mkdir public/javascripts/collections
+  ~touch public/javascripts/views/index.js
+  ~touch public/javascripts/models/food_item.js  
+      var FoodItem = Backbone.Model.extend({});
+  ~touch public/javascripts/collections/food_items.js  
+      var FoodItems = Backbone.Collection.extend({
+        model: FoodItem
+        });
+  ~include those js files in the layout.jade file.
+  ~include bower-concatenated file public/javascripts/vendor/all.js
+
+  Add app.locals.basedir = path.join(__dirname, 'views'); to app.js
+
+  Connect up application.styl by installing jade (package.json, npm install, app.js)
+
+  ~remove from index jade:
+  block content
+  ul
+    each food_item in food_items
+      li
+        img(src="#{food_item.image}")
+        h2= food_item.title
+        h3= food_item.description
+        p $#{food_item.price}
+        a.button(href="#") Add to cart
+
+
+
   Create basic styl
   Create jasmine test suite
   Create view of individual food item on click
