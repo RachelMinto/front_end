@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 Sushi Website!
+  ul
+    each food_item in food_items
+      li
+        img(src="#{food_item.image}")
+        h2= food_item.title
+        h3= food_item.description
+        p $#{food_item.price}
+        a.button(href="#") Add to cart
