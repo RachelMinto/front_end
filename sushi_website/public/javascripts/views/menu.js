@@ -1,6 +1,6 @@
 var FoodItemView = Backbone.View.extend({
   tagName: "li",
-  template: App.templates.food_item,
+  template: App.templates.menu,
   render: function() {
     var id = this.model.get("id");
 

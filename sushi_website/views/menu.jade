@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  .cart_preview
+  ul
+
+block scripts
+  script(type="text/javascript").
+    App.food_items = new FoodItems(!{JSON.stringify(food_items)});
+    App.init();

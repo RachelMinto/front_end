@@ -252,6 +252,8 @@ Make sure backbone models and views are connected. \
 
   On click of food_item, render FoodItemView for that model.
   -Create a page at localhost:3000/#/menu/1
+  -Create a handlebars template for menu item
+  -Figure out how to connect that view to a particular model.
   -Grab id on click
   -remove index view and render individual view
 
@@ -261,7 +263,7 @@ Make sure backbone models and views are connected. \
   Make destroy functionality for cart view
   Add functionality for food_item view to go previous and next
 
-  Add pushState and history functionality
+  Add pushState and history functionality. Create backbone router.
   Make into single page app instead of individual pages
 
 
