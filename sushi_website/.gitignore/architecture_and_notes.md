@@ -222,11 +222,39 @@ Make sure backbone models and views are connected. \
   -view contains backreference for the model.
   -App passes model into view.
 
-
-
-
   Create jasmine test suite
-  Create view of individual food item on click
+
+  npm install jasmine-node -S
+  npm install request -S
+
+  Add to package.json
+  "test": "jasmine-node spec --autotest --color --watch ."
+
+  mkdir spec
+  subl spec/route_spec.js
+  Create a test
+  eg .
+  var request = require("request");
+  var base_url = "http://localhost:3000/"
+
+  describe('Sushi App', function() {
+    describe("GET /", function() {
+      it("returns status code 200", function(done) {
+        request.get(base_url, function(error, response, body) {
+          expect(response.statusCode).toBe(200);
+          done();
+        });
+      });   
+    });
+  });
+
+  Run 2 terminals, both npm test and npm start
+
+  On click of food_item, render FoodItemView for that model.
+  -Create a page at localhost:3000/#/menu/1
+  -Grab id on click
+  -remove index view and render individual view
+
   Create add to cart methods
   Create cart view functionality for index and food_item views
   Create Cart View
