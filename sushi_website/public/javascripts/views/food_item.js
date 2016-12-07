@@ -1,6 +1,12 @@
 var FoodItemView = Backbone.View.extend({
   tagName: "li",
   template: App.templates.food_item,
+  events: {
+    "click": "renderMenuView"
+  },
+  renderMenuView: function() {
+    console.log(' i clicked the item.')
+  },
   render: function() {
     var id = this.model.get("id");
 

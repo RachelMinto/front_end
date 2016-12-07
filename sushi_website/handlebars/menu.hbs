@@ -1,15 +1,26 @@
-<figure>
-  <img src="{{image}}"/>
-  <div class="overlay">
-    <img src="/images/nav-next.png"/>
-  </div>
-</figure>
-<figcaption>
-  <div>
-    <h2>{{title}}</h2>
-    <p>{{price}}</p>
+<div id="food_item">
+  <div class="previous">
   </div>
   <div>
-    <a href="">Add to Cart</a>
+    <img src="{{image}}" />
+    <div>
+      <h2>{{title}}</h2>
+      <p>{{description}}</p>
+      <div>
+        <div>{{price}}</div>
+        <button type="submit">Add to Cart</button>
+      </div>
+    </div>
+    <table>
+      <th colspan="2">Nutritiional Information</th>
+      {{#each nutrition}}
+      <tr>
+        <td>{{@key}}</td>
+        <td>{{this}}</td>
+      </tr>
+      {{/each}}
+    </table>
   </div>
-</figcaption>
+  <div class="next">
+  </div>    
+</div>    

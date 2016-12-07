@@ -106,6 +106,9 @@ li figcaption div + div:hover a {
 a {
   text-decoration: none;
 }
+.menu_item {
+  background: url("/images/sushi-preview.png");
+}
 footer {
   font-size: 12px;
   color: #787878;

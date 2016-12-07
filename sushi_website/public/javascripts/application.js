@@ -13,6 +13,9 @@ var App = {
   renderFoodItems: function() {
     this.food_items.each(this.renderFoodItemView); //this.food_items is set up in index.jade script. Reduces load time by reducing http requests.
   },
+  renderMenuIem: function(food_item) {
+    this.renderFoodItemView(food_item);
+  },
   createCart: function() {
     this.cart = new CartItems();
     this.cart.view = new CartView({

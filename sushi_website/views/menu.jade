@@ -1,10 +1,10 @@
 extends layout
 
 block content
+  h1 Menu Item
   .cart_preview
   ul
-
-block scripts
-  script(type="text/javascript").
-    App.food_items = new FoodItems(!{JSON.stringify(food_items)});
-    App.init();
+    li
+      #{title}
+      #{cover}
+      I have something here

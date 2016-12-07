@@ -3,15 +3,19 @@ var path = require("path");
 var fs = require("fs");
 var file_path = path.resolve(path.dirname(__dirname), "data/food_items.json");
 var router = express.Router();
+var _ = require("underscore");
 
 function getMenuItem(id) {
   data = JSON.parse(fs.readFileSync(file_path, "utf8"))
-  return data;
+  return _(data).findWhere({ id: +id });
 }
 
 /* GET home page. */
 router.get('/:id', function(req, res, next) {
-  res.send('menu id' + getMenuItem(req.params.id));
+  var menuItem = getMenuItem(req.params.id);
+  res.render("menu", {
+    foodItem: menuItem
   });
+});
 
 module.exports = router;
