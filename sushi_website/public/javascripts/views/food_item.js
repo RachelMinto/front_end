@@ -6,6 +6,7 @@ var FoodItemView = Backbone.View.extend({
   },
   renderMenuView: function() {
     console.log(' i clicked the item.')
+    App.trigger("render_menu_item", this.model);
   },
   render: function() {
     var id = this.model.get("id");

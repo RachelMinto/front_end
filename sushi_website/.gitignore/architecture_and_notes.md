@@ -1,5 +1,8 @@
 .gitignore
 
+Page flow:
+Layout Jade must include routing file. 
+
 Routes
 / && /#
 /#/menu/{{id}}

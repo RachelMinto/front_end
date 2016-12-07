@@ -12,6 +12,10 @@ this["JST"]["food_item"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main"
     + "</p></div><div><a href=\"\">Add to Cart</a></div></figcaption>";
 },"useData":true});
 
+this["JST"]["index"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"cart_preview\"><ul></ul></div>";
+},"useData":true});
+
 this["JST"]["menu"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var helper, alias1=container.escapeExpression;
 
