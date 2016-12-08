@@ -6,7 +6,7 @@ html
 
 #container
   width: 1000px
-  margin: 0 auto  
+  margin: 0 auto 
 
 body
   font: normal 16px "Droid Sans", sans-serif
@@ -93,8 +93,53 @@ li
 a
   text-decoration: none
 
-.menu_item
+#menu_img_before, #menu_img_after
   background: url("/images/sushi-preview.png")
+  height: 200px
+  display: block
+
+.food_item
+  height: 600px
+  box-sizing: border-box
+  #menu_content
+    height: 200px
+    #menu_info
+      display: inline-block
+      div, table
+        display: inline-block
+        color: #000
+        background: colors.default
+      #menu_data
+        vertical-align: top
+        width: 400px
+        height: 200px
+        h2
+          padding: 30px
+          padding-bottom: 10px                
+          font-size: 20px
+        p
+          padding: 30px
+          padding-top: 0px
+          font-size: 12px
+        #menu_cart_info
+          width: 100%
+          padding: 30px
+          padding-top: 20px
+          border-top: .5px dotted colors.data
+          box-sizing: border-box
+    .previous, .next
+      display: inline-block
+      content: 'hello'
+      width: 100px
+      height: 200px
+      background: #000
+      &:hover
+        background: colors.emphasis  
+  table
+    height: 200px
+    width: 200px
+    padding: 10px
+    box-sizing: border-box
 
 footer
   font-size: 12px

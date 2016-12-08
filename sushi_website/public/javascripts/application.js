@@ -19,6 +19,11 @@ var App = {
   renderFoodItems: function() {
     this.food_items.each(this.renderFoodItemView); //this.food_items is set up in index.jade script. Reduces load time by reducing http requests.
   },
+  renderMenuItem: function(foodItem) {
+    new MenuView({
+      model: foodItem
+    });
+  },        
   renderFoodItemView: function(foodItem) {
     new FoodItemView({
       model: foodItem
@@ -27,6 +32,6 @@ var App = {
   bindEvents: function() {
     _.extend(this, Backbone.Events);
     this.listenTo(this.index, "add_album", this.newAlbum);
-    // this.on("render_menu_item", console.log('triggered'));
+    this.on("render_menu_item", this.renderMenuItem);
   },
 };

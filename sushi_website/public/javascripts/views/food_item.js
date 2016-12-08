@@ -5,13 +5,12 @@ var FoodItemView = Backbone.View.extend({
     "click": "renderMenuView"
   },
   renderMenuView: function() {
-    console.log(' i clicked the item.')
     App.trigger("render_menu_item", this.model);
   },
   render: function() {
     var id = this.model.get("id");
 
-    this.$el.attr("id", "item_" + id);
+    this.$el.attr("id", "food_item_" + id);
     this.$el.html(this.template(this.model.toJSON()));
     this.$el.appendTo(App.$el.find("ul"));
   },

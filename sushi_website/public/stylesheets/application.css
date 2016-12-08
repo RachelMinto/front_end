@@ -106,8 +106,67 @@ li figcaption div + div:hover a {
 a {
   text-decoration: none;
 }
-.menu_item {
+#menu_img_before,
+#menu_img_after {
   background: url("/images/sushi-preview.png");
+  height: 200px;
+  display: block;
+}
+.food_item {
+  height: 600px;
+  box-sizing: border-box;
+}
+.food_item #menu_content {
+  height: 200px;
+}
+.food_item #menu_content #menu_info {
+  display: inline-block;
+}
+.food_item #menu_content #menu_info div,
+.food_item #menu_content #menu_info table {
+  display: inline-block;
+  color: #000;
+  background: #fff;
+}
+.food_item #menu_content #menu_info #menu_data {
+  vertical-align: top;
+  width: 400px;
+  height: 200px;
+}
+.food_item #menu_content #menu_info #menu_data h2 {
+  padding: 30px;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+.food_item #menu_content #menu_info #menu_data p {
+  padding: 30px;
+  padding-top: 0px;
+  font-size: 12px;
+}
+.food_item #menu_content #menu_info #menu_data #menu_cart_info {
+  width: 100%;
+  padding: 30px;
+  padding-top: 20px;
+  border-top: 0.5px dotted #787878;
+  box-sizing: border-box;
+}
+.food_item #menu_content .previous,
+.food_item #menu_content .next {
+  display: inline-block;
+  content: 'hello';
+  width: 100px;
+  height: 200px;
+  background: #000;
+}
+.food_item #menu_content .previous:hover,
+.food_item #menu_content .next:hover {
+  background: #d60041;
+}
+.food_item table {
+  height: 200px;
+  width: 200px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 footer {
   font-size: 12px;
