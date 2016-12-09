@@ -1,11 +1,15 @@
 var router = new (Backbone.Router.extend({
   routes: {
-    "menu/:id": App.renderMenuItem
+    "menu/:id": "menu",
+    "checkout": App.checkoutScreen
   },
   index: function() { App.indexView(); },
   initialize: function() {
-    this.route(/^\/?$/, "index", this.index);
-  }
+    this.route(/^\/?$/, "index", this.index);  
+  },
+  menu: function(id) {
+    App.renderMenuItem.call(App, id)
+  },
 }))();
 
 Backbone.history.start({

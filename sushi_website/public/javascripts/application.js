@@ -7,9 +7,6 @@ var App = {
     this.createCart();
     this.bindEvents();
   },
-  renderMenuItem: function(food_item) {
-    this.renderFoodItemView(food_item);
-  },
   createCart: function() {
     this.cart = new CartItems();
     this.cart.view = new CartView({
@@ -19,11 +16,19 @@ var App = {
   renderFoodItems: function() {
     this.food_items.each(this.renderFoodItemView); //this.food_items is set up in index.jade script. Reduces load time by reducing http requests.
   },
-  renderMenuItem: function(foodItem) {
+  getMenuItem: function(id) {
+    return this.food_items.findWhere({ "id": +id });
+  },
+  renderMenuItem: function(id) {
+    var foodItem = this.getMenuItem(id) || id;  // Need to rename or modify this - param could be id or model.
     new MenuView({
       model: foodItem
     });
   },        
+  renderPrevious: function(current) {
+    debugger;
+    console.log('hello cheech')
+  },
   renderFoodItemView: function(foodItem) {
     new FoodItemView({
       model: foodItem
@@ -31,7 +36,8 @@ var App = {
   },      
   bindEvents: function() {
     _.extend(this, Backbone.Events);
-    this.listenTo(this.index, "add_album", this.newAlbum);
+    // this.listenTo(this.index, "add_album", this.newAlbum);
     this.on("render_menu_item", this.renderMenuItem);
+    this.on("previous_menu_item", this.renderPrevious);
   },
 };

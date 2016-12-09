@@ -1,26 +1,31 @@
-<div id=menu_img_before></div>
-<div id="menu_content">
-  <div class="previous"></div>
-  <div id="menu_info">
-    <img src="{{image}}" />
-    <div id="menu_data">
-      <h2>{{title}}</h2>
-      <p>{{description}}</p>
-      <div id="menu_cart_info">
-        <div class="price">{{price}}</div>
-        <button type="submit">Add to Cart</button>
-      </div>
-    </div>
-    <table>
-      <th colspan="2">Nutritiional Information</th>
-      {{#each nutrition}}
-      <tr>
-        <td>{{@key}}</td>
-        <td>{{this}}</td>
-      </tr>
-      {{/each}}
-    </table>
-  </div>
-  <div class="next"></div>
+<div class="cart_preview">
 </div>
-<div id=menu_img_after></div>
+<div class="content">
+  <div id=menu_img_before></div>
+  <div id="menu_content">
+    <div class="previous"></div>
+    <div id="menu_info">
+      <img src="{{image}}" />
+      <div id="menu_data">
+        <h2>{{title}}</h2>
+        <p>{{description}}</p>
+        <div id="menu_cart_info">
+          <div class="price">{{price}}</div>
+          <button type="submit">Add to Cart</button>
+        </div>
+      </div>
+      <table>
+        <th colspan="2">Nutritiional Information</th>
+        {{#each nutrition}}
+        <tr>
+          <td>{{@key}}</td>
+          <td>{{this}}</td>
+        </tr>
+        {{/each}}
+      </table>
+    </div>
+    <div class="next"></div>
+  </div>
+  <div id=menu_img_after></div>
+</div>
+

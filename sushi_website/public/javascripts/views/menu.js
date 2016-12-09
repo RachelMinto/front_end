@@ -1,15 +1,19 @@
 var MenuView = Backbone.View.extend({
   tagName: "div",
   template: App.templates.menu,
+  events: {
+    "click .previous": "renderPreviousMenuView"
+  },
+  renderPreviousMenuView: function() {
+    App.trigger("previous_menu_item", this.model);
+  },
   render: function() {
     var id = this.model.get("id");
 
     this.$el.attr("id", "item_" + id);
     this.$el.attr("class", "food_item");
     this.$el.html(this.template(this.model.toJSON()));
-    App.$el.find('ul').html('');
-    App.$el.find('.content').html(this.$el);
-    // this.$el.appendTo(App.$el.find("ul"));
+    App.$el.html(this.$el);
   },
   initialize: function() {
     this.render();

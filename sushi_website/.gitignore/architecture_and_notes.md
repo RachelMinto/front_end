@@ -1,4 +1,12 @@
+A Quick Note On Event-Driven Architecture
+I’m a follower of the philosophy that a backbone.js application is an event-driven application that responds to changes in the state of our models. That is to say we don’t want to have our views manipulating themselves and referencing / controlling each other directly. Rather, we want to have our views call methods on our models that manipulate the state of our models. In response to the state of our models changing, our application does things. This could be updating some visual element, routing to a new hash fragment, and/or anything else we can do in a web page.
+
 .gitignore
+
+About routers:
+  app.js defines what routes are accepted. It sets the variables for routes files that are in public directory, and then says app.use('/', index), where index was a variable for a routes file.
+
+  The routes files can then further define from the submitted base route, if desired, using get, post, etc. Here the data path name is specified, 
 
 Page flow:
 Layout Jade must include routing file. 
