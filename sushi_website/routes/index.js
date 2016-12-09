@@ -6,7 +6,7 @@ var data = [{"title":"Sashimi salad","description":"Organic greens topped with f
 
 /* GET home page. */
 module.exports = function(router) {
-  router.get('/', function(req, res, next) {
+  router.get('', function(req, res, next) {
     res.render('index', {     //res.render(view [, locals] [, callback])  view is .jade
       food_items: data
     });

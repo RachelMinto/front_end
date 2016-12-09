@@ -11,7 +11,7 @@ function getMenuItem(id) {
 
 module.exports = function(router) {
   router.get('/menu/:id', function(req, res, next) {
-    App.renderMenuItem
+    App.renderMenuItem(req.params.id)
   });
 };
 

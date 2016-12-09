@@ -20,14 +20,12 @@ var App = {
     return this.food_items.findWhere({ "id": +id });
   },
   renderMenuItem: function(id) {
-    var foodItem = this.getMenuItem(id) || id;  // Need to rename or modify this - param could be id or model.
+    var foodItem = this.getMenuItem(+id) || id;  // Need to rename or modify this - param could be id or model.
     new MenuView({
       model: foodItem
     });
   },        
   renderPrevious: function(current) {
-    debugger;
-    console.log('hello cheech')
   },
   renderFoodItemView: function(foodItem) {
     new FoodItemView({
