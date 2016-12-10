@@ -7,7 +7,7 @@ function nextID() {
 }
 
 function getFoodItems() {
-  return JSON.parse(fs.readFileSync(file_path, "utf8")).data;
+  return JSON.parse(fs.readFileSync(file_path, "utf8"));
 }
 
 function writeFoodItems(data) {

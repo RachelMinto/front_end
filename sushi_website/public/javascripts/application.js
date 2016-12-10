@@ -26,6 +26,7 @@ var App = {
     });
   },        
   renderPrevious: function(current) {
+    console.log('render previous')
   },
   renderFoodItemView: function(foodItem) {
     new FoodItemView({

@@ -3,10 +3,7 @@ var router = new (Backbone.Router.extend({
     "menu/:id": "menu",
     "checkout": App.checkoutScreen
   },
-  index: function() { App.indexView(); },
-  initialize: function() {
-    this.route(/^\/?$/, "index", this.index);  
-  },
+  initialize: function() { App.indexView(); },
   menu: function(id) {
     App.renderMenuItem.call(App, id)
   },
