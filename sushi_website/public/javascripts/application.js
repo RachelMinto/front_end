@@ -4,6 +4,10 @@ var App = {
   indexView: function() {
     this.index = new IndexView();
     this.renderFoodItems();
+  },
+  initializeData: function() {
+    this.index = new IndexView();
+    this.renderFoodItems();
     this.createCart();
     this.bindEvents();
   },
@@ -26,7 +30,7 @@ var App = {
     });
   },        
   renderPrevious: function(current) {
-    console.log('render previous')
+    debugger;
   },
   renderFoodItemView: function(foodItem) {
     new FoodItemView({
