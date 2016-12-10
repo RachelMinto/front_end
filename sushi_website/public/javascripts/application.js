@@ -30,8 +30,13 @@ var App = {
     });
   },        
   renderPrevious: function(current) {
-    debugger;
+    var id = current.id === 1 ? this.food_items.length : current.id - 1
+    Backbone.history.navigate("/menu/" + id, { trigger: true });
   },
+  renderNext: function(current) {
+    var id = current.id === this.food_items.length ? 1 : current.id + 1
+    Backbone.history.navigate("/menu/" + id, { trigger: true });
+  },  
   renderFoodItemView: function(foodItem) {
     new FoodItemView({
       model: foodItem
@@ -42,5 +47,6 @@ var App = {
     // this.listenTo(this.index, "add_album", this.newAlbum);
     this.on("render_menu_item", this.renderMenuItem);
     this.on("previous_menu_item", this.renderPrevious);
+    this.on("next_menu_item", this.renderNext);
   },
 };

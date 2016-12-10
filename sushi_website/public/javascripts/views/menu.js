@@ -2,10 +2,14 @@ var MenuView = Backbone.View.extend({
   tagName: "div",
   template: App.templates.menu,
   events: {
-    "click .previous": "renderPreviousMenuView"
+    "click .previous": "renderPreviousMenuView",
+    "click .next": "renderNextMenuView"
   },
   renderPreviousMenuView: function() {
     App.trigger("previous_menu_item", this.model);
+  },
+  renderNextMenuView: function() {
+    App.trigger("next_menu_item", this.model);
   },
   render: function() {
     var id = this.model.get("id");
