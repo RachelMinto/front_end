@@ -43,7 +43,12 @@ var App = {
     new FoodItemView({
       model: foodItem
     });
-  },      
+  },
+  renderCheckout: function() {
+    new CheckoutView({  // reassigns view for cart here.
+      collection: this.cart
+    });
+  },
   bindEvents: function() {
     _.extend(this, Backbone.Events);
     this.on("add_to_cart", this.cart.addItem.bind(this.cart));    

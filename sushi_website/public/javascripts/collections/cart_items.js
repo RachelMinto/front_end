@@ -41,11 +41,15 @@ var CartItems = Backbone.Collection.extend({
     this.remove(id);
     this.update();
   },
+  empty: function() {
+    this.reset();
+  },
   update: function() {
     this.setTotal().setQuantity().updateStorage();
   },
   initialize: function() {
     this.readStorage();
     this.on("destroy", this.destroy);
+    this.on("empty", this.empty);
   }
 });

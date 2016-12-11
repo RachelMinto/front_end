@@ -1,7 +1,7 @@
 var router = new (Backbone.Router.extend({
   routes: {
     "menu/:id": "menu",
-    "checkout": App.checkoutScreen,
+    "checkout": "checkout"
   },
   index: function() {
     App.indexView();
@@ -12,6 +12,9 @@ var router = new (Backbone.Router.extend({
   },  
   menu: function(id) {
     App.renderMenuItem.call(App, id)
+  },
+  checkout: function() {
+    App.renderCheckout.call(App)
   },
 }))();
 

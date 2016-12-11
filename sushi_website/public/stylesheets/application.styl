@@ -35,7 +35,7 @@ header
 .cart_preview
   border-top: .5px solid colors.data
   margin-bottom: 22px
-  height: 122px
+  max-height: 122px
   background: #000
   ul
     overflow: hidden
@@ -157,7 +157,13 @@ a
     padding: 10px
     box-sizing: border-box
 
+#cart_content
+  display: block
+  background: colors.default
+
 footer
+  clear: both
+  padding: 20px 0
   font-size: 12px
   color: colors.data
   p

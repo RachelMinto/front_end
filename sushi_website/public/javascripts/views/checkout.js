@@ -1,5 +1,5 @@
-var CartView = Backbone.View.extend({
-  template: App.templates.cart,
+var CheckoutView = Backbone.View.extend({
+  template: App.templates.checkout,
   el: $(".cart_preview").get(0),
   events: {
     "click": "destroy",
@@ -11,13 +11,14 @@ var CartView = Backbone.View.extend({
     this.collection.trigger("destroy", +$e.attr("data-id"));
     this.render();
   },
-  empty: function(e) {
+  completeCheckout: function(e) {
     e.preventDefault();
     this.collection.trigger("empty");
+    //return to home page.
   },
   render: function() {
+    $('main').html('');
     $('.cart_preview').html(this.template({
-      quantity: this.collection.getQuantity(),
       cart_items: this.collection.toJSON(),
       total: this.collection.getTotal()
     }));
@@ -28,5 +29,6 @@ var CartView = Backbone.View.extend({
   },
   initialize: function() {
     this.listenTo(this.collection, "cart_updated", this.render);
+    this.render();
   }
 });

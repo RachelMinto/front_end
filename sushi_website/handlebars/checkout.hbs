@@ -1,0 +1,30 @@
+<div id="checkout">
+  <div id=menu_img_before></div>
+  <div id="cart_content">
+    <h1>Order Details</h1>
+    <table>
+      <thead>
+        <tr>
+          <td>Item</td>
+          <td></td>
+          <td>Quantity</td>
+          <td>Price</td>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each cart_items}}
+        <tr>
+          <td><img src="{{image}}" data-id="{{id}}"></td>
+          <td>{{title}}</td>
+          <td>{{quantity}}</td>
+          <td>${{total}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+      <p>{{total}}</p>
+      <a href="#">Cancel Order</a>
+      <button type="submit">Order Now!</button>
+    </table>
+  </div>
+  <div id=menu_img_after></div>
+</div>
