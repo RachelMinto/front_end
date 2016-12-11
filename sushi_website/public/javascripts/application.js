@@ -4,6 +4,7 @@ var App = {
   indexView: function() {
     this.index = new IndexView();
     this.renderFoodItems();
+    this.showCartPreview();
   },
   initializeData: function() {
     this.createCart();    
@@ -16,6 +17,12 @@ var App = {
     this.cart.view = new CartView({
       collection: this.cart
     });
+  },
+  showCartPreview: function() {
+    $(App.cart.view.el).show()
+  },
+  hideCartPreview: function() {
+    $(App.cart.view.el).hide()
   },
   renderFoodItems: function() {
     this.food_items.each(this.renderFoodItemView);//this.food_items is set up in index.jade script. Reduces load time by reducing http requests.
@@ -45,7 +52,7 @@ var App = {
     });
   },
   renderCheckout: function() {
-    new CheckoutView({  // reassigns view for cart here.
+    new CheckoutView({
       collection: this.cart
     });
   },
@@ -55,5 +62,6 @@ var App = {
     this.on("render_menu_item", this.renderMenuItem);
     this.on("previous_menu_item", this.renderPrevious);
     this.on("next_menu_item", this.renderNext);
+    this.on("show_cart_preview", this.showCartPreview);
   },
 };

@@ -43,7 +43,7 @@ this["JST"]["checkout"] = Handlebars.template({"1":function(container,depth0,hel
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {};
 
-  return "<div id=\"checkout\"><div id=menu_img_before></div><div id=\"cart_content\"><h1>Order Details</h1><table><thead><tr><td>Item</td><td></td><td>Quantity</td><td>Price</td></tr></thead><tbody>"
+  return "<div class=\"content\"><div id=menu_img_before></div><div id=\"cart_content\"><h1>Order Details</h1><table><thead><tr><td>Item</td><td></td><td>Quantity</td><td>Price</td></tr></thead><tbody>"
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.cart_items : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</tbody><p>"
     + container.escapeExpression(((helper = (helper = helpers.total || (depth0 != null ? depth0.total : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"total","hash":{},"data":data}) : helper)))

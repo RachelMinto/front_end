@@ -23,6 +23,8 @@ var MenuView = Backbone.View.extend({
     this.$el.attr("class", "food_item");
     this.$el.html(this.template(this.model.toJSON()));
     App.$el.html(this.$el);
+    App.trigger("show_cart_preview");    
+    this.delegateEvents();
   },
   initialize: function() {
     this.render();

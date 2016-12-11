@@ -21,11 +21,10 @@ var CartView = Backbone.View.extend({
       cart_items: this.collection.toJSON(),
       total: this.collection.getTotal()
     }));
-    this.delegateEvents();
   },
-  hide: function() {
-    this.remove();
-  },
+  // hide: function() {
+  //   this.remove();
+  // },
   initialize: function() {
     this.listenTo(this.collection, "cart_updated", this.render);
   }

@@ -19,6 +19,7 @@ var FoodItemView = Backbone.View.extend({
     this.$el.attr("id", "food_item_" + id);
     this.$el.html(this.template(this.model.toJSON()));
     this.$el.appendTo(App.$el.find("ul"));
+    this.delegateEvents();
   },
   initialize: function() {
     this.render();

@@ -14,7 +14,7 @@ var router = new (Backbone.Router.extend({
     App.renderMenuItem.call(App, id)
   },
   checkout: function() {
-    App.renderCheckout.call(App)
+    App.renderCheckout();
   },
 }))();
 
@@ -24,7 +24,6 @@ Backbone.history.start({
 
 $(document).on("click", "a[href^='/']", function(e) {
   e.preventDefault();
-  console.log('triggered a href')
   router.navigate($(e.currentTarget).attr("href").replace(/^\//, ""), { trigger: true }); //changes url bar
 });
 
