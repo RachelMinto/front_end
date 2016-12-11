@@ -17,24 +17,128 @@ header {
   padding: 55px 0;
   text-transform: uppercase;
 }
+header .cart_summary h3 {
+  padding: 0 0 0 14px;
+  display: inline-block;
+}
+header .cart_summary a {
+  background: #d60041;
+  color: #fff;
+  padding: 0 18px 0 10px;
+  float: right;
+  position: relative;
+  text-align: right;
+  height: 28px;
+  width: 83px;
+}
+header .cart_summary a:before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-top: 14px solid #1f1f1f;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-left: 14px solid #1f1f1f;
+}
+#checkout .menu_img_before,
+#checkout .menu_img_after {
+  height: 50px;
+}
 .cart_summary {
   float: right;
   display: inline-block;
   background: #000;
   padding: 3px;
 }
-.cart_summary p {
+.cart_summary h3 {
+  color: #bababa;
+  font-weight: bold;
+  padding: 20px 14px 10px 14px;
   display: block;
 }
-.cart_summary p:first-child {
-  color: #bababa;
-}
-.cart_summary p + p {
+.cart_summary h3 + p {
   font-size: 30px;
 }
-.cart_summary span {
+.cart_summary a + a {
   background: #d60041;
   color: #fff;
+  padding: 0 18px 0 10px;
+  float: right;
+  position: relative;
+  text-align: right;
+  height: 28px;
+  width: 83px;
+}
+.cart_summary a + a:before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-top: 14px solid #1f1f1f;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-left: 14px solid #1f1f1f;
+}
+#cart_content {
+  padding: 50px 100px;
+  color: #000;
+}
+#cart_content h1 {
+  font-size: 36px;
+  padding-bottom: 60px;
+  color: #2e2e2e;
+}
+#cart_content table {
+  border-collapse: collapse;
+}
+#cart_content table thead tr td {
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #4a4a4a;
+}
+#cart_content table tr {
+  border-bottom: 1px solid #dadada;
+  margin: 0;
+  max-height: 100px;
+  overflow: hidden;
+}
+#cart_content table tr .img_cover {
+  height: 100px;
+  width: 200px;
+  overflow: hidden;
+}
+#cart_content table tr td {
+  padding: 0;
+  margin: 0;
+  font-size: 21px;
+  width: 200px;
+}
+#cart_content table tr td:nth-child(2) {
+  padding-left: 40px;
+  padding-right: 80px;
+  width: 175px;
+}
+#cart_content table tr td:last-child {
+  text-align: right;
+  width: 100px;
+}
+#cart_content p {
+  font-size: 26px;
+  text-align: right;
+}
+#cart_content p span {
+  font-size: 10px;
+  color: #787878;
+  padding-right: 15px;
+  text-transform: uppercase;
 }
 .cart_preview {
   font-size: 10px;
@@ -70,6 +174,25 @@ header {
 .cart_preview .cart_summary span {
   background: #d60041;
   color: #fff;
+  padding: 0 18px 0 10px;
+  float: right;
+  position: relative;
+  text-align: right;
+  height: 28px;
+  width: 83px;
+}
+.cart_preview .cart_summary span:before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-top: 14px solid #1f1f1f;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-left: 14px solid #1f1f1f;
 }
 ul {
   padding: 0;
@@ -142,8 +265,8 @@ a {
   text-decoration: none;
   color: #d60041;
 }
-#menu_img_before,
-#menu_img_after {
+.menu_img_before,
+.menu_img_after {
   background: url("/images/sushi-preview.png");
   height: 200px;
   display: block;

@@ -1,5 +1,5 @@
 <div class="content" id="checkout">
-  <div id=menu_img_before></div>
+  <div class="menu_img_before"></div>
   <div id="cart_content">
     <h1>Order Details</h1>
     <table>
@@ -14,17 +14,19 @@
       <tbody>
         {{#each cart_items}}
         <tr>
-          <td><img src="{{image}}" data-id="{{id}}"></td>
+          <td>
+            <div class="img_cover"><img src="{{image}}" data-id="{{id}}"></div>
+          </td>
           <td>{{title}}</td>
-          <td>{{quantity}}</td>
-          <td>${{format_price total}}</td>
+          <td><input id="intNumber" type="number" min="1" max="10" placeholder="{{quantity}}"/></td>
+          <td>${{format_price price}}</td>
         </tr>
         {{/each}}
       </tbody>
-      <p>${{format_price total}}</p>
-      <a href="#" class="empty">Cancel Order</a>
-      <button type="submit">Order Now!</button>
     </table>
+    <p><span>Total:</span>${{format_price total}}</p>
+    <a href="#" class="empty">Cancel Order</a>
+    <button type="submit">Order Now!</button>    
   </div>
-  <div id=menu_img_after></div>
+  <div class="menu_img_after"></div>
 </div>
