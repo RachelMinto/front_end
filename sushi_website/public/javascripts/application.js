@@ -6,19 +6,20 @@ var App = {
     this.renderFoodItems();
   },
   initializeData: function() {
+    this.createCart();    
     this.index = new IndexView();
     this.renderFoodItems();
-    this.createCart();
     this.bindEvents();
   },
   createCart: function() {
     this.cart = new CartItems();
     this.cart.view = new CartView({
-      collection: this.cart   //where does this.cart live?
+      collection: this.cart
     });
   },
   renderFoodItems: function() {
-    this.food_items.each(this.renderFoodItemView); //this.food_items is set up in index.jade script. Reduces load time by reducing http requests.
+    this.food_items.each(this.renderFoodItemView);//this.food_items is set up in index.jade script. Reduces load time by reducing http requests.
+    this.cart.view.render();
   },
   getMenuItem: function(id) {
     return this.food_items.findWhere({ "id": +id });
@@ -28,6 +29,7 @@ var App = {
     new MenuView({
       model: foodItem
     });
+    this.cart.view.render();
   },        
   renderPrevious: function(current) {
     var id = current.id === 1 ? this.food_items.length : current.id - 1
@@ -44,7 +46,7 @@ var App = {
   },      
   bindEvents: function() {
     _.extend(this, Backbone.Events);
-    // this.listenTo(this.index, "add_album", this.newAlbum);
+    this.on("add_to_cart", this.cart.addItem.bind(this.cart));    
     this.on("render_menu_item", this.renderMenuItem);
     this.on("previous_menu_item", this.renderPrevious);
     this.on("next_menu_item", this.renderNext);

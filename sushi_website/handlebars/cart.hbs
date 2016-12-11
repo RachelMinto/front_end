@@ -1,0 +1,20 @@
+{{#if quantity}}
+<ul>
+  {{#each cart_items}}
+  <li>
+    <figure>
+      <img src="{{image}}" data-id="{{id}}">
+    </figure>
+    <figcaption>
+      {{quantity}} x {{price}}
+    </figcaption>
+  </li>
+  {{/each}}
+</ul>
+<div class="cart_summary">
+  <p>Your Shopping Cart</p>
+  <p>{{total}}</p>
+  <a href="#">Empty Cart</a>
+  <button type="submit">Checkout</button>
+</div>
+{{/if}}

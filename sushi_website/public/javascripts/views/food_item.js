@@ -2,12 +2,17 @@ var FoodItemView = Backbone.View.extend({
   tagName: "li",
   template: App.templates.food_item,
   events: {
+    "click a": "addToCart",
     "click": "renderMenuView"
   },
   renderMenuView: function() {
-    // App.trigger("render_menu_item", this.model);
     Backbone.history.navigate("/menu/" + this.model.id, { trigger: true });
   },
+  addToCart: function(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    App.trigger("add_to_cart", this.model);
+  },  
   render: function() {
     var id = this.model.get("id");
 

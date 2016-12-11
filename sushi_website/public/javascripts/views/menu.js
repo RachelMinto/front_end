@@ -3,11 +3,16 @@ var MenuView = Backbone.View.extend({
   template: App.templates.menu,
   events: {
     "click .previous": "renderPreviousMenuView",
-    "click .next": "renderNextMenuView"
+    "click .next": "renderNextMenuView",
+    "click button": "addToCart"
   },
   renderPreviousMenuView: function() {
     App.trigger("previous_menu_item", this.model);
   },
+  addToCart: function(e) {
+    e.preventDefault();
+    App.trigger("add_to_cart", this.model);
+  },  
   renderNextMenuView: function() {
     App.trigger("next_menu_item", this.model);
   },

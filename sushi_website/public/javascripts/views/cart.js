@@ -1,8 +1,8 @@
 var CartView = Backbone.View.extend({
   template: App.templates.cart,
-  el: $("#cart").get(0),
+  el: $(".cart_preview").get(0),
   events: {
-    "click a": "destroy"
+    "click": "destroy"
   },
   destroy: function(e) {
     e.preventDefault();
@@ -11,14 +11,14 @@ var CartView = Backbone.View.extend({
     this.render();
   },
   render: function() {
-    // this.$el.html(this.template({
-    //   quantity: this.collection.getQuantity(),
-    //   items: this.collection.toJSON(),
-    //   total: this.collection.getTotal()
-    // }));
+    $('.cart_preview').html(this.template({
+      quantity: this.collection.getQuantity(),
+      cart_items: this.collection.toJSON(),
+      total: this.collection.getTotal()
+    }));
+    this.delegateEvents();
   },
   initialize: function() {
-    this.render();
     this.listenTo(this.collection, "cart_updated", this.render);
   }
 });
