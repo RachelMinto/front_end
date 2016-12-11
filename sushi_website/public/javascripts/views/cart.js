@@ -3,7 +3,7 @@ var CartView = Backbone.View.extend({
   el: $(".cart_preview").get(0),
   events: {
     "click": "destroy",
-    "click a": "empty"
+    "click .empty": "empty"
   },
   destroy: function(e) {
     e.preventDefault();
@@ -18,7 +18,7 @@ var CartView = Backbone.View.extend({
   render: function() {
     $('.cart_preview').html(this.template({
       quantity: this.collection.getQuantity(),
-      cart_items: this.collection.toJSON(),
+      cart_items: this.collection.toJSON().splice(0, 8),
       total: this.collection.getTotal()
     }));
   },

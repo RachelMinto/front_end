@@ -10,11 +10,17 @@ var App = {
     this.createCart();    
     this.index = new IndexView();
     this.renderFoodItems();
+    this.renderHeader();
     this.bindEvents();
   },
   createCart: function() {
     this.cart = new CartItems();
     this.cart.view = new CartView({
+      collection: this.cart
+    });
+  },
+  renderHeader: function() {
+    new HeaderView({
       collection: this.cart
     });
   },
@@ -65,3 +71,7 @@ var App = {
     this.on("show_cart_preview", this.showCartPreview);
   },
 };
+
+Handlebars.registerHelper("format_price", function(price) {
+  return (+price).toFixed(2);
+})

@@ -1,6 +1,6 @@
 var IndexView = Backbone.View.extend({
   attributes: {
-    id: "index"
+    id: "index",
   },
   events: {
   },

@@ -12,9 +12,9 @@
   {{/each}}
 </ul>
 <div class="cart_summary">
-  <p>Your Shopping Cart</p>
-  <p>{{total}}</p>
-  <a href="#">Empty Cart</a>
-  <button type="submit">Checkout</button>
+  <p>Your<br>Shopping Cart</p>
+  <p>${{format_price total}}</p>
+  <a href="#" class="empty">Empty Cart</a>
+  <a href="/checkout"><span>Checkout</div></a>
 </div>
 {{/if}}

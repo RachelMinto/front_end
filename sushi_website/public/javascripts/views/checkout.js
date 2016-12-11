@@ -2,7 +2,7 @@ var CheckoutView = Backbone.View.extend({
   template: App.templates.checkout,
   events: {
     "click": "destroy",
-    "click a": "empty"
+    "click .empty": "empty"
   },
   destroy: function(e) {
     e.preventDefault();
@@ -26,7 +26,6 @@ var CheckoutView = Backbone.View.extend({
     this.remove();
   },
   initialize: function() {
-    // this.listenTo(this.collection, "cart_updated", this.render);
     this.render();
   }
 });

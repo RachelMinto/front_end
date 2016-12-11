@@ -11,12 +11,6 @@ html
   body
     #container
       header
-        a(href="/")
-          img(src="/images/logo.png")
-        .cart_summary
-          div
-            p Shopping Cart
-            button(type="submit") 0 Items
 
       .cart_preview
       main
@@ -30,7 +24,7 @@ html
       +javascript_include_tag("application") 
       +javascript_include_tag("models/food_item")
       +javascript_include_tag("collections/food_items", "collections/cart_items")
-      +javascript_include_tag("views/food_item", "views/menu", "views/cart", "views/index", "views/checkout")
+      +javascript_include_tag("views/food_item", "views/menu", "views/cart", "views/index", "views/checkout", "views/header")
       script(type="text/javascript").
         App.food_items = new FoodItems(!{JSON.stringify(food_items)});      
       +javascript_include_tag("router")

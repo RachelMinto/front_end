@@ -13,7 +13,9 @@ body {
   background-image: url("/images/background-image.png");
 }
 header {
+  font-size: 10px;
   padding: 55px 0;
+  text-transform: uppercase;
 }
 .cart_summary {
   float: right;
@@ -22,17 +24,21 @@ header {
   padding: 3px;
 }
 .cart_summary p {
-  display: inline-block;
+  display: block;
 }
-.cart_summary div button {
+.cart_summary p:first-child {
+  color: #bababa;
+}
+.cart_summary p + p {
+  font-size: 30px;
+}
+.cart_summary span {
   background: #d60041;
   color: #fff;
 }
-.cart_summary div button:before {
-  width: 100px;
-  content: "Hello";
-}
 .cart_preview {
+  font-size: 10px;
+  text-transform: uppercase;
   border-top: 0.5px solid #787878;
   margin-bottom: 22px;
   max-height: 122px;
@@ -42,6 +48,13 @@ header {
   overflow: hidden;
   width: 800px;
   display: inline-block;
+}
+.cart_preview ul figcaption {
+  text-align: right;
+  padding-top: 4px;
+  font-size: 10px;
+  color: #fff;
+  background: #000;
 }
 .cart_preview figure {
   height: 100px;
@@ -53,6 +66,10 @@ header {
   background: #1f1f1f;
   height: 100%;
   padding: 0;
+}
+.cart_preview .cart_summary span {
+  background: #d60041;
+  color: #fff;
 }
 ul {
   padding: 0;
@@ -123,6 +140,7 @@ li figcaption div + div:hover a {
 }
 a {
   text-decoration: none;
+  color: #d60041;
 }
 #menu_img_before,
 #menu_img_after {

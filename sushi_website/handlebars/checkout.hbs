@@ -17,12 +17,12 @@
           <td><img src="{{image}}" data-id="{{id}}"></td>
           <td>{{title}}</td>
           <td>{{quantity}}</td>
-          <td>${{total}}</td>
+          <td>${{format_price total}}</td>
         </tr>
         {{/each}}
       </tbody>
-      <p>{{total}}</p>
-      <a href="#">Cancel Order</a>
+      <p>${{format_price total}}</p>
+      <a href="#" class="empty">Cancel Order</a>
       <button type="submit">Order Now!</button>
     </table>
   </div>
