@@ -161,16 +161,51 @@ header .cart_summary a:before {
   width: 800px;
   display: inline-block;
 }
-.cart_preview ul figcaption {
+.cart_preview ul li {
+  display: inline-block;
+}
+.cart_preview ul li figure {
+  position: relative;
+  width: 100px;
+}
+.cart_preview ul li figure img {
+  height: 100px;
+  width: 100px;
+}
+.cart_preview ul li figure .overlay {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+}
+.cart_preview ul li figure .overlay img {
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: 40px;
+  left: 40px;
+}
+.cart_preview ul li figure .overlay img {
+  width: auto;
+  position: relative;
+  vertical-align: middle;
+}
+.cart_preview ul li figure:hover {
+  pointer: pointer;
+}
+.cart_preview ul li figure:hover .overlay {
+  opacity: 1;
+}
+.cart_preview ul li figure figcaption {
   text-align: right;
   padding-top: 4px;
   font-size: 10px;
   color: #fff;
   background: #000;
-}
-.cart_preview figure {
-  height: 100px;
-  width: 100px;
 }
 .cart_preview .cart_summary {
   width: 200px;
@@ -214,7 +249,7 @@ header .cart_summary a:before {
 ul {
   padding: 0;
 }
-li {
+main li {
   display: inline-block;
   text-align: center;
   margin-bottom: 22px;
@@ -222,16 +257,16 @@ li {
   font-size: 18px;
   font-weight: normal;
 }
-li figure {
+main li figure {
   position: relative;
   width: 200px;
   text-align: center;
 }
-li figure img {
+main li figure img {
   display: block;
   width: 100%;
 }
-li figure .overlay {
+main li figure .overlay {
   position: absolute;
   width: 100%;
   height: 200px;
@@ -240,44 +275,44 @@ li figure .overlay {
   background: rgba(0,0,0,0.6);
   opacity: 0;
 }
-li figure .overlay img {
+main li figure .overlay img {
   width: auto;
   position: relative;
   top: 88px;
   left: 95px;
   vertical-align: middle;
 }
-li:hover {
+main li:hover {
   pointer: pointer;
 }
-li:hover h2 {
+main li:hover h2 {
   color: #000;
 }
-li:hover .overlay {
+main li:hover .overlay {
   opacity: 1;
 }
-li figcaption {
+main li figcaption {
   color: #000;
 }
-li figcaption div {
+main li figcaption div {
   color: #ab7829;
   padding: 32px 0;
   border-bottom: 1px dotted #787878;
   -webkit-box-shadow: inset -10px 0px 5px -6px #787878;
   box-shadow: inset -5px 0px 5px -6px #787878;
 }
-li figcaption div p {
+main li figcaption div p {
   color: #787878;
   margin-top: 5px;
 }
-li a div {
+main a div {
   color: #d60041;
   padding: 12px 0;
   font-size: 16px;
   -webkit-box-shadow: inset -10px 0px 5px -6px #787878;
   box-shadow: inset -5px 0px 5px -6px #787878;
 }
-li a div:hover {
+main a div:hover {
   background: #d60041;
   color: #fff;
 }

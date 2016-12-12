@@ -107,15 +107,35 @@ header
     overflow: hidden
     width: 800px
     display: inline-block
-    figcaption
-      text-align: right
-      padding-top: 4px
-      font-size: 10px
-      color: colors.default
-      background: #000
-  figure
-    height: 100px
-    width: 100px
+    li
+      display: inline-block    
+      figure
+        position: relative
+        width: 100px
+        img
+          height: 100px
+          width: 100px
+        .overlay
+          height: 100px
+          width: 100px
+          img
+            height: 20px
+            width: 20px
+            position: relative
+            top: 40px
+            left: 40px
+          overlay()
+        &:hover
+          pointer: pointer
+          .overlay
+            opacity: 1
+
+        figcaption
+          text-align: right
+          padding-top: 4px
+          font-size: 10px
+          color: colors.default
+          background: #000
   .cart_summary
     width: 200px
     display: inline-block
@@ -136,50 +156,51 @@ header
 ul
   padding: 0
 
-li
-  display: inline-block
-  text-align: center
-  margin-bottom: 22px
-  background: colors.default
-  font-size: 18px
-  font-weight: normal
-  figure
-    position: relative
-    width: 200px
+main
+  li
+    display: inline-block
     text-align: center
-    img
-      display: block
-      width: 100%
-    .overlay
-      position: absolute
-      width: 100%
-      height: 200px
-      top: 0
-      left: 0
-      background: rgba(0, 0, 0, 0.6)
-      opacity: 0
+    margin-bottom: 22px
+    background: colors.default
+    font-size: 18px
+    font-weight: normal
+    figure
+      position: relative
+      width: 200px
+      text-align: center
       img
-        width: auto
-        position: relative
-        top: 88px
-        left: 95px
-        vertical-align: middle
-  &:hover
-    pointer: pointer
-    h2
+        display: block
+        width: 100%
+      .overlay
+        position: absolute
+        width: 100%
+        height: 200px
+        top: 0
+        left: 0
+        background: rgba(0, 0, 0, 0.6)
+        opacity: 0
+        img
+          width: auto
+          position: relative
+          top: 88px
+          left: 95px
+          vertical-align: middle
+    &:hover
+      pointer: pointer
+      h2
+        color: #000
+      .overlay
+        opacity: 1
+    figcaption
       color: #000
-    .overlay
-      opacity: 1
-  figcaption
-    color: #000
-    div
-      color: colors.food
-      padding: 32px 0
-      border-bottom: 1px dotted colors.data
-      box_shadow()
-      p
-        color: colors.data
-        margin-top: 5px    
+      div
+        color: colors.food
+        padding: 32px 0
+        border-bottom: 1px dotted colors.data
+        box_shadow()
+        p
+          color: colors.data
+          margin-top: 5px    
   a
     div
       color: colors.emphasis  

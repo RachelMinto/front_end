@@ -3,11 +3,14 @@
   {{#each cart_items}}
   <li>
     <figure>
-      <img src="{{image}}" data-id="{{id}}">
+      <img src="{{image}}">
+      <div class="overlay" data-id="{{id}}">
+        <img class="remove" src="/images/remove-icon.png">
+      </div>
+      <figcaption>
+        {{quantity}} x {{price}}
+      </figcaption>
     </figure>
-    <figcaption>
-      {{quantity}} x {{price}}
-    </figcaption>
   </li>
   {{/each}}
 </ul>
