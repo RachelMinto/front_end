@@ -148,6 +148,27 @@ header .cart_summary a:before {
   padding-right: 15px;
   text-transform: uppercase;
 }
+#cart_content div {
+  display: inline-block;
+  width: 670px;
+  height: 50px;
+  font-size: 13px;
+  line-height: 50px;
+  text-align: right;
+  text-transform: uppercase;
+  box-sizing: border-box;
+}
+#cart_content div + div {
+  float: right;
+  background: #d60041;
+  color: #fff;
+  padding: 0 18px 0 10px;
+  float: right;
+  width: 130px;
+}
+#cart_content div + div a {
+  color: #fff;
+}
 .cart_preview {
   font-size: 10px;
   text-transform: uppercase;
@@ -223,29 +244,6 @@ header .cart_summary a:before {
   position: relative;
   left: 20px;
 }
-.cart_preview .cart_summary span {
-  background: #d60041;
-  color: #fff;
-  padding: 0 18px 0 10px;
-  float: right;
-  position: relative;
-  text-align: right;
-  height: 28px;
-  width: 83px;
-}
-.cart_preview .cart_summary span:before {
-  content: "";
-  width: 0;
-  height: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  border-top: 14px solid #1f1f1f;
-  border-left: 14px solid #1f1f1f;
-  border-right: 14px solid transparent;
-  border-bottom: 14px solid transparent;
-}
 ul {
   padding: 0;
 }
@@ -282,6 +280,17 @@ main li figure .overlay img {
   left: 95px;
   vertical-align: middle;
 }
+main li figure + a div {
+  -webkit-box-shadow: inset -10px 0px 5px -6px #787878;
+  box-shadow: inset -5px 0px 5px -6px #787878;
+  color: #d60041;
+  padding: 12px 0;
+  font-size: 16px;
+}
+main li figure + a div:hover {
+  background: #d60041;
+  color: #fff;
+}
 main li:hover {
   pointer: pointer;
 }
@@ -304,17 +313,6 @@ main li figcaption div {
 main li figcaption div p {
   color: #787878;
   margin-top: 5px;
-}
-main a div {
-  color: #d60041;
-  padding: 12px 0;
-  font-size: 16px;
-  -webkit-box-shadow: inset -10px 0px 5px -6px #787878;
-  box-shadow: inset -5px 0px 5px -6px #787878;
-}
-main a div:hover {
-  background: #d60041;
-  color: #fff;
 }
 a {
   text-decoration: none;
@@ -339,48 +337,80 @@ a {
 .food_item #menu_content #menu_info div,
 .food_item #menu_content #menu_info table {
   display: inline-block;
-  color: #000;
+  color: #2e2e2e;
   background: #fff;
 }
 .food_item #menu_content #menu_info #menu_data {
+  -webkit-box-shadow: inset -10px 0px 5px -6px #787878;
+  box-shadow: inset -5px 0px 5px -6px #787878;
   vertical-align: top;
   width: 400px;
   height: 200px;
+  box-sizing: border-box;
 }
 .food_item #menu_content #menu_info #menu_data h2 {
   padding: 30px;
   padding-bottom: 10px;
-  font-size: 20px;
+  font-size: 36px;
 }
 .food_item #menu_content #menu_info #menu_data p {
-  padding: 30px;
-  padding-top: 0px;
+  height: 44px;
+  padding: 0 30px;
   font-size: 12px;
 }
 .food_item #menu_content #menu_info #menu_data #menu_cart_info {
   width: 100%;
-  padding: 30px;
-  padding-top: 20px;
+  height: 73px;
+  padding: 20px 30px;
   border-top: 0.5px dotted #787878;
+  -webkit-box-shadow: inset -10px 0px 5px -6px #787878;
+  box-shadow: inset -5px 0px 5px -6px #787878;
   box-sizing: border-box;
+}
+.food_item #menu_content #menu_info #menu_data #menu_cart_info .price {
+  font-size: 30px;
+  color: #787878;
+}
+.food_item #menu_content #menu_info #menu_data #menu_cart_info a div {
+  background: #d60041;
+  color: #fff;
+  padding: 0 18px 0 10px;
+  float: right;
 }
 .food_item #menu_content .previous,
 .food_item #menu_content .next {
   display: inline-block;
-  content: 'hello';
   width: 100px;
   height: 200px;
-  background: #000;
 }
-.food_item #menu_content .previous:hover,
+.food_item #menu_content .previous {
+  background: #000 url("/images/nav-prev.png") no-repeat center;
+}
+.food_item #menu_content .previous:hover {
+  background: #d60041 url("/images/nav-prev.png") no-repeat center;
+}
+.food_item #menu_content .next {
+  background: #000 url("/images/nav-next.png") no-repeat center;
+}
 .food_item #menu_content .next:hover {
-  background: #d60041;
+  background: #d60041 url("/images/nav-next.png") no-repeat center;
 }
 .food_item table {
   height: 200px;
   width: 200px;
-  padding: 10px;
+  padding: 10px 20px;
   box-sizing: border-box;
+}
+.food_item table th {
+  color: #3c3c3c;
+  font-size: 13px;
+  padding: 20px 0;
+}
+.food_item table td {
+  font-size: 12px;
+}
+.food_item table td:first-child {
+  color: #787878;
 }
 #cart_content {
   display: block;

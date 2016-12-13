@@ -47,7 +47,7 @@ this["JST"]["checkout"] = Handlebars.template({"1":function(container,depth0,hel
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.cart_items : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</tbody></table><p><span>Total:</span>$"
     + container.escapeExpression((helpers.format_price || (depth0 && depth0.format_price) || helpers.helperMissing).call(alias1,(depth0 != null ? depth0.total : depth0),{"name":"format_price","hash":{},"data":data}))
-    + "</p><a href=\"#\" class=\"empty\">Cancel Order</a><button type=\"submit\">Order Now!</button></div><div class=\"menu_img_after\"></div></div>";
+    + "</p><div><a href=\"#\" class=\"empty\">Cancel Order</a></div><div><a href=\"/order\">Order Now!</a></div></div><div class=\"menu_img_after\"></div></div>";
 },"useData":true});
 
 this["JST"]["food_item"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -93,7 +93,7 @@ this["JST"]["menu"] = Handlebars.template({"1":function(container,depth0,helpers
     + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
     + "</p><div id=\"menu_cart_info\"><div class=\"price\">"
     + alias4(((helper = (helper = helpers.price || (depth0 != null ? depth0.price : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"price","hash":{},"data":data}) : helper)))
-    + "</div><button type=\"submit\">Add to Cart</button></div></div><table><th colspan=\"2\">Nutritiional Information</th>"
+    + "</div><a href=\"\"><div>+ Add to Cart</div></a></div></div><table><th colspan=\"2\">Nutritional Information</th>"
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.nutrition : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</table></div><div class=\"next\"></div></div><div class=\"menu_img_after\"></div></div>";
 },"useData":true});

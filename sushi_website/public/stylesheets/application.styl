@@ -25,7 +25,7 @@ header
       padding: 0 0 0 14px
       display: inline-block
     a
-      button()
+      slanted_button()
       &:before
         border-top: 14px solid #000
         border-left: 14px solid #000   
@@ -48,7 +48,7 @@ header
       font-size: 30px
   a
     + a
-      button()
+      slanted_button()
 
 #cart_content
   padding: 50px 100px
@@ -95,6 +95,22 @@ header
       color: #787878
       padding-right: 15px
       text-transform: uppercase
+  div
+    display: inline-block
+    width: 670px
+    height: 50px
+    font-size: 13px
+    line-height: 50px
+    text-align: right
+    text-transform: uppercase
+    box-sizing: border-box
+    + div
+      float: right    
+      button()
+      width: 130px
+      a
+        color: colors.default
+
 
 .cart_preview
   font-size: 10px
@@ -150,8 +166,6 @@ header
       + a
         position: relative
         left: 20px
-    span
-      button()
 
 ul
   padding: 0
@@ -185,6 +199,15 @@ main
           top: 88px
           left: 95px
           vertical-align: middle
+      + a
+        div
+          box_shadow()
+          color: colors.emphasis  
+          padding: 12px 0
+          font-size: 16px
+          &:hover
+            background: colors.emphasis
+            color: colors.default
     &:hover
       pointer: pointer
       h2
@@ -201,15 +224,6 @@ main
         p
           color: colors.data
           margin-top: 5px    
-  a
-    div
-      color: colors.emphasis  
-      padding: 12px 0
-      font-size: 16px
-      box_shadow()
-      &:hover
-        background: colors.emphasis
-        color: colors.default
 
 a
   text-decoration: none
@@ -229,39 +243,61 @@ a
       display: inline-block
       div, table
         display: inline-block
-        color: #000
+        color: #2e2e2e
         background: colors.default
       #menu_data
+        box_shadow()
         vertical-align: top
         width: 400px
         height: 200px
+        box-sizing: border-box
         h2
           padding: 30px
           padding-bottom: 10px                
-          font-size: 20px
+          font-size: 36px
         p
-          padding: 30px
-          padding-top: 0px
+          height: 44px
+          padding: 0 30px
           font-size: 12px
         #menu_cart_info
           width: 100%
-          padding: 30px
-          padding-top: 20px
+          height: 73px
+          padding: 20px 30px
           border-top: .5px dotted colors.data
+          box_shadow()
           box-sizing: border-box
+          .price
+            font-size: 30px
+            color: colors.data
+          a
+            div
+              button()
     .previous, .next
       display: inline-block
-      content: 'hello'
       width: 100px
       height: 200px
-      background: #000
+    .previous
+      background: #000 url(/images/nav-prev.png) no-repeat center
       &:hover
-        background: colors.emphasis  
+        background: colors.emphasis url(/images/nav-prev.png) no-repeat center
+    .next
+      background: #000 url(/images/nav-next.png) no-repeat center
+      &:hover
+        background: colors.emphasis url(/images/nav-next.png) no-repeat center              
+
   table
     height: 200px
     width: 200px
-    padding: 10px
+    padding: 10px 20px
     box-sizing: border-box
+    th
+      color: #3c3c3c
+      font-size: 13px
+      padding: 20px 0
+    td
+      font-size: 12px
+      &:first-child
+        color: colors.data
 
 #cart_content
   display: block
