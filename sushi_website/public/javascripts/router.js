@@ -1,7 +1,8 @@
 var router = new (Backbone.Router.extend({
   routes: {
     "menu/:id": "menu",
-    "checkout": "checkout"
+    "checkout": "checkout",
+    "order": "order"
   },
   index: function() {
     App.indexView();
@@ -16,6 +17,9 @@ var router = new (Backbone.Router.extend({
   checkout: function() {
     App.renderCheckout();
   },
+  order: function(e) {
+    App.submitOrder(e);
+  }
 }))();
 
 Backbone.history.start({

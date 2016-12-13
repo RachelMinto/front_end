@@ -18,15 +18,17 @@
             <div class="img_cover"><img src="{{image}}" data-id="{{id}}"></div>
           </td>
           <td>{{title}}</td>
-          <td><input id="intNumber" type="number" min="1" max="10" placeholder="{{quantity}}"/></td>
+          <td><input type="number" min="1" max="10" value="{{format_price quantity}}"/></td>
           <td>${{format_price price}}</td>
         </tr>
         {{/each}}
       </tbody>
     </table>
       <p><span>Total:</span>${{format_price total}}</p>
-      <div><a href="#" class="empty">Cancel Order</a></div>
-      <div><a href="/order">Order Now!</a></div>
+      <div id="checkout_buttons">
+        <div><a href="#" class="empty">Cancel Order</a></div>
+        <div><a href="/#/order">Order Now!</a></div>
+      </div>
     </div>
   <div class="menu_img_after"></div>
 </div>

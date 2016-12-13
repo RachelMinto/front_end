@@ -19,6 +19,11 @@ var App = {
       collection: this.cart
     });
   },
+  submitOrder: function(e) {
+    this.cart.view.empty(e);
+    this.hideCartPreview();
+    Backbone.history.navigate("/", { trigger: true });
+  },
   renderHeader: function() {
     new HeaderView({
       collection: this.cart

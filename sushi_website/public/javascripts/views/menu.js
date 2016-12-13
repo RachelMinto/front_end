@@ -4,7 +4,7 @@ var MenuView = Backbone.View.extend({
   events: {
     "click .previous": "renderPreviousMenuView",
     "click .next": "renderNextMenuView",
-    "click button": "addToCart"
+    "click a div": "addToCart"
   },
   renderPreviousMenuView: function() {
     App.trigger("previous_menu_item", this.model);

@@ -52,13 +52,13 @@ header
 
 #cart_content
   padding: 50px 100px
-  color: #000
+  color: #2e2e2e
   h1
     font-size: 36px
     padding-bottom: 60px
-    color: #2e2e2e
   table
     border-collapse: collapse
+    margin-bottom: 25px
     thead
       tr
         td
@@ -80,36 +80,45 @@ header
         margin: 0
         font-size: 21px
         width: 200px
+        input[type="number"]
+          width: 80px
+          height: 25px
         &:nth-child(2)
           padding-left: 40px
           padding-right: 80px
-          width: 175px        
+          width: 175px
+          color: #2e2e2e      
         &:last-child
           text-align: right
           width: 100px
+          color: #2e2e2e
   p
     font-size: 26px
     text-align: right
     span
       font-size: 10px
-      color: #787878
+      color: #2e2e2e
       padding-right: 15px
       text-transform: uppercase
-  div
-    display: inline-block
-    width: 670px
-    height: 50px
-    font-size: 13px
-    line-height: 50px
-    text-align: right
-    text-transform: uppercase
-    box-sizing: border-box
-    + div
-      float: right    
-      button()
-      width: 130px
-      a
-        color: colors.default
+  #checkout_buttons
+    div
+      margin-top: 66px
+      display: inline-block
+      width: 670px
+      height: 50px
+      font-size: 13px
+      text-align: right
+      padding-right: 20px
+      line-height: 50px
+      text-transform: uppercase
+      box-sizing: border-box
+      + div
+        text-align: center    
+        float: right    
+        button()
+        width: 130px
+        a
+          color: colors.default
 
 
 .cart_preview
@@ -272,6 +281,13 @@ a
           a
             div
               button()
+              width: 111px
+              height: 30px
+              font-size: 12px
+              text-transform: uppercase
+              padding: 0
+              line-height: 30px
+              text-align: center
     .previous, .next
       display: inline-block
       width: 100px

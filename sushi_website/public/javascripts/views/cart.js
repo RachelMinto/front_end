@@ -12,7 +12,8 @@ var CartView = Backbone.View.extend({
     this.render();
   },
   empty: function(e) {
-    e.preventDefault();
+    if (e) { e.preventDefault(); }
+    debugger;
     this.collection.trigger("empty");
   },
   render: function() {

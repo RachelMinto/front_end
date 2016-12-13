@@ -35,8 +35,8 @@ this["JST"]["checkout"] = Handlebars.template({"1":function(container,depth0,hel
     + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
     + "\"></div></td><td>"
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "</td><td><input id=\"intNumber\" type=\"number\" min=\"1\" max=\"10\" placeholder=\""
-    + alias4(((helper = (helper = helpers.quantity || (depth0 != null ? depth0.quantity : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quantity","hash":{},"data":data}) : helper)))
+    + "</td><td><input type=\"number\" min=\"1\" max=\"10\" value=\""
+    + alias4((helpers.format_price || (depth0 && depth0.format_price) || alias2).call(alias1,(depth0 != null ? depth0.quantity : depth0),{"name":"format_price","hash":{},"data":data}))
     + "\"/></td><td>$"
     + alias4((helpers.format_price || (depth0 && depth0.format_price) || alias2).call(alias1,(depth0 != null ? depth0.price : depth0),{"name":"format_price","hash":{},"data":data}))
     + "</td></tr>";
@@ -47,7 +47,7 @@ this["JST"]["checkout"] = Handlebars.template({"1":function(container,depth0,hel
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.cart_items : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</tbody></table><p><span>Total:</span>$"
     + container.escapeExpression((helpers.format_price || (depth0 && depth0.format_price) || helpers.helperMissing).call(alias1,(depth0 != null ? depth0.total : depth0),{"name":"format_price","hash":{},"data":data}))
-    + "</p><div><a href=\"#\" class=\"empty\">Cancel Order</a></div><div><a href=\"/order\">Order Now!</a></div></div><div class=\"menu_img_after\"></div></div>";
+    + "</p><div id=\"checkout_buttons\"><div><a href=\"#\" class=\"empty\">Cancel Order</a></div><div><a href=\"/order\">Order Now!</a></div></div></div><div class=\"menu_img_after\"></div></div>";
 },"useData":true});
 
 this["JST"]["food_item"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {

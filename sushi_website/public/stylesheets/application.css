@@ -26,14 +26,20 @@ header .cart_summary h3 {
   display: inline-block;
 }
 header .cart_summary a {
-  background: #d60041;
   color: #fff;
-  padding: 0 18px 0 10px;
+  padding: 0 18px 0 18px;
+  float: right;
+  background: linear-gradient(to bottom, #d60041, #a00030);
+  color: #fff;
+  padding: 0 18px 0 0;
   float: right;
   position: relative;
   text-align: right;
   height: 28px;
   width: 83px;
+}
+header .cart_summary a:hover {
+  background: linear-gradient(to top, #d60041, #a00030);
 }
 header .cart_summary a:before {
   content: "";
@@ -72,14 +78,20 @@ header .cart_summary a:before {
   font-size: 30px;
 }
 .cart_summary a + a {
-  background: #d60041;
   color: #fff;
-  padding: 0 18px 0 10px;
+  padding: 0 18px 0 18px;
+  float: right;
+  background: linear-gradient(to bottom, #d60041, #a00030);
+  color: #fff;
+  padding: 0 18px 0 0;
   float: right;
   position: relative;
   text-align: right;
   height: 28px;
   width: 83px;
+}
+.cart_summary a + a:hover {
+  background: linear-gradient(to top, #d60041, #a00030);
 }
 .cart_summary a + a:before {
   content: "";
@@ -96,15 +108,15 @@ header .cart_summary a:before {
 }
 #cart_content {
   padding: 50px 100px;
-  color: #000;
+  color: #2e2e2e;
 }
 #cart_content h1 {
   font-size: 36px;
   padding-bottom: 60px;
-  color: #2e2e2e;
 }
 #cart_content table {
   border-collapse: collapse;
+  margin-bottom: 25px;
 }
 #cart_content table thead tr td {
   font-size: 13px;
@@ -129,14 +141,20 @@ header .cart_summary a:before {
   font-size: 21px;
   width: 200px;
 }
+#cart_content table tr td input[type="number"] {
+  width: 80px;
+  height: 25px;
+}
 #cart_content table tr td:nth-child(2) {
   padding-left: 40px;
   padding-right: 80px;
   width: 175px;
+  color: #2e2e2e;
 }
 #cart_content table tr td:last-child {
   text-align: right;
   width: 100px;
+  color: #2e2e2e;
 }
 #cart_content p {
   font-size: 26px;
@@ -144,29 +162,35 @@ header .cart_summary a:before {
 }
 #cart_content p span {
   font-size: 10px;
-  color: #787878;
+  color: #2e2e2e;
   padding-right: 15px;
   text-transform: uppercase;
 }
-#cart_content div {
+#cart_content #checkout_buttons div {
+  margin-top: 66px;
   display: inline-block;
   width: 670px;
   height: 50px;
   font-size: 13px;
-  line-height: 50px;
   text-align: right;
+  padding-right: 20px;
+  line-height: 50px;
   text-transform: uppercase;
   box-sizing: border-box;
 }
-#cart_content div + div {
+#cart_content #checkout_buttons div + div {
+  text-align: center;
   float: right;
-  background: #d60041;
   color: #fff;
-  padding: 0 18px 0 10px;
+  padding: 0 18px 0 18px;
   float: right;
+  background: linear-gradient(to bottom, #d60041, #a00030);
   width: 130px;
 }
-#cart_content div + div a {
+#cart_content #checkout_buttons div + div:hover {
+  background: linear-gradient(to top, #d60041, #a00030);
+}
+#cart_content #checkout_buttons div + div a {
   color: #fff;
 }
 .cart_preview {
@@ -372,10 +396,20 @@ a {
   color: #787878;
 }
 .food_item #menu_content #menu_info #menu_data #menu_cart_info a div {
-  background: #d60041;
   color: #fff;
-  padding: 0 18px 0 10px;
+  padding: 0 18px 0 18px;
   float: right;
+  background: linear-gradient(to bottom, #d60041, #a00030);
+  width: 111px;
+  height: 30px;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 0;
+  line-height: 30px;
+  text-align: center;
+}
+.food_item #menu_content #menu_info #menu_data #menu_cart_info a div:hover {
+  background: linear-gradient(to top, #d60041, #a00030);
 }
 .food_item #menu_content .previous,
 .food_item #menu_content .next {

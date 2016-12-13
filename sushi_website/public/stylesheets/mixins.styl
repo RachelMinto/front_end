@@ -5,12 +5,21 @@ colors = {
   non_emphasis: #999
   data: #787878
   default: #ffffff
+  button_shadow: #a00030
 }
 
-slanted_button()
-  background: colors.emphasis
+button()
   color: colors.default
-  padding: 0 18px 0 10px
+  padding: 0 18px 0 18px
+  float: right
+  background: linear-gradient(to bottom, colors.emphasis, colors.button_shadow)
+  &:hover
+    background: linear-gradient(to top, rgba(214,0,65,1), colors.button_shadow)
+
+slanted_button()
+  button()
+  color: colors.default
+  padding: 0 18px 0 0
   float: right
   position: relative
   text-align: right
@@ -29,12 +38,6 @@ slanted_button()
     border-right: 14px solid transparent
     border-bottom: 14px solid transparent
 
-button()
-  background: colors.emphasis
-  color: colors.default
-  padding: 0 18px 0 10px
-  float: right
-  
 overlay()
   position: absolute
   width: 100%
