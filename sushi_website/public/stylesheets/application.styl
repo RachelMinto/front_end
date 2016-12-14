@@ -20,7 +20,7 @@ header
   text-transform: uppercase
   .cart_summary
     vertical-align: middle
-    line-height: 30px
+    line-height: 28px
     h3
       padding: 0 0 0 14px
       display: inline-block
@@ -28,7 +28,9 @@ header
       slanted_button()
       &:before
         border-top: 14px solid #000
-        border-left: 14px solid #000   
+        border-left: 14px solid #000
+      span
+        font-size: 14px
 
 #checkout
   .menu_img_before, .menu_img_after
@@ -119,7 +121,6 @@ header
         width: 130px
         a
           color: colors.default
-
 
 .cart_preview
   font-size: 10px
@@ -217,12 +218,12 @@ main
           &:hover
             background: colors.emphasis
             color: colors.default
-    &:hover
-      pointer: pointer
-      h2
-        color: #000
-      .overlay
-        opacity: 1
+      &:hover
+        pointer: pointer
+        h2
+          color: #000
+        .overlay
+          opacity: 1
     figcaption
       color: #000
       div

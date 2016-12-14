@@ -13,21 +13,21 @@
       </thead>
       <tbody>
         {{#each cart_items}}
-        <tr>
+        <tr data-id="{{id}}">
           <td>
-            <div class="img_cover"><img src="{{image}}" data-id="{{id}}"></div>
+            <div class="img_cover"><img src="{{image}}"></div>
           </td>
           <td>{{title}}</td>
-          <td><input type="number" min="1" max="10" value="{{format_price quantity}}"/></td>
+          <td><input id="checkout_quantity" type="number" min="0" max="10" value="{{format_price quantity}}"/></td>
           <td>${{format_price price}}</td>
         </tr>
         {{/each}}
       </tbody>
     </table>
-      <p><span>Total:</span>${{format_price total}}</p>
+      <p><span id="cart_total">Total:</span>${{format_price total}}</p>
       <div id="checkout_buttons">
         <div><a href="#" class="empty">Cancel Order</a></div>
-        <div><a href="/#/order">Order Now!</a></div>
+        <div><a href="/order">Order Now!</a></div>
       </div>
     </div>
   <div class="menu_img_after"></div>

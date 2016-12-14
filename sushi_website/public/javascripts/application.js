@@ -30,7 +30,9 @@ var App = {
     });
   },
   showCartPreview: function() {
-    $(App.cart.view.el).show()
+    if (App.cart.length > 0) {
+      $(App.cart.view.el).show();
+    }
   },
   hideCartPreview: function() {
     $(App.cart.view.el).hide()
@@ -63,17 +65,22 @@ var App = {
     });
   },
   renderCheckout: function() {
+    this.hideCartPreview();
     new CheckoutView({
       collection: this.cart
     });
   },
+  addToCart: function(model) {
+    this.cart.addItem(model);
+  },
   bindEvents: function() {
     _.extend(this, Backbone.Events);
-    this.on("add_to_cart", this.cart.addItem.bind(this.cart));    
+    // this.on("add_to_cart", this.cart.addItem.bind(this.cart));
+    this.on("add_to_cart", this.addToCart);
     this.on("render_menu_item", this.renderMenuItem);
     this.on("previous_menu_item", this.renderPrevious);
     this.on("next_menu_item", this.renderNext);
-    this.on("show_cart_preview", this.showCartPreview);
+    this.on("cart_updated", this.showCartPreview)
   },
 };
 

@@ -13,15 +13,20 @@ var CartView = Backbone.View.extend({
   },
   empty: function(e) {
     if (e) { e.preventDefault(); }
-    debugger;
     this.collection.trigger("empty");
   },
   render: function() {
+    if (this.collection.toJSON().length === 0) { 
+      $(this.el).hide();
+      return; 
+    }
+
     $('.cart_preview').html(this.template({
       quantity: this.collection.getQuantity(),
       cart_items: this.collection.toJSON().splice(0, 8),
       total: this.collection.getTotal()
-    }));
+    })).slideDown();
+
     this.delegateEvents();
   },
   initialize: function() {

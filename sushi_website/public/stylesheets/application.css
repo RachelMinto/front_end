@@ -19,7 +19,7 @@ header {
 }
 header .cart_summary {
   vertical-align: middle;
-  line-height: 30px;
+  line-height: 28px;
 }
 header .cart_summary h3 {
   padding: 0 0 0 14px;
@@ -57,6 +57,9 @@ header .cart_summary a:before {
 header .cart_summary a:before {
   border-top: 14px solid #000;
   border-left: 14px solid #000;
+}
+header .cart_summary a span {
+  font-size: 14px;
 }
 #checkout .menu_img_before,
 #checkout .menu_img_after {
@@ -315,13 +318,13 @@ main li figure + a div:hover {
   background: #d60041;
   color: #fff;
 }
-main li:hover {
+main li figure:hover {
   pointer: pointer;
 }
-main li:hover h2 {
+main li figure:hover h2 {
   color: #000;
 }
-main li:hover .overlay {
+main li figure:hover .overlay {
   opacity: 1;
 }
 main li figcaption {
