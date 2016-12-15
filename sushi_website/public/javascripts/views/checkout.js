@@ -2,13 +2,18 @@ var CheckoutView = Backbone.View.extend({
   template: App.templates.checkout,
   el: App.$el,
   events: {
-    "click .empty": "empty",
-    "change input#checkout_quantity": "updateQuantity"
+    "click .empty": "cancelOrder",
+    "blur input#checkout_quantity": "updateQuantity"
   },
   completeCheckout: function(e) {
     e.preventDefault();
     this.collection.trigger("empty");
   },
+  cancelOrder: function(e) {
+    e.preventDefault();
+    this.collection.trigger("empty");
+    Backbone.history.navigate("/", { trigger: true });
+  },  
   render: function() {
     App.hideCartPreview();  // Will I still need this?
     App.$el.html(this.template({
@@ -21,6 +26,7 @@ var CheckoutView = Backbone.View.extend({
     var id = $(e.target).closest('tr').attr("data-id");
     var toAdd = App.getMenuItem(id);
     this.collection.updateQuantity(toAdd, newQuantity);
+    this.collection.setTotal();
     this.render();
   },
   hide: function() {

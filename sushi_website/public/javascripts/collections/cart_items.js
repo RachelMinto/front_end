@@ -22,7 +22,6 @@ var CartItems = Backbone.Collection.extend({
   },
   updateStorage: function() {
     localStorage.setItem("cart", JSON.stringify(this.toJSON()));
-    this.trigger("cart_updated");
   },
   addItem: function(item) {
     var existing = this.get(item.get("id"));
@@ -35,7 +34,7 @@ var CartItems = Backbone.Collection.extend({
       existing.set("quantity", 1);
       this.add(existing);
     }
-    this.updateStorage();
+    this.update();
   },
   updateQuantity: function(item, newQuantity) {
     var existing = this.get(item.get("id"));
@@ -49,12 +48,12 @@ var CartItems = Backbone.Collection.extend({
   },
   empty: function() {
     this.reset();
-    this.updateStorage();
-    // this.readStorage();
+    this.update();
   },
   update: function() {
     this.setTotal().setQuantity();
     this.updateStorage();
+    this.trigger("cart_updated");    
   },
   initialize: function() {
     this.readStorage();
