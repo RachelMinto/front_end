@@ -3,9 +3,8 @@ include /_mixins
 doctype html
 html
   head
-    title Sushi Website
-    link(href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet")
-    +stylesheet_link_tag("application")
+    title Trello
+    link(rel='stylesheet' href='/stylesheets/application.css')
     +javascript_include_tag("vendor/all")
     +javascript_include_tag("handlebars_templates")
   body
@@ -21,6 +20,6 @@ html
       +javascript_include_tag("collections/list", "collections/board", "collections/activities", "collections/comments")
       +javascript_include_tag("views/board", "views/card_list_item", "views/edit_card", "views/header", "views/list", "views/quick_edit_card")
       script(type="text/javascript").
-        App.default_board = new FoodItems(!{JSON.stringify(food_items)});      
+        App.board = new Board(!{JSON.stringify(default_board)});
       +javascript_include_tag("router")
       block scripts

@@ -1,5 +1,8 @@
 application.js “glue”
 
+If time at end:
+  -set up username as it's own data .json file so it can be read in.
+
 Questions I had to ask myself: 
   How to break up the code into manageable chunks. 
   How to store data between sessions. Ideally for scale: database. I chose session storage.
@@ -11,6 +14,30 @@ Questions I had to ask myself:
   Do I have list view within board view, or created by App?
   Should the side menu activites and comments be updating even when not in view?
  
+Ideas for presentation
+  Analogy: don't focus on one part of a drawing, then move on. Broader scope more elastic.
+
+Data Structure:
+Username
+BoardsArray
+  TitleOfBoard
+  Starred (t/f)
+  Color
+  ListsArray
+    TitleOfList
+    Position (number)
+    Subscribed (t/f)
+    CardsArray
+      TitleOfCard
+      Subscribed (t/f)      
+      Description
+      ChecklistArray
+      CommentsArray
+      ActivityArray
+      AttachmentsArray
+
+  For this app, opted for a data structure one level down - just a single board.
+
 Views
   -Header
     -State: User
@@ -122,3 +149,29 @@ html font: 14px "Helvetica Neue",Arial,Helvetica,sans-serif
 -one media size modification
 -bg color modifiable by user
   -Max height on list is set to viewport
+
+include /_mixins
+
+doctype html
+html
+  head
+    title Trello
+    +stylesheet_link_tag("application")
+    +javascript_include_tag("vendor/all")
+    +javascript_include_tag("handlebars_templates")
+  body
+    header
+
+    main
+      block content
+
+    footer
+
+      +javascript_include_tag("application") 
+      +javascript_include_tag("models/card", "models/activity", "models/checklist_item", "models/comment", "models/user")
+      +javascript_include_tag("collections/list", "collections/board", "collections/activities", "collections/comments")
+      +javascript_include_tag("views/board", "views/card_list_item", "views/edit_card", "views/header", "views/list", "views/quick_edit_card")
+      script(type="text/javascript").
+        App.default_board = new FoodItems(!{JSON.stringify(food_items)});      
+      +javascript_include_tag("router")
+      block scripts  

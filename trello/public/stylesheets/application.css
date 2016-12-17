@@ -1,0 +1,31 @@
+@import "whitespace-reset.css";
+html {
+  font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
+  background: #0079bf;
+  color: #fff;
+}
+a {
+  cursor: pointer;
+}
+h1 {
+  font-size: 18px;
+  font-weight: bold;
+}
+h3 {
+  font-weight: bold;
+}
+header {
+  height: 40px;
+  background: rgba(0,0,0,0.15);
+}
+header #board_info div {
+  background: rgba(255,255,255,0.3);
+  border-radius: 4px;
+}
+.wrapper {
+  background: #e2e4e6;
+  color: #4d4d4d;
+}
+.wrapper .interior {
+  background: #fff;
+}
