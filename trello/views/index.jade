@@ -1,10 +1,9 @@
 extends layout
 
 block content
-  h1 default_board.name
+  h1= default_board.title
   ul
-    each album in default_board.data
+    each list in default_board.lists
       li
-        h2= album.title
-        p $#{album.price}
-        a.button(href="#") Add to cart
+        h2= list.title
+        p= list.position

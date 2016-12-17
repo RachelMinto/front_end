@@ -29,3 +29,6 @@ header #board_info div {
 .wrapper .interior {
   background: #fff;
 }
+.list {
+  width: 300px;
+}
