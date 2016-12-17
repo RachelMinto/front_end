@@ -1,0 +1,26 @@
+include /_mixins
+
+doctype html
+html
+  head
+    title Sushi Website
+    link(href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet")
+    +stylesheet_link_tag("application")
+    +javascript_include_tag("vendor/all")
+    +javascript_include_tag("handlebars_templates")
+  body
+    header
+
+    main
+      block content
+
+    footer
+
+      +javascript_include_tag("application") 
+      +javascript_include_tag("models/card")
+      +javascript_include_tag("collections/list", "collections/board")
+      +javascript_include_tag("views/food_item", "views/menu", "views/cart", "views/index", "views/checkout", "views/header")
+      script(type="text/javascript").
+        App.default_board = new FoodItems(!{JSON.stringify(food_items)});      
+      +javascript_include_tag("router")
+      block scripts

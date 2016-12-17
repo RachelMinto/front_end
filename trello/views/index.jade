@@ -1,0 +1,9 @@
+block content
+  h1 Albums
+  ul
+    each album in board.data
+      li
+        img(src="#{album.cover}")
+        h2= album.title
+        p $#{album.price}
+        a.button(href="#") Add to cart
