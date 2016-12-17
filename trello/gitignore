@@ -8,6 +8,8 @@ Questions I had to ask myself:
   Images: Trello uses an icon font; I used a sprite sheet for sake of time.
   How will I do the drag and drop resort logic for both lists and cards?
   Do I want list actions to be its own view? 
+  Do I have list view within board view, or created by App?
+  Should the side menu activites and comments be updating even when not in view?
  
 Views
   -Header
@@ -22,7 +24,7 @@ Views
     - State: Position, Board (may need back reference to collection), Cards, User subscribed (t/f),
     - Events: Drag & drop (update board order); Add card; Open List Actions Menu; Copy List, Move List, Subscribe, Move All Cards, Archive all Cards, Archive this list
     - Listens to Card model.
-  -List Action Menu
+  -List Action Menu (???)
     Model: List
   -Card (Draggable, draggable within list to change order)
     Model: Card
@@ -40,7 +42,7 @@ Models
     -
   -List
   -Comment
-  -Checklist
+  -ChecklistItem
   -User
   -Activity
  
@@ -92,20 +94,31 @@ HTML
   -Header and Subheader are fluid, floated divs
   -Lists are static
   -Drag and drop lists
+
+  -PopupMenu div
+    -relative position to parent click
+      $(popupDiv).offset({ top: mousePos.y, left:  mousePos.x});
+    -Use handlebar template to populate?
  
 ul
   -Lists on board (inline block)
   -List items (block)
   -Checklist (block)
   -Card action items (block)
+
+overlays
+  -EditCardView
+  -QuickEditCardView
  
 Handlebars
   Activity
   List Item Card
-  Edit Card
-  
+  Edit Card **should include Archive at top set to display: none Add class to show.
+  Popup
+
  
 CSS
+html font: 14px "Helvetica Neue",Arial,Helvetica,sans-serif
 -one media size modification
 -bg color modifiable by user
   -Max height on list is set to viewport

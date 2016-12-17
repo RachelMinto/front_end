@@ -1,0 +1,1 @@
+var ChecklistItem = Backbone.Model.extend({});

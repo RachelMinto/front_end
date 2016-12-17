@@ -1,17 +1,14 @@
-var express = require('express');
-var path = require("path");
-var fs = require("fs");
-var file_path = path.resolve(path.dirname(__dirname), "data/default_board.json");
-var router = express.Router();
+var path = require("path"),
+  fs = require("fs"),
+  file_path = path.resolve(path.dirname(__dirname), "data/default_board.json")
+  Board = JSON.parse(fs.readFileSync(file_path, "utf8"));
 
-function getBoard() {
-  return JSON.parse(fs.readFileSync(file_path, "utf8"));
-}
-
-router.get('/', function(req, res, next) {
-  res.render('index', { 
-    board: getBoard()
+/* GET home page. */
+module.exports = function(router) {
+  router.get('', function(req, res, next) {
+    res.render('index', {     //res.render(view [, locals] [, callback])  view is .jade
+      default_board: Board
+    });
   });
-});
+};
 
-module.exports = router;
