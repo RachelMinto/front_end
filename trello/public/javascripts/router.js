@@ -2,7 +2,7 @@ var router = new (Backbone.Router.extend({
   routes: {
   },
   index: function() {
-    App.boardView();
+    App.indexView();
   },
   initialize: function() { 
     this.route(/^\/?$/, "index", this.index);

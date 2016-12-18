@@ -42,16 +42,14 @@ var BoardView = Backbone.View.extend({
   },
   render: function() {
     // if (board.color !== default) { change html background };
-
-    // Add to main element
+    $('main').html(this.template(this.model.toJSON()));
   },
   initialize: function() {
+    this.render()
     // listen to activities add
     // listen to comments add
   }
 });
 
 // el?
-
-
 

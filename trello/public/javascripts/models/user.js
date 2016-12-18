@@ -1,6 +1,6 @@
 var User = Backbone.Model.extend({
   initialize: function() {
-    this.username = "Rachel Minto";
-    this.initials = "RM"
+    this.set("username", "Rachel Minto");
+    this.set("initials", "RM");
   }
 });

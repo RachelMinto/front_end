@@ -1,10 +1,13 @@
 @import "whitespace-reset.css"
 @import "mixins"
+@import "header"
+@import "board_top"
+@import "list"
 
 html
   font: 14px "Helvetica Neue", Arial, Helvetica,sans-serif
   background: colors.primary.bg
-  color: colors.primary.default_color
+  color: colors.primary.default
 
 a
   cursor: pointer
@@ -28,7 +31,9 @@ header
   background: colors.secondary.bg
   color: colors.secondary.color
   .interior
-    background: colors.primary.default_color
+    background: colors.primary.default
 
 .list
   width: 300px
+  display: inline-block
+  margin-left: 10px

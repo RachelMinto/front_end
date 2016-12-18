@@ -20,7 +20,6 @@ html
       +javascript_include_tag("collections/list", "collections/activities", "collections/comments", "collections/cards")
       +javascript_include_tag("views/board", "views/card_list_item", "views/edit_card", "views/header", "views/list", "views/quick_edit_card")
       script(type="text/javascript").
-        debugger;
         App.board = new Board(!{JSON.stringify(default_board)});   
       +javascript_include_tag("router")
       block scripts

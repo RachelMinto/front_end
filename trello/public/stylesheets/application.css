@@ -1,4 +1,50 @@
 @import "whitespace-reset.css";
+#header div {
+  display: inline-block;
+}
+#header img {
+  width: 25px;
+  height: 25px;
+}
+#header #board_info {
+  width: 33%;
+  float: left;
+}
+#header .logo {
+  text-align: center;
+}
+#header .logo span {
+  text-align: center;
+}
+#header .logo span img {
+  width: 76px;
+  height: 26px;
+}
+#header #account_info {
+  width: 33%;
+  float: right;
+  text-align: right;
+}
+#board_nav {
+  padding: 8px 4px 8px 8px;
+}
+#board_nav h1,
+#board_nav div {
+  display: inline-block;
+}
+#board_nav img {
+  width: 25px;
+  height: 25px;
+}
+#board_nav #board_info {
+  float: left;
+}
+#board_nav #toggle_board_menu {
+  float: right;
+}
+#board_nav #toggle_board_menu a {
+  color: #fff;
+}
 html {
   font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
   background: #0079bf;
@@ -31,4 +77,6 @@ header #board_info div {
 }
 .list {
   width: 300px;
+  display: inline-block;
+  margin-left: 10px;
 }

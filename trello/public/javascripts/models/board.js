@@ -10,3 +10,7 @@ var Board = Backbone.Model.extend({
     return _.omit(data, 'lists');
   }
 });
+
+
+
+// _.findWhere(data.lists, {title: "List One"});

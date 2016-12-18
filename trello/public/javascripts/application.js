@@ -1,13 +1,33 @@
 var App = {
   templates: JST,
   $el: $('main'),
-  boardView: function() {
-    debugger;
-    // new HeaderView({
-    //   model: User
-    // });
-    // this.board = new BoardView();
+  indexView: function() {
+    this.user = new User();    
+    new HeaderView({
+      model: App.user
+    });
+    new BoardView({ model: App.board});
+    this.board.lists.each(this.renderListView);
   },
+  renderListView: function(list) {
+    new ListView({
+      model: list,
+      "url": function() {
+        return "/lists/" + this.get("title");
+      }
+    });
+
+    _.each(list.cards.models, function(card) {
+      new CardView({ model: card });
+    }, this);
+    // list.cards.each(this.renderCardView);
+  },
+  // renderCardView: function(card) {
+  //   debugger;
+  //   new CardView({
+  //     model: card
+  //   });
+  // },  
   bindEvents: function() {
     _.extend(this, Backbone.Events);
     // this.on("add_to_cart", this.cart.addItem.bind(this.cart));

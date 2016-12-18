@@ -14,7 +14,8 @@ Questions I had to ask myself:
   Do I have list view within board view, or created by App?
   Should the side menu activites and comments be updating even when not in view?
   What should parse the original data? Thought at first maybe App (controller), then thought to create an API that the model could interact with. Decided to bootstrap to layout.jade for http efficiency. 
-
+  Decided to write lists to board canvas, which was part of the board_top hbs. That way, the board top will be written first and the canvas will be ready. Alternative is to separate the two and write both to elements in layout.
+  Decoupled board view from lists view and made them unaware of each other.
  
 Ideas for presentation
   Analogy: don't focus on one part of a drawing, then move on. Broader scope more elastic.
