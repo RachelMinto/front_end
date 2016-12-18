@@ -1,9 +1,11 @@
 {"title":"FirstBoard",
+"id":"1",
 "starred":"false",
 "color":"default",
 "lists":[
   {"title":"List One",
    "position":"1",
+   "id":"1",
    "subscribed":"false",
    "cards":[
     {"title":"Todo # 1",
@@ -45,6 +47,7 @@
 ]}]},{
 "title":"List Two",
    "position":"2",
+   "id":"2",
    "subscribed":"false",
    "cards":[
     {"title":"Another todo",

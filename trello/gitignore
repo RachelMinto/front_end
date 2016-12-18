@@ -17,6 +17,9 @@ Questions I had to ask myself:
   Decided to write lists to board canvas, which was part of the board_top hbs. That way, the board top will be written first and the canvas will be ready. Alternative is to separate the two and write both to elements in layout.
   Decoupled board view from lists view and made them unaware of each other.
  
+ http://jsfiddle.net/nikoshr/947Vf/
+
+
 Ideas for presentation
   Analogy: don't focus on one part of a drawing, then move on. Broader scope more elastic.
 
@@ -178,3 +181,10 @@ html
         App.default_board = new FoodItems(!{JSON.stringify(food_items)});      
       +javascript_include_tag("router")
       block scripts  
+
+
+To Do
+
+
+
+

@@ -45,6 +45,20 @@
 #board_nav #toggle_board_menu a {
   color: #fff;
 }
+.list_header h3,
+.list_header span {
+  display: inline-block;
+  color: #4d4d4d;
+}
+.list_header span {
+  float: right;
+  padding: 4px;
+  width: 26px;
+  height: 26px;
+}
+.list_header span:hover {
+  cursor: default;
+}
 html {
   font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
   background: #0079bf;
@@ -59,6 +73,9 @@ h1 {
 }
 h3 {
   font-weight: bold;
+}
+textarea {
+  transition: background 85ms ease-in, border-color 85ms ease-in;
 }
 header {
   height: 40px;

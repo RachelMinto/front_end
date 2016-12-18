@@ -45,10 +45,18 @@ this["JST"]["header"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":fu
     + "</span></div><div id=\"trello_info\"><img src=\"/images/information.png\"</div><div id=\"notifications\"><img src=\"/images/bell.png\"</div></div></div>";
 },"useData":true});
 
+this["JST"]["list_edit_name"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "<input type=\"text\" class=\"list-header-name\" spellcheck=\"false\" dir=\"auto\" maxlength=\"512\" placeholder=\""
+    + container.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"title","hash":{},"data":data}) : helper)))
+    + "\" style=\"overflow: hidden; word-wrap: break-word; height: 24px;\">";
+},"useData":true});
+
 this["JST"]["list"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper;
 
-  return "<h3>"
+  return "<a href=\"#\"><div class=\"list_header\"><h3>"
     + container.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"title","hash":{},"data":data}) : helper)))
-    + "</h3><ul></ul><a href=\"\">Add a card...</a>";
+    + "</h3><span>...</span></div></a><ul></ul><a href=\"\">Add a card...</a>";
 },"useData":true});

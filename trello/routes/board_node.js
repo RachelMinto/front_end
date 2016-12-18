@@ -6,7 +6,7 @@ function getBoard() {
   return JSON.parse(fs.readFileSync(file_path, "utf8"));
 }
 
-function getLists() {
+function getList(id) {
   return JSON.parse(fs.readFileSync(file_path, "utf8")).lists
 }
 
@@ -14,7 +14,7 @@ module.exports = {
   get: function() {
     return getBoard();
   },
-  getLists: function() {
-    return getLists();
+  getList: function(id) {
+    return getList(id);
   }
 }
