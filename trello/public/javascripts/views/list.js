@@ -15,9 +15,9 @@ var ListView = Backbone.View.extend({
     var edit_content = App.templates.list_edit_name(this.model.toJSON());
     this.$el.find("h3").replaceWith(edit_content);
   },
-  EditMenuView: function() {
+  EditMenuView: function(e) {
+    e.stopPropagation();
     console.log("edit menu for list");
-    debugger;
   },
   updateName: function(e) {
     this.model.set('title', e.target.value);
@@ -30,16 +30,17 @@ var ListView = Backbone.View.extend({
       data: this.model.toJSON(),
       success: function(json) {
         console.log('i got some data!');
-        debugger;
       }
     });    
   },
   renderCollection: function() {
     var self = this;
-    this.model.cards.each(function(model){
-      var $card = self.renderItem(model);
-      $card.$el.appendTo(self.$el.find('ul'));
-    });
+    if (this.model.cards) {
+      this.model.cards.each(function(model){
+        var $card = self.renderItem(model);
+        $card.$el.appendTo(self.$el.find('ul'));
+      });
+    };
   },
   renderItem: function(model) {
     var cardEl = new CardView({ model: model });
@@ -47,6 +48,7 @@ var ListView = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
+    this.listenTo(this.model.cards, 'card_collection_updated', this.render)    
     // subscribe to notifications from selected board, list, and item changes.
   },
 });

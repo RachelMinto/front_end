@@ -8,6 +8,9 @@ var Board = Backbone.Model.extend({
       this.lists.reset(data.lists);
     }
     return _.omit(data, 'lists');
+  },
+  getListByID: function(id) {
+    return this.lists.findWhere( {id : id});
   }
 });
 

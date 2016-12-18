@@ -11,23 +11,23 @@ var App = {
   },
   renderListView: function(list) {
     new ListView({
-      model: list,
-      "url": function() {
-        return "/lists/" + this.get("title");
-      }
+      model: list
+      // "url": function() {
+      //   return "/lists/" + this.get("title");
+      // }
     });
 
-    _.each(list.cards.models, function(card) {
-      new CardView({ model: card });
-    }, this);
+    if (list.cards) {
+      _.each(list.cards.models, function(card) {
+        new CardView({ model: card });
+      }, this);
+    }
     // list.cards.each(this.renderCardView);
   },
-  // renderCardView: function(card) {
-  //   debugger;
-  //   new CardView({
-  //     model: card
-  //   });
-  // },  
+  addCardToList: function(listID, model) {
+    var list = this.board.getListByID(listID);
+    list.cards.add(model);
+  },
   bindEvents: function() {
     _.extend(this, Backbone.Events);
     // this.on("add_to_cart", this.cart.addItem.bind(this.cart));
