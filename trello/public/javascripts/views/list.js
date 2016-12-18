@@ -26,7 +26,8 @@ var ListView = Backbone.View.extend({
 
     $.ajax({
       url: "/board/1",
-      type: "get",
+      type: "put",
+      data: this.model.toJSON(),
       success: function(json) {
         console.log('i got some data!');
         debugger;
