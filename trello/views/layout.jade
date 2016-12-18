@@ -16,10 +16,11 @@ html
     footer
 
       +javascript_include_tag("application") 
-      +javascript_include_tag("models/card", "models/activity", "models/checklist_item", "models/comment", "models/user")
-      +javascript_include_tag("collections/list", "collections/board", "collections/activities", "collections/comments")
+      +javascript_include_tag("models/list", "models/board", "models/card", "models/activity", "models/checklist_item", "models/comment", "models/user")
+      +javascript_include_tag("collections/list", "collections/activities", "collections/comments", "collections/cards")
       +javascript_include_tag("views/board", "views/card_list_item", "views/edit_card", "views/header", "views/list", "views/quick_edit_card")
       script(type="text/javascript").
-        App.board = new Board(!{JSON.stringify(default_board)});
+        debugger;
+        App.board = new Board(!{JSON.stringify(default_board)});   
       +javascript_include_tag("router")
       block scripts

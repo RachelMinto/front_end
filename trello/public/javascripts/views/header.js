@@ -4,6 +4,7 @@ var HeaderView = Backbone.View.extend({
   },
   template: App.templates.header,
   render: function() {
+
   },
   initialize: function() {
     // subscribe to notifications from selected board, list, and item changes.

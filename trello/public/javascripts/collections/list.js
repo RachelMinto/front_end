@@ -1,3 +1,3 @@
-var List = Backbone.Collection.extend({
-  model: Card
+var ListCollection = Backbone.Collection.extend({
+  model: List
 });

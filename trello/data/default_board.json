@@ -23,7 +23,7 @@
        {"title":"This is a second comment!",
         "commenter":"JM"}
       ],
-     "activity":[
+     "activities":[
        {"action":"added",
         "commenter":"RM",
         "card": "Some to do card",
@@ -37,7 +37,7 @@
         "card": "Another to do card",
         "list": "List One"}
       ],
-     "attachment":[
+     "attachments":[
        {"type":"pdf",
         "title":"myattachment.pdf"},
        {"type":"pdf",

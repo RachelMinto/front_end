@@ -1,7 +1,7 @@
 var express = require("express"),
     router = express.Router(),
     path = require("path"),
-    route_files = ["index"];
+    route_files = ["index", "board_data"];
 
 for(var i = 0; i < route_files.length; i++) {
   require(path.resolve(path.dirname(__dirname), "routes/" + route_files[i]))(router);

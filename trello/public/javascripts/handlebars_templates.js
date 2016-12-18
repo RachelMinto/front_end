@@ -18,7 +18,13 @@ this["JST"]["card_list_item"] = Handlebars.template({"1":function(container,dept
 },"useData":true});
 
 this["JST"]["header"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id=\"header\"><div id=\"board_info\"><div</div><div><span><a href=\"#\"><img src=\"/images/header-logo-2x.png\"</a></span></div><div id=\"account_info\"></div></div>";
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<div id=\"header\"><div id=\"board_info\"><div><img src=\"/images/sprite.png\"><span>Boards</span><input type=\"text\" class=\"search\"></div></div><div><span><a href=\"#\"><img src=\"/images/header-logo-2x.png\"></a></span></div><div id=\"account_info\"><div id=\"create\">+</div><div id=\"profile_settings\"><span class=\"wrapper\">"
+    + alias4(((helper = (helper = helpers.initials || (depth0 != null ? depth0.initials : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"initials","hash":{},"data":data}) : helper)))
+    + "</span><span>"
+    + alias4(((helper = (helper = helpers.username || (depth0 != null ? depth0.username : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"username","hash":{},"data":data}) : helper)))
+    + "</span></div><div id=\"trello_info\"><img src=\"/images/information.png\"</div><div id=\"notifications\"><img src=\"/images/bell.png\"</div></div></div>";
 },"useData":true});
 
 this["JST"]["list"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {

@@ -13,7 +13,8 @@ Questions I had to ask myself:
   Do I want list actions to be its own view? 
   Do I have list view within board view, or created by App?
   Should the side menu activites and comments be updating even when not in view?
-  What should parse the original data? Thought at first maybe App (controller), but then opted to create an API that the model could interact with. This is closer to a database-type set up which would be the next step in scaling.
+  What should parse the original data? Thought at first maybe App (controller), then thought to create an API that the model could interact with. Decided to bootstrap to layout.jade for http efficiency. 
+
  
 Ideas for presentation
   Analogy: don't focus on one part of a drawing, then move on. Broader scope more elastic.
