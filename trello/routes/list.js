@@ -7,7 +7,9 @@ module.exports = function(router) {
     res.json(Board.getLists());
     // res.send("I am going to send you all lists");
   }).post(function(req, res) {
-    res.send("I am going to create a list");
+    var list = req.body;
+    Board.set(list)
+    res.json(list)     
   }).put(function(req, res) {
     res.send("I am going to update a list");
   }).delete(function(req, res) {

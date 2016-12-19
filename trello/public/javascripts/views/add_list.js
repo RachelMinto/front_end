@@ -12,14 +12,20 @@ var AddListView = Backbone.View.extend({
   },
   addSaveButton: function() {
     this.$el.html(App.templates.add_list());
+    this.$("#new_list_name").focus();
   },
   addNewList: function(e) {
     e.preventDefault();
-    debugger;
+    var newName = $('#new_list_name').val();
+
+    if (newName === "") { return; }
+
+    var $f = this.$("form")
+    this.trigger("add_list", $f);
+    // unbind view? Recreate new after list is added?
   },
   cancelAddList: function(e) {
     e.preventDefault();
-    debugger;
   },
   initialize: function() {
     this.render();

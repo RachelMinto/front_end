@@ -8,7 +8,7 @@ function getBoard() {
 }
 
 function nextID() {
-  return JSON.parse(fs.readFileSync(file_path, "utf8")).last_id + 1;
+  return JSON.parse(fs.readFileSync(file_path, "utf8")).last_list_id + 1;
 }
 
 function getLists() {
@@ -24,7 +24,7 @@ function getList(id) {
 function setList(list) {
 }
 
-function writeLists(data) {
+function writeBoard(data) {
   fs.writeFileSync(file_path, JSON.stringify(data), "utf8");
 }
 
@@ -47,8 +47,15 @@ module.exports = {
   },
   set: function(list) {
     var lists = getLists();
+    list.subscribed = false;
     list.id = nextID();
+    list.position = Object.keys(lists).length;   
     lists.push(list);
-    writeLists({ last_id: list.id, lists: lists });
+
+    var board = getBoard();
+    board.lists = lists;
+    board.last_list_id = list.id + 1
+
+    writeBoard(board);
   },
 }

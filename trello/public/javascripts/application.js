@@ -7,7 +7,7 @@ var App = {
     this.createBoardMenu();
     new BoardView({ model: App.board});
     this.board.lists.each(this.renderListView);
-    new AddListView();
+    this.addList = new AddListView();
     this.bindEvents();
   },
   createBoardMenu: function() {
@@ -31,11 +31,24 @@ var App = {
   },
   openBoardMenu: function(model) {
     this.boardMenu.show();
-  },  
+  },
+  newList: function($f) {
+    $.ajax({
+      url: $f.attr("action"),
+      type: $f.attr("method"),
+      data: $f.serialize(),
+      success: function(json) {
+        debugger;
+        App.board.lists.add(json);
+        App.indexView();
+      }
+    });
+  },
   bindEvents: function() {
     _.extend(this, Backbone.Events);
     this.on("openCardEditMenu", this.openCardEditMenu);
     this.on("openBoardMenu", this.openBoardMenu);
+    this.listenTo(this.addList, "add_list", this.newList);
   },
 };
 

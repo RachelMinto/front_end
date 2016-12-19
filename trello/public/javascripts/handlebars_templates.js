@@ -5,7 +5,7 @@ this["JST"]["add_list_placeholder"] = Handlebars.template({"compiler":[7,">= 4.0
 },"useData":true});
 
 this["JST"]["add_list"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div class=\"wrapper\"><form action=\"/board/lists\", method=\"post\"><input type=\"text\" placeholder=\"Add a list...\"><a href=\"\"><button type=\"submit\" id=\"add_new_list\">Save</button></a><a href=''><div id=\"cancel_add_list\">X</div></a></form></div>";
+    return "<div class=\"wrapper\"><form action=\"/board/lists\", method=\"post\"><input type=\"text\" placeholder=\"Add a list...\" id=\"new_list_name\" name=\"title\"><a href=\"\"><button type=\"submit\" id=\"add_new_list\">Save</button></a><a href=''><div id=\"cancel_add_list\">X</div></a></form></div>";
 },"useData":true});
 
 this["JST"]["board_menu"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
@@ -24,7 +24,7 @@ this["JST"]["board_menu"] = Handlebars.template({"1":function(container,depth0,h
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "<div id=\"board_menu\"><div class=\"section\"><h2>Menu</h2><a href=\"\" id=\"close_menu\">X</a></div><hr><div class=\"section\"><div class=\"initials\">"
+  return "<div id=\"board_menu\"><div class=\"section\"><h2>Menu</h2><a href=\"#\" id=\"close_menu\">X</a></div><hr><div class=\"section\"><div class=\"initials\">"
     + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.user : depth0)) != null ? stack1.initials : stack1), depth0))
     + "</div><a class=\"menu_button\" href=\"\"><div class=\"members\">Add Members</div></a></div><hr><div class=\"section\"><a href=\"\"><div class=\"board_color_thumbnail\">Change Background</div></a><a href=\"\"><div class=\"filter\">Filter Cards</div></a><a href=\"\"><div class=\"powerups\">Power-Ups</div></a><a href=\"\"><div class=\"stickers\">Stickers</div></a><a href=\"\"><div class=\"more\">More</div></a></div><hr><div class=\"section\"><div class=\"activities\">Activity</div>"
     + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.activities : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")

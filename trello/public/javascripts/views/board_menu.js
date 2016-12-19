@@ -6,8 +6,7 @@ var BoardMenuView = Backbone.View.extend({
   },
   template: App.templates.board_menu,
   render: function() {
-    $('#surface').append(this.$el.html(this.template(this.model.toJSON())))
-    this.hide();
+    $('#surface').append(this.$el.html(this.template(this.model.toJSON())));
   },
   hide: function() {
     this.$el.animate({ "left": "+=340px" }, "slow");
