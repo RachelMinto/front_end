@@ -1,0 +1,31 @@
+<div id="board_menu">
+  <div class="section">
+    <h2>Menu</h2>
+    <a href="" id="close_menu">X</a>
+  </div>
+  <hr>
+  <div class="section">
+    <div class="initials">{{user.initials}}</div>
+    <a class="menu_button" href="">
+      <div class="members">Add Members</div>
+    </a>
+  </div>
+  <hr>
+  <div class="section">
+    <a href=""><div class="board_color_thumbnail">Change Background</div></a>
+    <a href=""><div class="filter">Filter Cards</div></a>
+    <a href=""><div class="powerups">Power-Ups</div></a>
+    <a href=""><div class="stickers">Stickers</div></a>
+    <a href=""><div class="more">More</div></a>
+  </div>
+  <hr>
+  <div class="section">
+    <div class="activities">Activity</div>
+     {{#if activities}}
+     {{#each activities}}
+      <p>{{username}}{{verb}}this card to {{list}}</p>
+      {{/each}}
+    {{/if}}
+  </div>
+  <hr>    
+</div>  

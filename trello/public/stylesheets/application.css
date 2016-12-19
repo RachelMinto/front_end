@@ -39,16 +39,17 @@
 #board_nav #board_info {
   float: left;
 }
-#board_nav #toggle_board_menu {
+#board_nav #open_board_menu {
   float: right;
 }
-#board_nav #toggle_board_menu a {
+#board_nav #open_board_menu a {
   color: #fff;
 }
 .list_header h3,
 .list_header span {
   display: inline-block;
   color: #4d4d4d;
+  padding: 10px;
 }
 .list_header span {
   float: right;
@@ -58,6 +59,54 @@
 }
 .list_header span:hover {
   cursor: default;
+}
+li {
+  background: #fff;
+  padding: 6px 6px 2px 8px;
+  margin: 8px;
+  border-radius: 4px;
+}
+li a {
+  text-decoration: none;
+}
+#add_card {
+  margin-top: 10px;
+  padding: 10px;
+}
+.edit_card_menu .wrapper {
+  width: 730px;
+  height: 604px;
+  margin: 0 auto;
+  margin-top: 48px;
+  margin-bottom: 80px;
+}
+.edit_card_menu .wrapper .card_action_menu {
+  float: right;
+  padding: 8px 12px 12px 0;
+  width: 140px;
+  height: 499px;
+}
+.edit_card_menu .wrapper .card_action_menu a div {
+  width: 124px;
+  height: 18px;
+  padding: 7px;
+  border: 1px solid #808080;
+}
+div#board_menu_wrapper {
+  width: 340px;
+  position: fixed;
+  top: 41px;
+  right: -340px;
+  border-radius: 0px;
+}
+div#board_menu_wrapper .activity {
+  border-bottom: 1px solid #e2e4e6;
+  padding: 10px 0;
+}
+div#board_menu_wrapper hr {
+  height: 1px;
+  background: #d6dadc;
+  margin: 12px 0;
 }
 html {
   font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
@@ -74,8 +123,8 @@ h1 {
 h3 {
   font-weight: bold;
 }
-textarea {
-  transition: background 85ms ease-in, border-color 85ms ease-in;
+div {
+  border-radius: 4px;
 }
 header {
   height: 40px;
@@ -92,8 +141,26 @@ header #board_info div {
 .wrapper .interior {
   background: #fff;
 }
+a.menu_button div {
+  background: #fff;
+  border: 1px solid #e2e4e6;
+}
+a.menu_button div:hover {
+  background: #298fca;
+  border-color: #298fee #298fca #026aa7;
+}
 .list {
   width: 300px;
   display: inline-block;
   margin-left: 10px;
+  vertical-align: top;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+  background: rgba(0,0,0,0.6);
 }

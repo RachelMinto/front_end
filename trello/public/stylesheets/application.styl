@@ -3,6 +3,8 @@
 @import "header"
 @import "board_top"
 @import "list"
+@import "edit_card"
+@import "board_menu"
 
 html
   font: 14px "Helvetica Neue", Arial, Helvetica,sans-serif
@@ -19,8 +21,8 @@ h1
 h3
   font-weight: bold
 
-textarea
-  transition: background 85ms ease-in,border-color 85ms ease-in
+div
+  border-radius: 4px
 
 header
   height: 40px
@@ -36,7 +38,25 @@ header
   .interior
     background: colors.primary.default
 
+a.menu_button
+  div
+    background: colors.primary.default
+    border: 1px solid colors.secondary.detail    
+    &:hover
+      background: #298FCA
+      border-color: #298FEE #298FCA #026AA7
+
 .list
   width: 300px
   display: inline-block
   margin-left: 10px
+  vertical-align: top
+
+.modal
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 9
+  background: rgba(0,0,0,0.6)

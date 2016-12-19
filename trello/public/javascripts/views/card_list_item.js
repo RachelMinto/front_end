@@ -2,7 +2,7 @@ var CardView = Backbone.View.extend({
   // className: "",
   tagName: "li",
   events: {
-    "click": "move"
+    "click": "editMenuView"
   },
   template: App.templates.card,
   render: function() {
@@ -14,9 +14,14 @@ var CardView = Backbone.View.extend({
     // need to assign to another list. Do that here and make ajax.
     //Assign to another list:
     // Use .sync to update server. .remove and .add to change collections.
-    var listID = "1";
+    var listID = "1"; // need to dynamically generate this ID.
     this.model.collection.remove(this.model); // Removing from CardCollection.
     App.addCardToList(listID, this.model);
+  },
+  editMenuView: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    App.trigger("openCardEditMenu", this.model)
   },
   cardHTML: function() {
     this.$el.html(this.template(this.model.toJSON()));

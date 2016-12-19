@@ -1,0 +1,47 @@
+<div class="wrapper">
+  <div class="card_content">
+    <div class="card_title_info">
+      <h3>{{title}}</h3>
+      <p>in list <a href="">{{list_title}}</a></p>
+    </div>
+    <div class="card_description">
+      <p>Description<a href=""><span>Edit</span></a></p>
+      {{#if description}}
+      <p>{{description}}</p>
+      {{/if}}
+    </div>
+    <div class="card_comments">
+      <h3>Add Comment</h3>
+      <form>
+        <textarea placeholder="Write a comment..."></textarea>
+        <div class="comment_option_icons"></div>
+        <a href=""><div class="send_comment">Send</div></a>
+      </form>
+    </div>  
+    <div class="card_activities">
+      <h3>Activity</h3><a href="">Hide Details</a>
+       {{#if activities}}
+       {{#each activities}}
+        <p>{{username}}{{verb}}this card to {{list}}</p>
+        {{/each}}
+      {{/if}}
+    </div> 
+  </div>
+  <div class="card_action_menu">
+    <div class="card_add_menu">
+      <a href="#" class="menu_button"><div class="members">Members</div></a>
+      <a href="#" class="menu_button"><div class="labels">Labels</div></a> 
+      <a href="#" class="menu_button"><div class="checklist">Checklist</div></a>
+      <a href="#" class="menu_button"><div class="due_date">Due Date</div></a>    
+      <a href="#" class="menu_button"><div class="attachment">Attachment</div></a>
+    </div>
+    <div class="card_actions_menu">
+      <a href="#" class="menu_button"><div class="move_card">Move</div></a>
+      <a href="#" class="menu_button"><div class="label_card">Copy</div></a> 
+      <a href="#" class="menu_button"><div class="subscribe_card">Subscribe</div></a>
+      <a href="#" class="menu_button"><div class="archive_card">Archive</div></a>      
+      <a href="#">Share and more...</a>             
+    </div>    
+  </div>
+</div>
+

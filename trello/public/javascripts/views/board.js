@@ -1,12 +1,11 @@
 var BoardView = Backbone.View.extend({
   template: App.templates.board,
   events: {
-  //   "click #new_list": "new_list"
-  //   "submit": "add_list"
-  //   "click": "show_menu",
-  //   "click": "edit_name",
-  //   "click": "toggle_star"
-  //   "click": "change_privacy"
+    "click #open_board_menu": "openMenu"
+  },
+  openMenu: function(e) {
+    e.preventDefault();
+    App.trigger("openBoardMenu");    
   },
   new_list: function() {
     // Make new view using list template. Should delete if not submitted.
@@ -42,7 +41,8 @@ var BoardView = Backbone.View.extend({
   },
   render: function() {
     // if (board.color !== default) { change html background };
-    $('main').html(this.template(this.model.toJSON()));
+    var content = this.$el.html(this.template(this.model.toJSON()));
+    $('main').html(content);
   },
   initialize: function() {
     this.render()

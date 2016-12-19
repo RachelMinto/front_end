@@ -22,6 +22,21 @@ Questions I had to ask myself:
  http://jsfiddle.net/nikoshr/947Vf/
 
 
+API
+
+GET     /board (**All default_board data)
+PUT     /board  **Update board
+
+GET     /board/:listID/items  **Get list data
+POST    /board/:listID/items  **Update list item
+PUT     /board/:listID/items  **Update a list item / includes archive a list item.
+DELETE  /board/:listID/items  **Destroy a list
+
+GET     /board/lists **get all lists
+POST    /board/lists **Create a list
+PUT     /board/lists **Update a list 
+DELETE  /board/lists  **Delete a list
+
 Ideas for presentation
   Analogy: don't focus on one part of a drawing, then move on. Broader scope more elastic.
 
