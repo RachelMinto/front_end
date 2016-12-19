@@ -16,7 +16,6 @@ var BoardMenuView = Backbone.View.extend({
     this.$el.animate({ "left": "-=340px" }, "slow"); // Need to slow this down.
   },
   initialize: function() {
-    debugger;
     this.render();
     // subscribe to notifications from selected board, list, and item changes.
   },

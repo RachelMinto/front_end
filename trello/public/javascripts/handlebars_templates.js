@@ -1,5 +1,13 @@
 this["JST"] = this["JST"] || {};
 
+this["JST"]["add_list_placeholder"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<form action=\"/board/lists\", method=\"post\"><input type=\"text\" placeholder=\"Add a list...\" class=\"add_button\"></form>";
+},"useData":true});
+
+this["JST"]["add_list"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"wrapper\"><form action=\"/board/lists\", method=\"post\"><input type=\"text\" placeholder=\"Add a list...\"><a href=\"\"><button type=\"submit\" id=\"add_new_list\">Save</button></a><a href=''><div id=\"cancel_add_list\">X</div></a></form></div>";
+},"useData":true});
+
 this["JST"]["board_menu"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var stack1;
 

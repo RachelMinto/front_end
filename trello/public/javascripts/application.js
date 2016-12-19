@@ -7,6 +7,7 @@ var App = {
     this.createBoardMenu();
     new BoardView({ model: App.board});
     this.board.lists.each(this.renderListView);
+    new AddListView();
     this.bindEvents();
   },
   createBoardMenu: function() {
@@ -15,19 +16,11 @@ var App = {
     this.boardMenu = new BoardMenuView({ model: model });    
   },
   renderListView: function(list) {
-    new ListView({
-      model: list
-      // "url": function() {
-      //   return "/lists/" + this.get("title");
-      // }
-    });
+    new ListView({ model: list });
 
-    if (list.cards) {
-      _.each(list.cards.models, function(card) {
-        new CardView({ model: card });
-      }, this);
-    }
-    // list.cards.each(this.renderCardView);
+    _.each(list.cards.models, function(card) {
+      new CardView({ model: card });
+    }, this);
   },
   addCardToList: function(listID, model) {
     var list = this.board.getListByID(listID);

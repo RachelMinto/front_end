@@ -6,11 +6,13 @@
 @import "edit_card"
 @import "board_menu"
 
-html
+html, input
   font: 14px "Helvetica Neue", Arial, Helvetica,sans-serif
   background: colors.primary.bg
   color: colors.primary.default
 
+input
+  border: none
 a
   cursor: pointer
 
@@ -60,3 +62,7 @@ a.menu_button
   left: 0
   z-index: 9
   background: rgba(0,0,0,0.6)
+
+#board_canvas
+  overflow: scroll
+  line-height: 18px

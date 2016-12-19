@@ -73,6 +73,22 @@ li a {
   margin-top: 10px;
   padding: 10px;
 }
+#add_list_input {
+  display: inline-block;
+  margin: 0 8px;
+  vertical-align: top;
+}
+#add_list_input input {
+  border-radius: 4px;
+  padding: 7px;
+  width: 248px;
+  height: 18px;
+  color: rgba(255,255,255,0.7);
+  background: rgba(0,0,0,0.1);
+}
+#add_list_input input:hover {
+  background: rgba(0,0,0,0.2);
+}
 .edit_card_menu .wrapper {
   width: 730px;
   height: 604px;
@@ -108,10 +124,14 @@ div#board_menu_wrapper hr {
   background: #d6dadc;
   margin: 12px 0;
 }
-html {
+html,
+input {
   font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
   background: #0079bf;
   color: #fff;
+}
+input {
+  border: none;
 }
 a {
   cursor: pointer;
@@ -163,4 +183,8 @@ a.menu_button div:hover {
   left: 0;
   z-index: 9;
   background: rgba(0,0,0,0.6);
+}
+#board_canvas {
+  overflow: scroll;
+  line-height: 18px;
 }
