@@ -48,6 +48,7 @@ var ListView = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
+    this.$el.sortable();
     this.listenTo(this.model.cards, 'card_collection_updated', this.render)    
     // subscribe to notifications from selected board, list, and item changes.
   },

@@ -21,11 +21,19 @@ Questions I had to ask myself:
  
  http://jsfiddle.net/nikoshr/947Vf/
 
+DECIDE: Archive lists as separate, or as simple attribute on list? Handlebar templates could filter. Keeps it aligned with original lists/collections. Update status on unarchive? Problem to have "ghost" lists/positions? May need to decide after I figure out how I'm going to be sorting.
 
 API
 
 GET     /board (**All default_board data)
 PUT     /board  **Update board
+GET     /board/comments  (**all comments)
+GET     /board/activities  (*all activities)
+
+GET     /board/archived/cards  (needs to track original list)
+POST    /board/archived/cards
+PUT     /board/archived/cards 
+GET     /board/archived/lists 
 
 GET     /board/:listID/items  **Get list data
 POST    /board/:listID/items  **Update list item
@@ -36,6 +44,7 @@ GET     /board/lists **get all lists
 POST    /board/lists **Create a list
 PUT     /board/lists **Update a list 
 DELETE  /board/lists  **Delete a list
+
 
 Ideas for presentation
   Analogy: don't focus on one part of a drawing, then move on. Broader scope more elastic.
@@ -198,10 +207,4 @@ html
         App.default_board = new FoodItems(!{JSON.stringify(food_items)});      
       +javascript_include_tag("router")
       block scripts  
-
-
-To Do
-
-
-
 

@@ -184,7 +184,20 @@ a.menu_button div:hover {
   z-index: 9;
   background: rgba(0,0,0,0.6);
 }
+#full_board {
+  height: 100vh;
+}
 #board_canvas {
-  overflow: scroll;
-  line-height: 18px;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+.wrapper.list {
+  flex-grow: 1;
+  min-width: 270px;
 }

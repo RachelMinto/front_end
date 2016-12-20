@@ -1,5 +1,6 @@
 var BoardView = Backbone.View.extend({
   template: App.templates.board,
+  id: "full_board",
   events: {
     "click #open_board_menu": "openMenu"
   },
@@ -43,7 +44,6 @@ var BoardView = Backbone.View.extend({
     // if (board.color !== default) { change html background };
     var content = this.$el.html(this.template(this.model.toJSON()));
     $('main').html(content);
-    
   },
   initialize: function() {
     this.render()
