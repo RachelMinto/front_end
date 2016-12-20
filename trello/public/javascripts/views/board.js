@@ -53,8 +53,6 @@ var BoardView = Backbone.View.extend({
       forcePlaceholderSize: true,
       update: function(event, ui) {
         ui.item.trigger('drop', ui.item.index())
-        console.log("Start position: " + ui.item.startPos);
-        console.log("New position: " + ui.item.index());
       }
     });
   },

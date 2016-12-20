@@ -4,6 +4,9 @@ var List = Backbone.Model.extend({
     this.cards.url = "/board/" + this.id + "/items"
     this.parse(data); 
   },
+  getCard: function(id) {
+
+  },
   parse: function(data) {
     if (data.cards) {
         this.cards.reset(data.cards);

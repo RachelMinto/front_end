@@ -1,6 +1,15 @@
 var ListCollection = Backbone.Collection.extend({
   model: List,
   // comparator: 'position',
+  // removeDraggedCard: function(e, ui) {
+  //   debugger;
+  //   var removeFromListID = ui.item.startListID
+  //   console.log("I dragged a card!");
+  // },
+  // addDroppedCard: function(e, ui) {
+  //   console.log("I dropped a card!");
+  //   debugger;
+  // },   
   addedList: function() {
     console.log("I've added a list!");
     this.trigger("list_collection_updated");
@@ -27,5 +36,7 @@ var ListCollection = Backbone.Collection.extend({
     this.on("add", this.addedList);
     this.on("remove", this.removedList);  //  (model, collection, options) 
     this.on("updateListPositions", this.updateListPositions);
+    // this.listenTo(model, "removeDraggedCard", removeDraggedCard);
+    // this.listenTo(model, "removeDraggedCard", removeDraggedCard);
   }   
 });

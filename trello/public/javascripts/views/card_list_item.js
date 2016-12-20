@@ -3,16 +3,10 @@ var CardView = Backbone.View.extend({
   tagName: "li",
   events: {
     "click": "editMenuView",
-    "drop": "drop"
+    // "removeDraggedCard": "removeDraggedCard",
+    // "addDroppedCard": "addDroppedCard"
   },
   template: App.templates.card,
-  drop: function() {
-    console.log("I dropped a card!");
-  },
-  render: function() {
-    // this.$el.html(this.template(this.model.toJSON()))
-    // this.$el.appendTo($('#board_canvas'));
-  },
   move: function(e) {
     e.stopPropagation();
     // need to assign to another list. Do that here and make ajax.

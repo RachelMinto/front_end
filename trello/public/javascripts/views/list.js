@@ -4,12 +4,11 @@ var ListView = Backbone.View.extend({
     "click .list_header": "renameView",
     "click span": "EditMenuView",
     "blur input": "updateName",
-    "drop": "drop"
+    "drop": "drop",
   },
   template: App.templates.list,  
   drop: function(event, index) {
-      debugger;
-      App.trigger('updateListPositions', [this.model, index]);
+    App.trigger('updateListPositions', [this.model, index]);
   },   
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
@@ -56,7 +55,17 @@ var ListView = Backbone.View.extend({
     $('.list_container').sortable({ 
       connectWith: '.list_container',
       placeholder: "ui-sortable-placeholder",
-      forcePlaceholderSize: true
+      forcePlaceholderSize: true,
+      start: function(event, ui) {
+        ui.item.startListID = $(this.closest('ul')).data('id');
+      },
+      remove: function(event, ui) {
+        debugger;
+        App.trigger('removeDraggedCard', ui);
+      },
+      receive: function(event, ui) {
+        App.trigger('addDroppedCard', ui);
+      },
     });
     this.listenTo(this.model.cards, 'card_collection_updated', this.render)    
     // subscribe to notifications from selected board, list, and item changes.

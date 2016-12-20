@@ -26,6 +26,12 @@ var App = {
     var list = this.board.getListByID(listID);
     list.cards.create(model);
   },
+  removeCardFromList: function(ui) {
+    
+    // var list = this.board.getListByID(listID);
+    // list.cards.remove(model)
+    // debugger;
+  },
   openCardEditMenu: function(model) {
     new EditCardView({ model: model });
   },
@@ -48,6 +54,7 @@ var App = {
     this.on("openCardEditMenu", this.openCardEditMenu);
     this.on("openBoardMenu", this.openBoardMenu);
     this.on("updateListPositions", this.board.lists.updateListPositions.bind(this.board.lists));
+    this.on("removeDraggedCard", this.removeCardFromList)
     this.listenTo(this.addList, "add_list", this.newList);
   },
 };
