@@ -3,9 +3,13 @@ var AddListView = Backbone.View.extend({
   events: {
     "click .add_button": "addSaveButton",
     "click #add_new_list": "addNewList",
-    "click #cancel_add_list": "cancelAddList"
+    "click #cancel_add_list": "cancelAddList"    
   },
   id: "add_list_input",
+  drop: function(event, index) {
+      debugger;
+      App.trigger('updateCardPosition', [this.model, index]);
+  },   
   render: function() {
     var content = this.$el.html(this.template());
     $('#board_canvas').append(content);

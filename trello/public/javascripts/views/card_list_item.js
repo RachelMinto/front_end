@@ -2,9 +2,13 @@ var CardView = Backbone.View.extend({
   // className: "",
   tagName: "li",
   events: {
-    "click": "editMenuView"
+    "click": "editMenuView",
+    "drop": "drop"
   },
   template: App.templates.card,
+  drop: function() {
+    console.log("I dropped a card!");
+  },
   render: function() {
     // this.$el.html(this.template(this.model.toJSON()))
     // this.$el.appendTo($('#board_canvas'));

@@ -48,6 +48,9 @@ var BoardView = Backbone.View.extend({
   initialize: function() {
     this.render()
     $('#board_canvas').sortable({
+      items: '> .list.wrapper',
+      placeholder: "ui-sortable-placeholder",
+      forcePlaceholderSize: true,
       update: function(event, ui) {
         ui.item.trigger('drop', ui.item.index())
         console.log("Start position: " + ui.item.startPos);

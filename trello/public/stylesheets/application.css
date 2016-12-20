@@ -93,6 +93,9 @@ li a {
 #add_list_input input:hover {
   background: rgba(0,0,0,0.2);
 }
+.ui-sortable-placeholder {
+  background: rgba(0,0,0,0.2);
+}
 .edit_card_menu .wrapper {
   width: 730px;
   height: 604px;
