@@ -47,9 +47,16 @@ var BoardView = Backbone.View.extend({
   },
   initialize: function() {
     this.render()
+    $('#board_canvas').sortable({
+      update: function(event, ui) {
+        ui.item.trigger('drop', ui.item.index())
+        console.log("Start position: " + ui.item.startPos);
+        console.log("New position: " + ui.item.index());
+      }
+    });
+  },
     // listen to activities add
     // listen to comments add
-  }
 });
 
 // el?

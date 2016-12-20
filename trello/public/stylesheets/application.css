@@ -26,6 +26,10 @@
   text-align: right;
 }
 #board_nav {
+  position: fixed;
+  top: 40px;
+  left: 0;
+  right: 0;
   padding: 8px 4px 8px 8px;
 }
 #board_nav h1,
@@ -147,6 +151,10 @@ div {
   border-radius: 4px;
 }
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 40px;
   background: rgba(0,0,0,0.15);
 }
@@ -178,9 +186,9 @@ a.menu_button div:hover {
 .modal {
   position: fixed;
   top: 0;
+  left: 0;
   right: 0;
   bottom: 0;
-  left: 0;
   z-index: 9;
   background: rgba(0,0,0,0.6);
 }
@@ -188,6 +196,7 @@ a.menu_button div:hover {
   height: 100vh;
 }
 #board_canvas {
+  margin-top: 86px;
   display: flex;
   display: -webkit-flex;
   -webkit-flex-direction: row;
@@ -200,4 +209,5 @@ a.menu_button div:hover {
 .wrapper.list {
   flex-grow: 1;
   min-width: 270px;
+  max-width: 270px;
 }

@@ -4,8 +4,13 @@ var ListView = Backbone.View.extend({
     "click .list_header": "renameView",
     "click span": "EditMenuView",
     "blur input": "updateName",
+    "drop": "drop"
   },
-  template: App.templates.list,
+  template: App.templates.list,  
+  drop: function(event, index) {
+      debugger;
+      App.trigger('updateListPositions', [this.model, index]);
+  },   
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
     this.renderCollection();
@@ -48,7 +53,7 @@ var ListView = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
-    this.$el.sortable();
+    $('.list_container').sortable();
     this.listenTo(this.model.cards, 'card_collection_updated', this.render)    
     // subscribe to notifications from selected board, list, and item changes.
   },

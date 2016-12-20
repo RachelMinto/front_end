@@ -38,7 +38,6 @@ var App = {
       type: $f.attr("method"),
       data: $f.serialize(),
       success: function(json) {
-        debugger;
         App.board.lists.add(json);
         App.indexView();
       }
@@ -48,6 +47,7 @@ var App = {
     _.extend(this, Backbone.Events);
     this.on("openCardEditMenu", this.openCardEditMenu);
     this.on("openBoardMenu", this.openBoardMenu);
+    this.on("updateListPositions", this.board.lists.updateListPositions.bind(this.board.lists));
     this.listenTo(this.addList, "add_list", this.newList);
   },
 };

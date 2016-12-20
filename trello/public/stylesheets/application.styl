@@ -27,6 +27,7 @@ div
   border-radius: 4px
 
 header
+  top_fixed()
   height: 40px
   background: colors.primary.dark_bg
   #board_info
@@ -55,11 +56,8 @@ a.menu_button
   vertical-align: top
 
 .modal
-  position: fixed
-  top: 0
-  right: 0
+  top_fixed()
   bottom: 0
-  left: 0
   z-index: 9
   background: rgba(0,0,0,0.6)
 
@@ -67,6 +65,7 @@ a.menu_button
   height: 100vh
 
 #board_canvas
+  margin-top: 86px
   display: flex
   display: -webkit-flex
   -webkit-flex-direction: row
@@ -79,4 +78,5 @@ a.menu_button
 .wrapper.list
   flex-grow: 1
   min-width: 270px
+  max-width: 270px
 

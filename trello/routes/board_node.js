@@ -32,6 +32,8 @@ function updateList(id) {
 
 }
 
+
+
 module.exports = {
   get: function() {
     return getBoard();
@@ -43,7 +45,9 @@ module.exports = {
     return getLists();
   },
   updateLists: function(lists) {
-    writeLists({lists: lists });
+    var board = getBoard();
+    board.lists = lists;
+    writeBoard(board);
   },
   set: function(list) {
     var lists = getLists();

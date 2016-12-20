@@ -11,7 +11,10 @@ module.exports = function(router) {
     Board.set(list)
     res.json(list)     
   }).put(function(req, res) {
-    res.send("I am going to update a list");
+    debugger;    
+    var lists = req.body;
+    Board.updateLists(lists);
+    res.json(lists);
   }).delete(function(req, res) {
     res.send("I am going to delete a list.")
   });

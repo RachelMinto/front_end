@@ -122,5 +122,5 @@ this["JST"]["list"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":func
 
   return "<a href=\"#\"><div class=\"list_header\"><h3>"
     + container.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"title","hash":{},"data":data}) : helper)))
-    + "</h3><a href=\"\"><span>...</span></a></div></a><ul></ul><a href=\"\" id=\"add_card\">Add a card...</a>";
+    + "</h3><a href=\"\"><span>...</span></a></div></a><ul class=\"list_container\"></ul><a href=\"\" id=\"add_card\">Add a card...</a>";
 },"useData":true});

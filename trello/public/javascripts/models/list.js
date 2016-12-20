@@ -1,4 +1,4 @@
-var List = Backbone.Model.extend({ 
+var List = Backbone.Model.extend({
   initialize: function(data) {
     this.cards = new CardCollection();
     this.cards.url = "/board/" + this.id + "/items"
