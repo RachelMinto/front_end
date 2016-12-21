@@ -10,7 +10,9 @@ var List = Backbone.Model.extend({
   },
   initialize: function(data) {
     this.cards = new CardCollection();
-    this.cards.url = "/board/" + this.id + "/items";
+    this.id = App.getNextListID();
+    this.url = "/board/" + this.id;
+    this.cards.url = "/board/" + this.id + "/items"
     this.parse(data); 
   },  
 });

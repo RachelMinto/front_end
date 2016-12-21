@@ -11,41 +11,38 @@ var ListView = Backbone.View.extend({
   add_card_popup: function(e) {
     e.preventDefault();
     e.stopPropagation();
+    self = this;
 
     this.$el.find(".add_card").addClass("invisible");
-    var addCardView = new AddCardView()
+    var addCardView = new AddCardView({id: self.model.id});
     var addCardHTML = addCardView.getView();
     this.$el.append(addCardHTML);
     this.listenTo(addCardView, "add_card", this.addCard)
     // View should destroy on submit or click outside.
     // class should be removed from "add a card" on destruction of form view.
   },
-  addCard: function(title) {
+  addCard: function($f) {
+    var title = $f.find("#new_card_name").val()
     var cardJSON = {
       "title": title,
-      "id": "",
-      "checklist":"[]",
-      "comments":"[]",
-      "activities":"[]",
-      "attachments":"[]"
     }
-
-    // $.ajax({
-    //   url: "/board/,
-    //   type: $f.attr("method"),
-    //   data: $f.serialize(),
-    //   success: function(json) {
-    //     App.board.lists.add(json);
-    //     App.indexView();
-    //   }
-    });
-
+    
     var newCard = new Card(cardJSON);
-    var $card = this.renderItem(newCard);
-    $card.$el.appendTo(this.$el.find('ul'));
 
-    debugger;
-    this.model.cards.add(newCard);
+    $.ajax({
+      url: $f.attr("action"),
+      type: $f.attr("method"),
+      data: newCard,
+      success: function(json) {
+        debugger;
+        self.model.cards.add(json);
+        var $card = self.renderItem(newCard);
+        $card.$el.appendTo(self.$el.find('ul'));
+      },
+      error: function(json) {
+        debugger;
+      }
+    });    
     //destroy addCardView, remove class of invisible
   },
   drop: function(event, index) {
@@ -67,16 +64,7 @@ var ListView = Backbone.View.extend({
     this.model.set('title', e.target.value);
     var newName = "<h3>" + e.target.value + "</h3>"
     this.$el.find("input").replaceWith(newName);
-    debugger;
-
-    $.ajax({
-      url: "/board/1",
-      type: "put",
-      data: this.model.toJSON(),
-      success: function(json) {
-        console.log('i got some data!');
-      }
-    });    
+    this.sync("update", this);
   },
   renderCollection: function() {
     var self = this;

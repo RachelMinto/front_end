@@ -1,8 +1,10 @@
 var Card = Backbone.Model.extend({
 
-  initialize: function(data) {
+  initialize: function(data) {   
     this.comments = new CommentCollection();
     this.activities = new ActivityCollection();
+    this.checklist = [],
+    this.attachments = [],
     this.id = App.getNextCardID();
     this.parse(data);
   },
@@ -20,8 +22,4 @@ var Card = Backbone.Model.extend({
 
     return _.omit(data, omitKeys);
   },
-  // setID: function() {
-
-  //   this.set("id", nextID);
-  // }
 });

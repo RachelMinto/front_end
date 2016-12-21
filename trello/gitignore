@@ -18,6 +18,8 @@ Questions I had to ask myself:
   Decoupled board view from lists view and made them unaware of each other.
 
   When moving a list item, should I keep the same view coupled to it or render a new view? Decided to decouple and render a new view. 
+
+  How do I keep track of model and list ids? At first i had it on the controller, but it was too hard to automatically update with submitted content from forms, and keeping all models, DOM, etc. in sync was difficult. Simplified it by having the server assign and track the ids. It's kind of makeshfit compared to 
  
  http://jsfiddle.net/nikoshr/947Vf/
 
@@ -201,3 +203,21 @@ html
       +javascript_include_tag("router")
       block scripts  
 
+
+
+TO DO Items
+
+General API hookup - Wednesday night
+
+Update list and cards to get models assigned by server.
+Check into Cid for new cards/lists that haven't yet been created.
+Add Card post to server.
+Hook up move list API
+Hook up move card API
+Make sure rename list posts to server.
+
+Create Edit Card Functionality - Thursday & Friday
+-Allow user to input a description.
+-Allow user to add comment.
+-Render all activity statements properly
+-Create general popup menu template for labels, checklist, due date etc.

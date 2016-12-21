@@ -7,7 +7,6 @@ var AddListView = Backbone.View.extend({
   },
   id: "add_list_input",
   drop: function(event, index) {
-      debugger;
       App.trigger('updateCardPosition', [this.model, index]);
   },   
   render: function() {
@@ -21,7 +20,6 @@ var AddListView = Backbone.View.extend({
   addNewList: function(e) {
     e.preventDefault();
     var newName = $('#new_list_name').val();
-
     if (newName === "") { return; }
 
     var $f = this.$("form")

@@ -26,7 +26,7 @@ var BoardView = Backbone.View.extend({
     //     App.albums.add(json);
     //     App.indexView();
     //   }
-    // });    
+    // });
   },
   show_menu: function() {
 
