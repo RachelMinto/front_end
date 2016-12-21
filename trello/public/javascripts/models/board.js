@@ -11,6 +11,8 @@ var Board = Backbone.Model.extend({
     if (data.lists) {
       this.lists.reset(data.lists);
     }
+
+    this.lastCardID = data.lastCardID
     return _.omit(data, 'lists');
   },
   getListByID: function(id) {

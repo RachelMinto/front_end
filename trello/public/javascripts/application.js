@@ -1,6 +1,7 @@
 var App = {
   templates: JST,
   $el: $('main'),
+  lastCardID: 0,
   indexView: function() {
     this.user = new User();    
     new HeaderView({ model: App.user });
@@ -9,6 +10,10 @@ var App = {
     this.board.lists.each(this.renderListView);
     this.addList = new AddListView();
     this.bindEvents();
+  },
+  getNextCardID: function() {
+    this.lastCardID++
+    return this.lastCardID; 
   },
   createBoardMenu: function() {
     var model = new Backbone.Model();

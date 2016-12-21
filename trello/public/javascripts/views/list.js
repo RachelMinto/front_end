@@ -20,17 +20,21 @@ var ListView = Backbone.View.extend({
     // View should destroy on submit or click outside.
     // class should be removed from "add a card" on destruction of form view.
   },
-  addCard: function($f) {
-    this.model.cards.add({
-      title: $f.add_card_name.val(),
-      id:"1",
-      checklist:[],
-      comments:[],
-      activities:[],
-      attachments:[]
-    })
-    debugger;
+  addCard: function(title) {
+    var cardJSON = {
+      "title": title,
+      "id": "",
+      "checklist":"[]",
+      "comments":"[]",
+      "activities":"[]",
+      "attachments":"[]"
+    }
 
+    var newCard = new Card(cardJSON);
+    var $card = this.renderItem(newCard);
+    $card.$el.appendTo(this.$el.find('ul'));
+
+    this.model.cards.add(newCard)
     //destroy addCardView, remove class of invisible
   },
   drop: function(event, index) {

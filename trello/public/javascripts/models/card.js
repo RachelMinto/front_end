@@ -3,6 +3,7 @@ var Card = Backbone.Model.extend({
   initialize: function(data) {
     this.comments = new CommentCollection();
     this.activities = new ActivityCollection();
+    this.id = App.getNextCardID();
     this.parse(data);
   },
   parse: function(data) {
