@@ -23,6 +23,7 @@ var CardView = Backbone.View.extend({
   },
   cardHTML: function() {
     this.$el.html(this.template(this.model.toJSON()));
+    this.$el.attr('data-id', this.model.get('id'));
     return this.$el
   },
   initialize: function(card) {

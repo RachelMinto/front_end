@@ -10,8 +10,7 @@ module.exports = function(router) {
     var list = req.body;
     Board.set(list)
     res.json(list)     
-  }).put(function(req, res) {
-    debugger;    
+  }).put(function(req, res) {   
     var lists = req.body;
     Board.updateLists(lists);
     res.json(lists);

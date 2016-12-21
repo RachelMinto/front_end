@@ -14,7 +14,7 @@ var Board = Backbone.Model.extend({
     return _.omit(data, 'lists');
   },
   getListByID: function(id) {
-    return this.lists.findWhere( {id : id});
+    return this.lists.findWhere( {id : id.toString()});
   }
 });
 

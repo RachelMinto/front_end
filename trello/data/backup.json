@@ -10,6 +10,7 @@
    "cards":[
     {"title":"Todo # 1",
      "subscribed":"false",
+     "id":"1",
      "checklist":[
       {"title":"Checklist 1",
        "items":[
@@ -46,6 +47,7 @@
         "title":"second.pdf"}]},
 {"title":"Todo #2",
      "subscribed":"false",
+      "id":"2",
      "checklist":[
       {"title":"Checklist 1",
        "items":[
@@ -87,6 +89,7 @@
    "subscribed":"false",
    "cards":[
     {"title":"Another todo",
+     "id":"3",
      "subscribed":"false",
      "checklist":[
       {"title":"Checklist 1",

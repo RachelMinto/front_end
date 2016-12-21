@@ -10,13 +10,11 @@ module.exports = function(router) {
     // Board.setList(list)
     res.send("I am going to create a new card"); // response. Automatically sets content headers so content is JSON.
   }).put(function(req, res) {
-    var lists = Board.getLists();
-    var currentList = _.findWhere(lists, { id: req.body.id });
-
-    _.extend(currentList, req.body);
-    Board.updateLists(lists);    
-    res.send("I am going to update a list item");
-    // res.json(currentList);    
+    var boardLists = Board.getLists()
+    var list = _.where(boardLists, {id: req.params.listID });
+    list[0].cards = req.body
+    Board.updateLists(boardLists);
+    res.json(list);    
   }).delete(function(req, res) {
     res.send("I am going to delete a list item.")
   });

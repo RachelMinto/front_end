@@ -49,6 +49,9 @@ module.exports = {
     board.lists = lists;
     writeBoard(board);
   },
+  updateCards: function(list) {
+
+  },
   set: function(list) {
     var lists = getLists();
     list.subscribed = false;
