@@ -5,8 +5,34 @@ var ListView = Backbone.View.extend({
     "click span": "EditMenuView",
     "blur input": "updateName",
     "drop": "drop",
+    "click .add_card": "add_card_popup"
   },
-  template: App.templates.list,  
+  template: App.templates.list,
+  add_card_popup: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    this.$el.find(".add_card").addClass("invisible");
+    var addCardView = new AddCardView()
+    var addCardHTML = addCardView.getView();
+    this.$el.append(addCardHTML);
+    this.listenTo(addCardView, "add_card", this.addCard)
+    // View should destroy on submit or click outside.
+    // class should be removed from "add a card" on destruction of form view.
+  },
+  addCard: function($f) {
+    this.model.cards.add({
+      title: $f.add_card_name.val(),
+      id:"1",
+      checklist:[],
+      comments:[],
+      activities:[],
+      attachments:[]
+    })
+    debugger;
+
+    //destroy addCardView, remove class of invisible
+  },
   drop: function(event, index) {
     App.trigger('updateListPositions', [this.model, index]);
   },   

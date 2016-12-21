@@ -1,5 +1,9 @@
 this["JST"] = this["JST"] || {};
 
+this["JST"]["add_card_composer"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"add_card_composer\"><input class=\"card\" id=\"new_card_name\" title=\"new_card_name\" autofocus><div><a href=\"\" class=\"submit_new_card\"><div>Add</div><span>X</span><a href=\"\" class=\"get_more_options\"><span>...</span></a></div>";
+},"useData":true});
+
 this["JST"]["add_list_placeholder"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<form action=\"/board/lists\", method=\"post\"><input type=\"text\" placeholder=\"Add a list...\" class=\"add_button\"></form>";
 },"useData":true});
@@ -122,7 +126,7 @@ this["JST"]["list"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":func
 
   return "<a href=\"#\"><div class=\"list_header\"><h3>"
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "</h3><a href=\"\"><span>...</span></a></div></a><ul class=\"list_container\" data-id=\""
+    + "</h3><a href=\"\" class=\"get_more_options\"><span>...</span></a></div></a><ul class=\"list_container\" data-id=\""
     + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
-    + "\"></ul><a href=\"\" id=\"add_card\">Add a card...</a>";
+    + "\"></ul><a href=\"\" class=\"add_card\">Add a card...</a>";
 },"useData":true});

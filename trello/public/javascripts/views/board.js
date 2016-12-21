@@ -60,5 +60,4 @@ var BoardView = Backbone.View.extend({
     // listen to comments add
 });
 
-// el?
 

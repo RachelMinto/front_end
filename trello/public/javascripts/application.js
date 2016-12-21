@@ -26,21 +26,6 @@ var App = {
     var list = this.board.getListByID(listID);
     list.cards.create(model);
   },
-  // removeDraggedCard: function(ui) {
-  //   var list = this.board.getListByID(ui.item.startListID);
-  //   var id = ui.item.data('id');
-  //   var model = list.getCardByID(id);
-  //   list.cards.remove(model);
-  //   // list.cards.trigger("update");
-  //   // sync w server
-  // },
-  // addCard: function([listID, cardID, position]) {
-  //   var list = this.board.getListByID(listID);
-  //   var model = list.getCardByID(cardID);
-  //   list.cards.add(model, {at: +position});
-  //   list.cards.trigger("update");    
-  //   // sync w server    
-  // },
   updateCardPosition: function([oldListID, newListID, cardID, position]) {
     var oldList = this.board.getListByID(oldListID);
     var newList = this.board.getListByID(newListID);
@@ -48,10 +33,6 @@ var App = {
 
     oldList.cards.remove(model);    
     newList.cards.add(model, {at: position});
-    // oldList.cards.trigger("updateServer"); // remove and use update auto from previous two.
-    // this.board.lists.trigger("syncServer");
-    // oldList.trigger("syncServer");
-    // newList.trigger("syncServer");  // check if these are updating and removing. then troubleshoot api.
   },
   openCardEditMenu: function(model) {
     new EditCardView({ model: model });
@@ -75,8 +56,6 @@ var App = {
     this.on("openCardEditMenu", this.openCardEditMenu);
     this.on("openBoardMenu", this.openBoardMenu);
     this.on("updateListPositions", this.board.lists.updateListPositions.bind(this.board.lists));
-    this.on("removeDraggedCard", this.removeCardFromList);
-    this.on("addDroppedCard", this.addCard);
     this.on('updateCardPosition', this.updateCardPosition);
     this.listenTo(this.addList, "add_list", this.newList);
   },
