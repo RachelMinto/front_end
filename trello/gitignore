@@ -27,16 +27,9 @@ API
 
 GET     /board (**All default_board data)
 PUT     /board  **Update board
-GET     /board/comments  (**all comments)
-GET     /board/activities  (*all activities)
-
-GET     /board/archived/cards  (needs to track original list)
-POST    /board/archived/cards
-PUT     /board/archived/cards 
-GET     /board/archived/lists 
 
 GET     /board/:listID/items  **Get list data
-POST    /board/:listID/items  **Update list item
+POST    /board/:listID/items  **Update list items
 PUT     /board/:listID/items  **Update a list item / includes archive a list item.
 DELETE  /board/:listID/items  **Destroy a list
 

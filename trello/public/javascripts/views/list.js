@@ -3,7 +3,7 @@ var ListView = Backbone.View.extend({
   events: {
     "click .list_header": "renameView",
     "click span": "EditMenuView",
-    "blur input": "updateName",
+    "blur input#new_list_name": "updateName",
     "drop": "drop",
     "click .add_card": "add_card_popup"
   },
@@ -30,11 +30,22 @@ var ListView = Backbone.View.extend({
       "attachments":"[]"
     }
 
+    // $.ajax({
+    //   url: "/board/,
+    //   type: $f.attr("method"),
+    //   data: $f.serialize(),
+    //   success: function(json) {
+    //     App.board.lists.add(json);
+    //     App.indexView();
+    //   }
+    });
+
     var newCard = new Card(cardJSON);
     var $card = this.renderItem(newCard);
     $card.$el.appendTo(this.$el.find('ul'));
 
-    this.model.cards.add(newCard)
+    debugger;
+    this.model.cards.add(newCard);
     //destroy addCardView, remove class of invisible
   },
   drop: function(event, index) {
@@ -51,12 +62,12 @@ var ListView = Backbone.View.extend({
   },
   EditMenuView: function(e) {
     e.stopPropagation();
-    console.log("edit menu for list");
   },
   updateName: function(e) {
     this.model.set('title', e.target.value);
     var newName = "<h3>" + e.target.value + "</h3>"
     this.$el.find("input").replaceWith(newName);
+    debugger;
 
     $.ajax({
       url: "/board/1",
