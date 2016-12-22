@@ -13,12 +13,9 @@ var ListView = Backbone.View.extend({
   show_card_composer: function(e) {
     e.preventDefault();
     e.stopPropagation();
-    self = this;
 
     this.$el.find(".add_card").addClass("invisible");
     this.$el.find(".add_card_composer").removeClass("invisible");
-    // View should destroy on submit or click outside.
-    // class should be removed from "add a card" on destruction of form view.
   },
   addCard: function(e) {
     e.preventDefault();
@@ -43,19 +40,6 @@ var ListView = Backbone.View.extend({
 
     this.$el.find(".add_card").removeClass("invisible");
   },
-  add_name_popup: function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    self = this;
-
-    this.$el.find("h3").addClass("invisible");
-    // var addCardView = new AddCardView({id: self.model.id});
-    // var addCardHTML = addCardView.getView();
-    // this.$el.append(addCardHTML);
-    // this.listenTo(addCardView, "add_card", this.addCard)
-    // View should destroy on submit or click outside.
-    // class should be removed from "add a card" on destruction of form view.
-  },  
   drop: function(event, index) {
     App.trigger('updateListPositions', [this.model, index]);
   },   
@@ -65,17 +49,27 @@ var ListView = Backbone.View.extend({
     this.$el.appendTo($('#board_canvas'));
   },
   renameView: function() {
-    var edit_content = App.templates.list_edit_name(this.model.toJSON());
-    this.$el.find("h3").replaceWith(edit_content);
+    this.$el.find(".new_list_title_input").removeClass("invisible");
+    this.$el.find(".list_title_header").addClass("invisible");
   },
   EditMenuView: function(e) {
     e.stopPropagation();
   },
   updateName: function(e) {
     this.model.set('title', e.target.value);
-    var newName = "<h3>" + e.target.value + "</h3>"
-    this.$el.find("input").replaceWith(newName);
-    this.sync("update", this);
+    this.$el.find(".list_title").html(e.target.value);
+
+    this.$el.find(".new_list_title_input").addClass("invisible");
+    this.$el.find(".list_title_header").removeClass("invisible");
+    debugger;
+    this.model.sync("update", this.model, {
+      success: function(json) {
+        debugger;
+      },
+      error: function(json) {
+        debugger;
+      },      
+    });
   },
   renderCollection: function() {
     var self = this;

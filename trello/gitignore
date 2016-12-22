@@ -207,15 +207,6 @@ html
 
 TO DO Items
 
-General API hookup - Wednesday night
-
-Update list and cards to get models assigned by server.
-Check into Cid for new cards/lists that haven't yet been created.
-Add Card post to server.
-Hook up move list API
-Hook up move card API
-Make sure rename list posts to server.
-
 Create Edit Card Functionality - Thursday & Friday
 -Allow user to input a description.
 -Allow user to add comment.

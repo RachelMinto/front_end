@@ -27,14 +27,19 @@ module.exports = function(router) {
   router.route("/board/:listID").get(function(req, res) {
     res.json(Board.getList(req.params.listID));
   }).put(function(req, res) { // update list
-    // var board = Board.getBoardData();
-    // var list = _.where(board.lists, {id: req.params.listID });
-    // list = req.body
-    // // var list = _.where(lists, {id: req.params.listID });
-    // // _.extend(list, req.body);
+    var board = Board.getBoardData();
+    var list = ''
 
-    // Board.writeBoardUpdate(board);    
-    // res.json(list);            
+    for (var i = 0; i < board.lists.length; i++) {
+      if (board.lists[i].id === req.params.listID) {
+        board.lists[i] = req.body
+        list = req.body
+        break
+      }
+    }
+
+    Board.writeBoardUpdate(board);    
+    res.json(list);            
   }).delete(function(req, res) {
     res.send("I am going to delete a list.")       
   });

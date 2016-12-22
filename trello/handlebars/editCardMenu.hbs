@@ -29,13 +29,35 @@
   </div>
   <div class="card_action_menu">
     <div class="card_add_menu">
-      <a href="#" class="menu_button"><div class="members">Members</div></a>
+      <h3>Add</h3>
+<!--       <a href="#" class="menu_button"><div class="members">Members</div></a> -->
       <a href="#" class="menu_button"><div class="labels">Labels</div></a> 
+      <div class="edit_card_popup wrapper label_menu invisible">
+        <h5>Labels</h5>
+        <hr>
+      <!--   <input type="text" placeholder="Search labels..." name="search_labels" id="card_search_labels"> -->
+        <span class="card_label label_green">{{label_green_text}}</span>
+        <span class="card_label label_yellow">{{label_yellow_text}}</span>
+        <span class="card_label label_orange">{{label_orange_text}}</span>
+        <span class="card_label label_red">{{label_red_text}}</span>
+        <span class="card_label label_purple">{{label_purple_text}}</span>
+        <span class="card_label label_blue">{{label_blue_text}}</span>  
+      </div>      
       <a href="#" class="menu_button"><div class="checklist">Checklist</div></a>
+      <div class="edit_card_popup wrapper label_menu invisible">
+        <h5>Add Checklist</h5>
+        <form name="add_checklist">
+          <label for="checklist_title_input">Title
+            <input type="text" placeholder="Checklist" name="checklist_title_input">
+          </label>
+          <a href=""><div class="submit_info_button add_checklist">Add</div></a>
+        </form>
+      </div>
       <a href="#" class="menu_button"><div class="due_date">Due Date</div></a>    
-      <a href="#" class="menu_button"><div class="attachment">Attachment</div></a>
+<!--       <a href="#" class="menu_button"><div class="attachment">Attachment</div></a> -->
     </div>
     <div class="card_actions_menu">
+      <h3>Actions</h3>
       <a href="#" class="menu_button"><div class="move_card">Move</div></a>
       <a href="#" class="menu_button"><div class="label_card">Copy</div></a> 
       <a href="#" class="menu_button"><div class="subscribe_card">Subscribe</div></a>
