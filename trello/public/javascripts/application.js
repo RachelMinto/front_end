@@ -1,8 +1,6 @@
 var App = {
   templates: JST,
   $el: $('main'),
-  lastCardID: 0,
-  lastListID: 0,
   indexView: function() {
     this.user = new User();    
     new HeaderView({ model: App.user });
@@ -52,24 +50,13 @@ var App = {
   openBoardMenu: function(model) {
     this.boardMenu.show();
   },
-  newList: function($f) {
-    $.ajax({
-      url: $f.attr("action"),
-      type: $f.attr("method"),
-      data: $f.serialize(),
-      success: function(json) {
-        App.board.lists.add(json);
-        App.indexView();
-      }
-    });
-  },
   bindEvents: function() {
     _.extend(this, Backbone.Events);
     this.on("openCardEditMenu", this.openCardEditMenu);
     this.on("openBoardMenu", this.openBoardMenu);
     this.on("updateListPositions", this.board.lists.updateListPositions.bind(this.board.lists));
     this.on('updateCardPosition', this.updateCardPosition);
-    this.listenTo(this.addList, "add_list", this.newList);
+    // this.listenTo(this.addList, "add_list", this.newList);
   },
 };
 

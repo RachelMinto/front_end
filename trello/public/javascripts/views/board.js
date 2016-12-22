@@ -2,7 +2,10 @@ var BoardView = Backbone.View.extend({
   template: App.templates.board,
   id: "full_board",
   events: {
-    "click #open_board_menu": "openMenu"
+    "click #open_board_menu": "openMenu",
+    "click #add_list_input": "addListInput",
+    "click #add_new_list": "addNewList",
+    "click #cancel_add_list": "cancelAddList"        
   },
   openMenu: function(e) {
     e.preventDefault();
@@ -10,6 +13,9 @@ var BoardView = Backbone.View.extend({
   },
   new_list: function() {
     // Make new view using list template. Should delete if not submitted.
+  },
+  addListInput: function() {
+
   },
   add_list: function(e) {
     // get name from form submission
@@ -48,7 +54,7 @@ var BoardView = Backbone.View.extend({
   initialize: function() {
     this.render()
     $('#board_canvas').sortable({
-      items: '> .list.wrapper',
+      items: '.list.wrapper',
       placeholder: "ui-sortable-placeholder",
       forcePlaceholderSize: true,
       update: function(event, ui) {

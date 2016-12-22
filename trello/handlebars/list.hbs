@@ -3,4 +3,14 @@
   <a href="" class="get_more_options"><span>...</span></a>
 </div></a>
 <ul class="list_container" data-id="{{id}}"></ul>
+<div class="add_card_composer invisible">
+  <form action="/board/{{id}}/items", method="post" class="addCardForm">
+    <input class="card" id="new_card_name" name="title" autofocus>
+    <div>
+      <a href="" class="submit_new_card"><div>Add</div></a>
+      <span>X</span>
+      <a href="" class="get_more_options"><span>...</span></a>
+    </div>
+  </form>
+</div>
 <a href="" class="add_card">Add a card...</a>

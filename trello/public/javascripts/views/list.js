@@ -5,24 +5,25 @@ var ListView = Backbone.View.extend({
     "click span": "EditMenuView",
     "blur input#new_list_name": "updateName",
     "drop": "drop",
-    "click .add_card": "add_card_popup"
+    "click .add_card": "show_card_composer",
+    "submit form": "addCard",
+    "click .submit_new_card": "addCard"
   },
   template: App.templates.list,
-  add_card_popup: function(e) {
+  show_card_composer: function(e) {
     e.preventDefault();
     e.stopPropagation();
     self = this;
 
     this.$el.find(".add_card").addClass("invisible");
-    var addCardView = new AddCardView({id: self.model.id});
-    var addCardHTML = addCardView.getView();
-    this.$el.append(addCardHTML);
-    this.listenTo(addCardView, "add_card", this.addCard)
+    this.$el.find(".add_card_composer").removeClass("invisible");
     // View should destroy on submit or click outside.
     // class should be removed from "add a card" on destruction of form view.
   },
-  addCard: function($f) {
+  addCard: function(e) {
+    e.preventDefault();
     var self = this;
+    var $f = this.$("form")
 
     $.ajax({
       url: $f.attr("action"),
@@ -32,6 +33,8 @@ var ListView = Backbone.View.extend({
         self.model.cards.add(json);
         var $card = self.renderItem(json);
         $card.$el.appendTo(self.$el.find('ul'));
+        self.$el.find(".add_card").removeClass("invisible");
+        self.$el.find(".add_card_composer").addClass("invisible");        
       },
       error: function(json) {
         debugger;
@@ -40,6 +43,19 @@ var ListView = Backbone.View.extend({
 
     this.$el.find(".add_card").removeClass("invisible");
   },
+  add_name_popup: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    self = this;
+
+    this.$el.find("h3").addClass("invisible");
+    // var addCardView = new AddCardView({id: self.model.id});
+    // var addCardHTML = addCardView.getView();
+    // this.$el.append(addCardHTML);
+    // this.listenTo(addCardView, "add_card", this.addCard)
+    // View should destroy on submit or click outside.
+    // class should be removed from "add a card" on destruction of form view.
+  },  
   drop: function(event, index) {
     App.trigger('updateListPositions', [this.model, index]);
   },   

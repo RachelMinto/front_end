@@ -7,7 +7,11 @@ module.exports = function(router) {
     res.json(Board.getLists()); // all lists.
   }).post(function(req, res) { // Creates new list.
     var list = req.body;
-    Board.set(list)
+    list.id = Board.nextListID();
+    board = Board.getBoardData();
+    board.lists.push(list);
+    board.last_list_id = list.id;
+    Board.writeBoardUpdate(board);
     res.json(list)   
   }).put(function(req, res) {   
     var lists = req.body;

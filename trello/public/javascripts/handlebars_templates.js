@@ -1,19 +1,7 @@
 this["JST"] = this["JST"] || {};
 
-this["JST"]["add_card_composer"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper;
-
-  return "<div class=\"add_card_composer\"><form action=\"/board/"
-    + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"id","hash":{},"data":data}) : helper)))
-    + "/items\", method=\"post\" id=\"addCardForm\"><input class=\"card\" id=\"new_card_name\" name=\"title\" autofocus><div><a href=\"\" class=\"submit_new_card\"><div>Add</div><span>X</span><a href=\"\" class=\"get_more_options\"><span>...</span></a></form></div>";
-},"useData":true});
-
 this["JST"]["add_list_placeholder"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<form action=\"/board/lists\", method=\"post\"><input type=\"text\" placeholder=\"Add a list...\" class=\"add_button\"></form>";
-},"useData":true});
-
-this["JST"]["add_list"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div class=\"wrapper\"><form action=\"/board/lists\", method=\"post\"><input type=\"text\" placeholder=\"Add a list...\" id=\"new_list_name\" name=\"title\"><a href=\"\"><button type=\"submit\" id=\"add_new_list\">Save</button></a><a href=''><div id=\"cancel_add_list\">X</div></a></form></div>";
+    return "<input type=\"text\" class=\"add_list_placeholder add_button\" placeholder=\"Add a list...\"><div class=\"wrapper invisible add_list_input_field\"><form action=\"/board/lists\", method=\"post\" name=\"add_list_form\"><input type=\"text\" placeholder=\"Add a list...\" id=\"new_list_name\" name=\"title\"><a href=\"\"id=\"add_new_list\"><button type=\"submit\">Save</button></a><a href=''><div id=\"cancel_add_list\">X</div></a></form></div>";
 },"useData":true});
 
 this["JST"]["board_menu"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
@@ -132,5 +120,7 @@ this["JST"]["list"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":func
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
     + "</h3><a href=\"\" class=\"get_more_options\"><span>...</span></a></div></a><ul class=\"list_container\" data-id=\""
     + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
-    + "\"></ul><a href=\"\" class=\"add_card\">Add a card...</a>";
+    + "\"></ul><div class=\"add_card_composer invisible\"><form action=\"/board/"
+    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
+    + "/items\", method=\"post\" class=\"addCardForm\"><input class=\"card\" id=\"new_card_name\" name=\"title\" autofocus><div><a href=\"\" class=\"submit_new_card\"><div>Add</div></a><span>X</span><a href=\"\" class=\"get_more_options\"><span>...</span></a></div></form></div><a href=\"\" class=\"add_card\">Add a card...</a>";
 },"useData":true});

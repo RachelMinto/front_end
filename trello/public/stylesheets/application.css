@@ -96,8 +96,16 @@ li a {
 #add_list_input input:hover {
   background: rgba(0,0,0,0.2);
 }
+.wrapper.list {
+  flex-grow: 1;
+  min-width: 270px;
+  max-width: 270px;
+}
 .ui-sortable-placeholder {
   background: rgba(0,0,0,0.2);
+  min-width: 270px;
+  max-width: 270px;
+  margin-left: 8px;
 }
 .edit_card_menu .wrapper {
   width: 730px;
@@ -214,9 +222,4 @@ a.menu_button div:hover {
   flex-wrap: nowrap;
   -webkit-align-items: flex-start;
   align-items: flex-start;
-}
-.wrapper.list {
-  flex-grow: 1;
-  min-width: 270px;
-  max-width: 270px;
 }
