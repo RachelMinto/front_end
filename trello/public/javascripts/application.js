@@ -43,6 +43,8 @@ var App = {
 
     oldList.cards.remove(model);    
     newList.cards.add(model, {at: position});
+    newList.cards.syncServer();
+    oldList.cards.syncServer();
   },
   openCardEditMenu: function(model) {
     new EditCardView({ model: model });

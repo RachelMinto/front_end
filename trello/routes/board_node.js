@@ -7,31 +7,28 @@ function getBoard() {
   return JSON.parse(fs.readFileSync(file_path, "utf8"));
 }
 
-function nextID() {
-  return JSON.parse(fs.readFileSync(file_path, "utf8")).last_list_id + 1;
-}
-
 function getLists() {
   return JSON.parse(fs.readFileSync(file_path, "utf8")).lists;
 }
 
-function getList(id) {
+function getListByID(id) {
   var lists = getLists();
   var list = _.where(lists, {id: id });
   return list;
-}
-
-function setList(list) {
 }
 
 function writeBoard(data) {
   fs.writeFileSync(file_path, JSON.stringify(data), "utf8");
 }
 
-function updateList(id) {
 
+function getNextCardID() {
+  return +(JSON.parse(fs.readFileSync(file_path, "utf8")).last_card_id) + 1;
 }
 
+function getNextListID() {
+  return +(JSON.parse(fs.readFileSync(file_path, "utf8")).last_list_id) + 1;
+}
 
 
 module.exports = {
@@ -39,29 +36,41 @@ module.exports = {
     return getBoard();
   },
   getList: function(id) {
-    return getList(id);
+    return getListByID(id);
   },
-  getLists: function() {
+  getBoardLists: function() {
     return getLists();
   },
-  updateLists: function(lists) {
-    var board = getBoard();
-    board.lists = lists;
+  getBoardData: function() {
+    return getBoard();
+  },
+  getLastCardID() {
+    return JSON.parse(fs.readFileSync(file_path, "utf8")).last_card_id;
+  },
+  getLastListID() {
+    return JSON.parse(fs.readFileSync(file_path, "utf8")).last_id;
+  },
+  writeBoardForCardAdded(id, lists) {
+    writeBoard({ last_card_id: id, lists: lists });
+  },
+  writeBoardUpdate(board) {
     writeBoard(board);
   },
-  updateCards: function(list) {
-
+  nextCardID: function() {
+    return getNextCardID();
+  },
+  nextListID: function() {
+    return getNextListID();
   },
   set: function(list) {
     var lists = getLists();
     list.subscribed = false;
-    list.id = nextID();
-    list.position = Object.keys(lists).length;   
+    list.id = getNextListID();
     lists.push(list);
 
     var board = getBoard();
-    board.lists = lists;
-    board.last_list_id = list.id + 1
+    board.last_list_id = list.id
+    board.lists = lists
 
     writeBoard(board);
   },

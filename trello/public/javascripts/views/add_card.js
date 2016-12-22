@@ -1,6 +1,6 @@
 var AddCardView = Backbone.View.extend({
   events: {
-    "click .submit_new_card": "submitForm",
+    "submit": "submitForm",
   },
   template: App.templates.add_card_composer,
   submitForm: function(e) {

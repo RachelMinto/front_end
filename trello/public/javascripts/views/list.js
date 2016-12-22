@@ -22,28 +22,23 @@ var ListView = Backbone.View.extend({
     // class should be removed from "add a card" on destruction of form view.
   },
   addCard: function($f) {
-    var title = $f.find("#new_card_name").val()
-    var cardJSON = {
-      "title": title,
-    }
-    
-    var newCard = new Card(cardJSON);
+    var self = this;
 
     $.ajax({
       url: $f.attr("action"),
       type: $f.attr("method"),
-      data: newCard,
+      data: $f.serialize(),
       success: function(json) {
-        debugger;
         self.model.cards.add(json);
-        var $card = self.renderItem(newCard);
+        var $card = self.renderItem(json);
         $card.$el.appendTo(self.$el.find('ul'));
       },
       error: function(json) {
         debugger;
       }
-    });    
-    //destroy addCardView, remove class of invisible
+    });
+
+    this.$el.find(".add_card").removeClass("invisible");
   },
   drop: function(event, index) {
     App.trigger('updateListPositions', [this.model, index]);
@@ -70,7 +65,7 @@ var ListView = Backbone.View.extend({
     var self = this;
     if (this.model.cards) {
       this.model.cards.each(function(model){
-        var $card = self.renderItem(model);
+        var $card = self.renderItem(model.toJSON());
         $card.$el.appendTo(self.$el.find('ul'));
       });
     };
@@ -96,7 +91,7 @@ var ListView = Backbone.View.extend({
         App.trigger('updateCardPosition', [oldListID, newListID, cardID, position]);
       },
     });
-    this.listenTo(this.model.cards, 'card_collection_updated', this.render)    
+    this.listenTo(this.model.cards, 'card_collection_updated', this.render)
     // subscribe to notifications from selected board, list, and item changes.
   },
 });

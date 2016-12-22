@@ -13,6 +13,6 @@ var List = Backbone.Model.extend({
     this.id = App.getNextListID();
     this.url = "/board/" + this.id;
     this.cards.url = "/board/" + this.id + "/items"
-    this.parse(data); 
+    this.parse(data);
   },  
 });

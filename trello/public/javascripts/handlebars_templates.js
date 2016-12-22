@@ -5,7 +5,7 @@ this["JST"]["add_card_composer"] = Handlebars.template({"compiler":[7,">= 4.0.0"
 
   return "<div class=\"add_card_composer\"><form action=\"/board/"
     + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"id","hash":{},"data":data}) : helper)))
-    + "/items\", method=\"post\"><input class=\"card\" id=\"new_card_name\" title=\"new_card_name\" autofocus><div><a href=\"\" class=\"submit_new_card\"><div>Add</div><span>X</span><a href=\"\" class=\"get_more_options\"><span>...</span></a></form></div>";
+    + "/items\", method=\"post\" id=\"addCardForm\"><input class=\"card\" id=\"new_card_name\" name=\"title\" autofocus><div><a href=\"\" class=\"submit_new_card\"><div>Add</div><span>X</span><a href=\"\" class=\"get_more_options\"><span>...</span></a></form></div>";
 },"useData":true});
 
 this["JST"]["add_list_placeholder"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {

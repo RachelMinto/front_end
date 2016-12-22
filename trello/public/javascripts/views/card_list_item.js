@@ -22,8 +22,8 @@ var CardView = Backbone.View.extend({
     App.trigger("openCardEditMenu", this.model)
   },
   cardHTML: function() {
-    this.$el.html(this.template(this.model.toJSON()));
-    this.$el.attr('data-id', this.model.get('id'));
+    this.$el.html(this.template(this.model));
+    this.$el.attr('data-id', this.model.id);
     return this.$el
   },
   initialize: function(card) {
