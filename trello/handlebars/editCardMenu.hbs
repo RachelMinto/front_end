@@ -5,10 +5,26 @@
       <p>in list <a href="">{{list_title}}</a></p>
     </div>
     <div class="card_description">
-      <p>Description<a href=""><span>Edit</span></a></p>
       {{#if description}}
-      <p>{{description}}</p>
+      <p>Description
+        <a href="" class="edit_card_description">
+          <span>Edit</span>
+        </a>
+      </p>
+      <p>{{description}}</p>    
+      {{else}}
+        <a href="" class="edit_card_description">
+          <span>Edit the description...</span>
+        </a>      
       {{/if}}
+    </div>
+    <div class="invisible edit_card_description_popover">
+      <p>Description</p>
+      <form>
+        <textarea class="card_description" style="overflow: hidden; word-wrap: break-word; resize: none; height: 108px;">{{description}}</textarea>
+        <a href="" class="add_description submit_info_button">Save</a>
+        <a href="" class="cancel_submission close_card_edit_description">X</a>
+      </form>
     </div>
     <div class="card_comments">
       <h3>Add Comment</h3>

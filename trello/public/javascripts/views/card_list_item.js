@@ -17,12 +17,11 @@ var CardView = Backbone.View.extend({
     App.addCardToList(listID, this.model);
   },
   editMenuView: function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    App.trigger("openCardEditMenu", this.model)
+    App.trigger("openCardEditMenu", this.model);
+    return false;
   },
   cardHTML: function() {
-    this.$el.html(this.template(this.model));
+    this.$el.html(this.template(this.model.toJSON()));
     this.$el.attr('data-id', this.model.id);
     return this.$el
   },

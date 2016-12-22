@@ -65,14 +65,16 @@ this["JST"]["card"] = Handlebars.template({"1":function(container,depth0,helpers
 this["JST"]["editCardMenu"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var helper;
 
-  return "<p>"
+  return "<p>Description<a href=\"\" class=\"edit_card_description\"><span>Edit</span></a></p><p>"
     + container.escapeExpression(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"description","hash":{},"data":data}) : helper)))
     + "</p>";
 },"3":function(container,depth0,helpers,partials,data) {
+    return "<a href=\"\" class=\"edit_card_description\"><span>Edit the description...</span></a>";
+},"5":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.activities : depth0),{"name":"each","hash":{},"fn":container.program(4, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
-},"4":function(container,depth0,helpers,partials,data) {
+  return ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.activities : depth0),{"name":"each","hash":{},"fn":container.program(6, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+},"6":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
   return "<p>"
@@ -88,10 +90,12 @@ this["JST"]["editCardMenu"] = Handlebars.template({"1":function(container,depth0
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
     + "</h3><p>in list <a href=\"\">"
     + alias4(((helper = (helper = helpers.list_title || (depth0 != null ? depth0.list_title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"list_title","hash":{},"data":data}) : helper)))
-    + "</a></p></div><div class=\"card_description\"><p>Description<a href=\"\"><span>Edit</span></a></p>"
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.description : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</div><div class=\"card_comments\"><h3>Add Comment</h3><form><textarea placeholder=\"Write a comment...\"></textarea><div class=\"comment_option_icons\"></div><a href=\"\"><div class=\"send_comment\">Send</div></a></form></div><div class=\"card_activities\"><h3>Activity</h3><a href=\"\">Hide Details</a>"
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.activities : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</a></p></div><div class=\"card_description\">"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.description : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "")
+    + "</div><div class=\"invisible edit_card_description_popover\"><p>Description</p><form><textarea class=\"card_description\" style=\"overflow: hidden; word-wrap: break-word; resize: none; height: 108px;\">"
+    + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
+    + "</textarea><a href=\"\" class=\"add_description submit_info_button\">Save</a><a href=\"\" class=\"cancel_submission close_card_edit_description\">X</a></form></div><div class=\"card_comments\"><h3>Add Comment</h3><form><textarea placeholder=\"Write a comment...\"></textarea><div class=\"comment_option_icons\"></div><a href=\"\"><div class=\"send_comment\">Send</div></a></form></div><div class=\"card_activities\"><h3>Activity</h3><a href=\"\">Hide Details</a>"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.activities : depth0),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</div> </div><div class=\"card_action_menu\"><div class=\"card_add_menu\"><h3>Add</h3><!--<a href=\"#\" class=\"menu_button\"><div class=\"members\">Members</div></a> --><a href=\"#\" class=\"menu_button\"><div class=\"labels\">Labels</div></a> <div class=\"edit_card_popup wrapper label_menu invisible\"><h5>Labels</h5><hr><!--<input type=\"text\" placeholder=\"Search labels...\" name=\"search_labels\" id=\"card_search_labels\"> --><span class=\"card_label label_green\">"
     + alias4(((helper = (helper = helpers.label_green_text || (depth0 != null ? depth0.label_green_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_green_text","hash":{},"data":data}) : helper)))
     + "</span><span class=\"card_label label_yellow\">"

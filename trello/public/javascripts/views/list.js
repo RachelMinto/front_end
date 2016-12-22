@@ -75,7 +75,8 @@ var ListView = Backbone.View.extend({
     var self = this;
     if (this.model.cards) {
       this.model.cards.each(function(model){
-        var $card = self.renderItem(model.toJSON());
+        var $card = self.renderItem(model);
+        // var $card = self.renderItem(model.toJSON());
         $card.$el.appendTo(self.$el.find('ul'));
       });
     };
