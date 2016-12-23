@@ -23,11 +23,11 @@ function writeBoard(data) {
 
 
 function getNextCardID() {
-  return +(JSON.parse(fs.readFileSync(file_path, "utf8")).last_card_id) + 1;
+  return JSON.parse(fs.readFileSync(file_path, "utf8")).last_card_id + 1;
 }
 
 function getNextListID() {
-  return +(JSON.parse(fs.readFileSync(file_path, "utf8")).last_list_id) + 1;
+  return JSON.parse(fs.readFileSync(file_path, "utf8")).last_list_id + 1;
 }
 
 
@@ -49,9 +49,6 @@ module.exports = {
   },
   getLastListID() {
     return JSON.parse(fs.readFileSync(file_path, "utf8")).last_id;
-  },
-  writeBoardForCardAdded(id, lists) {
-    writeBoard({ last_card_id: id, lists: lists });
   },
   writeBoardUpdate(board) {
     writeBoard(board);

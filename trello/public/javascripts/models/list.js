@@ -8,7 +8,7 @@ var List = Backbone.Model.extend({
     }
     return _.omit(data, 'cards');
   },
-  initialize: function(data, pageLoad) {
+  initialize: function(data) {
     this.cards = new CardCollection();
     this.url = "/board/" + this.id;
     this.cards.url = "/board/" + this.id + "/items"

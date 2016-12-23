@@ -8,18 +8,20 @@ module.exports = function(router) {
   }).post(function(req, res) { // Creates new list.
     var list = req.body;
     list.id = Board.nextListID();
+    list.cards = [],
     board = Board.getBoardData();
     board.lists.push(list);
     board.last_list_id = list.id;
+
     Board.writeBoardUpdate(board);
-    res.json(list)   
+    res.json(list)
   }).put(function(req, res) {   
     var lists = req.body;
     var board = Board.getBoardData();
     board.lists = lists
 
     Board.writeBoardUpdate(board);
-    res.json(lists);
+    res.json(Board.nextListID());
   });
   // }).delete(function(req, res) {
   //   res.send("I am going to delete all lists.")
@@ -31,7 +33,7 @@ module.exports = function(router) {
     var list = ''
 
     for (var i = 0; i < board.lists.length; i++) {
-      if (board.lists[i].id === req.params.listID) {
+      if (board.lists[i].id === +req.params.listID) {
         board.lists[i] = req.body
         list = req.body
         break

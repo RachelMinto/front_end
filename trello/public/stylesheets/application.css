@@ -138,6 +138,21 @@ li a {
   padding: 7px;
   border: 1px solid #808080;
 }
+.edit_card_popup.wrapper {
+  width: 300px;
+  background: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-top: 0;
+}
+span.card_label {
+  width: 240px;
+  height: 34px;
+  display: block;
+}
+span.card_label:hover {
+  cursor: pointer;
+}
 div#board_menu_wrapper {
   width: 340px;
   position: fixed;
@@ -234,4 +249,37 @@ a.menu_button div:hover {
   flex-wrap: nowrap;
   -webkit-align-items: flex-start;
   align-items: flex-start;
+}
+span.label_green {
+  background: #61bd4f;
+}
+span.label_yellow {
+  background: #f2d600;
+}
+span.label_orange {
+  background: #ffab4a;
+}
+span.label_red {
+  background: #eb5a46;
+}
+span.label_purple {
+  background: #c377e0;
+}
+span.label_blue {
+  background: #0079bf;
+}
+span.label_teal {
+  background: #00c2e0;
+}
+span.label_lime {
+  background: #51e898;
+}
+span.label_pink {
+  background: #ff80ce;
+}
+span.label_black {
+  background: #4d4d4d;
+}
+span.label_none {
+  background: #b6bbbf;
 }

@@ -10,7 +10,7 @@ module.exports = function(router) {
     var card = ''
 
     for (var i = 0; i < board.lists.length; i++) {
-      if (board.lists[i].id === req.params.listID) {
+      if (board.lists[i].id === +req.params.listID) {
         for (var j = 0; j < board.lists[i].cards.length; j++) {
           if (board.lists[i].cards[j].id === req.params.cardID) {
             board.lists[i].cards[j] = req.body;
@@ -30,20 +30,28 @@ module.exports = function(router) {
   router.route("/board/:listID/items").get(function(req, res) {
     res.send("I am going to send you a list's cards.");
   }).post(function(req, res) { // Post a list item
-    var boardLists = Board.getBoardLists()
-    var list = _.where(boardLists, {id: req.params.listID });    
+    var board = Board.getBoardData();
+    var list = _.where(board.lists, {id: +req.params.listID });    
     var newCard = req.body;
+    var id = board.last_card_id;
+    newCard.id = id;
+
+    for (var i = 0; i < board.lists.length; i++) {
+      if (board.lists[i].id === +req.params.listID) {
+        board.lists[i].cards.push(newCard);
+        break
+      }
+    }
     
-    newCard.id = Board.nextCardID();
-    list[0].cards.push(newCard)
-    Board.writeBoardForCardAdded(newCard.id, boardLists);
+    board.last_card_id = id++;
+    Board.writeBoardUpdate(board);    
     res.json(newCard);    
   }).put(function(req, res) { // Update a list's cards.
     var board = Board.getBoardData();
     var cards = ''
 
     for (var i = 0; i < board.lists.length; i++) {
-      if (board.lists[i].id === req.params.listID) {
+      if (board.lists[i].id === +req.params.listID) {
         board.lists[i].cards = req.body
         cards = req.body
         break

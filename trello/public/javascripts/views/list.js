@@ -23,6 +23,7 @@ var ListView = Backbone.View.extend({
     e.preventDefault();
     var self = this;
     var $f = this.$("form")
+    debugger;
 
     $.ajax({
       url: $f.attr("action"),
@@ -65,7 +66,7 @@ var ListView = Backbone.View.extend({
   renderCollection: function() {
     var self = this;
     self.$el.find('ul').empty();
-    
+
     if (this.model.cards) {
       this.model.cards.each(function(model){
         var $card = self.renderItem(model);

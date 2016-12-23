@@ -7,6 +7,7 @@ var EditCardView = Backbone.View.extend({
     "click .edit_card_description": "openEditDescription",
     "click .add_description": "updateDescription",
     "click .send_comment": "addComment",
+    "click span.card_label": "addLabel"
   },
   template: App.templates.editCardMenu,
   addComment: function() {
@@ -16,6 +17,16 @@ var EditCardView = Backbone.View.extend({
     comments.push(comment);
     this.model.set("comments", comments);
     this.$el.html(this.template(this.model.toJSON()))
+    return false;
+  },
+  addLabel: function(e) {
+    // board should have object of labels.
+    // update server with new object when label text gets edited.
+    // 
+     //     "labels":[
+     //    {"green_label":""},
+     //    {"blue_label":"text for blue"}
+     // ],
     return false;
   },
   openEditDescription: function(e) {

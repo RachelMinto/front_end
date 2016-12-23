@@ -6,6 +6,7 @@ var Card = Backbone.Model.extend({
     this.comments = new CommentCollection();
     this.activities = new ActivityCollection();
     this.checklist = [],
+    this.labels = [],
     this.attachments = [],
     this.id = App.getNextCardID();
     this.parse(data);

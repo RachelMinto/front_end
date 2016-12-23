@@ -23,6 +23,13 @@ var App = {
     model.set({user: App.user.attributes, board: App.board.attributes});
     this.boardMenu = new BoardMenuView({ model: model });    
   },
+  renderLists: function() {
+    // empty existing
+    // debugger;
+    $('#board_canvas').empty();
+    this.board.lists.each(this.renderListView);
+    this.addList = new AddListView();
+  },
   renderListView: function(list) {
     new ListView({ model: list });
 
@@ -56,7 +63,8 @@ var App = {
     this.on("openBoardMenu", this.openBoardMenu);
     this.on("updateListPositions", this.board.lists.updateListPositions.bind(this.board.lists));
     this.on('updateCardPosition', this.updateCardPosition);
-    // this.listenTo(this.addList, "add_list", this.newList);
+    this.listenTo(this.board.lists, "addedList", this.renderLists);
+    // this.listenTo(this.model.cards, 'card_collection_updated', this.renderCollection)
   },
 };
 
