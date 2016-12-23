@@ -11,7 +11,7 @@ module.exports = function(router) {
     list.cards = [],
     board = Board.getBoardData();
     board.lists.push(list);
-    board.last_list_id = list.id;
+    board.last_list_id = list.id++;
 
     Board.writeBoardUpdate(board);
     res.json(list)

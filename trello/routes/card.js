@@ -35,6 +35,7 @@ module.exports = function(router) {
     var newCard = req.body;
     var id = board.last_card_id;
     newCard.id = id;
+    var match = false
 
     for (var i = 0; i < board.lists.length; i++) {
       if (board.lists[i].id === +req.params.listID) {
@@ -42,8 +43,8 @@ module.exports = function(router) {
         break
       }
     }
-    
-    board.last_card_id = id++;
+
+    board.last_card_id += 1;
     Board.writeBoardUpdate(board);    
     res.json(newCard);    
   }).put(function(req, res) { // Update a list's cards.

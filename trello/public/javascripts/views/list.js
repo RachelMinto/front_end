@@ -23,18 +23,22 @@ var ListView = Backbone.View.extend({
     e.preventDefault();
     var self = this;
     var $f = this.$("form")
-    debugger;
 
     $.ajax({
       url: $f.attr("action"),
       type: $f.attr("method"),
       data: $f.serialize(),
       success: function(json) {
+        debugger;
         var newCard = self.model.cards.add(json);
         var $card = self.renderItem(newCard);
         $card.$el.appendTo(self.$el.find('ul'));
         self.$el.find(".add_card").removeClass("invisible");
+        self.$el.find("#new_card_name").val("");
         self.$el.find(".add_card_composer").addClass("invisible");        
+      },
+      error: function(json) {
+        debugger;
       }
     });
 
