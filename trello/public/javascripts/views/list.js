@@ -92,9 +92,9 @@ var ListView = Backbone.View.extend({
         ui.item.startListID = $(this.closest('ul')).data('id');
       },
       receive: function(event, ui) {
-        var oldListID = ui.item.startListID
-        var newListID = $(event.target).attr("data-id");
-        var cardID = ui.item.data('id');
+        var oldListID = +ui.item.startListID
+        var newListID = +$(event.target).attr("data-id");
+        var cardID = +ui.item.data('id');
         var position = ui.item.index();
         App.trigger('updateCardPosition', [oldListID, newListID, cardID, position]);
       },

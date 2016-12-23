@@ -52,9 +52,9 @@ module.exports = function(router) {
     var cards = ''
 
     for (var i = 0; i < board.lists.length; i++) {
-      if (board.lists[i].id === +req.params.listID) {
-        board.lists[i].cards = req.body
-        cards = req.body
+      if (+board.lists[i].id === +req.params.listID) {
+        board.lists[i].cards = req.body;
+        cards = req.body;
         break
       }
     }

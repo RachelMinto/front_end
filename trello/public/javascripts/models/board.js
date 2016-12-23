@@ -16,9 +16,9 @@ var Board = Backbone.Model.extend({
     return _.omit(data, 'lists');
   },
   getListByID: function(id) {
-    return this.lists.findWhere( {id : id.toString()});
-    this.url = "/board"
-    this.lists.url = "/board/lists"
+    return this.lists.findWhere( {id : id});
+    // this.url = "/board"
+    // this.lists.url = "/board/lists"
   }
 });
 

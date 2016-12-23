@@ -79,13 +79,11 @@
 ul.list_container {
   min-height: 10px;
 }
-li {
+ul.list_container li.ui-sortable-handle {
   background: #fff;
   padding: 6px 6px 2px 8px;
   margin: 8px;
   border-radius: 4px;
-}
-li a {
   text-decoration: none;
 }
 .add_card {
@@ -128,9 +126,14 @@ li a {
 }
 .card_icons {
   color: #8c8c8c;
+  padding: 10px 0;
 }
 .card_icons a {
   text-decoration: none;
+}
+.card_icons span {
+  padding-bottom: 1px 2px;
+  margin: 0 4px 4px 0;
 }
 .edit_card_menu .wrapper {
   width: 730px;
@@ -187,6 +190,9 @@ input {
   font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
   background: #0079bf;
   color: #fff;
+}
+body {
+  line-height: 18px;
 }
 input {
   border: none;

@@ -1,11 +1,19 @@
 var CardCollection = Backbone.Collection.extend({
   model: Card,
   comparator: 'position',
-  // syncServer: function() {
-  //   this.sync("update", this);
-  //   debugger;
-  //   this.trigger("card_collection_updated");
-  // },
+  syncServer: function() {
+    debugger;
+    this.sync("update", this, {
+      success: function(json) {
+        debugger;
+      },
+      error: function(json) {
+        debugger;
+      }
+    });
+    // debugger;
+    // this.trigger("card_collection_updated");
+  },
   changeHappened: function() {
     this.trigger("card_collection_updated")
   },
