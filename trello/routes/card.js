@@ -6,11 +6,23 @@ module.exports = function(router) {
   router.route("/board/:listID/items/:cardID").get(function(req, res) {
     res.send("I am going to send you a card.");
   }).put(function(req, res) { // Update card
-    // var boardLists = Board.getLists()
-    // var list = _.where(boardLists, {id: req.params.listID });
-    // list[0].cards = req.body
-    // Board.updateLists(boardLists);
-    // res.json(list);    
+    var board = Board.getBoardData();
+    var card = ''
+
+    for (var i = 0; i < board.lists.length; i++) {
+      if (board.lists[i].id === req.params.listID) {
+        for (var j = 0; j < board.lists[i].cards.length; j++) {
+          if (board.lists[i].cards[j].id === req.params.cardID) {
+            board.lists[i].cards[j] = req.body;
+            card = req.body
+            break;
+          }
+        }
+      }
+    }
+
+    Board.writeBoardUpdate(board); 
+    res.json(card);    
   }).delete(function(req, res) {
     res.send("I am going to delete a list item.")
   });
@@ -26,7 +38,7 @@ module.exports = function(router) {
     list[0].cards.push(newCard)
     Board.writeBoardForCardAdded(newCard.id, boardLists);
     res.json(newCard);    
-  }).put(function(req, res) {
+  }).put(function(req, res) { // Update a list's cards.
     var board = Board.getBoardData();
     var cards = ''
 

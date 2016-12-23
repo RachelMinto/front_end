@@ -11,7 +11,7 @@
           <span>Edit</span>
         </a>
       </p>
-      <p>{{description}}</p>    
+      <p class="card_description_text">{{description}}</p>    
       {{else}}
         <a href="" class="edit_card_description">
           <span>Edit the description...</span>
@@ -21,7 +21,7 @@
     <div class="invisible edit_card_description_popover">
       <p>Description</p>
       <form>
-        <textarea class="card_description" style="overflow: hidden; word-wrap: break-word; resize: none; height: 108px;">{{description}}</textarea>
+        <textarea class="card_description_input" style="overflow: hidden; word-wrap: break-word; resize: none; height: 108px;">{{description}}</textarea>
         <a href="" class="add_description submit_info_button">Save</a>
         <a href="" class="cancel_submission close_card_edit_description">X</a>
       </form>
@@ -29,7 +29,7 @@
     <div class="card_comments">
       <h3>Add Comment</h3>
       <form>
-        <textarea placeholder="Write a comment..."></textarea>
+        <textarea placeholder="Write a comment..." class="comment_input"></textarea>
         <div class="comment_option_icons"></div>
         <a href=""><div class="send_comment">Send</div></a>
       </form>

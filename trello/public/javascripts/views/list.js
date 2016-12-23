@@ -32,9 +32,6 @@ var ListView = Backbone.View.extend({
         $card.$el.appendTo(self.$el.find('ul'));
         self.$el.find(".add_card").removeClass("invisible");
         self.$el.find(".add_card_composer").addClass("invisible");        
-      },
-      error: function(json) {
-        debugger;
       }
     });
 
@@ -61,15 +58,7 @@ var ListView = Backbone.View.extend({
 
     this.$el.find(".new_list_title_input").addClass("invisible");
     this.$el.find(".list_title_header").removeClass("invisible");
-    debugger;
-    this.model.sync("update", this.model, {
-      success: function(json) {
-        debugger;
-      },
-      error: function(json) {
-        debugger;
-      },      
-    });
+    this.model.sync("update", this.model)
   },
   renderCollection: function() {
     var self = this;

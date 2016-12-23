@@ -6,18 +6,26 @@ var EditCardView = Backbone.View.extend({
     "click .labels": "openLabelPopup",
     "click .edit_card_description": "openEditDescription",
     "click .add_description": "updateDescription",
+    "click .send_comment": "addComment",
   },
   template: App.templates.editCardMenu,
+  addComment: function() {
+    debugger;
+    var comment = this.$el.find('.comment_input').val();
+    var comments = this.model.get("comments");
+    comments.push(comment);
+    this.model.set("comments", comments);
+    return false;
+  },
   openEditDescription: function(e) {
-
     this.$el.find(".edit_card_description_popover").removeClass("invisible");
     return false;
   },
   render: function() {
-    $('#surface').after(this.$el.html(this.template(this.model)));
+    $('#surface').after(this.$el.html(this.template(this.model.toJSON())));
   },
   edit: function(e) {
-    e.stopPropagation();
+    return false;
   },
   closeModal: function() {
     this.undelegateEvents();
@@ -26,14 +34,14 @@ var EditCardView = Backbone.View.extend({
   },
   openLabelPopup: function(e) {
     this.$el.find(".edit_card_popup.label_menu").removeClass("invisible");
-
     return false;
   },
   updateDescription: function(e) {
     e.preventDefault();
-    debugger;
-    var newDescription = $(this).find('.card_description').val();
+    var newDescription = this.$el.find('.card_description_input').val();
     this.model.set({"description":newDescription});
+    this.$el.find(".card_description_text").text(newDescription);
+    this.$el.find(".edit_card_description_popover").addClass("invisible");
   },
   initialize: function() {
     this.render();
