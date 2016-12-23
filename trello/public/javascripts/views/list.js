@@ -29,8 +29,8 @@ var ListView = Backbone.View.extend({
       type: $f.attr("method"),
       data: $f.serialize(),
       success: function(json) {
-        self.model.cards.add(json);
-        var $card = self.renderItem(json);
+        var newCard = self.model.cards.add(json);
+        var $card = self.renderItem(newCard);
         $card.$el.appendTo(self.$el.find('ul'));
         self.$el.find(".add_card").removeClass("invisible");
         self.$el.find(".add_card_composer").addClass("invisible");        
@@ -64,10 +64,11 @@ var ListView = Backbone.View.extend({
   },
   renderCollection: function() {
     var self = this;
+    self.$el.find('ul').empty();
+    
     if (this.model.cards) {
       this.model.cards.each(function(model){
-        var $card = self.renderItem(model.toJSON());
-        // var $card = self.renderItem(model.toJSON());
+        var $card = self.renderItem(model);
         $card.$el.appendTo(self.$el.find('ul'));
       });
     };

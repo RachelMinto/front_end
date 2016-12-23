@@ -2,22 +2,22 @@
   <p>{{title}}</p>
   <div class="card_icons">
   {{#if subscribe}}
-  <span>s</span>
+  <span><i class="icon-subscribe"></i></span>
   {{/if}}
-  {{#if due_date}}
-  <span>dd</span>
-  {{/if}}
+<!--   {{#if due_date}}
+  <i class="icon-duedate"></i>
+  {{/if}} -->
   {{#if description}}
-  <span>des</span>
+  <span><i class="icon-description" title="This card has a description."></i></span>
   {{/if}}
   {{#if comments}}
-  <span>com</span>
+  <span><i class="icon-comment" title="Comments"></i>{{comments.length}}</span>
   {{/if}}
-  {{#if attachments}}
-  <span>att</span>
-  {{/if}}
+<!--   {{#if attachments}}
+  <i class="icon-attachment"></i>
+  {{/if}} -->
   {{#if checklist}}
-  <span>cl</span>
+  <span title="Checklist items"><i class="icon-checkbox"></i></span>
   {{/if}}
   </div>
 </a>

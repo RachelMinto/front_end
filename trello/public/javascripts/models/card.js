@@ -1,4 +1,7 @@
 var Card = Backbone.Model.extend({
+  events: {
+    "change:comments": "updateActivityWithComment"
+  },
   initialize: function(data) {   
     this.comments = new CommentCollection();
     this.activities = new ActivityCollection();
@@ -25,4 +28,13 @@ var Card = Backbone.Model.extend({
 
     return _.omit(data, omitKeys);
   },
+  updateActivityWithComment: function(commentTitle) {
+    var comment = {
+      user: App.user.username,
+      type: "comment",
+      title: commentTitle,
+      timeStamp: Date.Now(),
+    }
+    this.activities.add(comment);
+  }  
 });

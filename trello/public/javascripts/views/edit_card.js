@@ -12,8 +12,10 @@ var EditCardView = Backbone.View.extend({
   addComment: function() {
     var comment = this.$el.find('.comment_input').val();
     var comments = this.model.get("comments");
+    var comments = comments || [];
     comments.push(comment);
     this.model.set("comments", comments);
+    this.$el.html(this.template(this.model.toJSON()))
     return false;
   },
   openEditDescription: function(e) {

@@ -1,4 +1,15 @@
 @import "whitespace-reset.css";
+#header #search_input_placeholder {
+  height: 32px;
+  width: 182px;
+  box-sizing: border-box;
+}
+#header #search_input_placeholder i {
+  float: right;
+  line-height: 32px;
+  font-size: 18px;
+  padding-right: 4px;
+}
 #header div {
   display: inline-block;
 }
@@ -11,6 +22,7 @@
   float: left;
 }
 #header .logo {
+  margin: 0 auto;
   text-align: center;
 }
 #header .logo span {

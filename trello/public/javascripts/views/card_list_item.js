@@ -21,7 +21,7 @@ var CardView = Backbone.View.extend({
     return false;
   },
   cardHTML: function() {
-    this.$el.html(this.template(this.model));
+    this.$el.html(this.template(this.model.toJSON())); // want to call JSON in order to get attributes from model.
     this.$el.attr('data-id', this.model.id);
     return this.$el
   },
