@@ -4,18 +4,20 @@ var ListView = Backbone.View.extend({
     "click .list_header": "renameView",
     "click span": "EditMenuView",
     "blur input#new_list_name": "updateName",
+    "click input#new_card_name": "addingNewCard",
     "drop": "drop",
     "click .add_card": "show_card_composer",
     "submit form": "addCard",
     "click .submit_new_card": "addCard"
   },
   template: App.templates.list,
+  addingNewCard: function(e) {
+    return false;
+  },
   show_card_composer: function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
     this.$el.find(".add_card").addClass("invisible");
     this.$el.find(".add_card_composer").removeClass("invisible");
+    return false;
   },
   addCard: function(e) {
     e.preventDefault();
@@ -50,7 +52,7 @@ var ListView = Backbone.View.extend({
     this.$el.find(".list_title_header").addClass("invisible");
   },
   EditMenuView: function(e) {
-    e.stopPropagation();
+    return false;
   },
   updateName: function(e) {
     this.model.set('title', e.target.value);
@@ -64,7 +66,7 @@ var ListView = Backbone.View.extend({
     var self = this;
     if (this.model.cards) {
       this.model.cards.each(function(model){
-        var $card = self.renderItem(model);
+        var $card = self.renderItem(model.toJSON());
         // var $card = self.renderItem(model.toJSON());
         $card.$el.appendTo(self.$el.find('ul'));
       });
@@ -91,7 +93,7 @@ var ListView = Backbone.View.extend({
         App.trigger('updateCardPosition', [oldListID, newListID, cardID, position]);
       },
     });
-    this.listenTo(this.model.cards, 'card_collection_updated', this.render)
+    this.listenTo(this.model.cards, 'card_collection_updated', this.renderCollection)
     // subscribe to notifications from selected board, list, and item changes.
   },
 });

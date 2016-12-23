@@ -9,16 +9,7 @@ var Card = Backbone.Model.extend({
     this.on("change:description", this.syncServer);
   },
   syncServer: function() {
-    debugger;
-    this.sync("update", this, {
-      success: function(json) {
-        debugger;
-      },
-      error: function(json) {
-        debugger;
-      },      
-    });
-    // rerender card list item, and the edit menu either update or re-render.
+    this.sync("update", this);
   },
   parse: function(data) {
     var omitKeys = []

@@ -20,7 +20,7 @@
     </div>
     <div class="invisible edit_card_description_popover">
       <p>Description</p>
-      <form>
+      <form autocomplete="off">
         <textarea class="card_description_input" style="overflow: hidden; word-wrap: break-word; resize: none; height: 108px;">{{description}}</textarea>
         <a href="" class="add_description submit_info_button">Save</a>
         <a href="" class="cancel_submission close_card_edit_description">X</a>
@@ -28,7 +28,7 @@
     </div>
     <div class="card_comments">
       <h3>Add Comment</h3>
-      <form>
+      <form autocomplete="off">
         <textarea placeholder="Write a comment..." class="comment_input"></textarea>
         <div class="comment_option_icons"></div>
         <a href=""><div class="send_comment">Send</div></a>
@@ -62,7 +62,7 @@
       <a href="#" class="menu_button"><div class="checklist">Checklist</div></a>
       <div class="edit_card_popup wrapper label_menu invisible">
         <h5>Add Checklist</h5>
-        <form name="add_checklist">
+        <form name="add_checklist" autocomplete="off">
           <label for="checklist_title_input">Title
             <input type="text" placeholder="Checklist" name="checklist_title_input">
           </label>

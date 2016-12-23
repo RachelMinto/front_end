@@ -10,7 +10,6 @@ var EditCardView = Backbone.View.extend({
   },
   template: App.templates.editCardMenu,
   addComment: function() {
-    debugger;
     var comment = this.$el.find('.comment_input').val();
     var comments = this.model.get("comments");
     comments.push(comment);

@@ -21,11 +21,11 @@ var CardView = Backbone.View.extend({
     return false;
   },
   cardHTML: function() {
-    this.$el.html(this.template(this.model.toJSON()));
+    this.$el.html(this.template(this.model));
     this.$el.attr('data-id', this.model.id);
     return this.$el
   },
-  initialize: function(card) {
+  initialize: function() {
     return this.cardHTML();
     // subscribe to notifications from selected board, list, and item changes.
     // this.model.collection._byId
