@@ -8,10 +8,10 @@
   {"title":"List One",
    "position":"1",
    "id":1,
-   "subscribed":"false",
+   "subscribed":false,
    "cards":[
     {"title":"Todo # 1",
-     "subscribed":"false",
+     "subscribed":false,
      "id":1,
      "checklist":[
       {"title":"Checklist 1",
@@ -24,27 +24,29 @@
        }],
      "comments":[
        {"title":"This is a comment!",
-        "commenter":"RM"},
+        "user":"RM"},
        {"title":"This is a second comment!",
-        "commenter":"JM"}
+        "user":"JM"}
       ],
      "activities":[
        {"action":"added",
-        "commenter":"RM",
+        "user":"RM",
         "card": "Some to do card",
         "list": "Some existing list"},
        {"action":"deleted",
-        "commenter":"RM",
+        "user":"RM",
         "card": "A to do card",
         "list": "Some existing list"},
        {"action":"moved",
-        "commenter":"RM",
+        "user":"RM",
         "card": "Another to do card",
         "list": "List One"}
       ],
      "labels":[
-        {"green_label":""},
-        {"blue_label":"text for blue"}
+        {"color":"green",
+        "text":""},
+        {"color":"blue",
+        "text":"none"}
      ],
      "attachments":[
        {"type":"pdf",
@@ -52,7 +54,7 @@
        {"type":"pdf",
         "title":"second.pdf"}]},
 {"title":"Todo #2",
-     "subscribed":"false",
+     "subscribed":true,
       "id":2,
      "checklist":[
       {"title":"Checklist 1",
@@ -65,21 +67,21 @@
        }],
      "comments":[
        {"title":"This is a comment!",
-        "commenter":"RM"},
+        "user":"RM"},
        {"title":"This is a second comment!",
-        "commenter":"JM"}
+        "user":"JM"}
       ],
      "activities":[
        {"action":"added",
-        "commenter":"RM",
+        "user":"RM",
         "card": "Some to do card",
         "list": "Some existing list"},
        {"action":"deleted",
-        "commenter":"RM",
+        "user":"RM",
         "card": "A to do card",
         "list": "Some existing list"},
        {"action":"moved",
-        "commenter":"RM",
+        "user":"RM",
         "card": "Another to do card",
         "list": "List One"}
       ],
@@ -92,7 +94,7 @@
 "title":"List Two",
    "position":"2",
    "id":2,
-   "subscribed":"false",
+   "subscribed":false,
    "cards":[
     {"title":"Another todo",
      "id":3,
@@ -108,21 +110,21 @@
        }],
      "comments":[
        {"title":"This is a comment!",
-        "commenter":"RM"},
+        "user":"RM"},
        {"title":"This is a second comment!",
-        "commenter":"JM"}
+        "user":"JM"}
       ],
      "activities":[
        {"action":"added",
-        "commenter":"RM",
+        "user":"RM",
         "card": "Some to do card",
         "list": "Some existing list"},
        {"action":"deleted",
-        "commenter":"RM",
+        "user":"RM",
         "card": "A to do card",
         "list": "Some existing list"},
        {"action":"moved",
-        "commenter":"RM",
+        "user":"RM",
         "card": "Another to do card",
         "list": "List One"}
       ],

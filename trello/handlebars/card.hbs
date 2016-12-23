@@ -1,7 +1,14 @@
 <a href="">
+  {{#if labels}}
+    <div class="card_item_labels_display">
+  {{#each labels}}
+    <span class="label_{{this.color}}"></span>
+  {{/each}}
+    </div>
+  {{/if}}
   <p>{{title}}</p>
   <div class="card_icons">
-  {{#if subscribe}}
+  {{#if subscribed}}
   <span><i class="icon-subscribe"></i></span>
   {{/if}}
 <!--   {{#if due_date}}

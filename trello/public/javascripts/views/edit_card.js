@@ -7,13 +7,18 @@ var EditCardView = Backbone.View.extend({
     "click .edit_card_description": "openEditDescription",
     "click .add_description": "updateDescription",
     "click .send_comment": "addComment",
-    "click span.card_label": "addLabel"
+    "click span.card_label": "toggleLabel"
   },
   template: App.templates.editCardMenu,
   addComment: function() {
-    var comment = this.$el.find('.comment_input').val();
-    var comments = this.model.get("comments");
-    var comments = comments || [];
+    debugger;
+    var commentTitle = this.$el.find('.comment_input').val();
+    var comment = {
+      "user": App.user.get("username"),
+      "title": commentTitle
+    }
+    var comments = _.clone(this.model.get("comments")) || []
+
     comments.push(comment);
     this.model.set("comments", comments);
     this.$el.html(this.template(this.model.toJSON()))
@@ -21,12 +26,11 @@ var EditCardView = Backbone.View.extend({
   },
   addLabel: function(e) {
     // board should have object of labels.
+    // Label text lookup.
+    // Add label object to card's labels attr. or remove if allready present!
+    // Sync updated card with server. 
     // update server with new object when label text gets edited.
-    // 
-     //     "labels":[
-     //    {"green_label":""},
-     //    {"blue_label":"text for blue"}
-     // ],
+
     return false;
   },
   openEditDescription: function(e) {

@@ -4,23 +4,22 @@ var Card = Backbone.Model.extend({
     "change:description": "syncServer"
   },
   initialize: function(data) {   
-    this.comments = new CommentCollection();
+    this.set("comments", [])
     this.activities = new ActivityCollection();
-    this.checklist = [],
-    this.labels = [],
-    this.attachments = [],
-    this.id = App.getNextCardID();
+    // this.checklist = [],
+    this.set("labels", []),
+    this.set("attachments", []);
     this.parse(data);
     this.on("change:description", this.syncServer);
+    this.on("change:comments", this.updateActivityWithComment);
   },
   syncServer: function() {
-    debugger;
     this.sync("update", this);
   },
   parse: function(data) {
     var omitKeys = []
     if (data.comments) {
-      this.comments.reset(data.comments);
+      this.set("comments", data.comments);
       omitKeys.push('comments')
     }
 
@@ -29,15 +28,22 @@ var Card = Backbone.Model.extend({
       omitKeys.push('activities');
     }
 
+    if (data.labels) {
+      this.set("labels", data.labels);
+      omitKeys.push('labels');
+    }    
+
     return _.omit(data, omitKeys);
   },
   updateActivityWithComment: function(commentTitle) {
-    var comment = {
-      user: App.user.username,
-      type: "comment",
-      title: commentTitle,
-      timeStamp: Date.Now(),
-    }
-    this.activities.add(comment);
+    debugger;
+    // var comment = {
+    //   user: App.user.username,
+    //   type: "comment",
+    //   title: commentTitle,
+    //   timeStamp: Date.Now(),
+    // }
+    // var currentComments = this.get("comments")
+    this.syncServer();
   }  
 });

@@ -119,6 +119,19 @@ li a {
   max-width: 270px;
   margin-left: 8px;
 }
+.card_item_labels_display span {
+  display: inline-block;
+  border-radius: 10px;
+  width: 40px;
+  margin-right: 2px;
+  height: 7px;
+}
+.card_icons {
+  color: #8c8c8c;
+}
+.card_icons a {
+  text-decoration: none;
+}
 .edit_card_menu .wrapper {
   width: 730px;
   height: 604px;
