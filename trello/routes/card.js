@@ -12,7 +12,7 @@ module.exports = function(router) {
     for (var i = 0; i < board.lists.length; i++) {
       if (board.lists[i].id === +req.params.listID) {
         for (var j = 0; j < board.lists[i].cards.length; j++) {
-          if (board.lists[i].cards[j].id === req.params.cardID) {
+          if (board.lists[i].cards[j].id === +req.params.cardID) {
             board.lists[i].cards[j] = req.body;
             card = req.body
             break;

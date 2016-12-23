@@ -1,6 +1,7 @@
 var Card = Backbone.Model.extend({
   events: {
-    "change:comments": "updateActivityWithComment"
+    "change:comments": "updateActivityWithComment",
+    "change:description": "syncServer"
   },
   initialize: function(data) {   
     this.comments = new CommentCollection();
@@ -13,6 +14,7 @@ var Card = Backbone.Model.extend({
     this.on("change:description", this.syncServer);
   },
   syncServer: function() {
+    debugger;
     this.sync("update", this);
   },
   parse: function(data) {
