@@ -1,12 +1,9 @@
 var Card = Backbone.Model.extend({
   events: {
-    "change:comments": "updateActivityWithComment",
+    // "change:comments": "updateActivityWithComment",
     "change:description": "syncServer"
   },
   initialize: function(data) {   
-    this.set("comments", [])
-    this.activities = new ActivityCollection();
-    // this.checklist = [],
     this.set("labels", []),
     this.set("attachments", []);
     this.parse(data);
@@ -18,13 +15,8 @@ var Card = Backbone.Model.extend({
   },
   parse: function(data) {
     var omitKeys = []
-    if (data.comments) {
-      this.set("comments", data.comments);
-      omitKeys.push('comments')
-    }
-
     if (data.activities) {
-      this.activities.reset(data.activities);
+      this.set("activities", data.activities);
       omitKeys.push('activities');
     }
 
@@ -35,15 +27,33 @@ var Card = Backbone.Model.extend({
 
     return _.omit(data, omitKeys);
   },
-  updateActivityWithComment: function(commentTitle) {
+  incrementCardCommentTotal: function() {
+    var current = this.get("cardComments") || 0;
+    current++
     debugger;
-    // var comment = {
-    //   user: App.user.username,
-    //   type: "comment",
-    //   title: commentTitle,
-    //   timeStamp: Date.Now(),
-    // }
-    // var currentComments = this.get("comments")
-    this.syncServer();
+    this.set("cardComments", current);
+  },
+  createComment: function(comment) {
+    var self = this;
+
+    var activities = _.clone(this.get("activities")) || [];
+    var activity = {
+      action: "comment",
+      title: comment,
+      user: App.user.get("username"),
+      card: self.get("title"),
+      list: "",
+      timestamp: new Date()
+    };
+
+    this.incrementCardCommentTotal();
+    activities.push(activity);
+    this.set("activities", activities);
+
+    this.sync("update", this, {
+      success: function(json) {
+        self.trigger("rerenderEditCardView"); 
+      },
+    });
   }  
 });

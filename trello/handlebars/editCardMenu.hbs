@@ -53,8 +53,19 @@
       <h3>Activity</h3><a href="">Hide Details</a>
        {{#if activities}}
        {{#each activities}}
-        <p>{{username}}{{verb}}this card to {{list}}</p>
-        <hr>
+          {{#ifComment activities.action value="comment"}}
+          <div>
+            <p><strong>{{this.user}}</strong></p>
+            <div class="posted_comment_content">{{this.title}}</div>
+            <span>{{this.timestamp}}</span>
+          </div>
+          <hr>          
+          {{else}}
+          <div>
+            <p><strong>{{this.user}}</strong> {{this.action}} this card to {{this.list}} at <span>{{this.timestamp}}</span></p>
+          </div>
+          <hr>
+          {{/ifComment}}
         {{/each}}
       {{/if}}
     </div> 
@@ -64,7 +75,7 @@
       <h3>Add</h3>
 <!--       <a href="#" class="menu_button"><div class="members">Members</div></a> -->
       <div class="menu_button labels">Labels</div>
-      <div class="edit_card_popup wrapper label_menu invisible">
+      <div class="edit_card_popup wrapper card_menu_popup invisible">
         <h5>Labels</h5><i class="icon-close"></i>
         <hr>
       <!--   <input type="text" placeholder="Search labels..." name="search_labels" id="card_search_labels"> -->
@@ -78,7 +89,7 @@
         </ul>
       </div>      
       <div class="menu_button checklist">Checklist</div>
-      <div class="edit_card_popup wrapper label_menu invisible">
+      <div class="edit_card_popup wrapper card_menu_popup invisible">
         <h5>Add Checklist</h5>
         <form name="add_checklist" autocomplete="off">
           <label for="checklist_title_input">Title
@@ -93,6 +104,22 @@
     <div class="card_actions_menu">
       <h3>Actions</h3>
       <div class="menu_button move_card">Move</div>
+      <div class="move_card_popup wrapper card_menu_popup invisible">
+        <h5>Move Card</h5><i class="icon-close"></i>
+        <hr>
+          <div class="all_lists_dropdown_placeholder menu_button">
+            <h6>List</h6>
+            Current List
+          </div>
+          <div class="move_card_position_placeholder menu_button">
+            <h6>Position</h6>
+            Current Position
+          </div>  
+          <div class="submit_info_button selected">
+            Move
+          </div>        
+        </div>
+      </div>
       <div class="menu_button label_card">Copy</div> 
       <div class="menu_button subscribe_card">Subscribe</div>
       <div class="menu_button archive_card">Archive</div>      

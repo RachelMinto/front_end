@@ -12,20 +12,12 @@ var EditCardView = Backbone.View.extend({
     "click span.card_label": "toggleLabel",
     "click .card_title_placeholder": "editNameView",
     "blur input#new_card_name": "updateCardName",
+    "click .menu_button.move_card": "openMovePopup",
   },
   template: App.templates.editCardMenu,
-  addComment: function() {
-    debugger;
+  addComment: function(e) {
     var commentTitle = this.$el.find('.comment_input').val();
-    var comment = {
-      "user": App.user.get("username"),
-      "title": commentTitle
-    }
-    var comments = _.clone(this.model.get("comments")) || []
-
-    comments.push(comment);
-    this.model.set("comments", comments);
-    this.$el.html(this.template(this.model.toJSON()))
+    this.model.createComment(commentTitle);
     return false;
   },
   editNameView: function() {
@@ -39,12 +31,10 @@ var EditCardView = Backbone.View.extend({
   render: function() {
     $('#surface').after(this.$el.html(this.template(this.model.toJSON())));
   },
-  // rerender: function() {
-  //   debugger;
-  //   $.find('.modal.edit_card_menu').remove();
-  //   // Remove '.modal.edit_card_menu'
-  //   this.render();
-  // },
+  rerender: function() {
+    this.$el.empty();
+    this.$el.html(this.template(this.model.toJSON()));
+  },
   edit: function(e) {
     return false;
   },
@@ -53,9 +43,11 @@ var EditCardView = Backbone.View.extend({
     this.$el.removeData().unbind();
     this.remove();
   },
-  openLabelPopup: function(e) {
-    this.$el.find(".edit_card_popup.label_menu").removeClass("invisible");
-    return false;
+  openLabelPopup: function() {
+    this.$el.find(".edit_card_popup.card_menu_popup").removeClass("invisible");
+  },
+  openMovePopup: function() {
+    this.$el.find(".move_card_popup.card_menu_popup").removeClass("invisible");
   },
   preventClose: function(e) {
     return false;
@@ -81,7 +73,7 @@ var EditCardView = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
-    // this.listenTo(this.model, "update", this.rerender); // need to check if this works!
+    this.listenTo(this.model, "rerenderEditCardView", this.rerender); // need to check if this works!
     // subscribe to notifications from selected board, list, and item changes.
   },  
 });

@@ -6,15 +6,27 @@ var ListView = Backbone.View.extend({
     "blur input#new_list_name": "updateName",
     "click input#new_card_name": "addingNewCard",
     "drop": "drop",
-    "click .add_card": "show_card_composer",
+    "click .add_card": "showCardComposer",
     "submit form": "addCard",
-    "click .submit_new_card": "addCard"
+    "click .submit_new_card": "addCard",
+    "click .icon-ellipsis": "openEditListMenu",
+    "click .list_options_add_card": "showCardComposer",
+    "click .icon-cancel": "closeEditListMenu"
   },
   template: App.templates.list,
   addingNewCard: function(e) {
     return false;
   },
-  show_card_composer: function(e) {
+  openEditListMenu: function() {
+    this.$el.find(".list_options_popup").removeClass("invisible");
+    return false;
+  },
+  closeEditListMenu: function() {
+    this.$el.find(".list_options_popup").addClass("invisible");
+    return false;    
+  },
+  showCardComposer: function(e) {
+    this.$el.find(".list_options_popup").addClass("invisible");
     this.$el.find(".add_card").addClass("invisible");
     this.$el.find(".add_card_composer").removeClass("invisible");
     return false;
@@ -57,7 +69,7 @@ var ListView = Backbone.View.extend({
     this.$el.find(".new_list_title_input").removeClass("invisible");
     this.$el.find(".list_title_header").addClass("invisible");
   },
-  EditMenuView: function(e) {
+  EditMenuView: function(e) { // Can I remove this?
     return false;
   },
   updateName: function(e) {

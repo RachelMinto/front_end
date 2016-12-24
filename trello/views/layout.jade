@@ -20,7 +20,7 @@ html
     +javascript_include_tag("application") 
     +javascript_include_tag("models/list", "models/board", "models/card", "models/activity", "models/checklist_item", "models/comment", "models/user")
     +javascript_include_tag("collections/list", "collections/activities", "collections/comments", "collections/cards")
-    +javascript_include_tag("views/board", "views/card_list_item", "views/edit_card", "views/header", "views/list", "views/quick_edit_card", "views/board_menu", "views/add_list")
+    +javascript_include_tag("views/board", "views/card_list_item", "views/edit_card", "views/header", "views/list", "views/quick_edit_card", "views/board_menu", "views/add_list", "views/list_popup")
     script(type="text/javascript").
       App.board = new Board(!{JSON.stringify(default_board)});   
     +javascript_include_tag("router")
