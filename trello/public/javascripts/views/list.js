@@ -11,7 +11,8 @@ var ListView = Backbone.View.extend({
     "click .submit_new_card": "addCard",
     "click .icon-ellipsis": "openEditListMenu",
     "click .list_options_add_card": "showCardComposer",
-    "click .icon-cancel": "closeEditListMenu"
+    "click .icon-cancel": "closeEditListMenu",
+    "click .list_options_subscribe": "subscribeToggle"
   },
   template: App.templates.list,
   addingNewCard: function(e) {
@@ -65,6 +66,11 @@ var ListView = Backbone.View.extend({
     this.renderCollection();
     this.$el.appendTo($('#board_canvas'));
   },
+  rerender: function() {
+    this.$el.empty();
+    this.$el.html(this.template(this.model.toJSON()));
+    this.renderCollection();
+  },
   renameView: function() {
     this.$el.find(".new_list_title_input").removeClass("invisible");
     this.$el.find(".list_title_header").addClass("invisible");
@@ -91,6 +97,9 @@ var ListView = Backbone.View.extend({
       });
     };
   },
+  subscribeToggle: function() {
+    this.model.trigger("subscribeToggle");
+  },
   renderItem: function(model) {
     var cardEl = new CardView({ model: model });
     return cardEl;
@@ -113,6 +122,7 @@ var ListView = Backbone.View.extend({
       },
     });
     this.listenTo(this.model.cards, 'card_collection_updated', this.renderCollection)
+    this.listenTo(this.model, "rerenderListView", this.rerender); 
     // subscribe to notifications from selected board, list, and item changes.
   },
 });

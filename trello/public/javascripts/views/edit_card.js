@@ -54,6 +54,7 @@ var EditCardView = Backbone.View.extend({
   },
   toggleLabel: function(e) {
     var labelColor = $(e.target).data("color");
+    this.model.toggleLabel(labelColor);
     debugger;
   },
   updateCardName: function(e) {
@@ -73,7 +74,6 @@ var EditCardView = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
-    this.listenTo(this.model, "rerenderEditCardView", this.rerender); // need to check if this works!
-    // subscribe to notifications from selected board, list, and item changes.
+    this.listenTo(this.model, "rerenderEditCardView", this.rerender);
   },  
 });

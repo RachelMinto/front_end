@@ -1,7 +1,4 @@
 var Board = Backbone.Model.extend({
-  events: {
-
-  },
   initialize: function(data) {
     this.lists = new ListCollection();
     // this.lists.url = "/board/lists"

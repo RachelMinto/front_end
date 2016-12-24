@@ -17,7 +17,6 @@ var CardView = Backbone.View.extend({
   //   App.addCardToList(listID, this.model);
   // },
   editMenuView: function(e) {
-    debugger;
     App.trigger("openCardEditMenu", this.model);
     return false;
   },
@@ -29,6 +28,7 @@ var CardView = Backbone.View.extend({
   },
   initialize: function() {
     return this.cardHTML();
+    // this.listenTo(this.model, "updatedCardLabels", this.rerender);
     // subscribe to notifications from selected board, list, and item changes.
     // this.model.collection._byId
   },

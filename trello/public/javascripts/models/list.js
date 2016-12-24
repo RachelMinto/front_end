@@ -3,18 +3,43 @@ var List = Backbone.Model.extend({
     return this.cards.findWhere({id : id});
   },
   parse: function(data) {
+    var omitKeys = []
+
     if (data.cards) {
         this.cards.reset(data.cards);
+        omitKeys.push('cards');
     }
-    return _.omit(data, 'cards');
+
+    if (data.subscribed) {
+      this.set("subscribed", data.subscribed);
+      omitKeys.push('subscribed');
+    }
+
+    return _.omit(data, omitKeys);    
   },
   syncServer: function() {
     this.sync("update", this);
-  },  
+  },
+  toggleSubscribeStatus: function() {
+    var self = this;
+    var current = this.get("subscribed");
+    this.set("subscribed", !current);
+    
+    this.sync("update", this, {
+      success: function(json) {
+        debugger;
+        self.trigger("rerenderListView"); 
+      },
+      error: function(json) {
+        debugger;
+      }
+    })
+  },
   initialize: function(data) {
     this.cards = new CardCollection();
     this.url = "/board/" + this.id;
     this.cards.url = "/board/" + this.id + "/items"
     this.parse(data);
+    this.on("subscribeToggle", this.toggleSubscribeStatus);    
   },  
 });

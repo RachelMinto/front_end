@@ -2,6 +2,9 @@
   <a href="#" class="list_title_header">
     <div class="list_header">
       <h3 class="list_title">{{title}}</h3>
+      {{#if subscribed}}
+      <i class="icon-subscribe"></i>
+      {{/if}}
       <i class="icon-ellipsis"></i>
     </div>
   </a>
@@ -27,6 +30,9 @@
   <hr>
   <div class="list_options_add_card">
     Add Card...
+  </div>
+    <div class="list_options_subscribe">
+    Subscribe
   </div>
   <hr>
 </div>

@@ -8,7 +8,7 @@ var Card = Backbone.Model.extend({
     this.set("attachments", []);
     this.parse(data);
     this.on("change:description", this.syncServer);
-    this.on("change:comments", this.updateActivityWithComment);
+    // this.on("change:comments", this.updateActivityWithComment);
   },
   syncServer: function() {
     this.sync("update", this);
@@ -34,6 +34,7 @@ var Card = Backbone.Model.extend({
     this.set("cardComments", current);
   },
   createComment: function(comment) {
+    debugger;
     var self = this;
 
     var activities = _.clone(this.get("activities")) || [];
@@ -55,5 +56,20 @@ var Card = Backbone.Model.extend({
         self.trigger("rerenderEditCardView"); 
       },
     });
-  }  
+  },
+  toggleLabel: function(color) {
+    debugger;
+    var labels = this.get('labels');
+    var hasLabel = false;
+
+    if (_(labels).findWhere({ color: color })) {
+      labels = _(labels).reject({ color: color });
+    } else {
+      labels.push({"color": color, "text": ""})
+    };
+
+    this.set("labels", labels);
+    this.trigger("rerenderEditCardView");
+    this.sync("update", this);
+  },
 });
