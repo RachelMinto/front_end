@@ -89,13 +89,12 @@ var ListView = Backbone.View.extend({
   renderCollection: function() {
     var self = this;
     self.$el.find('ul').empty();
+    var cards = this.model.cards.filter({archived: false})
 
-    if (this.model.cards) {
-      this.model.cards.each(function(model){
-        var $card = self.renderItem(model);
-        $card.$el.appendTo(self.$el.find('ul'));
-      });
-    };
+    cards.forEach(function(model){
+      var $card = self.renderItem(model);
+      $card.$el.appendTo(self.$el.find('ul'));
+    });
   },
   subscribeToggle: function() {
     this.model.trigger("subscribeToggle");

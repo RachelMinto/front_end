@@ -3,21 +3,50 @@ var Card = Backbone.Model.extend({
     // "change:comments": "updateActivityWithComment",
     "change:description": "syncServer"
   },
-  initialize: function(data) {   
-    this.set("labels", []),
-    this.set("attachments", []);
-    this.parse(data);
-    this.on("change:description", this.syncServer);
-    // this.on("change:comments", this.updateActivityWithComment);
+  archive: function() {
+    var self = this;
+    this.set("archived", true);
+    this.sync("update", this, {
+      success: function(json) {
+        self.trigger("rerenderEditCardView"); 
+      },
+    });
+  },
+  createChecklist: function(title) {
+    var self = this;
+    var current = _.clone(this.get("checklists"))
+
+    current.add({title: title, todos: []});
+    debugger;
+
+    this.set("checklists", current);
+
+    this.sync("update", this, {
+      success: function(json) {
+        self.trigger("rerenderEditCardView");
+      },
+    });    
   },
   syncServer: function() {
     this.sync("update", this);
   },
   parse: function(data) {
     var omitKeys = []
+    if (data.checklists) {
+      var checklists = new ChecklistCollection(checklists);
+    // need to reset with new data.
+      this.set("checklists", checklists);
+      omitKeys.push('checklists');      
+    }
+
     if (data.activities) {
       this.set("activities", data.activities);
       omitKeys.push('activities');
+    }
+
+    if (data.archived) {
+      this.set("archived", data.archived);
+      omitKeys.push("archived");
     }
 
     if (data.labels) {
@@ -72,4 +101,12 @@ var Card = Backbone.Model.extend({
     this.trigger("rerenderEditCardView");
     this.sync("update", this);
   },
+  initialize: function(data) {   
+    this.set("labels", []),
+    this.set("attachments", []);
+    this.set("archived", false);
+    this.parse(data);
+    this.on("change:description", this.syncServer);
+    // this.on("change:comments", this.updateActivityWithComment);
+  },  
 });

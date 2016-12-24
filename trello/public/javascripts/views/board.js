@@ -49,7 +49,7 @@ var BoardView = Backbone.View.extend({
   render: function() {
     // if (board.color !== default) { change html background };
     var content = this.$el.html(this.template(this.model.toJSON()));
-    $('main').html(content);
+    $('main').append(content);
   },
   initialize: function() {
     this.render()

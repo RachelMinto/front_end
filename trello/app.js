@@ -53,4 +53,13 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+// define(function (require) {
+//     var header = Handlebars.compile(require("text!templates/header.html"));
+//     Handlebars.registerPartial('header', header);
+
+//     var footer = Handlebars.compile(require("text!templates/footer.html"));
+//     Handlebars.registerPartial('footer', footer);
+// });
+
+
 module.exports = app;

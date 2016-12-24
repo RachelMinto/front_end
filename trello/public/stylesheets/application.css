@@ -37,6 +37,9 @@
   float: right;
   text-align: right;
 }
+#search_input_wrapper.invisible {
+  display: none;
+}
 #board_nav {
   position: fixed;
   top: 40px;
@@ -180,6 +183,10 @@ ul.list_container li.ui-sortable-handle {
   left: 250px;
   z-index: 1;
   width: 300px;
+}
+.archived_header {
+  height: 25px;
+  background-color: #f00;
 }
 .edit_card_menu .wrapper {
   width: 730px;
@@ -357,7 +364,7 @@ textarea {
   -webkit-transition: background 85ms ease-in, border-color 85ms ease-in;
   border-radius: 3px;
 }
-header {
+#header {
   position: fixed;
   top: 0;
   left: 0;
@@ -365,7 +372,7 @@ header {
   height: 40px;
   background: rgba(0,0,0,0.15);
 }
-header #board_info div {
+#header #board_info div {
   background: rgba(255,255,255,0.3);
   border-radius: 4px;
 }

@@ -1,5 +1,8 @@
 <div class="wrapper edit_card_menu_wrapper">
   <div class="card_content_header">
+    {{#if archived}}
+      <div class="archived_header"></div>
+    {{/if}}
     <div class="card_title_info">
       <div class="card_title_placeholder">
         <h3>{{title}}</h3>
@@ -42,6 +45,7 @@
         <a href="" class="cancel_submission close_card_edit_description">X</a>
       </form>
     </div>
+    {{> checklist}}
     <div class="card_comments">
       <h3>Add Comment</h3>
       <form autocomplete="off">
@@ -49,33 +53,14 @@
         <div class="send_comment_wrapper"><div class="send_comment submit_info_button">Send</div></div>
       </form>
     </div>  
-    <div class="card_activities">
-      <h3>Activity</h3><a href="">Hide Details</a>
-       {{#if activities}}
-       {{#each activities}}
-          {{#ifComment activities.action value="comment"}}
-          <div>
-            <p><strong>{{this.user}}</strong></p>
-            <div class="posted_comment_content">{{this.title}}</div>
-            <span>{{this.timestamp}}</span>
-          </div>
-          <hr>          
-          {{else}}
-          <div>
-            <p><strong>{{this.user}}</strong> {{this.action}} this card to {{this.list}} at <span>{{this.timestamp}}</span></p>
-          </div>
-          <hr>
-          {{/ifComment}}
-        {{/each}}
-      {{/if}}
-    </div> 
+    {{> activity}}
   </div>
   <div class="card_action_menu">
     <div class="card_add_menu">
       <h3>Add</h3>
 <!--       <a href="#" class="menu_button"><div class="members">Members</div></a> -->
       <div class="menu_button labels">Labels</div>
-      <div class="edit_card_popup wrapper card_menu_popup invisible">
+      <div class="edit_card_popup wrapper card_menu_popup add_label_popup invisible">
         <h5>Labels</h5><i class="icon-close"></i>
         <hr>
       <!--   <input type="text" placeholder="Search labels..." name="search_labels" id="card_search_labels"> -->
@@ -89,13 +74,13 @@
         </ul>
       </div>      
       <div class="menu_button checklist">Checklist</div>
-      <div class="edit_card_popup wrapper card_menu_popup invisible">
+      <div class="edit_card_popup wrapper card_menu_popup add_checklist_popup invisible">
         <h5>Add Checklist</h5>
         <form name="add_checklist" autocomplete="off">
           <label for="checklist_title_input">Title
-            <input type="text" placeholder="Checklist" name="checklist_title_input">
+            <input type="text" placeholder="Checklist" id="checklist_title_input" name="checklist_title_input">
           </label>
-          <a href=""><div class="submit_info_button add_checklist">Add</div></a>
+          <a href=""><div class="submit_info_button add_checklist selected">Add</div></a>
         </form>
       </div>
       <div class="menu_button due_date">Due Date</div>   

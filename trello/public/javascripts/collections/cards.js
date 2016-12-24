@@ -2,7 +2,6 @@ var CardCollection = Backbone.Collection.extend({
   model: Card,
   comparator: 'position',
   syncServer: function() {
-    debugger;
     this.sync("update", this, {
       success: function(json) {
         debugger;

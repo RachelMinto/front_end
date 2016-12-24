@@ -13,12 +13,29 @@ var EditCardView = Backbone.View.extend({
     "click .card_title_placeholder": "editNameView",
     "blur input#new_card_name": "updateCardName",
     "click .menu_button.move_card": "openMovePopup",
+    "click .menu_button.archive_card": "archiveCard",
+    "click .menu_button.checklist": "openChecklist",
+    "click .add_checklist": "addChecklist",
+    "click .add_checklist_todo_placeholder": "openTodoCreator",
+    "click .submit_new_checklist_todo": "addChecklistTodo",
   },
   template: App.templates.editCardMenu,
+  addChecklistTodo: function(e) {
+    // send checklist title and new todo to list.
+  },
   addComment: function(e) {
     var commentTitle = this.$el.find('.comment_input').val();
     this.model.createComment(commentTitle);
     return false;
+  },
+  addChecklist: function(e) {
+    var checklistTitle = this.$el.find('#checklist_title_input').val();
+    debugger;
+    this.model.createChecklist(checklistTitle);
+    return false;
+  },
+  archiveCard: function() {
+    this.model.archive();
   },
   editNameView: function() {
     this.$el.find(".new_card_title_input").removeClass("invisible");
@@ -43,11 +60,19 @@ var EditCardView = Backbone.View.extend({
     this.$el.removeData().unbind();
     this.remove();
   },
+  openChecklist: function() {
+    this.$el.find(".add_checklist_popup.card_menu_popup").removeClass("invisible");
+  },
   openLabelPopup: function() {
-    this.$el.find(".edit_card_popup.card_menu_popup").removeClass("invisible");
+    this.$el.find(".add_label_popup.card_menu_popup").removeClass("invisible");
   },
   openMovePopup: function() {
     this.$el.find(".move_card_popup.card_menu_popup").removeClass("invisible");
+  },
+  openTodoCreator: function(e) {
+    $(e.target).closest(".add_checklist_todo_placeholder").addClass("invisible");
+    $(e.target).next(".card_add_todo_form").removeClass("invisible");
+    return false;
   },
   preventClose: function(e) {
     return false;

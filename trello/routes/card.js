@@ -22,7 +22,7 @@ module.exports = function(router) {
     }
 
     Board.writeBoardUpdate(board); 
-    res.json(board);    
+    res.json(card);    
   }).delete(function(req, res) {
     res.send("I am going to delete a list item.")
   });
