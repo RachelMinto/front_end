@@ -32,7 +32,7 @@ this["JST"]["board"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":fun
 
   return "<div id=\"board_nav\"><div id=\"board_settings\"><h1>"
     + container.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"title","hash":{},"data":data}) : helper)))
-    + "</h1><img src=\"/images/star.png\" id=\"star\"><div id=\"privacy_status\"><span id=\"privacy\"></span><i class=\"icon-star\"></i><span>Private</span></div></div><div id=\"open_board_menu\"><span>...</span><a href=\"#\">Show Menu</a></div></div><div id=\"board\"><div id=\"board_canvas\"></div></div>";
+    + "</h1><div id=\"privacy_status\"><span id=\"privacy\"></span><i class=\"icon-star\"></i><span>Private</span></div></div><div id=\"open_board_menu\"><span>...</span><a href=\"#\">Show Menu</a></div></div><div id=\"board\"><div id=\"board_canvas\"></div></div>";
 },"useData":true});
 
 this["JST"]["card"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
@@ -119,9 +119,9 @@ this["JST"]["editCardMenu"] = Handlebars.template({"1":function(container,depth0
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
     + "</h3></div><div class=\"invisible new_card_title_input\"><input type=\"text\" id=\"new_card_name\" name=\"new_card_name\" autofocus spellcheck=\"false\" dir=\"auto\" maxlength=\"512\" value=\""
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "\" style=\"overflow: hidden; word-wrap: break-word; height: 24px;\"></div></div><div><i class=\"icon-cancel\"></i><p>in list <a href=\"\">"
+    + "\" style=\"overflow: hidden; word-wrap: break-word; height: 24px;\"></div></div><i class=\"icon-cancel\"></i><p>in list <a href=\"\">"
     + alias4(((helper = (helper = helpers.list_title || (depth0 != null ? depth0.list_title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"list_title","hash":{},"data":data}) : helper)))
-    + "</a></p></div></div><div class=\"card_content\">"
+    + "</a></p></div><div class=\"card_content\">"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.labels : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "<div class=\"card_description\">"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.description : depth0),{"name":"if","hash":{},"fn":container.program(4, data, 0),"inverse":container.program(6, data, 0),"data":data})) != null ? stack1 : "")
@@ -129,17 +129,17 @@ this["JST"]["editCardMenu"] = Handlebars.template({"1":function(container,depth0
     + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
     + "</textarea><a href=\"\" class=\"add_description submit_info_button\">Save</a><a href=\"\" class=\"cancel_submission close_card_edit_description\">X</a></form></div><div class=\"card_comments\"><h3>Add Comment</h3><form autocomplete=\"off\"><textarea placeholder=\"Write a comment...\" class=\"comment_input\"></textarea><div class=\"send_comment_wrapper\"><div class=\"send_comment submit_info_button\">Send</div></div></form></div><div class=\"card_activities\"><h3>Activity</h3><a href=\"\">Hide Details</a>"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.activities : depth0),{"name":"if","hash":{},"fn":container.program(8, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</div> </div><div class=\"card_action_menu\"><div class=\"card_add_menu\"><h3>Add</h3><!--<a href=\"#\" class=\"menu_button\"><div class=\"members\">Members</div></a> --><div class=\"menu_button labels\">Labels</div><div class=\"edit_card_popup wrapper label_menu invisible\"><h5>Labels</h5><i class=\"icon-close\"></i><hr><!--<input type=\"text\" placeholder=\"Search labels...\" name=\"search_labels\" id=\"card_search_labels\"> --><ul><li><span class=\"card_label label_green\">"
+    + "</div> </div><div class=\"card_action_menu\"><div class=\"card_add_menu\"><h3>Add</h3><!--<a href=\"#\" class=\"menu_button\"><div class=\"members\">Members</div></a> --><div class=\"menu_button labels\">Labels</div><div class=\"edit_card_popup wrapper label_menu invisible\"><h5>Labels</h5><i class=\"icon-close\"></i><hr><!--<input type=\"text\" placeholder=\"Search labels...\" name=\"search_labels\" id=\"card_search_labels\"> --><ul><li><span class=\"card_label label_green\" data-color=\"green\">"
     + alias4(((helper = (helper = helpers.label_green_text || (depth0 != null ? depth0.label_green_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_green_text","hash":{},"data":data}) : helper)))
-    + "</span></li><li><span class=\"card_label label_yellow\">"
+    + "</span></li><li><span class=\"card_label label_yellow\" data-color=\"yellow\">"
     + alias4(((helper = (helper = helpers.label_yellow_text || (depth0 != null ? depth0.label_yellow_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_yellow_text","hash":{},"data":data}) : helper)))
-    + "</span></li><li><span class=\"card_label label_orange\">"
+    + "</span></li><li><span class=\"card_label label_orange\" data-color=\"orange\">"
     + alias4(((helper = (helper = helpers.label_orange_text || (depth0 != null ? depth0.label_orange_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_orange_text","hash":{},"data":data}) : helper)))
-    + "</span></li><li><span class=\"card_label label_red\">"
+    + "</span></li><li><span class=\"card_label label_red\" data-color=\"red\">"
     + alias4(((helper = (helper = helpers.label_red_text || (depth0 != null ? depth0.label_red_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_red_text","hash":{},"data":data}) : helper)))
-    + "</span></li><li><span class=\"card_label label_purple\">"
+    + "</span></li><li><span class=\"card_label label_purple\" data-color=\"purple\">"
     + alias4(((helper = (helper = helpers.label_purple_text || (depth0 != null ? depth0.label_purple_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_purple_text","hash":{},"data":data}) : helper)))
-    + "</span></li><li><span class=\"card_label label_blue\">"
+    + "</span></li><li><span class=\"card_label label_blue\" data-color=\"blue\">"
     + alias4(((helper = (helper = helpers.label_blue_text || (depth0 != null ? depth0.label_blue_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_blue_text","hash":{},"data":data}) : helper)))
     + "</span></li></ul></div><div class=\"menu_button checklist\">Checklist</div><div class=\"edit_card_popup wrapper label_menu invisible\"><h5>Add Checklist</h5><form name=\"add_checklist\" autocomplete=\"off\"><label for=\"checklist_title_input\">Title<input type=\"text\" placeholder=\"Checklist\" name=\"checklist_title_input\"></label><a href=\"\"><div class=\"submit_info_button add_checklist\">Add</div></a></form></div><div class=\"menu_button due_date\">Due Date</div><!--<a href=\"#\" class=\"menu_button\"><div class=\"attachment\">Attachment</div></a> --></div><div class=\"card_actions_menu\"><h3>Actions</h3><div class=\"menu_button move_card\">Move</div><div class=\"menu_button label_card\">Copy</div> <div class=\"menu_button subscribe_card\">Subscribe</div><div class=\"menu_button archive_card\">Archive</div><a href=\"#\">Share and more...</a></div></div></div>";
 },"useData":true});

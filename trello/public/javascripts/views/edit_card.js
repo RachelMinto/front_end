@@ -2,6 +2,7 @@ var EditCardView = Backbone.View.extend({
   className: "modal edit_card_menu",
   events: {
     "click": "closeModal",
+    "click i.icon-cancel": "closeModal",
     "click .edit_card_menu_wrapper": "preventClose",
     "click .card_content": "edit",
     "click .labels": "openLabelPopup",
@@ -10,7 +11,7 @@ var EditCardView = Backbone.View.extend({
     "click .send_comment": "addComment",
     "click span.card_label": "toggleLabel",
     "click .card_title_placeholder": "editNameView",
-    "blur input#new_card_name": "updateCardName"
+    "blur input#new_card_name": "updateCardName",
   },
   template: App.templates.editCardMenu,
   addComment: function() {
@@ -27,15 +28,6 @@ var EditCardView = Backbone.View.extend({
     this.$el.html(this.template(this.model.toJSON()))
     return false;
   },
-  addLabel: function(e) {
-    // board should have object of labels.
-    // Label text lookup.
-    // Add label object to card's labels attr. or remove if allready present!
-    // Sync updated card with server. 
-    // update server with new object when label text gets edited.
-
-    return false;
-  },
   editNameView: function() {
     this.$el.find(".new_card_title_input").removeClass("invisible");
     this.$el.find(".card_title_placeholder").addClass("invisible");
@@ -47,6 +39,12 @@ var EditCardView = Backbone.View.extend({
   render: function() {
     $('#surface').after(this.$el.html(this.template(this.model.toJSON())));
   },
+  // rerender: function() {
+  //   debugger;
+  //   $.find('.modal.edit_card_menu').remove();
+  //   // Remove '.modal.edit_card_menu'
+  //   this.render();
+  // },
   edit: function(e) {
     return false;
   },
@@ -61,6 +59,10 @@ var EditCardView = Backbone.View.extend({
   },
   preventClose: function(e) {
     return false;
+  },
+  toggleLabel: function(e) {
+    var labelColor = $(e.target).data("color");
+    debugger;
   },
   updateCardName: function(e) {
     this.model.set('title', e.target.value);
@@ -79,6 +81,7 @@ var EditCardView = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
+    // this.listenTo(this.model, "update", this.rerender); // need to check if this works!
     // subscribe to notifications from selected board, list, and item changes.
   },  
 });

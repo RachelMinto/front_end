@@ -8,10 +8,8 @@
         <input type="text" id="new_card_name" name="new_card_name" autofocus spellcheck="false" dir="auto" maxlength="512" value="{{title}}" style="overflow: hidden; word-wrap: break-word; height: 24px;">
       </div>
     </div>
-    <div>
       <i class="icon-cancel"></i>
       <p>in list <a href="">{{list_title}}</a></p>
-    </div>
   </div>
   <div class="card_content">
     {{#if labels}}
@@ -71,12 +69,12 @@
         <hr>
       <!--   <input type="text" placeholder="Search labels..." name="search_labels" id="card_search_labels"> -->
         <ul>
-          <li><span class="card_label label_green">{{label_green_text}}</span></li>
-          <li><span class="card_label label_yellow">{{label_yellow_text}}</span></li>
-          <li><span class="card_label label_orange">{{label_orange_text}}</span></li>
-          <li><span class="card_label label_red">{{label_red_text}}</span></li>
-          <li><span class="card_label label_purple">{{label_purple_text}}</span></li>
-          <li><span class="card_label label_blue">{{label_blue_text}}</span></li>
+          <li><span class="card_label label_green" data-color="green">{{label_green_text}}</span></li>
+          <li><span class="card_label label_yellow" data-color="yellow">{{label_yellow_text}}</span></li>
+          <li><span class="card_label label_orange" data-color="orange">{{label_orange_text}}</span></li>
+          <li><span class="card_label label_red" data-color="red">{{label_red_text}}</span></li>
+          <li><span class="card_label label_purple" data-color="purple">{{label_purple_text}}</span></li>
+          <li><span class="card_label label_blue" data-color="blue">{{label_blue_text}}</span></li>
         </ul>
       </div>      
       <div class="menu_button checklist">Checklist</div>

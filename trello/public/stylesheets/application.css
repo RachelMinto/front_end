@@ -190,6 +190,17 @@ ul.list_container li.ui-sortable-handle {
   width: 140px;
   height: 499px;
 }
+.card_title_info {
+  width: 616px;
+  display: inline-block;
+}
+i.icon-cancel {
+  height: 30px;
+  width: 30px;
+  padding: 4px;
+  text-align: center;
+  cursor: pointer;
+}
 .menu_button {
   background: linear-gradient(to bottom, #fff 0, #f8f9f9 100%);
   border: 1px solid #e2e4e6;
@@ -397,6 +408,8 @@ a.menu_button div:hover {
   flex-wrap: nowrap;
   -webkit-align-items: flex-start;
   align-items: flex-start;
+  position: relative;
+  top: 100px;
 }
 span.label_green {
   background: #61bd4f;
