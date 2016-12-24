@@ -2,7 +2,7 @@ var ListView = Backbone.View.extend({
   className: "wrapper list",
   events: {
     "click .list_header": "renameView",
-    "click span": "EditMenuView",
+    "click li": "EditMenuView",
     "blur input#new_list_name": "updateName",
     "click input#new_card_name": "addingNewCard",
     "drop": "drop",
@@ -32,6 +32,7 @@ var ListView = Backbone.View.extend({
         debugger;
         var newCard = self.model.cards.add(json);
         var $card = self.renderItem(newCard);
+        $card.$el.addClass("ui-sortable-handle");
         $card.$el.appendTo(self.$el.find('ul'));
         self.$el.find(".add_card").removeClass("invisible");
         self.$el.find("#new_card_name").val("");

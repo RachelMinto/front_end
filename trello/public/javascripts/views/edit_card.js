@@ -2,12 +2,15 @@ var EditCardView = Backbone.View.extend({
   className: "modal edit_card_menu",
   events: {
     "click": "closeModal",
+    "click .edit_card_menu_wrapper": "preventClose",
     "click .card_content": "edit",
     "click .labels": "openLabelPopup",
     "click .edit_card_description": "openEditDescription",
     "click .add_description": "updateDescription",
     "click .send_comment": "addComment",
-    "click span.card_label": "toggleLabel"
+    "click span.card_label": "toggleLabel",
+    "click .card_title_placeholder": "editNameView",
+    "blur input#new_card_name": "updateCardName"
   },
   template: App.templates.editCardMenu,
   addComment: function() {
@@ -33,6 +36,10 @@ var EditCardView = Backbone.View.extend({
 
     return false;
   },
+  editNameView: function() {
+    this.$el.find(".new_card_title_input").removeClass("invisible");
+    this.$el.find(".card_title_placeholder").addClass("invisible");
+  },
   openEditDescription: function(e) {
     this.$el.find(".edit_card_description_popover").removeClass("invisible");
     return false;
@@ -51,6 +58,17 @@ var EditCardView = Backbone.View.extend({
   openLabelPopup: function(e) {
     this.$el.find(".edit_card_popup.label_menu").removeClass("invisible");
     return false;
+  },
+  preventClose: function(e) {
+    return false;
+  },
+  updateCardName: function(e) {
+    this.model.set('title', e.target.value);
+    this.$el.find(".card_title_placeholder h3").html(e.target.value);
+
+    this.$el.find(".new_card_title_input").addClass("invisible");
+    this.$el.find(".card_title_placeholder").removeClass("invisible");
+    this.model.sync("update", this.model);
   },
   updateDescription: function(e) {
     e.preventDefault();

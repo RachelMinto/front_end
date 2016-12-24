@@ -1,21 +1,23 @@
-<a href="#" class="list_title_header">
-  <div class="list_header">
-    <h3 class="list_title">{{title}}</h3>
-  </div>
-</a>
-<div class="invisible new_list_title_input">
-  <input type="text" id="new_list_name" name="new_list_name" spellcheck="false" dir="auto" maxlength="512" placeholder="{{title}}" style="overflow: hidden; word-wrap: break-word; height: 24px;">
-</div>
-<a href="" class="get_more_options"><i class="ellipsis"></i></div></a>
-<ul class="list_container" data-id="{{id}}"></ul>
-<div class="add_card_composer invisible">
-  <form action="/board/{{id}}/items", method="post" class="addCardForm" autocomplete="off">
-    <input class="card" id="new_card_name" name="title" autofocus>
-    <div>
-      <a href="" class="submit_new_card"><div>Add</div></a>
-      <span>X</span>
-      <a href="" class="get_more_options"><span>...</span></a>
+<div class="list_content_wrapper">  
+  <a href="#" class="list_title_header">
+    <div class="list_header">
+      <h3 class="list_title">{{title}}</h3>
     </div>
-  </form>
+  </a>
+  <div class="invisible new_list_title_input">
+    <input type="text" id="new_list_name" name="new_list_name" autofocus spellcheck="false" dir="auto" maxlength="512" value="{{title}}" style="overflow: hidden; word-wrap: break-word; height: 24px;">
+  </div>
+  <a href="" class="get_more_options"><i class="ellipsis"></i></a>
+  <ul class="list_container" data-id="{{id}}"></ul>
+  <div class="add_card_composer invisible">
+    <form action="/board/{{id}}/items", method="post" class="addCardForm" autocomplete="off">
+      <input class="card" id="new_card_name" name="title" autofocus>
+      <div>
+        <a href="" class="submit_new_card"><div>Add</div></a>
+        <span>X</span>
+        <a href="" class="get_more_options"><span>...</span></a>
+      </div>
+    </form>
+  </div>
+  <a href="" class="add_card submit_info_button">Add a card...</a>
 </div>
-<a href="" class="add_card submit_info_button">Add a card...</a>

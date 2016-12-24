@@ -10,6 +10,7 @@ html, input
   font: 14px "Helvetica Neue", Arial, Helvetica,sans-serif
   background: colors.primary.bg
   color: colors.primary.default
+  overflow-y: hidden
 
 body
   line-height: 18px
@@ -29,6 +30,11 @@ h3
 div
   border-radius: 4px
 
+textarea
+  transition: background 85ms ease-in,border-color 85ms ease-in
+  -webkit-transition: background 85ms ease-in,border-color 85ms ease-in
+  border-radius: 3px
+
 header
   top_fixed()
   height: 40px
@@ -37,6 +43,9 @@ header
     div
       background: colors.primary.light_bg
       border-radius: 4px
+
+#board
+  position: relative
 
 .wrapper
   background: colors.secondary.bg
@@ -71,7 +80,6 @@ a.menu_button
   height: 100vh
 
 #board_canvas
-  margin-top: 86px
   display: flex
   display: -webkit-flex
   -webkit-flex-direction: row

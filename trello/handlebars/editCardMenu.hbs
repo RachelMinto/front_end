@@ -1,9 +1,27 @@
-<div class="wrapper">
-  <div class="card_content">
+<div class="wrapper edit_card_menu_wrapper">
+  <div class="card_content_header">
     <div class="card_title_info">
-      <h3>{{title}}</h3>
+      <div class="card_title_placeholder">
+        <h3>{{title}}</h3>
+      </div>
+      <div class="invisible new_card_title_input">
+        <input type="text" id="new_card_name" name="new_card_name" autofocus spellcheck="false" dir="auto" maxlength="512" value="{{title}}" style="overflow: hidden; word-wrap: break-word; height: 24px;">
+      </div>
+    </div>
+    <div>
+      <i class="icon-cancel"></i>
       <p>in list <a href="">{{list_title}}</a></p>
     </div>
+  </div>
+  <div class="card_content">
+    {{#if labels}}
+      <p>Labels</p>
+      <div class="card_item_labels_display">
+    {{#each labels}}
+      <span class="label_{{this.color}}"></span>
+    {{/each}}
+      </div>
+    {{/if}}    
     <div class="card_description">
       {{#if description}}
       <p>Description
@@ -30,8 +48,7 @@
       <h3>Add Comment</h3>
       <form autocomplete="off">
         <textarea placeholder="Write a comment..." class="comment_input"></textarea>
-        <div class="comment_option_icons"></div>
-        <a href=""><div class="send_comment">Send</div></a>
+        <div class="send_comment_wrapper"><div class="send_comment submit_info_button">Send</div></div>
       </form>
     </div>  
     <div class="card_activities">
@@ -39,6 +56,7 @@
        {{#if activities}}
        {{#each activities}}
         <p>{{username}}{{verb}}this card to {{list}}</p>
+        <hr>
         {{/each}}
       {{/if}}
     </div> 
@@ -47,7 +65,7 @@
     <div class="card_add_menu">
       <h3>Add</h3>
 <!--       <a href="#" class="menu_button"><div class="members">Members</div></a> -->
-      <a href="#" class="menu_button"><div class="labels">Labels</div></a> 
+      <div class="menu_button labels">Labels</div>
       <div class="edit_card_popup wrapper label_menu invisible">
         <h5>Labels</h5><i class="icon-close"></i>
         <hr>
@@ -61,7 +79,7 @@
           <li><span class="card_label label_blue">{{label_blue_text}}</span></li>
         </ul>
       </div>      
-      <a href="#" class="menu_button"><div class="checklist">Checklist</div></a>
+      <div class="menu_button checklist">Checklist</div>
       <div class="edit_card_popup wrapper label_menu invisible">
         <h5>Add Checklist</h5>
         <form name="add_checklist" autocomplete="off">
@@ -71,17 +89,17 @@
           <a href=""><div class="submit_info_button add_checklist">Add</div></a>
         </form>
       </div>
-      <a href="#" class="menu_button"><div class="due_date">Due Date</div></a>    
+      <div class="menu_button due_date">Due Date</div>   
 <!--       <a href="#" class="menu_button"><div class="attachment">Attachment</div></a> -->
     </div>
     <div class="card_actions_menu">
       <h3>Actions</h3>
-      <a href="#" class="menu_button"><div class="move_card">Move</div></a>
-      <a href="#" class="menu_button"><div class="label_card">Copy</div></a> 
-      <a href="#" class="menu_button"><div class="subscribe_card">Subscribe</div></a>
-      <a href="#" class="menu_button"><div class="archive_card">Archive</div></a>      
+      <div class="menu_button move_card">Move</div>
+      <div class="menu_button label_card">Copy</div> 
+      <div class="menu_button subscribe_card">Subscribe</div>
+      <div class="menu_button archive_card">Archive</div>      
       <a href="#">Share and more...</a>             
-    </div>    
+    </div>
   </div>
 </div>
 
