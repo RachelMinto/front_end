@@ -1,5 +1,5 @@
 var ListView = Backbone.View.extend({
-  className: "wrapper list",
+  className: "list list-wrapper",
   events: {
     "click .list_header": "renameView",
     "click li": "EditMenuView",

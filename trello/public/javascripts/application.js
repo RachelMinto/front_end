@@ -4,7 +4,7 @@ var App = {
   indexView: function() {
     this.user = new User();    
     new HeaderView({ model: App.user });
-    this.createBoardMenu();
+    // this.createBoardMenu();
     new BoardView({ model: App.board});
     this.board.lists.each(this.renderListView);
     this.addList = new AddListView();

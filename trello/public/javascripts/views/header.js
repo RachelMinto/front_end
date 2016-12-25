@@ -1,4 +1,5 @@
 var HeaderView = Backbone.View.extend({
+  id: "header",
   events: {
     "click #search_input_placeholder": "openSearch",
     "submit": "search",
@@ -11,7 +12,7 @@ var HeaderView = Backbone.View.extend({
     return false
   },
   render: function() {
-    $('main').html(this.template(this.model.toJSON()));
+    $('#surface').append(this.template(this.model.toJSON()));
   },
   search: function(e) {
     var keyword = this.$el.find(".search_input").val();

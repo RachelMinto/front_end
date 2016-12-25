@@ -16,12 +16,12 @@
       cursor: default
 
 .list_content_wrapper
+  border-radius: 3px
+  box-sizing: border-box
   display: flex
   flex-direction: column
-  max-height: 300px
-  overflow-x: hidden
-  overflow-y: auto
-  overflow: scroll
+  max-height: 100%
+  position: relative
 
 ul.list_container
   min-height: 10px
@@ -61,11 +61,11 @@ ul.list_container
     &:hover
       background: rgba(0,0,0,.2)
 
-.wrapper.list
-  position: relative
-  flex-grow: 1
-  min-width: 270px
-  max-width: 270px
+.list-wrapper
+  box-sizing: border-box
+  display: inline-block
+  vertical-align: top
+  width: 270px
   height: 100%
 
 .ui-sortable-placeholder

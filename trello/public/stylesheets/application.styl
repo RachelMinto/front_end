@@ -12,7 +12,11 @@ html, input
   color: colors.primary.default
   overflow-y: hidden
 
-body
+body, html, #surface
+  height: 100%
+
+body, html, input, select, textarea
+  color: colors.secondary.color
   line-height: 18px
 
 input
@@ -30,42 +34,17 @@ h3
 div
   border-radius: 4px
 
-textarea
-  transition: background 85ms ease-in,border-color 85ms ease-in
-  -webkit-transition: background 85ms ease-in,border-color 85ms ease-in
-  border-radius: 3px
-
-#header
-  top_fixed()
-  height: 40px
-  background: colors.primary.dark_bg
-  #board_info
-    div
-      background: colors.primary.light_bg
-      border-radius: 4px
-
-#board
-  position: relative
-
-.wrapper
-  background: colors.secondary.bg
-  color: colors.secondary.color
-  .interior
-    background: colors.primary.default
-
-a.menu_button
-  div
-    background: colors.primary.default
-    border: 1px solid colors.secondary.detail    
-    &:hover
-      background: #298FCA
-      border-color: #298FEE #298FCA #026AA7
+#surface
+  display: flex
+  -webkit-box-orient: vertical
+  -webkit-box-direction: normal
+  flex-direction: column
+  height: 100%
 
 .invisible
   display: none
 
 .list
-  width: 300px
   display: inline-block
   margin-left: 10px
   vertical-align: top
@@ -80,16 +59,20 @@ a.menu_button
   height: 100vh
 
 #board_canvas
-  display: flex
-  display: -webkit-flex
-  -webkit-flex-direction: row
-  flex-direction: row
-  -webkit-flex-wrap: nowrap
-  flex-wrap: nowrap
-  -webkit-align-items: flex-start
-  align-items: flex-start
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  margin-bottom: 10px
+  overflow-x: auto
+  overflow-y: hidden
+  padding-bottom: 10px
+
+#board
+  flex-grow: 1
   position: relative
-  top: 100px
+  -webkit-box-flex: 1
 
 .icon-ellipses
   float: right
@@ -117,3 +100,69 @@ span.label_black
   background: colors.labels.black
 span.label_none
   background: colors.labels.none
+
+.wrapper
+  background: colors.secondary.bg
+  color: colors.secondary.color
+  .interior
+    background: colors.primary.default
+
+a.menu_button
+  div
+    background: colors.primary.default
+    border: 1px solid colors.secondary.detail    
+    &:hover
+      background: #298FCA
+      border-color: #298FEE #298FCA #026AA7
+
+.window-overlay
+  -webkit-box-align: start
+  align-items: flex-start
+  background-color: rgba(0,0,0,0.6)
+  display: none
+  height: 100%
+  -webkit-box-pack: center
+  justify-content: center
+  left: 0
+  overflow-y: auto
+  position: fixed
+  top: 0
+  width: 100%
+  z-index: 20
+
+textarea
+  transition: background 85ms ease-in,border-color 85ms ease-in
+  -webkit-transition: background 85ms ease-in,border-color 85ms ease-in
+  border-radius: 3px
+
+#header
+  height: 40px
+  background: colors.primary.dark_bg
+  #board_info
+    div
+      background: colors.primary.light_bg
+      border-radius: 4px
+
+.board-wrapper
+  position: absolute
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0  
+
+.board-main-content
+  height: 100%
+  display: flex
+  flex-direction: column
+  margin-right: 0
+  transition: margin .1s ease-in
+  -webkit-box-direction: normal
+  -webkit-box-orient: vertical
+
+#content
+  -webkit-box-flex: 1
+  flex-grow: 1
+
+#content, body
+  position: relative
+  overflow-y: auto
