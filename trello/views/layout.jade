@@ -19,7 +19,7 @@ html
     +javascript_include_tag("application") 
     +javascript_include_tag("models/list", "models/board", "models/checklist", "models/card", "models/activity", "models/checklist_item", "models/comment", "models/user")
     +javascript_include_tag("collections/list", "collections/activities", "collections/checklists", "collections/comments", "collections/cards")
-    +javascript_include_tag("views/board", "views/card_list_item", "views/edit_card", "views/header", "views/list", "views/quick_edit_card", "views/board_menu", "views/add_list", "views/delete_card", "views/labels", "views/checklist_item", "views/move_card")
+    +javascript_include_tag("views/board", "views/card_list_item", "views/edit_card", "views/header", "views/list", "views/quick_edit_card", "views/board_menu", "views/add_list", "views/delete_card", "views/copy_card", "views/labels", "views/checklist_item", "views/move_card")
     script(type="text/javascript").
       App.board = new Board(!{JSON.stringify(default_board)});   
     +javascript_include_tag("router")

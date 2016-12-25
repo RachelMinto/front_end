@@ -1,60 +1,58 @@
-var MoveCardView = Backbone.View.extend({
-  template: App.templates.move,
+var CopyCard = Backbone.View.extend({
+  template: App.templates.copy_card,
   events: {
-    "click .move_submission": "move",
+    "click .copy_card_submission": "copy",
     "click i.icon-cancel": "closeModal",
     "change select[name='list_select_options']": "updatePositionOptions",
     "change select[name='position_select_options']": "updatePositionSelection",
-    "click .move_card_popup": "preventClose"
+    "click .copy_card_popup": "preventClose"
   },
   el: "div",
   closeModal: function() {
     $('.pop-over').attr('class', 'pop-over');
   },
-  initialize: function(options) {
+  initialize: function() {
+    var unarchivedCards = this.model.collection.reject({archived: true});
     var unarchivedLists = App.board.lists.reject({archived: true});
     var lists = _.invoke(unarchivedLists, "pick", ["title", "id"]);
-    this.originalList = options.list
     var self = this;
-    var unarchivedCards = this.originalList.cards.reject({archived: true});
 
     var cardIDs = _.map(unarchivedCards, function(card) {
-      return self.originalList.cards.indexOf(card);
+      return self.model.collection.indexOf(card);
     });
 
     var position = unarchivedCards.indexOf(self.model) + 1;
 
     this.data = {
       position: position,
-      list: self.originalList.get("title"),
+      list: self.model.collection.parentList.get("title"),
       lists: lists, // array of objects, with title and id
       cards: cardIDs // array of card ids
     }
 
     this.render(this.data);
-    $("div.all_lists_dropdown_placeholder select").val(self.originalList.get("id"));
+    $("div.all_lists_dropdown_placeholder select").val(self.model.collection.get("id"));
     $("div.all_positions_dropdown_placeholder select").val(+position - 1);
   },
-  move: function() {
+  copy: function() {
     var newListID = $(".list_select_options").val();
     var position = $(".position_select_options").val();
 
-    debugger;
-    var oldListID = this.originalList.get("id");
-    var cardID = this.model.get("id");
-    App.updateCardPosition([+oldListID, +newListID, +cardID, +position]);
+    var newCardModel = this.model.clone(); // NEED TO UPDATE ID! POST TO SERVER, collection.
+
+    var title = $(".copy_card_title_text").val();
+    newCardModel.unset("id");
+    newCardModel.set("title", title);
+
+    App.addCardToList(+newListID, newCardModel);
     this.closeModal();
   },
   preventClose: function() {
     return false;
   },
   render: function(data) {
-    $('.pop-over').attr('class', 'pop-over move_card is-shown');
+    $('.pop-over').attr('class', 'pop-over copy_card is-shown');
     $('.pop-over').html(this.template(data));
-  },
-  selectNewList: function(e) {
-    
-    this.data
   },
   updatePositionOptions: function(e) {
     debugger;
@@ -65,6 +63,7 @@ var MoveCardView = Backbone.View.extend({
     var list = App.board.lists.findWhere({id: +listID});
     var position = 1;
     var unarchivedCards = list.cards.reject({archived: true});
+    var title = $(".copy_card_title_text").val();    
 
     var cardIDs = _.map(unarchivedCards, function(card) {
       return list.cards.indexOf(card);
@@ -86,11 +85,11 @@ var MoveCardView = Backbone.View.extend({
 
     this.render(newData);
     $("div.all_lists_dropdown_placeholder select").val(list.get("id"));
-    $("div.all_positions_dropdown_placeholder select").val(position - 1);   
+    $("div.all_positions_dropdown_placeholder select").val(position - 1);
+    $(".copy_card_title_text").val(title);    
   },
   updatePositionSelection: function() {
     var positionID = +$(".position_select_options").val() + 1;
-    debugger;
     $(".position_value").html(positionID);
     return false;
   },

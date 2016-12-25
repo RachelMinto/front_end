@@ -1,4 +1,4 @@
-var MoveCardView = Backbone.View.extend({
+var MoveList = Backbone.View.extend({
   template: App.templates.move,
   events: {
     "click .move_submission": "move",

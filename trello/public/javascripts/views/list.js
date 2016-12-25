@@ -12,7 +12,9 @@ var ListView = Backbone.View.extend({
     "click .icon-ellipsis": "openEditListMenu",
     "click .list_options_add_card": "showCardComposer",
     "click .icon-cancel": "closeEditListMenu",
-    "click .list_options_subscribe": "subscribeToggle"
+    "click .list_options_subscribe": "subscribeToggle",
+    "click .list_options_copy": "openCopyListPopup",
+    "click .list_options_move": "openMoveListPopup",
   },
   template: App.templates.list,
   addingNewCard: function(e) {
@@ -60,7 +62,13 @@ var ListView = Backbone.View.extend({
   },
   drop: function(event, index) {
     App.trigger('updateListPositions', [this.model, index]);
-  },   
+  },
+  openCopyListPopup: function() {
+    new CopyList({ model: this.model });
+  },
+  openMoveListPopup: function() {
+    new MoveList({ model: this.model });
+  },  
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
     this.renderCollection();

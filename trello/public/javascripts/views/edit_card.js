@@ -20,6 +20,7 @@ var EditCardView = Backbone.View.extend({
     "click .submit_new_checklist_todo": "addChecklistTodo",
     "click .unarchive_card": "unarchiveCard",
     "click .delete_card_warning": "openDeleteWarning",
+    "click .copy_card": "openCopyPopup",
   },
   template: App.templates.editCardMenu,
   addChecklistTodo: function(e) {
@@ -32,7 +33,6 @@ var EditCardView = Backbone.View.extend({
   },
   addChecklist: function(e) {
     var checklistTitle = this.$el.find('#checklist_title_input').val();
-    debugger;
     this.model.createChecklist(checklistTitle);
     return false;
   },
@@ -60,7 +60,6 @@ var EditCardView = Backbone.View.extend({
     return false;
   },
   closeModal: function() {
-    debugger;
     this.undelegateEvents();
     this.$el.removeData().unbind();
     this.remove();
@@ -70,6 +69,9 @@ var EditCardView = Backbone.View.extend({
   openChecklist: function() {
     this.$el.find(".add_checklist_popup.card_menu_popup").removeClass("invisible");
   },
+  openCopyPopup: function() {
+    new CopyCard({ model: this.model });
+  },  
   openDeleteWarning: function() {
     new DeleteCardPopup({ model: this.model });
     return false;

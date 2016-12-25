@@ -1,0 +1,30 @@
+<div class="copy_card_popup card_menu_popup">
+  <div class="card_menu_popup_header"><h5>Copy Card</h5><i class="icon-cancel"></i></div>
+  <hr>
+    <form autocomplete="off" method="" action="">
+        <textarea class="copy_card_title_text" style="overflow: hidden; word-wrap: break-word; resize: none; height: 108px;">{{list}}</textarea>
+    </form>
+    <h5>Copy to...</h5>        
+    <div class="all_lists_dropdown_placeholder setting menu_button">
+      <span class="label">List</span>
+      <span class="value">{{list}}</span>
+      <select class="list_select_options" name="list_select_options">
+        {{#lists}}
+        <option value="{{id}}">{{title}}</option>
+        {{/lists}}
+      </select>
+    </div>
+    <div class="all_positions_dropdown_placeholder setting menu_button">
+      <span class="label">Position</span>
+      <span class="position_value">{{position}}</span>
+      <select class="position_select_options" name="position_select_options">
+        {{#cards}}
+        <option value="{{@index}}">{{inc @index}}</option>
+        {{/cards}}
+      </select>      
+    </div>    
+    <div class="submit_info_button selected copy_card_submission">
+      Create Card
+    </div>        
+  </div>
+</div>

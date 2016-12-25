@@ -66,14 +66,12 @@ var App = {
     var newList = this.board.getListByID(newListID);
     var model = oldList.getCardByID(cardID);
 
-    debugger;
     oldList.cards.remove(model);
     if (position) {
       newList.cards.add(model, {at: position});
     } else {
       newList.cards.add(model);
     };
-    // Create new Activity Log on card.
     // model.trigger("movedCardActivty", oldList, newList)
     newList.cards.syncServer();
     oldList.cards.syncServer();

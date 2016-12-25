@@ -57,7 +57,6 @@ var Card = Backbone.Model.extend({
   incrementCardCommentTotal: function() {
     var current = this.get("cardComments") || 0;
     current++
-    debugger;
     this.set("cardComments", current);
   },
   createComment: function(comment) {
@@ -95,7 +94,6 @@ var Card = Backbone.Model.extend({
   },
   initialize: function(data) {   
     this.set("labels", []),
-    this.set("attachments", []);
     this.set("archived", false);
     this.parse(data);
     // this.on("change", this.syncServer);
