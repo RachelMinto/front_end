@@ -5,6 +5,7 @@ var MoveCardView = Backbone.View.extend({
     // "click .move_card_position_placeholder": "showPositionOptions",
     // "click .move_card_list_names": "selectNewList",
     "click .move_submission": "move",
+    "click i.icon-cancel": "closeModal",
     "change select[name='list_select_options']": "updatePositionOptions",
     "click .move_card_popup": "preventClose"
   },
@@ -12,6 +13,7 @@ var MoveCardView = Backbone.View.extend({
   closeModal: function() {
     this.undelegateEvents();
     this.$el.removeData().unbind();
+    $('.pop-over').attr('class', 'pop-over');
   },
   initialize: function(options) {
     this.lists = App.board.lists.invoke("pick", ["title", "id"]);
@@ -40,7 +42,7 @@ var MoveCardView = Backbone.View.extend({
     return false;
   },
   render: function(data) {
-    $('.pop-over').attr('class', 'pop-over move_card"');
+    $('.pop-over').attr('class', 'pop-over move_card is-shown');
     $('.pop-over').html(this.template(data));
   },
   selectNewList: function(e) {

@@ -24,7 +24,23 @@ module.exports = function(router) {
     Board.writeBoardUpdate(board); 
     res.json(card);    
   }).delete(function(req, res) {
-    res.send("I am going to delete a list item.")
+    var board = Board.getBoardData();
+    var card = ''
+
+    for (var i = 0; i < board.lists.length; i++) {
+      if (board.lists[i].id === +req.params.listID) {
+        for (var j = 0; j < board.lists[i].cards.length; j++) {
+          if (board.lists[i].cards[j].id === +req.params.cardID) {
+            board.lists[i].cards.splice(j, 1);
+            card = req.body
+            break;
+          }
+        }
+      }
+    }
+
+    Board.writeBoardUpdate(board); 
+    res.json(card);        
   });
 
   router.route("/board/:listID/items").get(function(req, res) {

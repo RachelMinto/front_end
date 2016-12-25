@@ -1,8 +1,8 @@
 <div class="wrapper edit_card_menu_wrapper">
+  {{#if archived}}
+    <div class="archived_header">This card is archived.</div>
+  {{/if}}
   <div class="card_content_header">
-    {{#if archived}}
-      <div class="archived_header"></div>
-    {{/if}}
     <div class="card_title_info">
       <div class="card_title_placeholder">
         <h3>{{title}}</h3>
@@ -11,9 +11,9 @@
         <input type="text" id="new_card_name" name="new_card_name" autofocus spellcheck="false" dir="auto" maxlength="512" value="{{title}}" style="overflow: hidden; word-wrap: break-word; height: 24px;">
       </div>
     </div>
-      <i class="icon-cancel"></i>
       <p>in list <a href="">{{list_title}}</a></p>
   </div>
+  <i class="icon-cancel"></i>
   <div class="card_content">
     {{#if labels}}
       <p>Labels</p>
@@ -59,21 +59,8 @@
     <div class="card_add_menu">
       <h3>Add</h3>
 <!--       <a href="#" class="menu_button"><div class="members">Members</div></a> -->
-      <div class="menu_button labels"><i class="icon-label"></i>Labels</div>
-      <div class="edit_card_popup wrapper card_menu_popup add_label_popup invisible">
-        <h5>Labels</h5><i class="icon-close"></i>
-        <hr>
-      <!--   <input type="text" placeholder="Search labels..." name="search_labels" id="card_search_labels"> -->
-        <ul>
-          <li><span class="card_label label_green" data-color="green">{{label_green_text}}</span></li>
-          <li><span class="card_label label_yellow" data-color="yellow">{{label_yellow_text}}</span></li>
-          <li><span class="card_label label_orange" data-color="orange">{{label_orange_text}}</span></li>
-          <li><span class="card_label label_red" data-color="red">{{label_red_text}}</span></li>
-          <li><span class="card_label label_purple" data-color="purple">{{label_purple_text}}</span></li>
-          <li><span class="card_label label_blue" data-color="blue">{{label_blue_text}}</span></li>
-        </ul>
-      </div>      
-      <div class="menu_button checklist"><i class="icon-checkbox"></i>Checklist</div>
+      <div class="menu_button labels"><i class="icon-label"></i>Labels</div>  
+<!--       <div class="menu_button checklist"><i class="icon-checkbox"></i>Checklist</div>
       <div class="edit_card_popup wrapper card_menu_popup add_checklist_popup invisible">
         <h5>Add Checklist</h5>
         <form name="add_checklist" autocomplete="off">
@@ -82,7 +69,7 @@
           </label>
           <a href=""><div class="submit_info_button add_checklist selected">Add</div></a>
         </form>
-      </div> 
+      </div>  -->
 <!--       <a href="#" class="menu_button"><div class="attachment">Attachment</div></a> -->
     </div>
     <div class="card_actions_menu">
@@ -90,8 +77,14 @@
       <div class="menu_button move_card"><i class="icon-move"></i>Move</div>
       <div class="menu_button label_card"><i class="icon-copy"></i>Copy</div> 
       <div class="menu_button subscribe_card"><i class="icon-subscribe"></i>Subscribe</div>
-      <div class="menu_button archive_card"><i class="icon-archive"></i>Archive</div>      
-      <a href="#">Share and more...</a>             
+      {{#if archived}}
+        <hr>
+        <div class="menu_button delete_card_warning"><i class="icon-delete"></i>Delete</div>
+        <div class="menu_button unarchive_card"><i class="icon-unarchive"></i>Send to board</div>   
+      {{else}}
+        <div class="menu_button archive_card"><i class="icon-archive"></i>Archive</div>   
+      {{/if}}
+            
     </div>
   </div>
 </div>

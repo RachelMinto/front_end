@@ -9,7 +9,7 @@ var EditCardView = Backbone.View.extend({
     "click .edit_card_description": "openEditDescription",
     "click .add_description": "updateDescription",
     "click .send_comment": "addComment",
-    "click span.card_label": "toggleLabel",
+    // "click .card_label": "toggleLabel",
     "click .card_title_placeholder": "editNameView",
     "blur input#new_card_name": "updateCardName",
     "click .menu_button.move_card": "openMovePopup",
@@ -18,6 +18,8 @@ var EditCardView = Backbone.View.extend({
     "click .add_checklist": "addChecklist",
     "click .add_checklist_todo_placeholder": "openTodoCreator",
     "click .submit_new_checklist_todo": "addChecklistTodo",
+    "click .unarchive_card": "unarchiveCard",
+    "click .delete_card_warning": "openDeleteWarning",
   },
   template: App.templates.editCardMenu,
   addChecklistTodo: function(e) {
@@ -58,6 +60,7 @@ var EditCardView = Backbone.View.extend({
     return false;
   },
   closeModal: function() {
+    debugger;
     this.undelegateEvents();
     this.$el.removeData().unbind();
     this.remove();
@@ -67,8 +70,13 @@ var EditCardView = Backbone.View.extend({
   openChecklist: function() {
     this.$el.find(".add_checklist_popup.card_menu_popup").removeClass("invisible");
   },
+  openDeleteWarning: function() {
+    new DeleteCardPopup({ model: this.model });
+    return false;
+  },
   openLabelPopup: function() {
-    this.$el.find(".add_label_popup.card_menu_popup").removeClass("invisible");
+    new LabelPopup({ model: this.model });
+    return false;
   },
   openMovePopup: function(e) {
     // get cardID, listID
@@ -85,10 +93,9 @@ var EditCardView = Backbone.View.extend({
   preventClose: function(e) {
     return false;
   },
-  toggleLabel: function(e) {
-    var labelColor = $(e.target).data("color");
-    this.model.toggleLabel(labelColor);
-    debugger;
+  unarchiveCard: function() {
+    this.model.unarchive();
+    return false
   },
   updateCardName: function(e) {
     this.model.set('title', e.target.value);
@@ -108,5 +115,7 @@ var EditCardView = Backbone.View.extend({
   initialize: function() {
     this.render();
     this.listenTo(this.model, "rerenderEditCardView", this.rerender);
+    this.listenTo(this.model, 'destroy', this.closeModal);
+    // this.delegateEvents();
   },  
 });

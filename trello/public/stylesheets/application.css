@@ -207,9 +207,19 @@ ul.list_container li.ui-sortable-handle {
   height: 25px;
   background-color: #f00;
 }
+.edit_card_menu_wrapper {
+  position: relative;
+}
+.edit_card_menu_wrapper i.icon-cancel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 24px;
+  font-weight: 200;
+}
 .edit_card_menu .wrapper {
   width: 730px;
-  height: 604px;
+  min-height: 604px;
   margin: 0 auto;
   margin-top: 48px;
   margin-bottom: 80px;
@@ -237,7 +247,7 @@ ul.list_container li.ui-sortable-handle {
 i.icon-cancel {
   height: 30px;
   width: 30px;
-  padding: 4px;
+  padding: 10px;
   text-align: center;
   cursor: pointer;
 }
@@ -264,7 +274,7 @@ i.icon-cancel {
   box-sizing: border-box;
   margin-top: 0;
 }
-.card_label {
+.edit_card_popup .card_label {
   width: 240px;
   height: 34px;
   display: block;
@@ -273,6 +283,15 @@ i.icon-cancel {
   border-radius: 3px;
   margin-left: 4px;
   margin-top: 4px;
+}
+.card_content .card_item_labels_display span {
+  box-sizing: border-box;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 4px 4px 0;
+  min-width: 40px;
+  padding: 0 10px;
+  border-radius: 3px;
 }
 .card_label.label_green:hover {
   box-shadow: -8px 0 #519839;
@@ -330,6 +349,13 @@ textarea.comment_input {
   margin-top: 8px;
   height: 36px;
 }
+.posted_comment_content {
+  background: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 10px 0;
+}
 .submit_info_button {
   display: inline-block;
   line-height: 22px;
@@ -343,36 +369,28 @@ textarea.comment_input {
   font-weight: bold;
   border-radius: 3px;
 }
-.setting.menu_button {
-  background: linear-gradient(to bottom, #fff 0, #f8f9f9 100%);
-  box-sizing: border-box;
-  border: 1px solid #e2e4e6;
-  border-bottom-color: #cdd2d4;
-  cursor: pointer;
-  display: block;
-  font-weight: 700;
-  max-width: 300px;
-  overflow: hidden;
-  padding: 7px;
-  user-select: none;
-  height: 50px;
+.activities_header h3 {
+  display: inline-block;
 }
-.setting.menu_button .list_select_options,
-.setting.menu_button .position_select_options {
-  border: none;
-  cursor: pointer;
-  height: 50px;
-  left: 0;
-  margin: 0;
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  z-index: 2;
-  width: 100%;
+.activities_header a {
+  float: right;
 }
-.all_lists_dropdown_placeholder,
-.all_positions_dropdown_placeholder {
-  position: relative;
+.archived_header {
+  background-color: #fdfae5;
+  background-image: linear-gradient(to bottom right, rgba(0,0,0,0.05) 25%, transparent 25%, transparent 50%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.05) 75%, transparent 75%, transparent);
+  background-size: 14px 14px;
+  min-height: 30px;
+  padding: 9pt 9pt 9pt 50px;
+  font-size: 18px;
+}
+.menu_button.delete_card_warning {
+  background: #eb5a46;
+  border-color: #eb5a46 #eb5a46 #b04632;
+  color: #fff;
+}
+.menu_button.delete_card_warning:hover {
+  background: #cf513d;
+  border-color: #cf513d #cf513d #933b27;
 }
 div#board_menu_wrapper {
   width: 340px;
@@ -396,12 +414,103 @@ div#board_menu_wrapper hr {
   top: -999px;
   z-index: 70;
 }
+.card_menu_popup_header {
+  width: 100%;
+  position: relative;
+}
+.card_menu_popup_header h5 {
+  text-align: center;
+}
+.card_menu_popup_header i {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 10px;
+}
 .pop-over.is-shown {
   display: block;
-  width: 300px;
+  background: #fff;
   min-height: 100px;
+  min-width: 260px;
+  top: auto;
+  left: auto;
   right: 200px;
   bottom: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+  border-radius: 3px;
+}
+.pop-over.menu-popover {
+  width: 300px;
+  margin: 0 auto;
+  background: #fff;
+  border-bottom-color: #c4c9cc;
+  border: 1px solid #d6dadc;
+  overflow: hidden;
+}
+.pop-over.menu-popover .menu_button {
+  background: linear-gradient(to bottom, #fff 0, #f8f9f9 100%);
+  border: 1px solid #e2e4e6;
+  border-bottom-color: #cdd2d4;
+  font-weight: bold;
+  margin-top: 6px;
+  width: 124px;
+  height: 18px;
+  padding: 7px;
+}
+.pop-over.menu-popover .submit_info_button {
+  margin: 0 auto;
+}
+.submit_info_button.selected {
+  background: linear-gradient(to bottom, #61bd4f 0, #5aac44 100%);
+  box-shadow: 0 1px 0 #3f6f21;
+  color: #fff;
+}
+.submit_info_button.selected:hover {
+  background: linear-gradient(to bottom, #5aac44 0, #519839 100%);
+  cursor: pointer;
+}
+.setting.menu_button {
+  background: linear-gradient(to bottom, #fff 0, #f8f9f9 100%);
+  box-sizing: border-box;
+  border: 1px solid #e2e4e6;
+  border-bottom-color: #cdd2d4;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  max-width: 300px;
+  overflow: hidden;
+  padding: 7px;
+  user-select: none;
+  height: 50px;
+}
+.setting.menu_button:hover {
+  cursor: pointer;
+  color: #fff;
+  border-color: #298fca #298fca #026aa7;
+  background: #298fca;
+}
+.setting.menu_button .list_select_options,
+.setting.menu_button .position_select_options {
+  border: none;
+  cursor: pointer;
+  height: 50px;
+  left: 0;
+  margin: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+}
+.all_lists_dropdown_placeholder,
+.all_positions_dropdown_placeholder {
+  position: relative;
+  display: inline-block;
+  width: 45%;
 }
 .list_options_popup {
   position: absolute;
@@ -433,18 +542,23 @@ div#board_menu_wrapper hr {
   margin: 10px;
   width: 200px;
 }
-.pop-over.is-shown.edit_card {
-  background: transparent;
-  border: none;
-  margin: 0 auto;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  overflow-y: auto;
-}
 .select {
   max-height: 300px;
+}
+.warning.delete_confirmation {
+  color: #b04632;
+  width: 100%;
+  margin-right: 10px;
+  margin-top: 16px;
+  box-sizing: border-box;
+  background: linear-gradient(to bottom, #d6dadc 0, #cdd2d4 100%);
+  box-shadow: 0 1px 0 #959da1;
+  text-align: center;
+}
+.warning.delete_confirmation:hover {
+  background: linear-gradient(to bottom, #cf513d 0, #b04632 100%);
+  box-shadow: 0 1px 0 #4d4d4d;
+  color: #fff;
 }
 html,
 input {

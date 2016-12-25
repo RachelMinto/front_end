@@ -2,10 +2,19 @@
   height: 25px
   background-color: red
 
+.edit_card_menu_wrapper 
+  position: relative
+  i.icon-cancel
+    position: absolute
+    top: 0
+    right: 0
+    font-size: 24px
+    font-weight: 200
+
 .edit_card_menu
   .wrapper
     width: 730px
-    height: 604px
+    min-height: 604px
     margin: 0 auto
     margin-top: 48px
     margin-bottom: 80px
@@ -31,9 +40,9 @@
 i.icon-cancel
   height: 30px
   width: 30px
-  padding: 4px
+  padding: 10px
   text-align: center 
-  cursor: pointer  
+  cursor: pointer
 
 .menu_button          
   menu_button()
@@ -50,15 +59,27 @@ i.icon-cancel
   box-sizing: border-box
   margin-top: 0
 
-.card_label
-  width: 240px
-  height: 34px
-  display: block
-  cursor: pointer
-  transition: padding 85ms,margin 85ms,box-shadow 85ms
-  border-radius: 3px
-  margin-left: 4px
-  margin-top: 4px
+.edit_card_popup
+  .card_label
+    width: 240px
+    height: 34px
+    display: block
+    cursor: pointer
+    transition: padding 85ms,margin 85ms,box-shadow 85ms
+    border-radius: 3px
+    margin-left: 4px
+    margin-top: 4px
+
+.card_content
+  .card_item_labels_display
+    span
+      box-sizing: border-box
+      height: 30px
+      line-height: 30px
+      margin: 0 4px 4px 0
+      min-width: 40px
+      padding: 0 10px
+      border-radius: 3px
 
 .card_label.label_green   
   &:hover
@@ -83,7 +104,6 @@ i.icon-cancel
 .card_label.label_purple
    &:hover
     box-shadow: -8px 0 #89609E
-   
 
 .card_content
   display: inline-block
@@ -121,6 +141,13 @@ textarea.comment_input
   margin-top: 8px
   height: 36px
 
+.posted_comment_content  
+  background: #fff
+  padding: 10px
+  box-sizing: border-box
+  display: inline-block
+  margin: 10px 0
+
 .submit_info_button
   button()
   submit_button_inactive()
@@ -129,32 +156,24 @@ textarea.comment_input
   input
     standard_text_input()
 
-.setting.menu_button
-  background: linear-gradient(to bottom,#fff 0,#F8F9F9 100%)
-  box-sizing: border-box
-  border: 1px solid #E2E4E6
-  border-bottom-color: #CDD2D4
-  cursor: pointer
-  display: block
-  font-weight: 700
-  max-width: 300px
-  overflow: hidden
-  padding: 7px
-  user-select: none
-  height: 50px
-  .list_select_options,
-  .position_select_options
-    border: none
-    cursor: pointer
-    height: 50px
-    left: 0
-    margin: 0
-    opacity: 0
-    position: absolute
-    top: 0
-    z-index: 2
-    width: 100%
+.activities_header
+  h3
+    display: inline-block
+  a
+    float: right;    
 
-.all_lists_dropdown_placeholder,
-.all_positions_dropdown_placeholder
-  position: relative
+.archived_header
+  background-color: #FDFAE5
+  background-image: linear-gradient(to bottom right,rgba(0,0,0,.05) 25%,transparent 25%,transparent 50%,rgba(0,0,0,.05) 50%,rgba(0,0,0,.05) 75%,transparent 75%,transparent)
+  background-size: 14px 14px
+  min-height: 30px
+  padding: 9pt 9pt 9pt 50px
+  font-size: 18px
+
+.menu_button.delete_card_warning
+  background: #EB5A46
+  border-color: #EB5A46 #EB5A46 #B04632
+  color: #fff
+  &:hover
+    background: #CF513D
+    border-color: #CF513D #CF513D #933B27  

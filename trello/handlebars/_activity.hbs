@@ -1,20 +1,24 @@
 <div class="card_activities">
-  <h3>Activity</h3><a href="">Hide Details</a>
+  <div class="activities_header">
+    <h3>Activity</h3>
+  </div>
+  <div class="all_activities">
    {{#if activities}}
    {{#each activities}}
       {{#ifComment activities.action value="comment"}}
       <div>
         <p><strong>{{this.user}}</strong></p>
         <div class="posted_comment_content">{{this.title}}</div>
-        <span>{{this.timestamp}}</span>
+        <p> at {{this.timestamp}}</p>
       </div>
       <hr>          
       {{else}}
       <div>
-        <p><strong>{{this.user}}</strong> {{this.action}} this card to {{this.list}} at <span>{{this.timestamp}}</span></p>
+        <span><strong>{{this.user}}</strong><span> {{this.action}} this card to {{this.list}} at <span>{{this.timestamp}}</span>
       </div>
       <hr>
       {{/ifComment}}
     {{/each}}
   {{/if}}
+  </div>
 </div> 

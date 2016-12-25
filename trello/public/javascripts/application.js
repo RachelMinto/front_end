@@ -113,14 +113,16 @@ Handlebars.registerHelper("format_date", function(timestamp) {
     "Nov", "Dec"
   ];
 
-  var hours = timestamp.getHours();
-  var minutes = timestamp.getMinutes();
-  var ampm = hours >= 12 ? 'pm' : 'am';
-  hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
-  minutes = minutes < 10 ? '0'+minutes : minutes;
-  var strTime = hours + ':' + minutes + ' ' + ampm;
-  return timestamp.getMonth()+1 + " " + timestamp.getDate() + " at " + strTime;
+  return timestamp.getDate().toLocaleDateString();
+
+  // var hours = timestamp.getHours();
+  // var minutes = timestamp.getMinutes();
+  // var ampm = hours >= 12 ? 'pm' : 'am';
+  // hours = hours % 12;
+  // hours = hours ? hours : 12; // the hour '0' should be '12'
+  // minutes = minutes < 10 ? '0'+minutes : minutes;
+  // var strTime = hours + ':' + minutes + ' ' + ampm;
+  // return timestamp.getMonth()+1 + " " + timestamp.getDate() + " at " + strTime;
 })
 
 var delay = (function(){

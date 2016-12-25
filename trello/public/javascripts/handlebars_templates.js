@@ -15,27 +15,27 @@ Handlebars.registerPartial("activity", Handlebars.template({"1":function(contain
     + alias2(alias1((depth0 != null ? depth0.user : depth0), depth0))
     + "</strong></p><div class=\"posted_comment_content\">"
     + alias2(alias1((depth0 != null ? depth0.title : depth0), depth0))
-    + "</div><span>"
+    + "</div><p> at "
     + alias2(alias1((depth0 != null ? depth0.timestamp : depth0), depth0))
-    + "</span></div><hr>";
+    + "</p></div><hr>";
 },"5":function(container,depth0,helpers,partials,data) {
     var alias1=container.lambda, alias2=container.escapeExpression;
 
-  return "<div><p><strong>"
+  return "<div><span><strong>"
     + alias2(alias1((depth0 != null ? depth0.user : depth0), depth0))
-    + "</strong> "
+    + "</strong><span> "
     + alias2(alias1((depth0 != null ? depth0.action : depth0), depth0))
     + " this card to "
     + alias2(alias1((depth0 != null ? depth0.list : depth0), depth0))
     + " at <span>"
     + alias2(alias1((depth0 != null ? depth0.timestamp : depth0), depth0))
-    + "</span></p></div><hr>";
+    + "</span></div><hr>";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "<div class=\"card_activities\"><h3>Activity</h3><a href=\"\">Hide Details</a>"
+  return "<div class=\"card_activities\"><div class=\"activities_header\"><h3>Activity</h3></div><div class=\"all_activities\">"
     + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.activities : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</div> ";
+    + "</div></div> ";
 },"useData":true}));
 
 Handlebars.registerPartial("checklist", Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
@@ -146,8 +146,12 @@ this["JST"]["card"] = Handlebars.template({"1":function(container,depth0,helpers
     + "</div>";
 },"useData":true});
 
+this["JST"]["delete"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"delete_card_popup card_menu_popup\"><div class=\"card_menu_popup_header\"><h5>Delete Card?</h5><i class=\"icon-cancel\"></i></div><hr><p>All actions will be removed from the activity feed and you won’t be able to re-open the card. There is no undo.</p><div class=\"submit_info_button warning delete_confirmation\">Delete</div></div></div>";
+},"useData":true});
+
 this["JST"]["editCardMenu"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    return "<div class=\"archived_header\"></div>";
+    return "<div class=\"archived_header\">This card is archived.</div>";
 },"3":function(container,depth0,helpers,partials,data) {
     var stack1;
 
@@ -166,18 +170,22 @@ this["JST"]["editCardMenu"] = Handlebars.template({"1":function(container,depth0
     + "</p>";
 },"8":function(container,depth0,helpers,partials,data) {
     return "<a href=\"\" class=\"edit_card_description\"><span>Edit the description...</span></a>";
+},"10":function(container,depth0,helpers,partials,data) {
+    return "<hr><div class=\"menu_button delete_card_warning\"><i class=\"icon-delete\"></i>Delete</div><div class=\"menu_button unarchive_card\"><i class=\"icon-unarchive\"></i>Send to board</div>";
+},"12":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"menu_button archive_card\"><i class=\"icon-archive\"></i>Archive</div>";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "<div class=\"wrapper edit_card_menu_wrapper\"><div class=\"card_content_header\">"
+  return "<div class=\"wrapper edit_card_menu_wrapper\">"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.archived : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "<div class=\"card_title_info\"><div class=\"card_title_placeholder\"><h3>"
+    + "<div class=\"card_content_header\"><div class=\"card_title_info\"><div class=\"card_title_placeholder\"><h3>"
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
     + "</h3></div><div class=\"invisible new_card_title_input\"><input type=\"text\" id=\"new_card_name\" name=\"new_card_name\" autofocus spellcheck=\"false\" dir=\"auto\" maxlength=\"512\" value=\""
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "\" style=\"overflow: hidden; word-wrap: break-word; height: 24px;\"></div></div><i class=\"icon-cancel\"></i><p>in list <a href=\"\">"
+    + "\" style=\"overflow: hidden; word-wrap: break-word; height: 24px;\"></div></div><p>in list <a href=\"\">"
     + alias4(((helper = (helper = helpers.list_title || (depth0 != null ? depth0.list_title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"list_title","hash":{},"data":data}) : helper)))
-    + "</a></p></div><div class=\"card_content\">"
+    + "</a></p></div><i class=\"icon-cancel\"></i><div class=\"card_content\">"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.labels : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "<div class=\"card_description\">"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.description : depth0),{"name":"if","hash":{},"fn":container.program(6, data, 0),"inverse":container.program(8, data, 0),"data":data})) != null ? stack1 : "")
@@ -187,19 +195,9 @@ this["JST"]["editCardMenu"] = Handlebars.template({"1":function(container,depth0
     + ((stack1 = container.invokePartial(partials.checklist,depth0,{"name":"checklist","data":data,"helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
     + "<div class=\"card_comments\"><h3>Add Comment</h3><form autocomplete=\"off\"><textarea placeholder=\"Write a comment...\" class=\"comment_input\"></textarea><div class=\"send_comment_wrapper\"><div class=\"send_comment submit_info_button\">Send</div></div></form></div>"
     + ((stack1 = container.invokePartial(partials.activity,depth0,{"name":"activity","data":data,"helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
-    + "</div><div class=\"card_action_menu\"><div class=\"card_add_menu\"><h3>Add</h3><!--<a href=\"#\" class=\"menu_button\"><div class=\"members\">Members</div></a> --><div class=\"menu_button labels\"><i class=\"icon-label\"></i>Labels</div><div class=\"edit_card_popup wrapper card_menu_popup add_label_popup invisible\"><h5>Labels</h5><i class=\"icon-close\"></i><hr><!--<input type=\"text\" placeholder=\"Search labels...\" name=\"search_labels\" id=\"card_search_labels\"> --><ul><li><span class=\"card_label label_green\" data-color=\"green\">"
-    + alias4(((helper = (helper = helpers.label_green_text || (depth0 != null ? depth0.label_green_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_green_text","hash":{},"data":data}) : helper)))
-    + "</span></li><li><span class=\"card_label label_yellow\" data-color=\"yellow\">"
-    + alias4(((helper = (helper = helpers.label_yellow_text || (depth0 != null ? depth0.label_yellow_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_yellow_text","hash":{},"data":data}) : helper)))
-    + "</span></li><li><span class=\"card_label label_orange\" data-color=\"orange\">"
-    + alias4(((helper = (helper = helpers.label_orange_text || (depth0 != null ? depth0.label_orange_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_orange_text","hash":{},"data":data}) : helper)))
-    + "</span></li><li><span class=\"card_label label_red\" data-color=\"red\">"
-    + alias4(((helper = (helper = helpers.label_red_text || (depth0 != null ? depth0.label_red_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_red_text","hash":{},"data":data}) : helper)))
-    + "</span></li><li><span class=\"card_label label_purple\" data-color=\"purple\">"
-    + alias4(((helper = (helper = helpers.label_purple_text || (depth0 != null ? depth0.label_purple_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_purple_text","hash":{},"data":data}) : helper)))
-    + "</span></li><li><span class=\"card_label label_blue\" data-color=\"blue\">"
-    + alias4(((helper = (helper = helpers.label_blue_text || (depth0 != null ? depth0.label_blue_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_blue_text","hash":{},"data":data}) : helper)))
-    + "</span></li></ul></div><div class=\"menu_button checklist\"><i class=\"icon-checkbox\"></i>Checklist</div><div class=\"edit_card_popup wrapper card_menu_popup add_checklist_popup invisible\"><h5>Add Checklist</h5><form name=\"add_checklist\" autocomplete=\"off\"><label for=\"checklist_title_input\">Title<input type=\"text\" placeholder=\"Checklist\" id=\"checklist_title_input\" name=\"checklist_title_input\"></label><a href=\"\"><div class=\"submit_info_button add_checklist selected\">Add</div></a></form></div> <!--<a href=\"#\" class=\"menu_button\"><div class=\"attachment\">Attachment</div></a> --></div><div class=\"card_actions_menu\"><h3>Actions</h3><div class=\"menu_button move_card\"><i class=\"icon-move\"></i>Move</div><div class=\"menu_button label_card\"><i class=\"icon-copy\"></i>Copy</div> <div class=\"menu_button subscribe_card\"><i class=\"icon-subscribe\"></i>Subscribe</div><div class=\"menu_button archive_card\"><i class=\"icon-archive\"></i>Archive</div><a href=\"#\">Share and more...</a></div></div></div>";
+    + "</div><div class=\"card_action_menu\"><div class=\"card_add_menu\"><h3>Add</h3><!--<a href=\"#\" class=\"menu_button\"><div class=\"members\">Members</div></a> --><div class=\"menu_button labels\"><i class=\"icon-label\"></i>Labels</div><!--<div class=\"menu_button checklist\"><i class=\"icon-checkbox\"></i>Checklist</div><div class=\"edit_card_popup wrapper card_menu_popup add_checklist_popup invisible\"><h5>Add Checklist</h5><form name=\"add_checklist\" autocomplete=\"off\"><label for=\"checklist_title_input\">Title<input type=\"text\" placeholder=\"Checklist\" id=\"checklist_title_input\" name=\"checklist_title_input\"></label><a href=\"\"><div class=\"submit_info_button add_checklist selected\">Add</div></a></form></div>--><!--<a href=\"#\" class=\"menu_button\"><div class=\"attachment\">Attachment</div></a> --></div><div class=\"card_actions_menu\"><h3>Actions</h3><div class=\"menu_button move_card\"><i class=\"icon-move\"></i>Move</div><div class=\"menu_button label_card\"><i class=\"icon-copy\"></i>Copy</div> <div class=\"menu_button subscribe_card\"><i class=\"icon-subscribe\"></i>Subscribe</div>"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.archived : depth0),{"name":"if","hash":{},"fn":container.program(10, data, 0),"inverse":container.program(12, data, 0),"data":data})) != null ? stack1 : "")
+    + "</div></div></div>";
 },"usePartial":true,"useData":true});
 
 this["JST"]["header"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -212,6 +210,24 @@ this["JST"]["header"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":fu
     + "</span><span>"
     + alias4(((helper = (helper = helpers.username || (depth0 != null ? depth0.username : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"username","hash":{},"data":data}) : helper)))
     + "</span></div><i id=\"trello_info\" class=\"icon-info\"></i><i id=\"notifications\" class=\"icon-bell\"></i></div></div></div>";
+},"useData":true});
+
+this["JST"]["labels"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<div class=\"edit_card_popup wrapper card_menu_popup add_label_popup\"><div class=\"card_menu_popup_header\"><h5>Labels</h5><i class=\"icon-cancel\"></i></div><hr><ul><li><span class=\"card_label label_green\" data-color=\"green\">"
+    + alias4(((helper = (helper = helpers.label_green_text || (depth0 != null ? depth0.label_green_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_green_text","hash":{},"data":data}) : helper)))
+    + "</span></li><li><span class=\"card_label label_yellow\" data-color=\"yellow\">"
+    + alias4(((helper = (helper = helpers.label_yellow_text || (depth0 != null ? depth0.label_yellow_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_yellow_text","hash":{},"data":data}) : helper)))
+    + "</span></li><li><span class=\"card_label label_orange\" data-color=\"orange\">"
+    + alias4(((helper = (helper = helpers.label_orange_text || (depth0 != null ? depth0.label_orange_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_orange_text","hash":{},"data":data}) : helper)))
+    + "</span></li><li><span class=\"card_label label_red\" data-color=\"red\">"
+    + alias4(((helper = (helper = helpers.label_red_text || (depth0 != null ? depth0.label_red_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_red_text","hash":{},"data":data}) : helper)))
+    + "</span></li><li><span class=\"card_label label_purple\" data-color=\"purple\">"
+    + alias4(((helper = (helper = helpers.label_purple_text || (depth0 != null ? depth0.label_purple_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_purple_text","hash":{},"data":data}) : helper)))
+    + "</span></li><li><span class=\"card_label label_blue\" data-color=\"blue\">"
+    + alias4(((helper = (helper = helpers.label_blue_text || (depth0 != null ? depth0.label_blue_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_blue_text","hash":{},"data":data}) : helper)))
+    + "</span></li></ul></div>";
 },"useData":true});
 
 this["JST"]["list"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
@@ -250,7 +266,7 @@ this["JST"]["move"] = Handlebars.template({"1":function(container,depth0,helpers
     + "</option>";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, options, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression, alias5=helpers.blockHelperMissing, buffer = 
-  "<div class=\"move_card_popup card_menu_popup\"><h5>Move Card</h5><i class=\"icon-close\"></i><hr><div class=\"all_lists_dropdown_placeholder setting menu_button\"><span class=\"label\">List</span><span class=\"value\">"
+  "<div class=\"move_card_popup card_menu_popup\"><div class=\"card_menu_popup_header\"><h5>Move Card</h5><i class=\"icon-cancel\"></i></div><hr><div class=\"all_lists_dropdown_placeholder setting menu_button\"><span class=\"label\">List</span><span class=\"value\">"
     + alias4(((helper = (helper = helpers.list || (depth0 != null ? depth0.list : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"list","hash":{},"data":data}) : helper)))
     + "</span><!-- <label>List</label> --><select class=\"list_select_options\" name=\"list_select_options\">";
   stack1 = ((helper = (helper = helpers.lists || (depth0 != null ? depth0.lists : depth0)) != null ? helper : alias2),(options={"name":"lists","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data}),(typeof helper === alias3 ? helper.call(alias1,options) : helper));
