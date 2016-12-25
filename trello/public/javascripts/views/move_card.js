@@ -26,7 +26,6 @@ var MoveCardView = Backbone.View.extend({
       cards: cards
     }
     // specify which list and position are selected!! 
-    debugger;
     this.render(this.data);
   },
   move: function() {
@@ -41,6 +40,7 @@ var MoveCardView = Backbone.View.extend({
     return false;
   },
   render: function(data) {
+    $('.pop-over').attr('class', 'pop-over move_card"');
     $('.pop-over').html(this.template(data));
   },
   selectNewList: function(e) {
@@ -48,7 +48,6 @@ var MoveCardView = Backbone.View.extend({
     this.data
   },
   updatePositionOptions: function(e) {
-    debugger;
     var self = this;
     var listID = $(".list_select_options").val();
     var list = App.board.lists.findWhere({id: +listID});

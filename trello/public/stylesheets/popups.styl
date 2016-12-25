@@ -1,0 +1,56 @@
+.pop-over
+  display: none
+  overflow: hidden
+  position: absolute
+  right: -9999px
+  top: -999px
+  z-index: 70
+
+.pop-over.is-shown  
+  display: block
+  width: 300px
+  min-height: 100px
+  right: 200px
+  bottom: 10px
+
+.list_options_popup
+  position: absolute
+  top: 20px
+  left: 250px
+  z-index: 1
+  width: 300px
+
+.pop-over.search
+  background: #e2e4e6
+  color: #4d4d4d
+  top: 30px
+  left: 200px
+  display: block
+  min-height: 100px
+  max-height: 250px
+  overflow: hidden
+  width: 260px
+  padding: 10px
+  box-sizing: border-box
+  ul
+    height: 100%
+    overflow-y: auto
+    flex: 1 1 auto
+  li
+    background: colors.primary.default
+    margin: 10px
+    width: 200px  
+
+
+.pop-over.is-shown.edit_card
+  background: transparent
+  border: none
+  margin: 0 auto
+  right: 0
+  left: 0
+  top: 0
+  bottom: 0
+  overflow-y: auto
+
+.select
+  max-height: 300px    

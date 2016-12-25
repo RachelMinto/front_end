@@ -46,8 +46,8 @@ var EditCardView = Backbone.View.extend({
     return false;
   },
   render: function() {
-    $('.pop-over').addClass("is-shown edit_card");
-    $('.pop-over').html(this.$el.html(this.template(this.model.toJSON())));    
+    $('.pop-over').attr('class', 'pop-over invisible"');
+    $('.window').html(this.$el.html(this.template(this.model.toJSON())));    
     $('.window-overlay').removeClass("invisible");
   },
   rerender: function() {
