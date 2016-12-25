@@ -11,41 +11,6 @@ var BoardView = Backbone.View.extend({
     e.preventDefault();
     App.trigger("openBoardMenu");    
   },
-  new_list: function() {
-    // Make new view using list template. Should delete if not submitted.
-  },
-  addListInput: function() {
-
-  },
-  add_list: function(e) {
-    // get name from form submission
-    // add list to collection
-    // create list view
-    // e.preventDefault();
-    // var $f = this.$("form") // backbone jquery binding; within view uses current context to navigate dom within that view.
-  
-    // $.ajax({
-    //   url: $f.attr("action"),
-    //   type: $f.attr("method"),
-    //   data: $f.serialize(),
-    //   success: function(json) {
-    //     App.albums.add(json);
-    //     App.indexView();
-    //   }
-    // });
-  },
-  show_menu: function() {
-
-  },
-  edit_name: function() {
-
-  },
-  toggle_star: function() {
-
-  },
-  change_privacy: function() {
-
-  },
   render: function() {
     // if (board.color !== default) { change html background };
     var content = this.$el.html(this.template(this.model.toJSON()));
@@ -54,9 +19,11 @@ var BoardView = Backbone.View.extend({
   initialize: function() {
     this.render()
     $('#board_canvas').sortable({
-      items: '.list.wrapper',
+      items: '.list-wrapper',
       placeholder: "ui-sortable-placeholder",
       forcePlaceholderSize: true,
+      tolerance: 'pointer',
+      axis: 'x',
       update: function(event, ui) {
         ui.item.trigger('drop', ui.item.index())
       }

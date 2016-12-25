@@ -34,7 +34,7 @@ var AddListView = Backbone.View.extend({
       data: newList,
       success: function(json) {
         App.board.lists.add(json);
-        App.indexView(); // FIND BETTER WAY OF DOING THIS!
+        App.renderLists();
       },
     });    
     // unbind view? Recreate new after list is added?

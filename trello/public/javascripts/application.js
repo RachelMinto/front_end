@@ -6,9 +6,12 @@ var App = {
     new HeaderView({ model: App.user });
     // this.createBoardMenu();
     new BoardView({ model: App.board});
+    this.renderLists();
+    this.bindEvents();
+  },
+  renderLists: function() {
     this.board.lists.each(this.renderListView);
     this.addList = new AddListView();
-    this.bindEvents();
   },
   getNextCardID: function() {
     this.lastCardID++

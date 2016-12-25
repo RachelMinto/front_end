@@ -247,6 +247,11 @@ ul.list_container li.ui-sortable-handle {
   padding: 8px 12px 12px 0;
   width: 140px;
   height: 499px;
+  margin-right: 20px;
+}
+.edit_card_menu .wrapper .card_action_menu .card_actions_menu a {
+  margin-top: 20px;
+  display: block;
 }
 .card_title_info {
   width: 616px;
@@ -387,6 +392,16 @@ textarea.comment_input {
   top: 0;
   z-index: 2;
   width: 100%;
+}
+.pop-over.is-shown.edit_card {
+  background: transparent;
+  border: none;
+  margin: 0 auto;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
 }
 .select {
   max-height: 300px;
@@ -602,8 +617,10 @@ input:focus {
   top: -999px;
   z-index: 70;
 }
-.popover.is-shown {
-  display: auto;
+.pop-over.is-shown {
+  display: block;
   min-width: 300px;
   min-height: 100px;
+  right: 0;
+  top: 0;
 }
