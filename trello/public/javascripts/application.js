@@ -23,6 +23,17 @@ var App = {
     model.set({user: App.user.attributes, board: App.board.attributes});
     this.boardMenu = new BoardMenuView({ model: model });    
   },
+  movePopup: function(card, list) {
+    $('.pop-over').addClass("is-shown search");
+
+    var position = list.cards.indexOf(card) + 1
+    var title = list.get("title");
+
+    new MoveCardView({ model: card, position: position, list: list });
+    // In hbs, get list title and index where card lives.
+    // If doesn't live in list, default to last position.
+    
+  },
   renderLists: function() {
     // empty existing
     // debugger;
@@ -63,6 +74,8 @@ var App = {
 
     oldList.cards.remove(model);    
     newList.cards.add(model, {at: position});
+    // Create new Activity Log on card.
+    model.trigger("movedCardActivty", oldList, newList)
     newList.cards.syncServer();
     oldList.cards.syncServer();
   },

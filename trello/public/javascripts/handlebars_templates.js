@@ -187,7 +187,7 @@ this["JST"]["editCardMenu"] = Handlebars.template({"1":function(container,depth0
     + ((stack1 = container.invokePartial(partials.checklist,depth0,{"name":"checklist","data":data,"helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
     + "<div class=\"card_comments\"><h3>Add Comment</h3><form autocomplete=\"off\"><textarea placeholder=\"Write a comment...\" class=\"comment_input\"></textarea><div class=\"send_comment_wrapper\"><div class=\"send_comment submit_info_button\">Send</div></div></form></div>"
     + ((stack1 = container.invokePartial(partials.activity,depth0,{"name":"activity","data":data,"helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
-    + "</div><div class=\"card_action_menu\"><div class=\"card_add_menu\"><h3>Add</h3><!--<a href=\"#\" class=\"menu_button\"><div class=\"members\">Members</div></a> --><div class=\"menu_button labels\">Labels</div><div class=\"edit_card_popup wrapper card_menu_popup add_label_popup invisible\"><h5>Labels</h5><i class=\"icon-close\"></i><hr><!--<input type=\"text\" placeholder=\"Search labels...\" name=\"search_labels\" id=\"card_search_labels\"> --><ul><li><span class=\"card_label label_green\" data-color=\"green\">"
+    + "</div><div class=\"card_action_menu\"><div class=\"card_add_menu\"><h3>Add</h3><!--<a href=\"#\" class=\"menu_button\"><div class=\"members\">Members</div></a> --><div class=\"menu_button labels\"><i class=\"icon-label\"></i>Labels</div><div class=\"edit_card_popup wrapper card_menu_popup add_label_popup invisible\"><h5>Labels</h5><i class=\"icon-close\"></i><hr><!--<input type=\"text\" placeholder=\"Search labels...\" name=\"search_labels\" id=\"card_search_labels\"> --><ul><li><span class=\"card_label label_green\" data-color=\"green\">"
     + alias4(((helper = (helper = helpers.label_green_text || (depth0 != null ? depth0.label_green_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_green_text","hash":{},"data":data}) : helper)))
     + "</span></li><li><span class=\"card_label label_yellow\" data-color=\"yellow\">"
     + alias4(((helper = (helper = helpers.label_yellow_text || (depth0 != null ? depth0.label_yellow_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_yellow_text","hash":{},"data":data}) : helper)))
@@ -199,7 +199,7 @@ this["JST"]["editCardMenu"] = Handlebars.template({"1":function(container,depth0
     + alias4(((helper = (helper = helpers.label_purple_text || (depth0 != null ? depth0.label_purple_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_purple_text","hash":{},"data":data}) : helper)))
     + "</span></li><li><span class=\"card_label label_blue\" data-color=\"blue\">"
     + alias4(((helper = (helper = helpers.label_blue_text || (depth0 != null ? depth0.label_blue_text : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"label_blue_text","hash":{},"data":data}) : helper)))
-    + "</span></li></ul></div><div class=\"menu_button checklist\">Checklist</div><div class=\"edit_card_popup wrapper card_menu_popup add_checklist_popup invisible\"><h5>Add Checklist</h5><form name=\"add_checklist\" autocomplete=\"off\"><label for=\"checklist_title_input\">Title<input type=\"text\" placeholder=\"Checklist\" id=\"checklist_title_input\" name=\"checklist_title_input\"></label><a href=\"\"><div class=\"submit_info_button add_checklist selected\">Add</div></a></form></div><div class=\"menu_button due_date\">Due Date</div><!--<a href=\"#\" class=\"menu_button\"><div class=\"attachment\">Attachment</div></a> --></div><div class=\"card_actions_menu\"><h3>Actions</h3><div class=\"menu_button move_card\">Move</div><div class=\"move_card_popup wrapper card_menu_popup invisible\"><h5>Move Card</h5><i class=\"icon-close\"></i><hr><div class=\"all_lists_dropdown_placeholder menu_button\"><h6>List</h6>Current List</div><div class=\"move_card_position_placeholder menu_button\"><h6>Position</h6>Current Position</div><div class=\"submit_info_button selected\">Move</div></div></div><div class=\"menu_button label_card\">Copy</div> <div class=\"menu_button subscribe_card\">Subscribe</div><div class=\"menu_button archive_card\">Archive</div><a href=\"#\">Share and more...</a></div></div></div>";
+    + "</span></li></ul></div><div class=\"menu_button checklist\"><i class=\"icon-checkbox\"></i>Checklist</div><div class=\"edit_card_popup wrapper card_menu_popup add_checklist_popup invisible\"><h5>Add Checklist</h5><form name=\"add_checklist\" autocomplete=\"off\"><label for=\"checklist_title_input\">Title<input type=\"text\" placeholder=\"Checklist\" id=\"checklist_title_input\" name=\"checklist_title_input\"></label><a href=\"\"><div class=\"submit_info_button add_checklist selected\">Add</div></a></form></div> <!--<a href=\"#\" class=\"menu_button\"><div class=\"attachment\">Attachment</div></a> --></div><div class=\"card_actions_menu\"><h3>Actions</h3><div class=\"menu_button move_card\"><i class=\"icon-move\"></i>Move</div><div class=\"menu_button label_card\"><i class=\"icon-copy\"></i>Copy</div> <div class=\"menu_button subscribe_card\"><i class=\"icon-subscribe\"></i>Subscribe</div><div class=\"menu_button archive_card\"><i class=\"icon-archive\"></i>Archive</div><a href=\"#\">Share and more...</a></div></div></div>";
 },"usePartial":true,"useData":true});
 
 this["JST"]["header"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -230,6 +230,31 @@ this["JST"]["list"] = Handlebars.template({"1":function(container,depth0,helpers
     + "\"></ul><div class=\"add_card_composer invisible\"><form action=\"/board/"
     + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
     + "/items\", method=\"post\" class=\"addCardForm\" autocomplete=\"off\"><input class=\"card\" id=\"new_card_name\" name=\"title\" autofocus><div><a href=\"\" class=\"submit_new_card\"><div>Add</div></a><i class=\"icon-cancel\"></i><a href=\"\" class=\"get_more_options\"><span>...</span></a></div></form></div><a href=\"\" class=\"add_card submit_info_button\">Add a card...</a></div><div class=\"wrapper card_menu_popup list_options_popup invisible\"><h5>List Actions</h5><i class=\"icon-cancel\"></i><hr><div class=\"list_options_add_card\">Add Card...</div><div class=\"list_options_subscribe\">Subscribe</div><hr></div>";
+},"useData":true});
+
+this["JST"]["move"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<option value=\""
+    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
+    + "\">"
+    + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
+    + "</option>";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, options, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression, alias5=helpers.blockHelperMissing, buffer = 
+  "<div class=\"move_card_popup card_menu_popup\"><h5>Move Card</h5><i class=\"icon-close\"></i><hr><div class=\"all_lists_dropdown_placeholder setting menu_button\"><span class=\"label\">List</span><span class=\"value\">"
+    + alias4(((helper = (helper = helpers.list || (depth0 != null ? depth0.list : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"list","hash":{},"data":data}) : helper)))
+    + "</span><!-- <label>List</label> --><select class=\"list_select_options\" name=\"list_select_options\">";
+  stack1 = ((helper = (helper = helpers.lists || (depth0 != null ? depth0.lists : depth0)) != null ? helper : alias2),(options={"name":"lists","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data}),(typeof helper === alias3 ? helper.call(alias1,options) : helper));
+  if (!helpers.lists) { stack1 = alias5.call(depth0,stack1,options)}
+  if (stack1 != null) { buffer += stack1; }
+  buffer += "</select></div><div class=\"all_positions_dropdown_placeholder setting menu_button\"><span class=\"label\">Position</span><span class=\"value\">"
+    + alias4(((helper = (helper = helpers.position || (depth0 != null ? depth0.position : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"position","hash":{},"data":data}) : helper)))
+    + "</span><!--<label>Position</label>--><select class=\"position_select_options\" name=\"position_select_options\">";
+  stack1 = ((helper = (helper = helpers.cards || (depth0 != null ? depth0.cards : depth0)) != null ? helper : alias2),(options={"name":"cards","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data}),(typeof helper === alias3 ? helper.call(alias1,options) : helper));
+  if (!helpers.cards) { stack1 = alias5.call(depth0,stack1,options)}
+  if (stack1 != null) { buffer += stack1; }
+  return buffer + "</select></div><div class=\"submit_info_button selected move_submission\">Move</div></div></div>";
 },"useData":true});
 
 this["JST"]["popup"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {

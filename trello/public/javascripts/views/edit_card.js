@@ -46,7 +46,8 @@ var EditCardView = Backbone.View.extend({
     return false;
   },
   render: function() {
-    $('#surface').after(this.$el.html(this.template(this.model.toJSON())));
+    $('.window-overlay').append(this.$el.html(this.template(this.model.toJSON())));
+    $('.window-overlay').removeClass("invisible");
   },
   rerender: function() {
     this.$el.empty();
@@ -59,6 +60,8 @@ var EditCardView = Backbone.View.extend({
     this.undelegateEvents();
     this.$el.removeData().unbind();
     this.remove();
+    // $('.pop-over').remove("is-shown edit_card");
+    $('.window-overlay').addClass("invisible");
   },
   openChecklist: function() {
     this.$el.find(".add_checklist_popup.card_menu_popup").removeClass("invisible");
@@ -66,8 +69,12 @@ var EditCardView = Backbone.View.extend({
   openLabelPopup: function() {
     this.$el.find(".add_label_popup.card_menu_popup").removeClass("invisible");
   },
-  openMovePopup: function() {
-    this.$el.find(".move_card_popup.card_menu_popup").removeClass("invisible");
+  openMovePopup: function(e) {
+    // get cardID, listID
+    var card = this.model;
+    var list = this.model.collection.parentList;
+    App.movePopup(card, list);
+    return false    
   },
   openTodoCreator: function(e) {
     $(e.target).closest(".add_checklist_todo_placeholder").addClass("invisible");

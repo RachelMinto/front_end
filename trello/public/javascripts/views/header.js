@@ -9,7 +9,7 @@ var HeaderView = Backbone.View.extend({
   },
   template: App.templates.header,
   openSearch: function() {
-    $('.pop-over').addClass("is-shown search");
+    // $('.pop-over').addClass("is-shown search");
     return false
   },
   preventClose: function() {
@@ -20,6 +20,9 @@ var HeaderView = Backbone.View.extend({
   },
   search: function(e) {
     var self = this;
+
+    $('.pop-over').addClass("is-shown search");
+    $('.pop-over').html("<h1>Search...</h1>");
     delay(function() {
       var keyword = self.$el.find("#search_input").val();
       var results = App.searchKeyword(keyword);

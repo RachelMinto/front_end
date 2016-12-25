@@ -24,7 +24,7 @@ var List = Backbone.Model.extend({
     var self = this;
     var current = this.get("subscribed");
     this.set("subscribed", !current);
-    
+
     this.sync("update", this, {
       success: function(json) {
         debugger;
@@ -38,7 +38,8 @@ var List = Backbone.Model.extend({
   initialize: function(data) {
     this.cards = new CardCollection();
     this.url = "/board/" + this.id;
-    this.cards.url = "/board/" + this.id + "/items"
+    this.cards.url = "/board/" + this.id + "/items";
+    this.cards.parentList = this;
     this.parse(data);
     this.on("subscribeToggle", this.toggleSubscribeStatus);    
   },  

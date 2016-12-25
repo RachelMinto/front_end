@@ -14,7 +14,6 @@ var Card = Backbone.Model.extend({
   },
   createChecklist: function(title) {
     var self = this;
-    debugger;
     var current = _.clone(this.get("checklists")) || new ChecklistCollection();
 
     current.add({title: title, todos: []});
@@ -34,7 +33,6 @@ var Card = Backbone.Model.extend({
     var omitKeys = [];
 
     if (data.checklists) {
-      debugger;
       var existing = new ChecklistCollection();
       existing.reset(data.checklists);
       this.set("checklists", existing);
