@@ -39,27 +39,30 @@ Handlebars.registerPartial("activity", Handlebars.template({"1":function(contain
 },"useData":true}));
 
 Handlebars.registerPartial("checklist", Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    var stack1;
+    var stack1, helper, alias1=depth0 != null ? depth0 : {};
 
-  return "<div><h3>"
-    + container.escapeExpression(container.lambda((depth0 != null ? depth0.title : depth0), depth0))
+  return "<div><h3>Title: "
+    + container.escapeExpression(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"key","hash":{},"data":data}) : helper)))
     + "</h3><a href=\"\">Delete...</a>"
-    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.todos : depth0),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.checklists : depth0)) != null ? stack1.todos : stack1),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "<a href=\"\" class=\"add_checklist_todo_placeholder\">Add an item...</a><form action=\"\" method=\"\" placeholder=\"Add an item...\" autocomplete=\"off\" class=\"invisible card_add_todo_form\"><input class=\"new_todo_name\" name=\"title\" autofocus><div><a href=\"\" class=\"submit_new_checklist_todo submit_menu_info selected\"><div>Add</div></a><i class=\"icon-cancel\"></i><a href=\"\" class=\"get_more_options\"><span>...</span></a></div></form></div>";
 },"2":function(container,depth0,helpers,partials,data) {
     var stack1;
 
   return ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.todos : depth0),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"3":function(container,depth0,helpers,partials,data) {
-    return "<p class=\"checklist_todo\">"
-    + container.escapeExpression(container.lambda((depth0 != null ? depth0.title : depth0), depth0))
+    var helper;
+
+  return "<p class=\"checklist_todo\">todo title: "
+    + container.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"title","hash":{},"data":data}) : helper)))
     + "</p>";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1;
-
-  return "<div class=\"card_checklists\">"
-    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.checklists : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</div> ";
+    var stack1, helper, options, buffer = 
+  "<div class=\"card_checklists\">";
+  stack1 = ((helper = (helper = helpers.checklists || (depth0 != null ? depth0.checklists : depth0)) != null ? helper : helpers.helperMissing),(options={"name":"checklists","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data}),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},options) : helper));
+  if (!helpers.checklists) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
+  if (stack1 != null) { buffer += stack1; }
+  return buffer + "</div> ";
 },"useData":true}));
 
 this["JST"]["add_list_placeholder"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -202,9 +205,9 @@ this["JST"]["editCardMenu"] = Handlebars.template({"1":function(container,depth0
 this["JST"]["header"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "<div id=\"full_page\"><div id=\"header\"><div id=\"board_info\"><div id=\"search_input_placeholder\"><i class=\"icon-search\"></i></div><div class=\"invisible\" id=\"search_input_wrapper\"><input type=\"text\" id=\"search_input\" name=\"search_input\" autofocus spellcheck=\"false\" dir=\"auto\" value=\""
+  return "<div id=\"full_page\"><div id=\"header\"><div id=\"board_info\"><div id=\"search_input_wrapper\"><input type=\"text\" id=\"search_input\" name=\"search_input\" spellcheck=\"false\" dir=\"auto\" value=\""
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "\" style=\"overflow: hidden; word-wrap: break-word;\"></div></div><div class=\"logo\"><span><a href=\"#\"><img src=\"/images/header-logo-2x.png\"></a></span></div><div id=\"account_info\"><div id=\"profile_settings\"><span class=\"wrapper\">"
+    + "\" style=\"overflow: hidden; word-wrap: break-word;\"><i class=\"icon-search\"></i></div></div><div class=\"logo\"><span><a href=\"#\"><img src=\"/images/header-logo-2x.png\"></a></span></div><div id=\"account_info\"><div id=\"profile_settings\"><span class=\"wrapper\">"
     + alias4(((helper = (helper = helpers.initials || (depth0 != null ? depth0.initials : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"initials","hash":{},"data":data}) : helper)))
     + "</span><span>"
     + alias4(((helper = (helper = helpers.username || (depth0 != null ? depth0.username : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"username","hash":{},"data":data}) : helper)))

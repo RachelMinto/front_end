@@ -37,6 +37,21 @@ var App = {
       new CardView({ model: card });
     }, this);
   },
+  searchKeyword: function(keyword) {
+    var results = []
+
+    this.board.lists.forEach(function(list) {
+      list.cards.forEach(function(card) {
+        var title = card.get("title");
+
+        if (title.search(keyword) !== -1) {
+          results.push(card);
+        }
+      });
+    });
+
+    return results;
+  },
   addCardToList: function(listID, model) {
     var list = this.board.getListByID(listID);
     list.cards.create(model);
@@ -69,7 +84,6 @@ var App = {
 };
 
 Handlebars.registerHelper('ifComment', function(conditional, options) {
-  console.log(options.hash);
   if(options.hashvalue === conditional) {
     return options.fn(this);
   }
@@ -92,5 +106,13 @@ Handlebars.registerHelper("format_date", function(timestamp) {
   var strTime = hours + ':' + minutes + ' ' + ampm;
   return timestamp.getMonth()+1 + " " + timestamp.getDate() + " at " + strTime;
 })
+
+var delay = (function(){
+  var timer = 0;
+  return function(callback, ms){
+    clearTimeout (timer);
+    timer = setTimeout(callback, ms);
+  };
+})();
 
 // App.board.lists.models[0].cards.models[0].attributes.comments !! :)

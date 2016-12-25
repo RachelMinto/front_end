@@ -1,19 +1,12 @@
 #header
   height: 30px
+  padding: 5px
   position: relative
   -webkit-box-flex: 0
   flex: none
-  #search_input_placeholder
-    height: 32px;
-    width: 182px;
-    box-sizing: border-box;
-    i
-      float: right;
-      line-height: 32px;
-      font-size: 18px;
-      padding-right: 4px;
   div
     display: inline-block
+    color: white
   img
     width: 25px
     height: 25px
@@ -33,5 +26,23 @@
     float: right
     text-align: right
 
-#search_input_wrapper.invisible
-  display: none
+#header
+  background: colors.primary.dark_bg
+  #board_info
+    div
+      background: colors.primary.light_bg
+      border-radius: 3px    
+    input
+      background: transparent
+      height: 30px
+
+#search_input_list-wrapper
+  color: colors.primary.default
+  min-height: 300px;
+  min-width: 300px;
+  box-sizing: border-box;
+  i
+    float: right;
+    line-height: 32px;
+    font-size: 18px;
+    padding-right: 4px;

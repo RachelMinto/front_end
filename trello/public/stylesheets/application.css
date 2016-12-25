@@ -1,23 +1,14 @@
 @import "whitespace-reset.css";
 #header {
   height: 30px;
+  padding: 5px;
   position: relative;
   -webkit-box-flex: 0;
   flex: none;
 }
-#header #search_input_placeholder {
-  height: 32px;
-  width: 182px;
-  box-sizing: border-box;
-}
-#header #search_input_placeholder i {
-  float: right;
-  line-height: 32px;
-  font-size: 18px;
-  padding-right: 4px;
-}
 #header div {
   display: inline-block;
+  color: #fff;
 }
 #header img {
   width: 25px;
@@ -43,11 +34,32 @@
   float: right;
   text-align: right;
 }
-#search_input_wrapper.invisible {
-  display: none;
+#header {
+  background: rgba(0,0,0,0.15);
+}
+#header #board_info div {
+  background: rgba(255,255,255,0.3);
+  border-radius: 3px;
+}
+#header #board_info input {
+  background: transparent;
+  height: 30px;
+}
+#search_input_list-wrapper {
+  color: #fff;
+  min-height: 300px;
+  min-width: 300px;
+  box-sizing: border-box;
+}
+#search_input_list-wrapper i {
+  float: right;
+  line-height: 32px;
+  font-size: 18px;
+  padding-right: 4px;
 }
 #board_nav {
   -webkit-box-flex: 0;
+  color: #fff;
   flex: none;
   height: auto;
   overflow: hidden;
@@ -74,7 +86,7 @@
 #board_nav #open_board_menu {
   float: right;
 }
-#board_nav #open_board_menu a {
+#board_nav a {
   color: #fff;
 }
 .list_header {
@@ -155,6 +167,7 @@ ul.list_container li.ui-sortable-handle {
   vertical-align: top;
   width: 270px;
   height: 100%;
+  flex-shrink: 0;
 }
 .ui-sortable-placeholder {
   background: rgba(0,0,0,0.2);
@@ -196,6 +209,22 @@ ul.list_container li.ui-sortable-handle {
   left: 250px;
   z-index: 1;
   width: 300px;
+}
+.pop-over.search {
+  background: #e2e4e6;
+  color: #4d4d4d;
+  top: 30px;
+  left: 200px;
+  display: block;
+  min-height: 100px;
+  width: 400px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.pop-over.search li {
+  background: #fff;
+  margin: 10px;
+  width: 200px;
 }
 .archived_header {
   height: 25px;
@@ -415,6 +444,7 @@ div {
   right: 0;
   bottom: 0;
   left: 0;
+  display: flex;
   margin-bottom: 10px;
   overflow-x: auto;
   overflow-y: hidden;
@@ -497,14 +527,6 @@ textarea {
   -webkit-transition: background 85ms ease-in, border-color 85ms ease-in;
   border-radius: 3px;
 }
-#header {
-  height: 40px;
-  background: rgba(0,0,0,0.15);
-}
-#header #board_info div {
-  background: rgba(255,255,255,0.3);
-  border-radius: 4px;
-}
 .board-wrapper {
   position: absolute;
   left: 0;
@@ -529,4 +551,25 @@ textarea {
 body {
   position: relative;
   overflow-y: auto;
+}
+input:focus {
+  background: #fff;
+}
+.pop-over {
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #d6dadc;
+  border-bottom-color: #c4c9cc;
+  box-shaddow: 0 1px 6px rgba(0,0,0,0.15);
+  display: none;
+  overflow: hidden;
+  position: absolute;
+  right: -9999px;
+  top: -999px;
+  z-index: 70;
+}
+.popover.is-shown {
+  display: auto;
+  min-width: 300px;
+  min-height: 100px;
 }

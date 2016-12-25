@@ -1,11 +1,11 @@
 <div class="card_checklists">
-  {{#each checklists}}
+  {{#checklists}}
   <div>
-    <h3>{{this.title}}</h3>
+    <h3>Title: {{@key}}</h3>
     <a href="">Delete...</a>
-    {{#if this.todos}}
+    {{#if checklists.todos}}
     {{#each todos}}
-      <p class="checklist_todo">{{this.title}}</p>
+      <p class="checklist_todo">todo title: {{title}}</p>
     {{/each}}
     {{/if}}
     <a href="" class="add_checklist_todo_placeholder">Add an item...</a>
@@ -18,5 +18,5 @@
       </div>
     </form>    
   </div>
-  {{/each}}
+  {{/checklists}}
 </div> 

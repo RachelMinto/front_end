@@ -64,6 +64,7 @@ div
   right: 0
   bottom: 0
   left: 0
+  display: flex
   margin-bottom: 10px
   overflow-x: auto
   overflow-y: hidden
@@ -135,14 +136,6 @@ textarea
   -webkit-transition: background 85ms ease-in,border-color 85ms ease-in
   border-radius: 3px
 
-#header
-  height: 40px
-  background: colors.primary.dark_bg
-  #board_info
-    div
-      background: colors.primary.light_bg
-      border-radius: 4px
-
 .board-wrapper
   position: absolute
   left: 0
@@ -166,3 +159,25 @@ textarea
 #content, body
   position: relative
   overflow-y: auto
+
+input
+  &:focus
+    background: colors.primary.default  
+
+.pop-over
+  background: colors.primary.default
+  border-radius: 3px
+  border: 1px solid #D6DADC
+  border-bottom-color: #C4C9CC
+  box-shaddow: 0 1px 6px rgba(0,0,0,.15)
+  display: none
+  overflow: hidden
+  position: absolute
+  right: -9999px
+  top: -999px
+  z-index: 70
+
+.popover.is-shown  
+  display: auto
+  min-width: 300px
+  min-height: 100px
