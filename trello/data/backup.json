@@ -1,7 +1,6 @@
 {
    "title":"First Board",
    "id":1,
-   "starred":"false",
    "color":"default",
    "last_list_id":5,
    "last_card_id":13,
@@ -104,12 +103,12 @@
                   }
                ],
                "description":"added description",
-               "archived":true
+               "archived":false
             },
             {
                "title":"Another todo",
                "id":3,
-               "subscribed":"false"
+               "subscribed":false
             }
          ],
          "attachments":[
@@ -173,52 +172,7 @@
                "timestamp":"2016-12-24T18:01:12.628Z"
             }
          ],
-         "archived":true
-      },
-      {
-         "title":"New card",
-         "id":10,
-         "labels":[
-
-         ],
-         "attachments":[
-
-         ],
-         "archived":false,
-         "checklists":[
-            {
-               "title":"New"
-            },
-            {
-               "title":"Second checklist"
-            }
-         ],
-         "cardComments":1,
-         "activities":[
-            {
-               "action":"comment",
-               "title":"I have a comment.",
-               "user":"Rachel Minto",
-               "card":"New card",
-               "list":"",
-               "timestamp":"2016-12-24T20:19:20.588Z"
-            }
-         ]
-      },
-      {
-         "title":"New card",
-         "id":11,
-         "labels":[
-
-         ],
-         "attachments":[
-
-         ],
          "archived":false
-      },
-      {
-         "title":"new card",
-         "id":12
       }
    ]
 }

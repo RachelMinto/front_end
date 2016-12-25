@@ -506,6 +506,14 @@ div#board_menu_wrapper hr {
   z-index: 2;
   width: 100%;
 }
+.setting.menu_button span.label {
+  display: block;
+  color: #8c8c8c;
+  font-size: 10px;
+}
+.setting.menu_button span.label:hover {
+  color: #fff;
+}
 .all_lists_dropdown_placeholder,
 .all_positions_dropdown_placeholder {
   position: relative;

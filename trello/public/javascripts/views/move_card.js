@@ -1,41 +1,48 @@
 var MoveCardView = Backbone.View.extend({
   template: App.templates.move,
   events: {
-    // "click .all_lists_dropdown_placeholder": "showListOptions",
-    // "click .move_card_position_placeholder": "showPositionOptions",
-    // "click .move_card_list_names": "selectNewList",
     "click .move_submission": "move",
     "click i.icon-cancel": "closeModal",
     "change select[name='list_select_options']": "updatePositionOptions",
+    "change select[name='position_select_options']": "updatePositionSelection",
     "click .move_card_popup": "preventClose"
   },
   el: "div",
   closeModal: function() {
-    this.undelegateEvents();
-    this.$el.removeData().unbind();
     $('.pop-over').attr('class', 'pop-over');
   },
   initialize: function(options) {
-    this.lists = App.board.lists.invoke("pick", ["title", "id"]);
-    this.originalPosition = options.position;
+    var unarchivedLists = App.board.lists.reject({archived: true});
+    var lists = _.invoke(unarchivedLists, "pick", ["title", "id"]);
     this.originalList = options.list
-    var cards = this.originalList.cards.invoke("pick", ["title", "id"]);
+    var self = this;
+    var unarchivedCards = this.originalList.cards.reject({archived: true});
+
+    var cardIDs = _.map(unarchivedCards, function(card) {
+      return self.originalList.cards.indexOf(card);
+    });
+
+    var position = unarchivedCards.indexOf(self.model) + 1;
 
     this.data = {
-      position: options.position,
-      list: options.list.get("title"),
-      lists: this.lists,
-      cards: cards
+      position: position,
+      list: self.originalList.get("title"),
+      lists: lists, // array of objects, with title and id
+      cards: cardIDs // array of card ids
     }
-    // specify which list and position are selected!! 
+
     this.render(this.data);
+    $("div.all_lists_dropdown_placeholder select").val(self.originalList.get("id"));
+    $("div.all_positions_dropdown_placeholder select").val(+position - 1);
   },
   move: function() {
     var newListID = $(".list_select_options").val();
-    var position = $(".list_position_options").val();
-    var oldListID = this.orignalList.get("id");
+    var position = $(".position_select_options").val();
+
+    debugger;
+    var oldListID = this.originalList.get("id");
     var cardID = this.model.get("id");
-    App.updateCardPosition([oldListID, newListID, cardID, position]);
+    App.updateCardPosition([+oldListID, +newListID, +cardID, +position]);
     this.closeModal();
   },
   preventClose: function() {
@@ -50,30 +57,47 @@ var MoveCardView = Backbone.View.extend({
     this.data
   },
   updatePositionOptions: function(e) {
-    var self = this;
+    debugger;
+    var unarchivedLists = App.board.lists.reject({archived: true});
+    var lists = _.invoke(unarchivedLists, "pick", ["title", "id"]);
+
     var listID = $(".list_select_options").val();
     var list = App.board.lists.findWhere({id: +listID});
-    var position = 1
+    var position = 1;
+    var unarchivedCards = list.cards.reject({archived: true});
+
+    var cardIDs = _.map(unarchivedCards, function(card) {
+      return list.cards.indexOf(card);
+    });
 
     if (list === this.originalList) {
-      position = originalPosition;
+      position = unarchivedCards.length
     } else {
-      position = list.cards.length;
+      position = unarchivedCards.length + 1
+      cardIDs.push('add_at_end');
     }
 
-    this.data = {
-      position: options.position,
-      list: options.list,
-      lists: lists,
-      cards: list.cards
-    }    
+    newData = {
+      position: position,
+      list: list.get("title"),
+      lists: lists, // array of objects, with title and id
+      cards: cardIDs // array of card ids
+    }
 
-    this.render(data)
+    this.render(newData);
+    $("div.all_lists_dropdown_placeholder select").val(list.get("id"));
+    $("div.all_positions_dropdown_placeholder select").val(position - 1);   
   },
-  showPositionOptions: function() {
+  updatePositionSelection: function() {
+    var positionID = +$(".position_select_options").val() + 1;
     debugger;
-    var listID = $(".list_select_options").val();
-
+    $(".position_value").html(positionID);
     return false;
-  },  
+  },
+  // showPositionOptions: function() {
+  //   debugger;
+  //   var listID = $(".list_select_options").val();
+
+  //   return false;
+  // },  
 });

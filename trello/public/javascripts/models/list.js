@@ -2,6 +2,9 @@ var List = Backbone.Model.extend({
   getCardByID: function(id) {
     return this.cards.findWhere({id : id});
   },
+  getUnarchived: function() {
+    return this.cards.reject({archived: true});
+  },
   parse: function(data) {
     var omitKeys = []
 

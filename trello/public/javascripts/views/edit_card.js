@@ -2,7 +2,7 @@ var EditCardView = Backbone.View.extend({
   className: "modal edit_card_menu",
   events: {
     "click": "closeModal",
-    "click i.icon-cancel": "closeModal",
+    "click .icon-cancel": "closeModal",
     "click .edit_card_menu_wrapper": "preventClose",
     "click .card_content": "edit",
     "click .labels": "openLabelPopup",

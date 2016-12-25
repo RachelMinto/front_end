@@ -28,18 +28,9 @@ var App = {
   },
   movePopup: function(card, list) {
     $('.pop-over').addClass("is-shown search");
-
-    var position = list.cards.indexOf(card) + 1
-    var title = list.get("title");
-
-    new MoveCardView({ model: card, position: position, list: list });
-    // In hbs, get list title and index where card lives.
-    // If doesn't live in list, default to last position.
-    
+    new MoveCardView({ model: card, list: list });
   },
   renderLists: function() {
-    // empty existing
-    // debugger;
     $('#board_canvas').empty();
     this.board.lists.each(this.renderListView);
     this.addList = new AddListView();
@@ -75,12 +66,18 @@ var App = {
     var newList = this.board.getListByID(newListID);
     var model = oldList.getCardByID(cardID);
 
-    oldList.cards.remove(model);    
-    newList.cards.add(model, {at: position});
+    debugger;
+    oldList.cards.remove(model);
+    if (position) {
+      newList.cards.add(model, {at: position});
+    } else {
+      newList.cards.add(model);
+    };
     // Create new Activity Log on card.
-    model.trigger("movedCardActivty", oldList, newList)
+    // model.trigger("movedCardActivty", oldList, newList)
     newList.cards.syncServer();
     oldList.cards.syncServer();
+    this.renderLists();
   },
   openCardEditMenu: function(model) {
     new EditCardView({ model: model });
@@ -132,5 +129,9 @@ var delay = (function(){
     timer = setTimeout(callback, ms);
   };
 })();
+
+Handlebars.registerHelper("inc", function(value, options) { 
+  return parseInt(value) + 1;
+});
 
 // App.board.lists.models[0].cards.models[0].attributes.comments !! :)
