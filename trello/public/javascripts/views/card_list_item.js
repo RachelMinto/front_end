@@ -1,10 +1,7 @@
 var CardView = Backbone.View.extend({
-  // className: "",
   tagName: "li",
   events: {
     "click": "editMenuView",
-    // "removeDraggedCard": "removeDraggedCard",
-    // "addDroppedCard": "addDroppedCard"
   },
   template: App.templates.card,
   editMenuView: function(e) {
@@ -19,8 +16,5 @@ var CardView = Backbone.View.extend({
   },
   initialize: function() {
     return this.cardHTML();
-    // this.listenTo(this.model, "update", this.rerender);
-    // subscribe to notifications from selected board, list, and item changes.
-    // this.model.collection._byId
   },
 });

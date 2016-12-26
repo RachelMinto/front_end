@@ -12,7 +12,6 @@ var BoardView = Backbone.View.extend({
     App.trigger("openBoardMenu");    
   },
   render: function() {
-    // if (board.color !== default) { change html background };
     var content = this.$el.html(this.template(this.model.toJSON()));
     $('#surface').append(content);
   },
@@ -32,8 +31,6 @@ var BoardView = Backbone.View.extend({
       }
     });
   },
-    // listen to activities add
-    // listen to comments add
 });
 
 

@@ -92,7 +92,6 @@ var EditCardView = Backbone.View.extend({
     return false;
   },
   openMovePopup: function(e) {
-    // get cardID, listID
     var card = this.model;
     var list = this.model.collection.parentList;
     App.movePopup(card, list);

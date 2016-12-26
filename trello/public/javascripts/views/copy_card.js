@@ -25,6 +25,7 @@ var CopyCard = Backbone.View.extend({
 
     this.data = {
       position: position,
+      card: self.model.get("title"),
       list: self.model.collection.parentList.get("title"),
       lists: lists, // array of objects, with title and id
       cards: cardIDs // array of card ids
@@ -56,7 +57,6 @@ var CopyCard = Backbone.View.extend({
     $('.copy_card_title_text').focus().select();
   },
   updatePositionOptions: function(e) {
-    debugger;
     var unarchivedLists = App.board.lists.reject({archived: true});
     var lists = _.invoke(unarchivedLists, "pick", ["title", "id"]);
 

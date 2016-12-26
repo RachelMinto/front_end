@@ -30,12 +30,8 @@ var List = Backbone.Model.extend({
 
     this.sync("update", this, {
       success: function(json) {
-        debugger;
         self.trigger("rerenderListView"); 
       },
-      error: function(json) {
-        debugger;
-      }
     })
   },
   initialize: function(data) {

@@ -37,7 +37,6 @@ var AddListView = Backbone.View.extend({
         App.renderLists();
       },
     });    
-    // unbind view? Recreate new after list is added?
   },
   cancelAddList: function(e) {
     App.renderLists();

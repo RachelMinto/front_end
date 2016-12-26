@@ -1,8 +1,4 @@
 var Card = Backbone.Model.extend({
-  // events: {
-  //   // "change:comments": "updateActivityWithComment",
-  //   // "change:description": "syncServer",
-  // },
   archive: function() {
     this.set("archived", true);
     this.syncServer();
@@ -29,7 +25,6 @@ var Card = Backbone.Model.extend({
     this.syncServer();
   },
   syncServer: function() {
-    debugger;
     var self = this;
     this.sync("update", this, {
       success: function(json) {
@@ -103,8 +98,9 @@ var Card = Backbone.Model.extend({
       labels.push({"color": color, "text": ""})
     };
 
-    this.set("labels", labels);  
+    this.set("labels", labels); 
     this.syncServer();
+    App.renderLists(); 
   },
   updateDescription: function(newDescription) {
     this.set("description", newDescription);
@@ -114,7 +110,5 @@ var Card = Backbone.Model.extend({
     this.set("labels", []),
     this.set("archived", false);
     this.parse(data);
-    // this.on("change", this.syncServer);
-    // this.on("change:comments", this.updateActivityWithComment);
   },  
 });

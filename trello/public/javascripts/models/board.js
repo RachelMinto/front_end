@@ -1,7 +1,6 @@
 var Board = Backbone.Model.extend({
   initialize: function(data) {
     this.lists = new ListCollection();
-    // this.lists.url = "/board/lists"
     this.parse(data);
   },
   parse: function(data) {
@@ -14,11 +13,5 @@ var Board = Backbone.Model.extend({
   },
   getListByID: function(id) {
     return this.lists.findWhere( {id : id});
-    // this.url = "/board"
-    // this.lists.url = "/board/lists"
   }
 });
-
-
-
-// _.findWhere(data.lists, {title: "List One"});
