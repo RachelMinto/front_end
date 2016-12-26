@@ -143,7 +143,6 @@ var App = {
     this.on("updateListPositions", this.board.lists.updateListPositions.bind(this.board.lists));
     this.on('updateCardPosition', this.updateCardPosition);
     this.listenTo(this.board.lists, "addedList", this.renderLists);
-    // this.listenTo(this.model.cards, 'card_collection_updated', this.renderCollection)
   },
 };
 
@@ -154,23 +153,7 @@ Handlebars.registerHelper('ifComment', function(conditional, options) {
 });
 
 Handlebars.registerHelper("format_date", function(timestamp) {
-  var monthNames = [
-    "Jan", "Feb", "Mar",
-    "Apr", "May", "Jun", "Jul",
-    "Aug", "Sept", "Oct",
-    "Nov", "Dec"
-  ];
-
   return timestamp.getDate().toLocaleDateString();
-
-  // var hours = timestamp.getHours();
-  // var minutes = timestamp.getMinutes();
-  // var ampm = hours >= 12 ? 'pm' : 'am';
-  // hours = hours % 12;
-  // hours = hours ? hours : 12; // the hour '0' should be '12'
-  // minutes = minutes < 10 ? '0'+minutes : minutes;
-  // var strTime = hours + ':' + minutes + ' ' + ampm;
-  // return timestamp.getMonth()+1 + " " + timestamp.getDate() + " at " + strTime;
 })
 
 var delay = (function(){
@@ -184,5 +167,3 @@ var delay = (function(){
 Handlebars.registerHelper("inc", function(value, options) { 
   return parseInt(value) + 1;
 });
-
-// App.board.lists.models[0].cards.models[0].attributes.comments !! :)

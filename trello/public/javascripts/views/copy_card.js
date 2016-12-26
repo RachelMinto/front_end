@@ -53,6 +53,7 @@ var CopyCard = Backbone.View.extend({
   render: function(data) {
     $('.pop-over').attr('class', 'pop-over copy_card is-shown');
     $('.pop-over').html(this.template(data));
+    $('.copy_card_title_text').focus().select();
   },
   updatePositionOptions: function(e) {
     debugger;
