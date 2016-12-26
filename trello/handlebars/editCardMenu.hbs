@@ -13,7 +13,7 @@
     </div>
       <p>in list <a href="">{{list_title}}</a></p>
   </div>
-  <i class="icon-cancel"></i>
+  <i class="icon-cancel close_edit_card"></i>
   <div class="card_content">
     <div class="card_edit_menu_labels">
       {{#if labels}}
@@ -29,11 +29,12 @@
       {{#if description}}
       <p>Description
         <a href="" class="edit_card_description">
-          <span>Edit</span>
+          <span> Edit</span>
         </a>
       </p>
       <p class="card_description_text">{{description}}</p>    
       {{else}}
+        <i class="icon-description"></i>
         <a href="" class="edit_card_description">
           <span>Edit the description...</span>
         </a>      
@@ -43,8 +44,8 @@
       <p>Description</p>
       <form autocomplete="off" method="" action="">
         <textarea class="card_description_input" style="overflow: hidden; word-wrap: break-word; resize: none; height: 108px;">{{description}}</textarea>
-        <a href="" class="add_description submit_info_button">Save</a>
-        <a href="" class="cancel_submission close_card_edit_description">X</a>
+        <div class="add_description submit_info_button">Save</div>
+        <i class="icon-cancel cancel_submission close_card_edit_description"></i>
       </form>
     </div>
     <div class="card_comments">

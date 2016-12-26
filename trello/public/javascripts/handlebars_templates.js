@@ -170,11 +170,11 @@ this["JST"]["editCardMenu"] = Handlebars.template({"1":function(container,depth0
 },"6":function(container,depth0,helpers,partials,data) {
     var helper;
 
-  return "<p>Description<a href=\"\" class=\"edit_card_description\"><span>Edit</span></a></p><p class=\"card_description_text\">"
+  return "<p>Description<a href=\"\" class=\"edit_card_description\"><span> Edit</span></a></p><p class=\"card_description_text\">"
     + container.escapeExpression(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"description","hash":{},"data":data}) : helper)))
     + "</p>";
 },"8":function(container,depth0,helpers,partials,data) {
-    return "<a href=\"\" class=\"edit_card_description\"><span>Edit the description...</span></a>";
+    return "<i class=\"icon-description\"></i><a href=\"\" class=\"edit_card_description\"><span>Edit the description...</span></a>";
 },"10":function(container,depth0,helpers,partials,data) {
     return "<hr><div class=\"menu_button delete_card_warning\"><i class=\"icon-delete\"></i>Delete</div><div class=\"menu_button unarchive_card\"><i class=\"icon-unarchive\"></i>Send to board</div>";
 },"12":function(container,depth0,helpers,partials,data) {
@@ -190,13 +190,13 @@ this["JST"]["editCardMenu"] = Handlebars.template({"1":function(container,depth0
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
     + "\" style=\"overflow: hidden; word-wrap: break-word; height: 24px;\"></div></div><p>in list <a href=\"\">"
     + alias4(((helper = (helper = helpers.list_title || (depth0 != null ? depth0.list_title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"list_title","hash":{},"data":data}) : helper)))
-    + "</a></p></div><i class=\"icon-cancel\"></i><div class=\"card_content\"><div class=\"card_edit_menu_labels\">"
+    + "</a></p></div><i class=\"icon-cancel close_edit_card\"></i><div class=\"card_content\"><div class=\"card_edit_menu_labels\">"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.labels : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</div><div class=\"card_description\">"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.description : depth0),{"name":"if","hash":{},"fn":container.program(6, data, 0),"inverse":container.program(8, data, 0),"data":data})) != null ? stack1 : "")
     + "</div><div class=\"invisible edit_card_description_popover\"><p>Description</p><form autocomplete=\"off\" method=\"\" action=\"\"><textarea class=\"card_description_input\" style=\"overflow: hidden; word-wrap: break-word; resize: none; height: 108px;\">"
     + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
-    + "</textarea><a href=\"\" class=\"add_description submit_info_button\">Save</a><a href=\"\" class=\"cancel_submission close_card_edit_description\">X</a></form></div><div class=\"card_comments\"><i class=\"icon-comment\"></i><h3>Add Comment</h3><form autocomplete=\"off\"><textarea placeholder=\"Write a comment...\" class=\"comment_input\"></textarea><div class=\"send_comment_wrapper\"><div class=\"send_comment submit_info_button\">Send</div></div></form></div>"
+    + "</textarea><div class=\"add_description submit_info_button\">Save</div><i class=\"icon-cancel cancel_submission close_card_edit_description\"></i></form></div><div class=\"card_comments\"><i class=\"icon-comment\"></i><h3>Add Comment</h3><form autocomplete=\"off\"><textarea placeholder=\"Write a comment...\" class=\"comment_input\"></textarea><div class=\"send_comment_wrapper\"><div class=\"send_comment submit_info_button\">Send</div></div></form></div>"
     + ((stack1 = container.invokePartial(partials.activity,depth0,{"name":"activity","data":data,"helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
     + "</div><div class=\"card_action_menu\"><div class=\"card_add_menu\"><h3>Add</h3><div class=\"menu_button labels\"><i class=\"icon-label\"></i>Labels</div></div><div class=\"card_actions_menu\"><h3>Actions</h3><div class=\"menu_button move_card\"><i class=\"icon-move\"></i>Move</div><div class=\"menu_button copy_card\"><i class=\"icon-copy\"></i>Copy</div> <div class=\"menu_button subscribe_card\"><i class=\"icon-subscribe\"></i>Subscribe</div>"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.archived : depth0),{"name":"if","hash":{},"fn":container.program(10, data, 0),"inverse":container.program(12, data, 0),"data":data})) != null ? stack1 : "")
@@ -248,7 +248,7 @@ this["JST"]["list"] = Handlebars.template({"1":function(container,depth0,helpers
     + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
     + "\"></ul><div class=\"add_card_composer invisible\"><form action=\"/board/"
     + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
-    + "/items\", method=\"post\" class=\"addCardForm\" autocomplete=\"off\"><input class=\"card\" id=\"new_card_name\" name=\"title\" autofocus><div><a href=\"\" class=\"submit_info_button selected submit_new_card\"><div>Add</div></a><i class=\"icon-cancel\"></i><a href=\"\" class=\"get_more_options\"></a></div></form></div><a href=\"\" class=\"add_card submit_info_button\">Add a card...</a></div><div class=\"wrapper card_menu_popup menu-popover list_options_popup invisible\"><div class=\"card_menu_popup_header\"><h5>List Actions</h5><i class=\"icon-cancel\"></i></div><hr><div class=\"list_action_options\"><div class=\"list_options_add_card\">Add Card...</div><div class=\"list_options_copy\">Copy List...</div><div class=\"list_options_move\">Move List...</div><div class=\"list_options_subscribe\">Subscribe</div><hr></div></div>";
+    + "/items\", method=\"post\" class=\"addCardForm\" autocomplete=\"off\"><input class=\"card\" id=\"new_card_name\" name=\"title\" autofocus><div><a href=\"\" class=\"submit_info_button selected submit_new_card\"><div>Add</div></a><i class=\"icon-cancel card-composer\"></i><a href=\"\" class=\"get_more_options\"></a></div></form></div><a href=\"\" class=\"add_card submit_info_button\">Add a card...</a></div><div class=\"wrapper card_menu_popup menu-popover list_options_popup invisible\"><div class=\"card_menu_popup_header\"><h5>List Actions</h5><i class=\"icon-cancel list-actions\"></i></div><hr><div class=\"list_action_options\"><div class=\"list_options_add_card\">Add Card...</div><div class=\"list_options_copy\">Copy List...</div><div class=\"list_options_move\">Move List...</div><div class=\"list_options_subscribe\">Subscribe</div><hr></div></div>";
 },"useData":true});
 
 this["JST"]["move_list"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {

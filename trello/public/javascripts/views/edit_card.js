@@ -2,7 +2,7 @@ var EditCardView = Backbone.View.extend({
   className: "modal edit_card_menu",
   events: {
     "click": "closeModal",
-    "click .icon-cancel": "closeModal",
+    "click .icon-cancel.close_edit_card": "closeModal",
     "click .edit_card_menu_wrapper": "preventClose",
     "click .card_content": "edit",
     "click .labels": "openLabelPopup",
@@ -21,6 +21,7 @@ var EditCardView = Backbone.View.extend({
     "click .unarchive_card": "unarchiveCard",
     "click .delete_card_warning": "openDeleteWarning",
     "click .copy_card": "openCopyPopup",
+    "click .close_card_edit_description": "cancelDescriptionUpdate",
   },
   template: App.templates.editCardMenu,
   addChecklistTodo: function(e) {
@@ -39,12 +40,19 @@ var EditCardView = Backbone.View.extend({
   archiveCard: function() {
     this.model.archive();
   },
+  cancelDescriptionUpdate: function() {
+    this.$el.find(".edit_card_description_popover").addClass("invisible");
+    this.$el.find(".card_description").removeClass("invisible");
+    return false
+  },
   editNameView: function() {
     this.$el.find(".new_card_title_input").removeClass("invisible");
     this.$el.find(".card_title_placeholder").addClass("invisible");
   },
   openEditDescription: function(e) {
     this.$el.find(".edit_card_description_popover").removeClass("invisible");
+    this.$el.find(".card_description").addClass("invisible");
+    this.$el.find(".card_description_input").focus().select();
     return false;
   },
   render: function() {
@@ -110,9 +118,7 @@ var EditCardView = Backbone.View.extend({
   updateDescription: function(e) {
     e.preventDefault();
     var newDescription = this.$el.find('.card_description_input').val();
-    this.model.set({"description":newDescription});
-    this.$el.find(".card_description_text").text(newDescription);
-    this.$el.find(".edit_card_description_popover").addClass("invisible");
+    this.model.updateDescription(newDescription);
   },
   initialize: function() {
     this.render();

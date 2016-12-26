@@ -124,20 +124,6 @@
 #board_nav a {
   color: #fff;
 }
-.logo {
-  width: 33%;
-}
-#account_info {
-  height: 30px;
-}
-#account_info #profile_settings {
-  color: #fff;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0, rgba(255,255,255,0.2) 100%);
-}
-#account_info #profile_settings span {
-  margin: 10px 8px;
-  line-height: 30px;
-}
 .list_header {
   flex: none;
 }
@@ -508,6 +494,24 @@ textarea.comment_input {
   margin-top: 16px;
   margin-left: 42px;
 }
+.edit_card_description_popover {
+  margin-left: 42px;
+}
+.edit_card_description_popover textarea {
+  background: rgba(0,0,0,0.03);
+  border-color: rgba(0,0,0,0.15);
+  box-shadow: inset 0 1px 6px rgba(0,0,0,0.1);
+  margin-bottom: 4px;
+  outline: none;
+  margin-top: 10px;
+  width: 100%;
+}
+i.icon-cancel.close_card_edit_description {
+  position: relative;
+}
+.card_description {
+  margin-top: 16px;
+}
 div#board_menu_wrapper.invisible {
   display: none;
 }
@@ -729,6 +733,12 @@ div#board_menu_wrapper hr {
   left: 250px;
   z-index: 1;
   width: 300px;
+  width: 300px;
+  margin: 0 auto;
+  background: #fff;
+  border-bottom-color: #c4c9cc;
+  border: 1px solid #d6dadc;
+  overflow: hidden;
 }
 .pop-over.search {
   background: #e2e4e6;

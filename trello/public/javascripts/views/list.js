@@ -11,11 +11,11 @@ var ListView = Backbone.View.extend({
     "click .submit_new_card": "addCard",
     "click .icon-ellipsis": "openEditListMenu",
     // "click .list_options_add_card": "showCardComposer",
-    "click .icon-cancel": "closeEditListMenu",
+    "click .icon-cancel.list-actions": "closeEditListMenu",
     "click .list_options_subscribe": "subscribeToggle",
     "click .list_options_copy": "openCopyListPopup",
     "click .list_options_move": "openMoveListPopup",
-    "click .icon-cancel": "hideCardComposer"
+    "click .icon-cancel.card-composer": "hideCardComposer"
   },
   template: App.templates.list,
   addingNewCard: function(e) {
