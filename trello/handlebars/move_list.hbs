@@ -1,0 +1,18 @@
+<div class="move_list_popup card_menu_popup">
+  <div class="card_menu_popup_header"><h5>Move List</h5><i class="icon-cancel"></i></div>
+  <hr>
+    <div class="all_positions_dropdown_placeholder wide setting menu_button">
+      <span class="label">Position</span>
+      <span class="position_value">{{position}}</span>
+<!--         <label>Position</label>   -->  
+      <select class="position_select_options" name="position_select_options">
+        {{#lists}}
+        <option value="{{@index}}">{{inc @index}}</option>
+        {{/lists}}
+      </select>      
+    </div>
+    <div class="submit_info_button selected move_submission">
+      Move
+    </div>        
+  </div>
+</div>

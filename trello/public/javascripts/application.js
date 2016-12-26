@@ -20,11 +20,29 @@ var App = {
   getNextListID: function() {
     this.lastListID++
     return this.lastListID; 
-  },  
+  },
+  copyList: function(title, model) {
+    var newListModel = model.clone();
+    newListModel.unset("id");
+    newListModel.set("title", title);
+    this.board.lists.add(newListModel);
+    this.renderLists();
+  },
   createBoardMenu: function() {
     var model = new Backbone.Model();
     model.set({user: App.user.attributes, board: App.board.attributes});
     this.boardMenu = new BoardMenuView({ model: model });    
+  },
+  moveList: function(position, model) {
+    var oldPosition = this.board.lists.indexOf(model);
+
+    if (position === oldPosition) return this;
+
+    var temp = model
+
+    this.board.lists.remove(model);
+    this.board.lists.add(temp, { at: position });
+    this.renderLists();
   },
   movePopup: function(card, list) {
     $('.pop-over').addClass("is-shown search");

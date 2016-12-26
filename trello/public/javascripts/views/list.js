@@ -65,9 +65,13 @@ var ListView = Backbone.View.extend({
   },
   openCopyListPopup: function() {
     new CopyList({ model: this.model });
+    this.closeEditListMenu();
+    return false;    
   },
   openMoveListPopup: function() {
     new MoveList({ model: this.model });
+    this.closeEditListMenu();
+    return false;
   },  
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));

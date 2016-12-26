@@ -38,7 +38,7 @@ var CopyCard = Backbone.View.extend({
     var newListID = $(".list_select_options").val();
     var position = $(".position_select_options").val();
 
-    var newCardModel = this.model.clone(); // NEED TO UPDATE ID! POST TO SERVER, collection.
+    var newCardModel = this.model.clone();
 
     var title = $(".copy_card_title_text").val();
     newCardModel.unset("id");
