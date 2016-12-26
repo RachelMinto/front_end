@@ -17,7 +17,7 @@ Handlebars.registerPartial("activity", Handlebars.template({"1":function(contain
     + alias2(alias1((depth0 != null ? depth0.list : depth0), depth0))
     + "</p><div class=\"posted_comment_content\">"
     + alias2(alias1((depth0 != null ? depth0.title : depth0), depth0))
-    + "</div><p class=\"timestamp\"> on"
+    + "</div><p class=\"timestamp\"> on "
     + alias2(alias1((depth0 != null ? depth0.timestamp : depth0), depth0))
     + "</p></div><hr>";
 },"5":function(container,depth0,helpers,partials,data) {
@@ -248,7 +248,7 @@ this["JST"]["list"] = Handlebars.template({"1":function(container,depth0,helpers
     + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
     + "\"></ul><div class=\"add_card_composer invisible\"><form action=\"/board/"
     + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
-    + "/items\", method=\"post\" class=\"addCardForm\" autocomplete=\"off\"><input class=\"card\" id=\"new_card_name\" name=\"title\" autofocus><div><a href=\"\" class=\"submit_new_card\"><div>Add</div></a><i class=\"icon-cancel\"></i><a href=\"\" class=\"get_more_options\"><span>...</span></a></div></form></div><a href=\"\" class=\"add_card submit_info_button\">Add a card...</a></div><div class=\"wrapper card_menu_popup menu-popover list_options_popup invisible\"><div class=\"card_menu_popup_header\"><h5>List Actions</h5><i class=\"icon-cancel\"></i></div><hr><div class=\"list_action_options\"><div class=\"list_options_add_card\">Add Card...</div><div class=\"list_options_copy\">Copy List...</div><div class=\"list_options_move\">Move List...</div><div class=\"list_options_subscribe\">Subscribe</div><hr></div></div>";
+    + "/items\", method=\"post\" class=\"addCardForm\" autocomplete=\"off\"><input class=\"card\" id=\"new_card_name\" name=\"title\" autofocus><div><a href=\"\" class=\"submit_info_button selected submit_new_card\"><div>Add</div></a><i class=\"icon-cancel\"></i><a href=\"\" class=\"get_more_options\"></a></div></form></div><a href=\"\" class=\"add_card submit_info_button\">Add a card...</a></div><div class=\"wrapper card_menu_popup menu-popover list_options_popup invisible\"><div class=\"card_menu_popup_header\"><h5>List Actions</h5><i class=\"icon-cancel\"></i></div><hr><div class=\"list_action_options\"><div class=\"list_options_add_card\">Add Card...</div><div class=\"list_options_copy\">Copy List...</div><div class=\"list_options_move\">Move List...</div><div class=\"list_options_subscribe\">Subscribe</div><hr></div></div>";
 },"useData":true});
 
 this["JST"]["move_list"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {

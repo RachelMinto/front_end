@@ -28,11 +28,7 @@ ul.list_container
   overflow-y: auto
   flex: 1 1 auto
   li.ui-sortable-handle
-    background: colors.primary.default
-    padding: 6px 6px 2px 8px
-    margin: 8px
-    border-radius: 4px
-    text-decoration: none
+    list_item()
 
 .add_card
   box-sizing: border-box
@@ -109,3 +105,20 @@ ul.list_container
     &:hover
       background-color: #298FCA
       color: #fff
+
+form.addCardForm
+  input
+    width: 240px
+    height: 74px
+    list_item()
+
+.submit_new_card.submit_info_button
+  margin: 0 8px 8px 8px
+  text-decoration: none
+
+.add_card_composer
+  .icon-cancel
+    font-size: 24px
+    color: #8c8c8c
+    &:hover
+      color: #4d4d4d

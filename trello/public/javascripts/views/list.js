@@ -10,11 +10,12 @@ var ListView = Backbone.View.extend({
     "submit form": "addCard",
     "click .submit_new_card": "addCard",
     "click .icon-ellipsis": "openEditListMenu",
-    "click .list_options_add_card": "showCardComposer",
+    // "click .list_options_add_card": "showCardComposer",
     "click .icon-cancel": "closeEditListMenu",
     "click .list_options_subscribe": "subscribeToggle",
     "click .list_options_copy": "openCopyListPopup",
     "click .list_options_move": "openMoveListPopup",
+    "click .icon-cancel": "hideCardComposer"
   },
   template: App.templates.list,
   addingNewCard: function(e) {
@@ -27,6 +28,11 @@ var ListView = Backbone.View.extend({
   closeEditListMenu: function() {
     this.$el.find(".list_options_popup").addClass("invisible");
     return false;    
+  },
+  hideCardComposer: function() {
+    this.$el.find(".add_card").removeClass("invisible");
+    this.$el.find(".add_card_composer").addClass("invisible");
+    return false
   },
   showCardComposer: function(e) {
     this.$el.find(".list_options_popup").addClass("invisible");
