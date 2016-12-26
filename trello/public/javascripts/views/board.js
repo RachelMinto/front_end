@@ -23,7 +23,10 @@ var BoardView = Backbone.View.extend({
       placeholder: "ui-sortable-placeholder",
       forcePlaceholderSize: true,
       tolerance: 'pointer',
-      axis: 'x',
+      axis: 'x',  
+      start: function(event, ui) {
+        ui.placeholder.height(ui.item.find('.list_content_wrapper').height());
+      },              
       update: function(event, ui) {
         ui.item.trigger('drop', ui.item.index())
       }

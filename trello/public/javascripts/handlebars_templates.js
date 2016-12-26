@@ -208,11 +208,11 @@ this["JST"]["header"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":fu
 
   return "<div id=\"full_page\"><div id=\"header\"><div id=\"board_info\"><div id=\"search_input_wrapper\"><input type=\"text\" id=\"search_input\" name=\"search_input\" spellcheck=\"false\" dir=\"auto\" value=\""
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "\" style=\"overflow: hidden; word-wrap: break-word;\"><i class=\"icon-search\"></i></div></div><div class=\"logo\"><span><a href=\"#\"><img src=\"/images/header-logo-2x.png\"></a></span></div><div id=\"account_info\"><div id=\"profile_settings\"><span class=\"wrapper\">"
+    + "\" style=\"overflow: hidden; word-wrap: break-word;\"><i class=\"icon-search\"></i></div></div><div class=\"logo\"><span><a href=\"#\"><img src=\"/images/header-logo-2x.png\"></a></span></div><div id=\"account_info\"><span class=\"wrapper initials_header\">"
     + alias4(((helper = (helper = helpers.initials || (depth0 != null ? depth0.initials : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"initials","hash":{},"data":data}) : helper)))
-    + "</span><span>"
+    + "</span><div id=\"profile_settings\"><span class=\"username_header\">"
     + alias4(((helper = (helper = helpers.username || (depth0 != null ? depth0.username : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"username","hash":{},"data":data}) : helper)))
-    + "</span></div><i id=\"trello_info\" class=\"icon-info\"></i><i id=\"notifications\" class=\"icon-bell\"></i></div></div></div>";
+    + "</span></div></div></div></div>";
 },"useData":true});
 
 this["JST"]["labels"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {

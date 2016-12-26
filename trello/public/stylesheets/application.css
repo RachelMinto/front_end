@@ -57,6 +57,31 @@
   font-size: 18px;
   padding-right: 4px;
 }
+.logo {
+  width: 33%;
+}
+#account_info {
+  height: 30px;
+}
+#account_info #profile_settings span {
+  margin: 10px 8px;
+  line-height: 30px;
+}
+.wrapper.initials_header {
+  display: inline-block;
+  width: 16px;
+  padding-right: 4px;
+  height: 30px;
+  margin-bottom: 2px;
+  margin-top: 2px;
+  position: relative;
+  line-height: 30px;
+  width: 30px;
+  border-radius: 3px 0 0 3px;
+}
+#profile_settings .username_header {
+  border-radius: 0 3px 3px 0;
+}
 #board_nav {
   -webkit-box-flex: 0;
   color: #fff;
@@ -88,6 +113,20 @@
 }
 #board_nav a {
   color: #fff;
+}
+.logo {
+  width: 33%;
+}
+#account_info {
+  height: 30px;
+}
+#account_info #profile_settings {
+  color: #fff;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0, rgba(255,255,255,0.2) 100%);
+}
+#account_info #profile_settings span {
+  margin: 10px 8px;
+  line-height: 30px;
 }
 .list_header {
   flex: none;
