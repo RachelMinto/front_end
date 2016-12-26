@@ -1,12 +1,9 @@
 <input type="text" class="add_list_placeholder add_button" placeholder="Add a list...">
 <div class="wrapper invisible add_list_input_field">
-  <form action="/board/lists", method="post" name="add_list_form">
+  <form action="/board/lists", method="post" name="add_list_form" autocomplete="off">
     <input type="text" placeholder="Add a list..." id="add_list_name_input" name="title">
-    <a href=""  id="add_new_list">
-      <button type="submit">Save</button>
+    <div class="submit_info_button selected" id="add_new_list">Save</div>
     </a>
-    <a href=''>
-      <div id="cancel_add_list">X</div>
-    </a>
+      <i class="icon-cancel cancel_add_list"></i>
   </form>
 </div>

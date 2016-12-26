@@ -2,7 +2,7 @@ var AddListView = Backbone.View.extend({
   template: App.templates.add_list_placeholder,
   events: {
     "click .add_button": "addSaveButton",
-    "click #cancel_add_list": "cancelAddList",
+    "click .icon-cancel": "cancelAddList",
     "submit form": "addNewList",
     "click #add_new_list": "addNewList"    
   },
@@ -40,6 +40,7 @@ var AddListView = Backbone.View.extend({
     // unbind view? Recreate new after list is added?
   },
   cancelAddList: function(e) {
+    App.renderLists();
     e.preventDefault();
   },
   initialize: function() {

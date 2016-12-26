@@ -6,7 +6,8 @@ var BoardMenuView = Backbone.View.extend({
   },
   template: App.templates.board_menu,
   render: function(data) {
-    $('#content').append(this.$el.html(this.template(data)));
+    var wrapper = {activities: data}
+    $('#content').append(this.$el.html(this.template(wrapper)));
     $('#board_menu_wrapper').addClass("invisible"); 
   },
   hide: function() {

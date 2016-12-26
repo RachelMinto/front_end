@@ -7,6 +7,23 @@ var Card = Backbone.Model.extend({
     this.set("archived", true);
     this.syncServer();
   },
+  movedCardActivty: function(oldListTitle, newListTitle) {
+    var self = this;
+    var activities = _.clone(this.get("activities")) || [];
+    var date = new Date();
+
+    var activity = {
+      action: "moved",
+      user: App.user.get("username"),
+      card: self.get("title"),
+      oldList: oldListTitle,
+      newList: newListTitle,
+      timestamp: date.toLocaleDateString(),
+    };
+
+    activities.push(activity);
+    this.set("activities", activities);
+  },
   unarchive: function() {
     this.set("archived", false);
     this.syncServer();
@@ -59,7 +76,7 @@ var Card = Backbone.Model.extend({
   },
   createComment: function(comment) {
     var self = this;
-    var date = new Date()
+    var date = new Date();
 
     var activities = _.clone(this.get("activities")) || [];
     var activity = {

@@ -268,6 +268,16 @@ form.addCardForm input {
 .add_card_composer .icon-cancel:hover {
   color: #4d4d4d;
 }
+.add_list_input_field .icon-cancel {
+  font-size: 24px;
+  color: #8c8c8c;
+}
+.add_list_input_field .icon-cancel:hover {
+  color: #4d4d4d;
+}
+.submit_info_button#add_new_list {
+  margin: 8px;
+}
 .archived_header {
   height: 25px;
   background-color: #f00;

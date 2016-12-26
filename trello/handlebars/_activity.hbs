@@ -3,22 +3,22 @@
     <i class="icon-activity"></i><h3>Activity</h3>
   </div>
   <div class="all_activities">
-   {{#if activities}}
    {{#each activities}}
-      {{#ifComment activities.action value="comment"}}
-      <div>
-        <p><span class="member-initials"><strong>{{this.user}}</strong> on {{this.list}}</p>
+      {{#ifAction activities.action value="comment"}} 
+      <div class="comment_card_activity_item">
+        <p><span class="member-initials"></span><strong>{{this.user}}</strong> on {{this.list}}</p>
         <div class="posted_comment_content">{{this.title}}</div>
         <p class="timestamp"> on {{this.timestamp}}</p>
       </div>
-      <hr>          
-      {{else}}
-      <div>
-        <span class="member-initials"></span><span><strong>{{this.user}}</strong><span> {{this.action}} this card to {{this.list}} on <span class="timestamp">{{this.timestamp}}</span>
-      </div>
-      <hr>
-      {{/ifComment}}
+      <hr>    
+      {{else}} {{#ifAction activities.action value="moved"}} 
+      {{debug this}}           
+        <div class="moved_card_activity_item">
+          <p><span class="member-initials"></span><strong>{{this.user}} </strong> moved {{this.card}} from {{this.oldList}} to {{this.newList}}</p>
+          <p class="timestamp"> on {{this.timestamp}}</p>
+        </div>
+        <hr> 
+      {{/ifAction}} {{/ifAction}}                      
     {{/each}}
-  {{/if}}
   </div>
-</div> 
+</div>

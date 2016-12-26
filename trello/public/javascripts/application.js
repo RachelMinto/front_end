@@ -37,12 +37,6 @@ var App = {
     return this.lastListID; 
   },
   copyList: function(title, model) {
-
-    // var newListModel = model.clone();
-    // newListModel.unset("id");
-    // newListModel.set("title", title);
-    // this.board.lists.add({"title":title});
-    // this.renderLists();
     var oldID;
     newList = {
       "title": title,
@@ -65,8 +59,7 @@ var App = {
   },
   createBoardMenu: function() {
     var activities = this.getAllActivities();
-    var initials = App.user.initials
-    this.boardMenu = new BoardMenuView({initials: initials, activities: activities});    
+    this.boardMenu = new BoardMenuView(activities);    
   },
   moveList: function(position, model) {
     var oldPosition = this.board.lists.indexOf(model);
@@ -125,7 +118,11 @@ var App = {
     } else {
       newList.cards.add(model);
     };
-    // model.trigger("movedCardActivty", oldList, newList)
+
+    var oldListTitle = oldList.get("title")
+    var newListTitle = newList.get("title")
+
+    model.movedCardActivty(oldListTitle, newListTitle);
     newList.cards.syncServer();
     oldList.cards.syncServer();
     this.renderLists();
@@ -146,15 +143,13 @@ var App = {
   },
 };
 
-Handlebars.registerHelper('ifComment', function(conditional, options) {
+Handlebars.registerHelper('ifAction', function(conditional, options) {
   if(options.hashvalue === conditional) {
     return options.fn(this);
+  } else {
+    return options.inverse(this);
   }
 });
-
-Handlebars.registerHelper("format_date", function(timestamp) {
-  return timestamp.getDate().toLocaleDateString();
-})
 
 var delay = (function(){
   var timer = 0;

@@ -3,15 +3,11 @@ this["JST"] = this["JST"] || {};
 Handlebars.registerPartial("activity", Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.activities : depth0),{"name":"each","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+  return ((stack1 = (helpers.ifAction || (depth0 && depth0.ifAction) || helpers.helperMissing).call(depth0 != null ? depth0 : {},((stack1 = (depth0 != null ? depth0.activities : depth0)) != null ? stack1.action : stack1),{"name":"ifAction","hash":{"value":"comment"},"fn":container.program(2, data, 0),"inverse":container.program(4, data, 0),"data":data})) != null ? stack1 : "");
 },"2":function(container,depth0,helpers,partials,data) {
-    var stack1;
-
-  return ((stack1 = (helpers.ifComment || (depth0 && depth0.ifComment) || helpers.helperMissing).call(depth0 != null ? depth0 : {},((stack1 = (depth0 != null ? depth0.activities : depth0)) != null ? stack1.action : stack1),{"name":"ifComment","hash":{"value":"comment"},"fn":container.program(3, data, 0),"inverse":container.program(5, data, 0),"data":data})) != null ? stack1 : "");
-},"3":function(container,depth0,helpers,partials,data) {
     var alias1=container.lambda, alias2=container.escapeExpression;
 
-  return "<div><p><span class=\"member-initials\"><strong>"
+  return " <div class=\"comment_card_activity_item\"><p><span class=\"member-initials\"></span><strong>"
     + alias2(alias1((depth0 != null ? depth0.user : depth0), depth0))
     + "</strong> on "
     + alias2(alias1((depth0 != null ? depth0.list : depth0), depth0))
@@ -20,36 +16,44 @@ Handlebars.registerPartial("activity", Handlebars.template({"1":function(contain
     + "</div><p class=\"timestamp\"> on "
     + alias2(alias1((depth0 != null ? depth0.timestamp : depth0), depth0))
     + "</p></div><hr>";
-},"5":function(container,depth0,helpers,partials,data) {
-    var alias1=container.lambda, alias2=container.escapeExpression;
+},"4":function(container,depth0,helpers,partials,data) {
+    var stack1;
 
-  return "<div><span class=\"member-initials\"></span><span><strong>"
-    + alias2(alias1((depth0 != null ? depth0.user : depth0), depth0))
-    + "</strong><span> "
-    + alias2(alias1((depth0 != null ? depth0.action : depth0), depth0))
-    + " this card to "
-    + alias2(alias1((depth0 != null ? depth0.list : depth0), depth0))
-    + " on <span class=\"timestamp\">"
-    + alias2(alias1((depth0 != null ? depth0.timestamp : depth0), depth0))
-    + "</span></div><hr>";
+  return " "
+    + ((stack1 = (helpers.ifAction || (depth0 && depth0.ifAction) || helpers.helperMissing).call(depth0 != null ? depth0 : {},((stack1 = (depth0 != null ? depth0.activities : depth0)) != null ? stack1.action : stack1),{"name":"ifAction","hash":{"value":"moved"},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + " ";
+},"5":function(container,depth0,helpers,partials,data) {
+    var alias1=container.escapeExpression, alias2=container.lambda;
+
+  return " "
+    + alias1((helpers.debug || (depth0 && depth0.debug) || helpers.helperMissing).call(depth0 != null ? depth0 : {},depth0,{"name":"debug","hash":{},"data":data}))
+    + "<div class=\"moved_card_activity_item\"><p><span class=\"member-initials\"></span><strong>"
+    + alias1(alias2((depth0 != null ? depth0.user : depth0), depth0))
+    + " </strong> moved "
+    + alias1(alias2((depth0 != null ? depth0.card : depth0), depth0))
+    + " from "
+    + alias1(alias2((depth0 != null ? depth0.oldList : depth0), depth0))
+    + " to "
+    + alias1(alias2((depth0 != null ? depth0.newList : depth0), depth0))
+    + "</p><p class=\"timestamp\"> on "
+    + alias1(alias2((depth0 != null ? depth0.timestamp : depth0), depth0))
+    + "</p></div><hr> ";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
   return "<div class=\"card_activities\"><div class=\"activities_header\"><i class=\"icon-activity\"></i><h3>Activity</h3></div><div class=\"all_activities\">"
-    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.activities : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</div></div> ";
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.activities : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</div></div>";
 },"useData":true}));
 
 this["JST"]["add_list_placeholder"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<input type=\"text\" class=\"add_list_placeholder add_button\" placeholder=\"Add a list...\"><div class=\"wrapper invisible add_list_input_field\"><form action=\"/board/lists\", method=\"post\" name=\"add_list_form\"><input type=\"text\" placeholder=\"Add a list...\" id=\"add_list_name_input\" name=\"title\"><a href=\"\"id=\"add_new_list\"><button type=\"submit\">Save</button></a><a href=''><div id=\"cancel_add_list\">X</div></a></form></div>";
+    return "<input type=\"text\" class=\"add_list_placeholder add_button\" placeholder=\"Add a list...\"><div class=\"wrapper invisible add_list_input_field\"><form action=\"/board/lists\", method=\"post\" name=\"add_list_form\" autocomplete=\"off\"><input type=\"text\" placeholder=\"Add a list...\" id=\"add_list_name_input\" name=\"title\"><div class=\"submit_info_button selected\" id=\"add_new_list\">Save</div></a><i class=\"icon-cancel cancel_add_list\"></i></form></div>";
 },"useData":true});
 
 this["JST"]["board_menu"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "<div id=\"board_menu\"><div class=\"board_menu_header wrapper\"><h2>Menu</h2><a href=\"#\" id=\"close_menu\"><i class=\"icon-cancel\"></i></a><hr></div><div><hr><div class=\"initials\">"
-    + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.user : depth0)) != null ? stack1.initials : stack1), depth0))
-    + "</div></div><div class=\"side_menu_activity\">"
+  return "<div id=\"board_menu\"><div class=\"board_menu_header wrapper\"><h2>Menu</h2><a href=\"#\" id=\"close_menu\"><i class=\"icon-cancel\"></i></a><hr></div><div class=\"side_menu_activity\">"
     + ((stack1 = container.invokePartial(partials.activity,depth0,{"name":"activity","data":data,"helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
     + "</div></div>";
 },"usePartial":true,"useData":true});
