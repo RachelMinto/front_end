@@ -1,6 +1,15 @@
+div#board_menu_wrapper.invisible
+  display: none
+
 div#board_menu_wrapper
+  transition-property: transform, width
+  transition-timing-function: ease-in
+  transform: translateX(0)
   width: 340px
-  right: -340px
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
   border-radius: 0px
   .activity
     border-bottom: 1px solid #E2E4E6
@@ -9,3 +18,10 @@ div#board_menu_wrapper
     height: 1px
     background: #D6DADC
     margin: 12px 0
+
+.board-wrapper.menu-shown
+  margin-right: 340px
+  transform: translateX(0)
+
+#open_board_menu.invisible
+  display: none  

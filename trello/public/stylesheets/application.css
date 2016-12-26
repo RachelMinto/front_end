@@ -392,9 +392,18 @@ textarea.comment_input {
   background: #cf513d;
   border-color: #cf513d #cf513d #933b27;
 }
+div#board_menu_wrapper.invisible {
+  display: none;
+}
 div#board_menu_wrapper {
+  transition-property: transform, width;
+  transition-timing-function: ease-in;
+  transform: translateX(0);
   width: 340px;
-  right: -340px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
   border-radius: 0px;
 }
 div#board_menu_wrapper .activity {
@@ -405,6 +414,13 @@ div#board_menu_wrapper hr {
   height: 1px;
   background: #d6dadc;
   margin: 12px 0;
+}
+.board-wrapper.menu-shown {
+  margin-right: 340px;
+  transform: translateX(0);
+}
+#open_board_menu.invisible {
+  display: none;
 }
 .pop-over {
   display: none;
