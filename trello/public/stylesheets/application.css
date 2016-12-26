@@ -203,6 +203,16 @@ ul.list_container li.ui-sortable-handle {
   width: 216px;
   height: 18px;
 }
+.list_action_options div {
+  cursor: pointer;
+  font-weight: 700;
+  padding: 6px 10px;
+  margin: 0 -10px;
+}
+.list_action_options div:hover {
+  background-color: #298fca;
+  color: #fff;
+}
 .archived_header {
   height: 25px;
   background-color: #f00;
@@ -284,6 +294,9 @@ i.icon-cancel {
   margin-left: 4px;
   margin-top: 4px;
 }
+.card_content {
+  position: relative;
+}
 .card_content .card_item_labels_display span {
   box-sizing: border-box;
   height: 30px;
@@ -313,9 +326,14 @@ i.icon-cancel {
 }
 .card_content {
   display: inline-block;
-  padding: 8px 12px 12px 50px;
+  padding: 8px 12px 12px 10px;
   width: 508px;
   box-sizing: border-box;
+}
+.card_content i {
+  position: absolute;
+  left: 8px;
+  font-size: 24px;
 }
 .card_action_menu {
   display: inline-block;
@@ -392,6 +410,35 @@ textarea.comment_input {
   background: #cf513d;
   border-color: #cf513d #cf513d #933b27;
 }
+.card_edit_menu_labels,
+.card_description {
+  margin-left: 42px;
+}
+.card_edit_menu_labels p,
+.card_description p {
+  margin-bottom: 8px;
+  margin-top: 16px;
+}
+.card_description {
+  margin-top: 16px;
+}
+.card_comments h3,
+.card_comments form {
+  margin-left: 42px;
+}
+.edit_card_menu_wrapper .activities_header {
+  margin-left: 0;
+}
+.edit_card_menu_wrapper .activities_header i {
+  line-height: 50px;
+}
+.edit_card_menu_wrapper .all_activities {
+  margin-left: 0;
+}
+.edit_card_menu_wrapper .card_activities {
+  margin-top: 16px;
+  margin-left: 42px;
+}
 div#board_menu_wrapper.invisible {
   display: none;
 }
@@ -446,6 +493,52 @@ div#board_menu_wrapper hr {
   overflow-y: auto;
   padding: 12px 6px 12px 12px;
   width: 100%;
+}
+.board_menu_header {
+  box-sizing: border-box;
+  -webkit-box-flex: 0;
+  flex: 0 0 auto;
+  height: 46px;
+  padding: 0 6px 0 12px;
+  position: relative;
+  width: 100%;
+}
+.board_menu_header h2 {
+  line-height: 20px;
+  margin: 13px 30px 12px;
+  overflow: hidden;
+  text-align: center;
+  color: #4d4d4d;
+  font-size: 18px;
+  font-weight: bold;
+}
+.board_menu_header i {
+  position: absolute;
+  top: 2px;
+  right: 6px;
+  font-size: 24px;
+  color: #8c8c8c;
+}
+.activities_header h3 {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.activities_header hr {
+  background: #d6dadc;
+  border: 0;
+  height: 1px;
+}
+.activities_header i.icon-activity {
+  font-size: 24px;
+  color: #8c8c8c;
+  margin-right: 15px;
+}
+.timestamp {
+  color: #8c8c8c;
+  font-size: 10px;
+}
+.all_activities {
+  margin-left: 50px;
 }
 .pop-over {
   display: none;

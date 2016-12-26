@@ -71,6 +71,7 @@ i.icon-cancel
     margin-top: 4px
 
 .card_content
+  position: relative
   .card_item_labels_display
     span
       box-sizing: border-box
@@ -107,9 +108,13 @@ i.icon-cancel
 
 .card_content
   display: inline-block
-  padding: 8px 12px 12px 50px
+  padding: 8px 12px 12px 10px
   width: 508px
   box-sizing: border-box
+  i
+    position: absolute
+    left: 8px
+    font-size: 24px
 
 .card_action_menu
   display: inline-block
@@ -176,4 +181,31 @@ textarea.comment_input
   color: #fff
   &:hover
     background: #CF513D
-    border-color: #CF513D #CF513D #933B27  
+    border-color: #CF513D #CF513D #933B27
+
+.card_edit_menu_labels,
+.card_description
+  margin-left: 42px    
+  p
+    margin-bottom: 8px
+    margin-top: 16px
+
+.card_description
+  margin-top: 16px
+
+.card_comments
+  h3,
+  form
+    margin-left: 42px
+
+.edit_card_menu_wrapper
+  .activities_header
+    margin-left: 0
+    i
+      line-height: 50px
+  .all_activities
+    margin-left: 0
+  .card_activities
+    margin-top: 16px
+    margin-left: 42px
+

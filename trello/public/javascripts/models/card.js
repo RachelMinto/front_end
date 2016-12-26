@@ -11,14 +11,6 @@ var Card = Backbone.Model.extend({
     this.set("archived", false);
     this.syncServer();
   },
-  createChecklist: function(title) {
-    var self = this;
-    var current = _.clone(this.get("checklists")) || new ChecklistCollection();
-
-    current.add({title: title, todos: []});
-    this.set("checklists", current);
-    this.syncServer();  
-  },
   syncServer: function() {
     var self = this;
     this.sync("update", this, {
@@ -63,14 +55,13 @@ var Card = Backbone.Model.extend({
     var self = this;
     var date = new Date()
 
-
     var activities = _.clone(this.get("activities")) || [];
     var activity = {
       action: "comment",
       title: comment,
       user: App.user.get("username"),
       card: self.get("title"),
-      list: "",
+      list: self.collection.parentList.get("title"),
       timestamp: date.toLocaleDateString()
     };
 

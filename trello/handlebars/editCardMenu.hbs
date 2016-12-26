@@ -15,14 +15,16 @@
   </div>
   <i class="icon-cancel"></i>
   <div class="card_content">
-    {{#if labels}}
-      <p>Labels</p>
-      <div class="card_item_labels_display">
-    {{#each labels}}
-      <span class="label_{{this.color}}"></span>
-    {{/each}}
-      </div>
-    {{/if}}    
+    <div class="card_edit_menu_labels">
+      {{#if labels}}
+        <p>Labels</p>
+        <div class="card_item_labels_display">
+      {{#each labels}}
+        <span class="label_{{this.color}}"></span>
+      {{/each}}
+        </div>
+      {{/if}}
+    </div>    
     <div class="card_description">
       {{#if description}}
       <p>Description
@@ -45,9 +47,8 @@
         <a href="" class="cancel_submission close_card_edit_description">X</a>
       </form>
     </div>
-    {{> checklist}}
     <div class="card_comments">
-      <h3>Add Comment</h3>
+      <i class="icon-comment"></i><h3>Add Comment</h3>
       <form autocomplete="off">
         <textarea placeholder="Write a comment..." class="comment_input"></textarea>
         <div class="send_comment_wrapper"><div class="send_comment submit_info_button">Send</div></div>
