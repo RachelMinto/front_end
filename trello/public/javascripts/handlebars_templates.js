@@ -188,8 +188,8 @@ this["JST"]["editCardMenu"] = Handlebars.template({"1":function(container,depth0
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
     + "</h3></div><div class=\"invisible new_card_title_input\"><input type=\"text\" id=\"new_card_name\" name=\"new_card_name\" autofocus spellcheck=\"false\" dir=\"auto\" maxlength=\"512\" value=\""
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "\" style=\"overflow: hidden; word-wrap: break-word; height: 24px;\"></div></div><p>in list <a href=\"\">"
-    + alias4(((helper = (helper = helpers.list_title || (depth0 != null ? depth0.list_title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"list_title","hash":{},"data":data}) : helper)))
+    + "\" style=\"overflow: hidden; word-wrap: break-word; height: 24px;\"></div></div><p>in list <a href=\"\" class=\"move_title_link\">"
+    + alias4(((helper = (helper = helpers.listTitle || (depth0 != null ? depth0.listTitle : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"listTitle","hash":{},"data":data}) : helper)))
     + "</a></p></div><i class=\"icon-cancel close_edit_card\"></i><div class=\"card_content\"><div class=\"card_edit_menu_labels\">"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.labels : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</div><div class=\"card_description\">"

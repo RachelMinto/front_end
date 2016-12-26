@@ -12,6 +12,7 @@ var EditCardView = Backbone.View.extend({
     // "click .card_label": "toggleLabel",
     "click .card_title_placeholder": "editNameView",
     "blur input#new_card_name": "updateCardName",
+    "click .move_title_link": "openMovePopup",
     "click .menu_button.move_card": "openMovePopup",
     "click .menu_button.archive_card": "archiveCard",
     "click .menu_button.checklist": "openChecklist",
@@ -56,8 +57,10 @@ var EditCardView = Backbone.View.extend({
     return false;
   },
   render: function() {
+    var data = this.model.toJSON()
+    data["listTitle"] = this.model.collection.parentList.get("title");
     $('.pop-over').attr('class', 'pop-over invisible"');
-    $('.window').html(this.$el.html(this.template(this.model.toJSON())));    
+    $('.window').html(this.$el.html(this.template(data)));    
     $('.window-overlay').removeClass("invisible");
   },
   rerender: function() {
