@@ -7,22 +7,19 @@ var LabelPopup = Backbone.View.extend({
   },
   el: "div",
   closeModal: function() {
-    this.undelegateEvents();
-    this.$el.removeData().unbind();
     $('.pop-over').attr('class', 'pop-over');
   },
   preventClose: function() {
     return false;
   },
   render: function() {
-    debugger;
     $('.pop-over').attr('class', 'pop-over is-shown menu-popover label-popover');
     $('.pop-over').html(this.template(this.model.toJSON()));
   },
-  selectNewList: function(e) {
-    // Fix this.
-    this.data
-  },
+  // selectNewList: function(e) {
+  //   // Fix this.
+  //   this.data
+  // },
   toggleLabel: function(e) {
     debugger;
     var labelColor = $(e.target).data("color");

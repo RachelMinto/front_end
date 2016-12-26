@@ -37,15 +37,34 @@ var App = {
     return this.lastListID; 
   },
   copyList: function(title, model) {
-    var newListModel = model.clone();
-    newListModel.unset("id");
-    newListModel.set("title", title);
-    this.board.lists.add(newListModel);
-    this.renderLists();
+
+    // var newListModel = model.clone();
+    // newListModel.unset("id");
+    // newListModel.set("title", title);
+    // this.board.lists.add({"title":title});
+    // this.renderLists();
+    var oldID;
+    newList = {
+      "title": title,
+    }
+
+    $.ajax({
+      url: "/board/lists",
+      type: "POST",
+      data: newList,
+      success: function(json) {
+        oldID = json.id
+        App.board.lists.add(json);
+        model.cards.each(function(card) {
+          var nextTitle = card.get("title");
+          App.addCardToList(oldID, { title: nextTitle });
+        });
+        App.renderLists();            
+      },
+    });
   },
   createBoardMenu: function() {
     var activities = this.getAllActivities();
-    debugger;
     var initials = App.user.initials
     this.boardMenu = new BoardMenuView({initials: initials, activities: activities});    
   },

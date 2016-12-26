@@ -49,7 +49,7 @@ module.exports = function(router) {
     var board = Board.getBoardData();
     var list = _.where(board.lists, {id: +req.params.listID });    
     var newCard = req.body;
-    var id = board.last_card_id;
+    var id = board.last_card_id + 1;
     newCard.id = id;
     var match = false
 
@@ -60,7 +60,7 @@ module.exports = function(router) {
       }
     }
 
-    board.last_card_id += 1;
+    board.last_card_id = newCard.id;
     Board.writeBoardUpdate(board);    
     res.json(newCard);    
   }).put(function(req, res) { // Update a list's cards.

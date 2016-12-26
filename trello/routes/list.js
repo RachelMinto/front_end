@@ -7,11 +7,12 @@ module.exports = function(router) {
     res.json(Board.getLists()); // all lists.
   }).post(function(req, res) { // Creates new list.
     var list = req.body;
-    list.id = Board.nextListID();
+    var board = Board.getBoardData();    
+    list.id = board.last_list_id + 1;
     list.cards = [],
-    board = Board.getBoardData();
+
     board.lists.push(list);
-    board.last_list_id = list.id++;
+    board.last_list_id = list.id;
 
     Board.writeBoardUpdate(board);
     res.json(list)
@@ -21,7 +22,7 @@ module.exports = function(router) {
     board.lists = lists
 
     Board.writeBoardUpdate(board);
-    res.json(Board.nextListID());
+    res.json(lists);
   });
   // }).delete(function(req, res) {
   //   res.send("I am going to delete all lists.")
