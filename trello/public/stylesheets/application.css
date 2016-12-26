@@ -402,9 +402,11 @@ div#board_menu_wrapper {
   width: 340px;
   position: absolute;
   top: 0;
+  left: auto;
   right: 0;
   bottom: 0;
   border-radius: 0px;
+  transition-duration: 0.1s;
 }
 div#board_menu_wrapper .activity {
   border-bottom: 1px solid #e2e4e6;
@@ -421,6 +423,29 @@ div#board_menu_wrapper hr {
 }
 #open_board_menu.invisible {
   display: none;
+}
+#board_menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 340px;
+}
+.side_menu_activity {
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  -webkit-box-flex: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 12px 6px 12px 12px;
+  width: 100%;
 }
 .pop-over {
   display: none;

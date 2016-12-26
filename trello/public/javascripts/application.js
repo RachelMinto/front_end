@@ -9,6 +9,21 @@ var App = {
     this.renderLists();
     this.bindEvents();
   },
+  getAllActivities: function() {
+    var activities = []
+    this.board.lists.each(function(list) {
+      list.cards.each(function(card) {
+        var current = card.get("activities")
+        if (current) {
+          current.forEach(function(activity) {
+            activities.push(activity);
+          });
+        }
+      });
+    });
+  
+    return activities;
+  },
   renderLists: function() {
     this.board.lists.each(this.renderListView);
     this.addList = new AddListView();
@@ -29,9 +44,10 @@ var App = {
     this.renderLists();
   },
   createBoardMenu: function() {
-    var model = new Backbone.Model();
-    model.set({user: App.user.attributes, board: App.board.attributes});
-    this.boardMenu = new BoardMenuView({ model: model });    
+    var activities = this.getAllActivities();
+    debugger;
+    var initials = App.user.initials
+    this.boardMenu = new BoardMenuView({initials: initials, activities: activities});    
   },
   moveList: function(position, model) {
     var oldPosition = this.board.lists.indexOf(model);
