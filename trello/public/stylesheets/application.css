@@ -82,6 +82,16 @@
 #profile_settings .username_header {
   border-radius: 0 3px 3px 0;
 }
+#search_input_wrapper #search_input:focus {
+  border: none;
+  background: #fff;
+  width: 200px;
+  color: #4d4d4d;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  text-indent: 10px;
+}
 #board_nav {
   -webkit-box-flex: 0;
   color: #fff;
