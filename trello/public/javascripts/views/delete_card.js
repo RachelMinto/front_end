@@ -15,7 +15,6 @@ var DeleteCardPopup = Backbone.View.extend({
     return false;
   },
   render: function() {
-    debugger;
     $('.pop-over').attr('class', 'pop-over is-shown menu-popover delete-card-popover');
     $('.pop-over').html(this.template(this.model.toJSON()));
   },

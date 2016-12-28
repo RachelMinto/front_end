@@ -9,33 +9,20 @@ var EditCardView = Backbone.View.extend({
     "click .edit_card_description": "openEditDescription",
     "click .add_description": "updateDescription",
     "click .send_comment": "addComment",
-    // "click .card_label": "toggleLabel",
     "click .card_title_placeholder": "editNameView",
     "blur input#new_card_name": "updateCardName",
     "click .move_title_link": "openMovePopup",
     "click .menu_button.move_card": "openMovePopup",
     "click .menu_button.archive_card": "archiveCard",
-    "click .menu_button.checklist": "openChecklist",
-    "click .add_checklist": "addChecklist",
-    "click .add_checklist_todo_placeholder": "openTodoCreator",
-    "click .submit_new_checklist_todo": "addChecklistTodo",
     "click .unarchive_card": "unarchiveCard",
     "click .delete_card_warning": "openDeleteWarning",
     "click .copy_card": "openCopyPopup",
     "click .close_card_edit_description": "cancelDescriptionUpdate",
   },
   template: App.templates.editCardMenu,
-  addChecklistTodo: function(e) {
-    // send checklist title and new todo to list.
-  },
   addComment: function(e) {
     var commentTitle = this.$el.find('.comment_input').val();
     this.model.createComment(commentTitle);
-    return false;
-  },
-  addChecklist: function(e) {
-    var checklistTitle = this.$el.find('#checklist_title_input').val();
-    this.model.createChecklist(checklistTitle);
     return false;
   },
   archiveCard: function() {
@@ -74,11 +61,7 @@ var EditCardView = Backbone.View.extend({
     this.undelegateEvents();
     this.$el.removeData().unbind();
     this.remove();
-    // $('.pop-over').remove("is-shown edit_card");
     $('.window-overlay').addClass("invisible");
-  },
-  openChecklist: function() {
-    this.$el.find(".add_checklist_popup.card_menu_popup").removeClass("invisible");
   },
   openCopyPopup: function() {
     new CopyCard({ model: this.model });
@@ -96,11 +79,6 @@ var EditCardView = Backbone.View.extend({
     var list = this.model.collection.parentList;
     App.movePopup(card, list);
     return false    
-  },
-  openTodoCreator: function(e) {
-    $(e.target).closest(".add_checklist_todo_placeholder").addClass("invisible");
-    $(e.target).next(".card_add_todo_form").removeClass("invisible");
-    return false;
   },
   preventClose: function(e) {
     return false;
@@ -126,6 +104,5 @@ var EditCardView = Backbone.View.extend({
     this.render();
     this.listenTo(this.model, "rerenderEditCardView", this.rerender);
     this.listenTo(this.model, 'destroy', this.closeModal);
-    // this.delegateEvents();
   },  
 });

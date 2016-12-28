@@ -10,7 +10,6 @@ var ListView = Backbone.View.extend({
     "submit form": "addCard",
     "click .submit_new_card": "addCard",
     "click .icon-ellipsis": "openEditListMenu",
-    // "click .list_options_add_card": "showCardComposer",
     "click .icon-cancel.list-actions": "closeEditListMenu",
     "click .list_options_subscribe": "subscribeToggle",
     "click .list_options_copy": "openCopyListPopup",
@@ -50,7 +49,6 @@ var ListView = Backbone.View.extend({
       type: $f.attr("method"),
       data: $f.serialize(),
       success: function(json) {
-        debugger;
         var newCard = self.model.cards.add(json);
         var $card = self.renderItem(newCard);
         $card.$el.addClass("ui-sortable-handle");
@@ -59,9 +57,6 @@ var ListView = Backbone.View.extend({
         self.$el.find("#new_card_name").val("");
         self.$el.find(".add_card_composer").addClass("invisible");        
       },
-      error: function(json) {
-        debugger;
-      }
     });
 
     this.$el.find(".add_card").removeClass("invisible");
@@ -93,7 +88,7 @@ var ListView = Backbone.View.extend({
     this.$el.find(".new_list_title_input").removeClass("invisible");
     this.$el.find(".list_title_header").addClass("invisible");
   },
-  EditMenuView: function(e) { // Can I remove this?
+  EditMenuView: function(e) {
     return false;
   },
   updateName: function(e) {
@@ -140,6 +135,5 @@ var ListView = Backbone.View.extend({
     });
     this.listenTo(this.model.cards, 'card_collection_updated', this.renderCollection)
     this.listenTo(this.model, "rerenderListView", this.rerender); 
-    // subscribe to notifications from selected board, list, and item changes.
   },
 });

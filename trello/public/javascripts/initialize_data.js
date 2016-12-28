@@ -10,4 +10,3 @@ App.board.fetch({
     console.log('There was some error in loading and processing the JSON file');
   }
 });
-debugger;

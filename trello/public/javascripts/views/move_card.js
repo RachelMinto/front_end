@@ -39,7 +39,6 @@ var MoveCardView = Backbone.View.extend({
     var newListID = $(".list_select_options").val();
     var position = $(".position_select_options").val();
 
-    debugger;
     var oldListID = this.originalList.get("id");
     var cardID = this.model.get("id");
     App.updateCardPosition([+oldListID, +newListID, +cardID, +position]);
@@ -57,7 +56,6 @@ var MoveCardView = Backbone.View.extend({
     this.data
   },
   updatePositionOptions: function(e) {
-    debugger;
     var unarchivedLists = App.board.lists.reject({archived: true});
     var lists = _.invoke(unarchivedLists, "pick", ["title", "id"]);
 
@@ -90,7 +88,6 @@ var MoveCardView = Backbone.View.extend({
   },
   updatePositionSelection: function() {
     var positionID = +$(".position_select_options").val() + 1;
-    debugger;
     $(".position_value").html(positionID);
     return false;
   },

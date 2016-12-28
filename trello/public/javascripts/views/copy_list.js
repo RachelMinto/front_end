@@ -10,8 +10,6 @@ var CopyList = Backbone.View.extend({
     $('.pop-over').attr('class', 'pop-over');
   },
   initialize: function() {
-    // set title
-    //auto focus and select
     var title = this.model.get("title")
     this.render({"title":title});
   },
@@ -29,5 +27,3 @@ var CopyList = Backbone.View.extend({
     $('.copy_list_title_text').focus().select();
   },
 });
-
-//copy_list_title_text textarea class

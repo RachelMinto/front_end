@@ -9,7 +9,6 @@ var HeaderView = Backbone.View.extend({
   },
   template: App.templates.header,
   openSearch: function() {
-    // $('.pop-over').addClass("is-shown search");
     return false
   },
   preventClose: function() {
@@ -53,6 +52,5 @@ var HeaderView = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
-    // subscribe to notifications from selected board, list, and item changes.
   },
 });

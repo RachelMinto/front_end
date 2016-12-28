@@ -27,8 +27,8 @@ var CopyCard = Backbone.View.extend({
       position: position,
       card: self.model.get("title"),
       list: self.model.collection.parentList.get("title"),
-      lists: lists, // array of objects, with title and id
-      cards: cardIDs // array of card ids
+      lists: lists,
+      cards: cardIDs
     }
 
     this.render(this.data);

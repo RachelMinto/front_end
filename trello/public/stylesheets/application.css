@@ -278,6 +278,12 @@ form.addCardForm input {
 .submit_info_button#add_new_list {
   margin: 8px;
 }
+#add_list_name_input {
+  display: block;
+}
+#add_list_name_input:focus {
+  color: #4d4d4d;
+}
 .archived_header {
   height: 25px;
   background-color: #f00;
