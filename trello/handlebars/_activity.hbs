@@ -11,14 +11,7 @@
         <p class="timestamp"> on {{this.timestamp}}</p>
       </div>
       <hr>    
-      {{else}} {{#ifAction activities.action value="moved"}} 
-      {{debug this}}           
-        <div class="moved_card_activity_item">
-          <p><span class="member-initials"></span><strong>{{this.user}} </strong> moved {{this.card}} from {{this.oldList}} to {{this.newList}}</p>
-          <p class="timestamp"> on {{this.timestamp}}</p>
-        </div>
-        <hr> 
-      {{/ifAction}} {{/ifAction}}                      
+   {{/ifAction}}                      
     {{/each}}
   </div>
 </div>

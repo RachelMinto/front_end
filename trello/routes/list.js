@@ -24,9 +24,7 @@ module.exports = function(router) {
     Board.writeBoardUpdate(board);
     res.json(lists);
   });
-  // }).delete(function(req, res) {
-  //   res.send("I am going to delete all lists.")
-  // });
+
   router.route("/board/:listID").get(function(req, res) {
     res.json(Board.getList(req.params.listID));
   }).put(function(req, res) { // update list

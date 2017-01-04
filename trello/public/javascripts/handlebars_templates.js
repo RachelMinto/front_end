@@ -3,7 +3,7 @@ this["JST"] = this["JST"] || {};
 Handlebars.registerPartial("activity", Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return ((stack1 = (helpers.ifAction || (depth0 && depth0.ifAction) || helpers.helperMissing).call(depth0 != null ? depth0 : {},((stack1 = (depth0 != null ? depth0.activities : depth0)) != null ? stack1.action : stack1),{"name":"ifAction","hash":{"value":"comment"},"fn":container.program(2, data, 0),"inverse":container.program(4, data, 0),"data":data})) != null ? stack1 : "");
+  return ((stack1 = (helpers.ifAction || (depth0 && depth0.ifAction) || helpers.helperMissing).call(depth0 != null ? depth0 : {},((stack1 = (depth0 != null ? depth0.activities : depth0)) != null ? stack1.action : stack1),{"name":"ifAction","hash":{"value":"comment"},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"2":function(container,depth0,helpers,partials,data) {
     var alias1=container.lambda, alias2=container.escapeExpression;
 
@@ -16,28 +16,6 @@ Handlebars.registerPartial("activity", Handlebars.template({"1":function(contain
     + "</div><p class=\"timestamp\"> on "
     + alias2(alias1((depth0 != null ? depth0.timestamp : depth0), depth0))
     + "</p></div><hr>";
-},"4":function(container,depth0,helpers,partials,data) {
-    var stack1;
-
-  return " "
-    + ((stack1 = (helpers.ifAction || (depth0 && depth0.ifAction) || helpers.helperMissing).call(depth0 != null ? depth0 : {},((stack1 = (depth0 != null ? depth0.activities : depth0)) != null ? stack1.action : stack1),{"name":"ifAction","hash":{"value":"moved"},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + " ";
-},"5":function(container,depth0,helpers,partials,data) {
-    var alias1=container.escapeExpression, alias2=container.lambda;
-
-  return " "
-    + alias1((helpers.debug || (depth0 && depth0.debug) || helpers.helperMissing).call(depth0 != null ? depth0 : {},depth0,{"name":"debug","hash":{},"data":data}))
-    + "<div class=\"moved_card_activity_item\"><p><span class=\"member-initials\"></span><strong>"
-    + alias1(alias2((depth0 != null ? depth0.user : depth0), depth0))
-    + " </strong> moved "
-    + alias1(alias2((depth0 != null ? depth0.card : depth0), depth0))
-    + " from "
-    + alias1(alias2((depth0 != null ? depth0.oldList : depth0), depth0))
-    + " to "
-    + alias1(alias2((depth0 != null ? depth0.newList : depth0), depth0))
-    + "</p><p class=\"timestamp\"> on "
-    + alias1(alias2((depth0 != null ? depth0.timestamp : depth0), depth0))
-    + "</p></div><hr> ";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
@@ -267,7 +245,7 @@ this["JST"]["move_list"] = Handlebars.template({"1":function(container,depth0,he
     var stack1, helper, options, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", buffer = 
   "<div class=\"move_list_popup card_menu_popup\"><div class=\"card_menu_popup_header\"><h5>Move List</h5><i class=\"icon-cancel\"></i></div><hr><div class=\"all_positions_dropdown_placeholder wide setting menu_button\"><span class=\"label\">Position</span><span class=\"position_value\">"
     + container.escapeExpression(((helper = (helper = helpers.position || (depth0 != null ? depth0.position : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"position","hash":{},"data":data}) : helper)))
-    + "</span><!--<label>Position</label>--><select class=\"position_select_options\" name=\"position_select_options\">";
+    + "</span> <select class=\"position_select_options\" name=\"position_select_options\">";
   stack1 = ((helper = (helper = helpers.lists || (depth0 != null ? depth0.lists : depth0)) != null ? helper : alias2),(options={"name":"lists","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data}),(typeof helper === alias3 ? helper.call(alias1,options) : helper));
   if (!helpers.lists) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
@@ -305,8 +283,4 @@ this["JST"]["move"] = Handlebars.template({"1":function(container,depth0,helpers
   if (!helpers.cards) { stack1 = alias5.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
   return buffer + "</select></div><div class=\"submit_info_button selected move_submission\">Move</div></div></div>";
-},"useData":true});
-
-this["JST"]["popup"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "";
 },"useData":true});
